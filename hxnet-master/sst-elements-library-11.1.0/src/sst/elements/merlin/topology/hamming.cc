@@ -20,6 +20,7 @@
 #include "sst/core/rng/xorshift.h"
 
 #include <algorithm>
+#include <sstream>
 #include <stdlib.h>
 
 //#define DEBUG_HAMMING
@@ -159,6 +160,26 @@ topo_hamming::topo_hamming(ComponentId_t cid, Params& params, int num_ports, int
 
     id_loc = new int[dimensions]; // This is probably not that useful for us, might remove later
     idToLocation(router_id, id_loc); // This is probably not that useful for us, might remove later
+
+    // Jellyfish local topology support
+    is_jellyfish = params.find<bool>("is_jellyfish", false);
+    jf_row_ft_port = params.find<int>("row_ft_port", -1);
+    jf_col_ft_port = params.find<int>("col_ft_port", -1);
+    jf_nearest_row_edge = params.find<int>("nearest_row_edge", -1);
+    jf_nearest_col_edge = params.find<int>("nearest_col_edge", -1);
+
+    if (is_jellyfish && is_board_switch) {
+        std::string rt_str = params.find<std::string>("routing_table", "");
+        if (!rt_str.empty()) {
+            std::stringstream ss(rt_str);
+            std::string token;
+            while (std::getline(ss, token, ',')) {
+                jf_routing_table.push_back(std::stoi(token));
+            }
+        }
+        DEBUG_PRINT(("--- Jellyfish mode: routing_table size=%zu, row_ft_port=%d, col_ft_port=%d ---\n",
+                     jf_routing_table.size(), jf_row_ft_port, jf_col_ft_port));
+    }
 }
 
 topo_hamming::~topo_hamming()
@@ -293,6 +314,12 @@ topo_hamming::wrap_west(uint board_col_dest){
 void
 topo_hamming::route_packet_mesh(int port, int vc, internal_router_event* ev)
 {
+    // Jellyfish local topology: use table-based routing instead of directional mesh routing
+    if (is_jellyfish) {
+        route_packet_jellyfish(port, vc, ev);
+        return;
+    }
+
     uint board_row_src = get_coord_board_row(ev->getSrc());
     uint board_col_src = get_coord_board_col(ev->getSrc());
     uint row_src = get_coord_row(ev->getSrc());
@@ -474,6 +501,112 @@ topo_hamming::route_packet_mesh(int port, int vc, internal_router_event* ev)
         ev->setNextPort(selected_port);
         ev->setVC(selected_vc);
     }    
+}
+
+void
+topo_hamming::route_packet_jellyfish(int port, int vc, internal_router_event* ev)
+{
+    int dest = ev->getDest();
+    int src = ev->getSrc();
+    uint dest_board = get_coord_board(dest);
+    uint my_board = get_coord_board(router_id);
+    uint dest_local = get_coord_within_board(dest);
+    uint my_local = get_coord_within_board(router_id);
+
+    DEBUG_PRINT(("[JF switch %d (local %d, board %d)] Routing from %d to %d\n",
+                 router_id, my_local, my_board, src, dest));
+
+    // Case 1: Destination is on THIS switch -> deliver to NIC
+    if (dest_board == my_board && dest_local == my_local) {
+        DEBUG_PRINT(("[JF switch %d] Delivering to NIC (port %d)\n", router_id, local_port_start));
+        ev->setNextPort(local_port_start);
+        ev->setVC(vc);
+        return;
+    }
+
+    // Case 2: Destination is on the same board -> use routing table
+    if (dest_board == my_board) {
+        int next_port = jf_routing_table[dest_local];
+        DEBUG_PRINT(("[JF switch %d] Same board, routing to local %d via port %d\n",
+                     router_id, dest_local, next_port));
+        ev->setNextPort(next_port);
+        ev->setVC(vc);
+        return;
+    }
+
+    // Case 3: Destination is on a different board -> route toward fat tree edge node
+    uint row_dest = get_coord_row(dest);
+    uint col_dest = get_coord_col(dest);
+    uint row_here = get_coord_row(router_id);
+    uint col_here = get_coord_col(router_id);
+
+    int target_edge = -1;
+    int ft_port = -1;
+
+    if (row_dest == row_here && col_dest != col_here) {
+        // Same global row, different column -> use row fat tree
+        target_edge = jf_nearest_row_edge;
+        ft_port = jf_row_ft_port;
+    } else if (row_dest != row_here && col_dest == col_here) {
+        // Different global row, same column -> use col fat tree
+        target_edge = jf_nearest_col_edge;
+        ft_port = jf_col_ft_port;
+    } else {
+        // Different row AND column -> pick whichever edge is closer (fewer hops)
+        // Use routing table hop counts to decide
+        int hops_to_row_edge = 0;
+        int hops_to_col_edge = 0;
+        // Trace hops to row edge
+        if (jf_nearest_row_edge >= 0) {
+            int cur = my_local;
+            while (cur != jf_nearest_row_edge && hops_to_row_edge < (int)jf_routing_table.size()) {
+                cur = -1; // We don't store full adjacency, so use a simple heuristic
+                hops_to_row_edge++;
+                break; // Will be refined - for now just use row edge by default
+            }
+        } else {
+            hops_to_row_edge = 9999;
+        }
+        if (jf_nearest_col_edge >= 0) {
+            int cur = my_local;
+            while (cur != jf_nearest_col_edge && hops_to_col_edge < (int)jf_routing_table.size()) {
+                cur = -1;
+                hops_to_col_edge++;
+                break;
+            }
+        } else {
+            hops_to_col_edge = 9999;
+        }
+
+        // Pick the closer edge, default to row if equal
+        if (jf_nearest_row_edge >= 0 && (jf_nearest_col_edge < 0 || hops_to_row_edge <= hops_to_col_edge)) {
+            target_edge = jf_nearest_row_edge;
+            ft_port = jf_row_ft_port;
+        } else {
+            target_edge = jf_nearest_col_edge;
+            ft_port = jf_col_ft_port;
+        }
+    }
+
+    // Are we AT the edge node and have the fat tree port?
+    if ((int)my_local == target_edge && ft_port >= 0) {
+        DEBUG_PRINT(("[JF switch %d] At edge node, exiting to fat tree via port %d\n",
+                     router_id, ft_port));
+        ev->setNextPort(ft_port);
+        ev->setVC(vc + 1); // VC escalation at board-to-tree boundary
+    } else if (target_edge >= 0 && target_edge < (int)jf_routing_table.size()) {
+        // Route toward the edge node using routing table
+        int next_port = jf_routing_table[target_edge];
+        DEBUG_PRINT(("[JF switch %d] Routing toward edge node %d via port %d\n",
+                     router_id, target_edge, next_port));
+        ev->setNextPort(next_port);
+        ev->setVC(vc);
+    } else {
+        // Fallback: should not happen in a correctly configured topology
+        DEBUG_PRINT(("[JF switch %d] WARNING: no valid edge node found, delivering to NIC\n", router_id));
+        ev->setNextPort(local_port_start);
+        ev->setVC(vc);
+    }
 }
 
 void

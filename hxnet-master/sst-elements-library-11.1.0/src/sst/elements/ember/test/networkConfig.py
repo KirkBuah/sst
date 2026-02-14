@@ -103,14 +103,14 @@ class HyperXInfo(TopoInfo):
 
 class HammingInfo(TopoInfo):
 
-    def __init__( self, param1, param2, param3, param4, param5=None ):
+    def __init__( self, param1, param2, param3, param4, param5=None, use_jellyfish=False ):
         self.params = {}
         if param2:
-            self.initV1( param1, param2, param3, param4, param5)
+            self.initV1( param1, param2, param3, param4, param5, use_jellyfish)
         else:
             self.initV2( param1 )
 
-    def initV1( self, shape, local_ports, global_shape, fat_tree_shape, algo ):
+    def initV1( self, shape, local_ports, global_shape, fat_tree_shape, algo, use_jellyfish=False ):
         width = 1
         self.params["num_dims"] = self.calcNumDim(shape)
         self.params["hamming:shape"] = shape
@@ -120,6 +120,7 @@ class HammingInfo(TopoInfo):
         self.params["hamming:width"] = self.calcWidth(shape,width)
         self.params["hamming:local_ports"] = local_ports
         self.params["hamming:algorithm"] = algo
+        self.params["hamming:use_jellyfish"] = use_jellyfish
         self.numNodes = self.calcNumNodes( shape, global_shape ) * local_ports
 
         print("Board Shapee is " + str(shape))
@@ -128,6 +129,8 @@ class HammingInfo(TopoInfo):
         print("width is " + str(self.calcWidth(shape,width)))
         print("local_ports is " + str(local_ports))
         print("algorithm is " + str(algo))
+        if use_jellyfish:
+            print("Local topology: Jellyfish (random graph)")
         print("numNodes is " + str(self.calcNumNodes( shape, global_shape ) * local_ports))
 
     def initV2( self, params ):

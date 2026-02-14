@@ -122,6 +122,12 @@ public:
         {"global_shape",        " Indicates the overall scheme of the topology and how many boards we have in total."},
         {"fat_tree_shape",        " Indicates how many switches we want in each level of the fatree."},
         {"algorithm",        " Indicates the routing algorithm. 'min-adaptive': Minimal adaptive routing algorithm. 'min-adaptive-nogl': Like min-adaptive, but it never uses global links if src and dst are both on the same board. Default is 'min-adaptive'"},
+        {"is_jellyfish",     "Use Jellyfish random graph as local board topology instead of 2D mesh. Default is false.", "false"},
+        {"routing_table",    "Comma-separated shortest-path routing table for Jellyfish boards. Index=dest_local_id, value=next_hop_port.", ""},
+        {"row_ft_port",      "Port connected to row fat tree (-1 if not a row-edge node).", "-1"},
+        {"col_ft_port",      "Port connected to col fat tree (-1 if not a col-edge node).", "-1"},
+        {"nearest_row_edge", "Local ID of nearest row-edge node (for Jellyfish routing).", "-1"},
+        {"nearest_col_edge", "Local ID of nearest col-edge node (for Jellyfish routing).", "-1"},
     )
 
 
@@ -188,13 +194,22 @@ long traffic_per_port[128];
     int local_port_start;
 
     int num_vns;
-    
+
+    // Jellyfish local topology support
+    bool is_jellyfish;                    // Use Jellyfish instead of 2D mesh for boards
+    std::vector<int> jf_routing_table;    // routing_table[dest_local_id] = next_hop_port
+    int jf_row_ft_port;                   // Port connected to row fat tree (-1 if none)
+    int jf_col_ft_port;                   // Port connected to col fat tree (-1 if none)
+    int jf_nearest_row_edge;              // Local ID of nearest row-edge node
+    int jf_nearest_col_edge;              // Local ID of nearest col-edge node
+
 public:
     topo_hamming(ComponentId_t cid, Params& params, int num_ports, int rtr_id, int num_vns);
     ~topo_hamming();
 
     virtual void route_packet(int port, int vc, internal_router_event* ev);
     virtual void route_packet_mesh(int port, int vc, internal_router_event* ev);
+    virtual void route_packet_jellyfish(int port, int vc, internal_router_event* ev);
     virtual void route_packet_tree(int port, int vc, internal_router_event* ev);
     virtual internal_router_event* process_input(RtrEvent* ev);
 

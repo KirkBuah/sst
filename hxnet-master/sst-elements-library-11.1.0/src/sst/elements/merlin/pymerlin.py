@@ -391,7 +391,7 @@ class topoMesh(Topo):
 class topoHamming(Topo):
     def __init__(self):
         Topo.__init__(self)
-        self.topoKeys = ["topology", "debug", "num_ports", "flit_size", "link_bw",  "nic_link_bw", "xbar_bw", "hamming:fat_tree_shape", "hamming:shape", "hamming:single_switch_fat_tree", "hamming:link_width","hamming:switches_first_level", "hamming:board_shape", "hamming:global_shape", "hamming:is_board_switch", "hamming:algorithm", "hamming:global_switch_id", "hamming:local_switch_id", "hamming:global_pos", "hamming:local_pos", "hamming:unique_pos", "hamming:fat_tree_id", "hamming:fat_tree_pos", "hamming:width", "hamming:local_ports","input_latency","output_latency","input_buf_size","output_buf_size"]
+        self.topoKeys = ["topology", "debug", "num_ports", "flit_size", "link_bw",  "nic_link_bw", "xbar_bw", "hamming:fat_tree_shape", "hamming:shape", "hamming:single_switch_fat_tree", "hamming:link_width","hamming:switches_first_level", "hamming:board_shape", "hamming:global_shape", "hamming:is_board_switch", "hamming:algorithm", "hamming:global_switch_id", "hamming:local_switch_id", "hamming:global_pos", "hamming:local_pos", "hamming:unique_pos", "hamming:fat_tree_id", "hamming:fat_tree_pos", "hamming:width", "hamming:local_ports","hamming:is_jellyfish","hamming:routing_table","hamming:row_ft_port","hamming:col_ft_port","hamming:nearest_row_edge","hamming:nearest_col_edge","input_latency","output_latency","input_buf_size","output_buf_size"]
         self.topoOptKeys = ["xbar_arb","num_vns","vn_remap","vn_remap_shm","portcontrol:output_arb","portcontrol:arbitration:qos_settings","portcontrol:arbitration:arb_vns","portcontrol:arbitration:arb_vcs"]
     def getName(self):
         return "Hamming"
@@ -464,6 +464,11 @@ class topoHamming(Topo):
         _params["debug"] = debug
         _params["num_ports"] = _params["router_radix"] = radix
         _params["hamming:local_ports"] = local_ports
+
+        # Jellyfish local topology: check if user requested it
+        self.use_jellyfish = _params.get("hamming:use_jellyfish", False)
+        if isinstance(self.use_jellyfish, str):
+            self.use_jellyfish = self.use_jellyfish.lower() in ("true", "1", "yes")
 
     def _formatShape(self, arr):
         return 'x'.join([str(x) for x in arr])
@@ -568,6 +573,13 @@ class topoHamming(Topo):
         _params["hamming:link_width"] = self.link_width
         _params["hamming:switches_first_level"] = self.switches_first_level
         _params["hamming:single_switch_fat_tree"] = False
+        # Jellyfish defaults
+        _params["hamming:is_jellyfish"] = False
+        _params["hamming:routing_table"] = ""
+        _params["hamming:row_ft_port"] = -1
+        _params["hamming:col_ft_port"] = -1
+        _params["hamming:nearest_row_edge"] = -1
+        _params["hamming:nearest_col_edge"] = -1
 
     def createRowFatTree(self, nodes, total, row, col):
 
@@ -839,6 +851,328 @@ class topoHamming(Topo):
         return 1
 
 
+    def _get_reserved_ports(self, local_id):
+        """For Jellyfish boards: determine which ports are reserved for fat tree connections.
+        Returns dict: port_number -> 'row_ft' or 'col_ft'
+        Uses same convention as mesh: port 0(N)=col_ft if first row, port 1(E)=row_ft if last col,
+        port 2(S)=col_ft if last row, port 3(W)=row_ft if first col."""
+        row = local_id // self.dims[1]
+        col = local_id % self.dims[1]
+        reserved = {}
+        if row == 0:
+            reserved[0] = 'col_ft'                 # N port -> col fat tree
+        if col == self.dims[1] - 1:
+            reserved[1] = 'row_ft'                  # E port -> row fat tree
+        if row == self.dims[0] - 1:
+            reserved[2] = 'col_ft'                  # S port -> col fat tree
+        if col == 0:
+            reserved[3] = 'row_ft'                  # W port -> row fat tree
+        return reserved
+
+    def _generate_jellyfish_graph(self, num_nodes, reserved_ports_per_node):
+        """Generate a random graph for a board. Each node has 4 inter-router ports (0-3).
+        Some ports are reserved for fat trees. Remaining ports are used for random intra-board links.
+        Returns: adjacency dict {node_id: [(neighbor_id, my_port, their_port), ...]}, port_map dict {node_id: {port: neighbor_id}}"""
+        import random
+
+        # Determine available (non-reserved) ports per node
+        available = {}  # node -> list of free port numbers
+        for n in range(num_nodes):
+            reserved = reserved_ports_per_node.get(n, {})
+            available[n] = [p for p in range(4) if p not in reserved]
+
+        max_attempts = 100
+        for attempt in range(max_attempts):
+            # Build list of (node, port) stubs to pair up
+            stubs = []
+            for n in range(num_nodes):
+                for p in available[n]:
+                    stubs.append((n, p))
+
+            random.shuffle(stubs)
+
+            adjacency = {n: [] for n in range(num_nodes)}
+            port_map = {n: {} for n in range(num_nodes)}  # node -> {port: neighbor}
+            used_pairs = set()  # track (min(a,b), max(a,b)) to avoid duplicates
+
+            # Pair up stubs greedily
+            paired = [False] * len(stubs)
+            for i in range(len(stubs)):
+                if paired[i]:
+                    continue
+                n1, p1 = stubs[i]
+                # Find a partner: different node, not already connected to n1
+                for j in range(i + 1, len(stubs)):
+                    if paired[j]:
+                        continue
+                    n2, p2 = stubs[j]
+                    if n1 == n2:
+                        continue
+                    pair_key = (min(n1, n2), max(n1, n2))
+                    if pair_key in used_pairs:
+                        continue
+                    # Match found
+                    paired[i] = True
+                    paired[j] = True
+                    adjacency[n1].append((n2, p1, p2))
+                    adjacency[n2].append((n1, p2, p1))
+                    port_map[n1][p1] = n2
+                    port_map[n2][p2] = n1
+                    used_pairs.add(pair_key)
+                    break
+
+            unpaired_count = sum(1 for p in paired if not p)
+            if unpaired_count == 0:
+                return adjacency, port_map
+
+        # If we still have unpaired stubs after max_attempts, allow multi-links as fallback
+        print("WARNING: Jellyfish graph could not pair all stubs without multi-links. Allowing multi-links.")
+        stubs = []
+        for n in range(num_nodes):
+            for p in available[n]:
+                stubs.append((n, p))
+        random.shuffle(stubs)
+
+        adjacency = {n: [] for n in range(num_nodes)}
+        port_map = {n: {} for n in range(num_nodes)}
+        paired = [False] * len(stubs)
+        for i in range(len(stubs)):
+            if paired[i]:
+                continue
+            n1, p1 = stubs[i]
+            for j in range(i + 1, len(stubs)):
+                if paired[j]:
+                    continue
+                n2, p2 = stubs[j]
+                if n1 == n2:
+                    continue
+                # Allow multi-links in fallback
+                paired[i] = True
+                paired[j] = True
+                adjacency[n1].append((n2, p1, p2))
+                adjacency[n2].append((n1, p2, p1))
+                port_map[n1][p1] = n2
+                port_map[n2][p2] = n1
+                break
+
+        unpaired_count = sum(1 for p in paired if not p)
+        if unpaired_count > 0:
+            print("ERROR: %d stubs still unpaired even with multi-links!" % unpaired_count)
+
+        return adjacency, port_map
+
+    def _compute_routing_tables(self, num_nodes, port_map):
+        """Compute shortest-path routing tables using BFS.
+        Returns: dict {src: {dst: next_hop_port}} for all src, dst pairs."""
+        from collections import deque
+
+        # Build adjacency from port_map: node -> [(neighbor, port_to_neighbor)]
+        adj = {n: [] for n in range(num_nodes)}
+        for n in range(num_nodes):
+            for port, neighbor in port_map[n].items():
+                adj[n].append((neighbor, port))
+
+        routing_tables = {}
+        for src in range(num_nodes):
+            # BFS from src
+            visited = {src: None}  # node -> (prev_node, port_from_prev)
+            queue = deque([src])
+            while queue:
+                current = queue.popleft()
+                for neighbor, port in adj[current]:
+                    if neighbor not in visited:
+                        visited[neighbor] = (current, port)
+                        queue.append(neighbor)
+
+            # Build routing table: for each dest, trace back to find first hop port from src
+            table = {}
+            for dst in range(num_nodes):
+                if dst == src:
+                    table[dst] = -1  # self, will deliver to NIC
+                    continue
+                if dst not in visited:
+                    table[dst] = -1  # unreachable (shouldn't happen in connected graph)
+                    continue
+                # Trace back from dst to src to find first hop
+                node = dst
+                while visited[node][0] != src:
+                    node = visited[node][0]
+                table[dst] = visited[node][1]  # port from src toward dst
+
+            routing_tables[src] = table
+
+        return routing_tables
+
+    def _find_nearest_edges(self, num_nodes, routing_tables, reserved_ports_per_node):
+        """For each node, find the nearest row-edge and col-edge node (by hop count).
+        Returns: dict {node_id: {'nearest_row_edge': local_id, 'nearest_col_edge': local_id}}"""
+        from collections import deque
+
+        # Classify edge nodes
+        row_edge_nodes = set()
+        col_edge_nodes = set()
+        for n in range(num_nodes):
+            reserved = reserved_ports_per_node.get(n, {})
+            for port, ft_type in reserved.items():
+                if ft_type == 'row_ft':
+                    row_edge_nodes.add(n)
+                elif ft_type == 'col_ft':
+                    col_edge_nodes.add(n)
+
+        result = {}
+        for src in range(num_nodes):
+            table = routing_tables[src]
+            # Find nearest row edge (fewest hops)
+            nearest_row = -1
+            min_row_hops = 9999
+            for edge_node in row_edge_nodes:
+                if edge_node == src:
+                    nearest_row = src
+                    min_row_hops = 0
+                    break
+                # Count hops by tracing routing table
+                hops = 0
+                node = src
+                visited = set()
+                while node != edge_node and hops < num_nodes:
+                    next_port = table.get(edge_node, -1)
+                    if next_port < 0:
+                        break
+                    # We don't have easy hop tracing from routing_tables alone,
+                    # so just use BFS distance
+                    hops = num_nodes  # will be overridden below
+                    break
+                # Use BFS distance instead
+            # Simpler: just BFS from src and record distances
+            # (We already have routing tables, but let's compute distances directly)
+
+            nearest_row = -1
+            nearest_col = -1
+            result[src] = {'nearest_row_edge': -1, 'nearest_col_edge': -1}
+
+            if src in row_edge_nodes:
+                result[src]['nearest_row_edge'] = src
+            else:
+                # Find closest row edge by hop count (trace routing table)
+                best_dist = 9999
+                for edge_n in row_edge_nodes:
+                    dist = self._hop_distance(src, edge_n, routing_tables[src], routing_tables)
+                    if dist < best_dist:
+                        best_dist = dist
+                        result[src]['nearest_row_edge'] = edge_n
+
+            if src in col_edge_nodes:
+                result[src]['nearest_col_edge'] = src
+            else:
+                best_dist = 9999
+                for edge_n in col_edge_nodes:
+                    dist = self._hop_distance(src, edge_n, routing_tables[src], routing_tables)
+                    if dist < best_dist:
+                        best_dist = dist
+                        result[src]['nearest_col_edge'] = edge_n
+
+        return result
+
+    def _hop_distance(self, src, dst, src_table, all_tables):
+        """Count hops from src to dst using routing tables."""
+        if src == dst:
+            return 0
+        hops = 0
+        current = src
+        visited = set()
+        while current != dst and hops < 100:
+            if current in visited:
+                return 9999  # loop
+            visited.add(current)
+            next_port = all_tables[current].get(dst, -1)
+            if next_port < 0:
+                return 9999
+            # Find which neighbor is on that port
+            # We need port_map for this - store it on self
+            neighbor = self._current_port_map.get(current, {}).get(next_port, -1)
+            if neighbor < 0:
+                return 9999
+            current = neighbor
+            hops += 1
+        return hops
+
+    def _wire_jellyfish_board(self, board_routers_info, board_id, _params, getLink):
+        """Wire a board as a Jellyfish random graph instead of a 2D mesh.
+        Also creates NIC connections and sets routing table parameters."""
+        num_nodes = len(board_routers_info)
+
+        # Determine reserved ports for each node (fat tree connections)
+        reserved_ports = {}
+        for info in board_routers_info:
+            reserved_ports[info['local_id']] = self._get_reserved_ports(info['local_id'])
+
+        # Generate random Jellyfish graph
+        adjacency, port_map = self._generate_jellyfish_graph(num_nodes, reserved_ports)
+        self._current_port_map = port_map  # Store for hop distance calculation
+
+        # Compute shortest-path routing tables
+        routing_tables = self._compute_routing_tables(num_nodes, port_map)
+
+        # Find nearest edge nodes for inter-board routing
+        nearest_edges = self._find_nearest_edges(num_nodes, routing_tables, reserved_ports)
+
+        # Wire up the Jellyfish links and set parameters
+        created_links = set()  # Track (min_id, max_id) to avoid duplicate links
+        for info in board_routers_info:
+            local_id = info['local_id']
+            rtr = info['rtr']
+            my_str = info['my_str']
+            topology = info['topology']
+            reserved = reserved_ports.get(local_id, {})
+
+            # Create Jellyfish inter-router links
+            for neighbor_id, my_port, their_port in adjacency[local_id]:
+                link_key = (min(local_id, neighbor_id), max(local_id, neighbor_id))
+                if link_key not in created_links:
+                    created_links.add(link_key)
+                    partner_info = board_routers_info[neighbor_id]
+                    partner_str = partner_info['my_str']
+                    link_name = "jflink.%s:%s"%(my_str, partner_str)
+                    link = sst.Link(link_name)
+                    rtr.addLink(link, "port%d"%my_port, _params["link_lat"])
+                    partner_info['rtr'].addLink(link, "port%d"%their_port, _params["link_lat"])
+
+            # Create NIC connection (port 4 = last port before local ports)
+            nic_port = 4  # Same as mesh: ports 0-3 are inter-router, port 4 is NIC
+            for n in range(_params["hamming:local_ports"]):
+                # global_router_id was already incremented; compute the correct one
+                global_id = info['local_id']  # Need to use the stored global ID
+                # Actually, we need the global router ID. Let's compute it from board_id
+                switches_per_board = self.switch_per_board
+                global_rtr_id = board_id * switches_per_board + local_id
+                nodeID = int(_params["hamming:local_ports"]) * global_rtr_id + n
+                ep = self._getEndPoint(nodeID).build(nodeID, {})
+                if ep:
+                    nicLink = sst.Link("nic.%d:%d"%(global_rtr_id, n))
+                    if self.bundleEndpoints:
+                        nicLink.setNoCut()
+                    nicLink.connect(ep, (rtr, "port%d"%nic_port, _params["link_lat"]))
+                nic_port += 1
+
+            # Set Jellyfish-specific parameters on the topology subcomponent
+            rt_str = ",".join(str(routing_tables[local_id].get(d, -1)) for d in range(num_nodes))
+
+            # Determine fat tree port numbers for this node
+            row_ft_port = -1
+            col_ft_port = -1
+            for port, ft_type in reserved.items():
+                if ft_type == 'row_ft':
+                    row_ft_port = port
+                elif ft_type == 'col_ft':
+                    col_ft_port = port
+
+            topology.addParam("is_jellyfish", True)
+            topology.addParam("routing_table", rt_str)
+            topology.addParam("row_ft_port", row_ft_port)
+            topology.addParam("col_ft_port", col_ft_port)
+            topology.addParam("nearest_row_edge", nearest_edges[local_id]['nearest_row_edge'])
+            topology.addParam("nearest_col_edge", nearest_edges[local_id]['nearest_col_edge'])
+
     def build(self):
         # Temp
         links = dict()
@@ -853,9 +1187,11 @@ class topoHamming(Topo):
         glob_col_offest = 0
         glob_row_offest = 0
         tmp_boards_per_row = self.global_shape[1]
+        board_routers_info = []  # Collect router info per board for Jellyfish wiring
 
         # Start building each individual mesh, assign ids and connect links (leaving empty links for fat tree)
         for board_id in range(0, self.num_boards):
+            board_routers_info = []  # Reset for each board
             for router_in_board in range(0, self.switch_per_board):
                 mydims = self._idToLoc(local_router_id)
                 my_loc_id = self.getLocalDims(local_router_id)
@@ -874,56 +1210,61 @@ class topoHamming(Topo):
 
                 # Add parameters to topology object
                 self.setParameters(_params, True, self.global_router_id, local_router_id, my_glob_id, my_loc_id, unique_pos, -1, [-1, -1])
-                swap_keys = [("hamming:shape","shape"), ("hamming:fat_tree_shape","fat_tree_shape"), ("hamming:board_shape","board_shape"), ("hamming:width","width"),("hamming:local_ports","local_ports"),("hamming:global_shape","global_shape"),("hamming:is_board_switch","is_board_switch"),("hamming:global_switch_id","global_switch_id"),("hamming:local_switch_id","local_switch_id"),("hamming:global_pos","global_pos"),("hamming:local_pos","local_pos"),("hamming:unique_pos","unique_pos"),("hamming:fat_tree_id","fat_tree_id"),("hamming:fat_tree_pos","fat_tree_pos"), ("hamming:algorithm","algorithm")]
+                swap_keys = [("hamming:shape","shape"), ("hamming:fat_tree_shape","fat_tree_shape"), ("hamming:board_shape","board_shape"), ("hamming:width","width"),("hamming:local_ports","local_ports"),("hamming:global_shape","global_shape"),("hamming:is_board_switch","is_board_switch"),("hamming:global_switch_id","global_switch_id"),("hamming:local_switch_id","local_switch_id"),("hamming:global_pos","global_pos"),("hamming:local_pos","local_pos"),("hamming:unique_pos","unique_pos"),("hamming:fat_tree_id","fat_tree_id"),("hamming:fat_tree_pos","fat_tree_pos"), ("hamming:algorithm","algorithm"),("hamming:is_jellyfish","is_jellyfish"),("hamming:routing_table","routing_table"),("hamming:row_ft_port","row_ft_port"),("hamming:col_ft_port","col_ft_port"),("hamming:nearest_row_edge","nearest_row_edge"),("hamming:nearest_col_edge","nearest_col_edge")]
                 _topo_params = _params.subsetWithRename(swap_keys)
                 rtr.addParams(_params.subset(self.topoKeys, self.topoOptKeys))
                 rtr.addParam("id", self.global_router_id)
                 topology = rtr.setSubComponent("topology","merlin.hamming")
                 topology.addParams(_topo_params)
 
-                # Start iterating in each direction and create links when appropriate 
-                port = 0
-                for direction in range(0, 4):
-                    # Find Partner
-                    offset = self.getOffsetPerDirection(direction)
-                    #partner_pos = my_loc_id.copy()
-                    partner_pos = list(my_loc_id)
-                    partner_pos[0] = partner_pos[0] + offset[0]
-                    partner_pos[1] = partner_pos[1] + offset[1]
-                    partner_str = self.getRouterNameString(self.getUniquePos(partner_pos, board_id))
-                    
-                    # Create Links
-                    if (self.isInsideBoard(partner_pos)):
-                        if (direction <= 1):
-                            #print("Yes Linking - I am {} - Partner is {} - Port {} - Link {}".format(my_str, partner_str, port, getLink(my_str, partner_str)))
-                            #print("Link Latency to add is {}".format(_params["link_lat"]))
-                            rtr.addLink(getLink(my_str, partner_str), "port%d"%port, _params["link_lat"])
-                            #rtr.addLink(getLink(my_str, partner_str), "port%d"%port, "1ns")
-                        else:
-                            #print("Yes Linking - I am {} - Partner is {} - Port {} - Link {}".format(partner_str, my_str, port, getLink(partner_str, my_str)))
-                            rtr.addLink(getLink(partner_str, my_str), "port%d"%port, _params["link_lat"])
-                            #rtr.addLink(getLink(partner_str, my_str), "port%d"%port, "1ns")
-                    #else:
-                        #print("Not linking - I am {} - Partner is {}".format(my_str, partner_str))
-                    port = port + 1
+                # Store router info for Jellyfish wiring (done per-board after all routers created)
+                board_routers_info.append({
+                    'rtr': rtr,
+                    'local_id': router_in_board,
+                    'my_str': my_str,
+                    'my_loc_id': list(my_loc_id),
+                    'topology': topology,
+                })
+
+                if not self.use_jellyfish:
+                    # Original mesh wiring: iterate in each direction and create links
+                    port = 0
+                    for direction in range(0, 4):
+                        # Find Partner
+                        offset = self.getOffsetPerDirection(direction)
+                        partner_pos = list(my_loc_id)
+                        partner_pos[0] = partner_pos[0] + offset[0]
+                        partner_pos[1] = partner_pos[1] + offset[1]
+                        partner_str = self.getRouterNameString(self.getUniquePos(partner_pos, board_id))
+
+                        # Create Links
+                        if (self.isInsideBoard(partner_pos)):
+                            if (direction <= 1):
+                                rtr.addLink(getLink(my_str, partner_str), "port%d"%port, _params["link_lat"])
+                            else:
+                                rtr.addLink(getLink(partner_str, my_str), "port%d"%port, _params["link_lat"])
+                        port = port + 1
                 
-                # Create NIC connection
-                for n in range(_params["hamming:local_ports"]):
-                    nodeID = int(_params["hamming:local_ports"]) * self.global_router_id + n
-                    #print("Building NIC {} in router {} using port {}".format(nodeID, self.global_router_id, port))
-                    ep = self._getEndPoint(nodeID).build(nodeID, {})
-                    if ep:
-                        nicLink = sst.Link("nic.%d:%d"%(self.global_router_id, n))
-                        if self.bundleEndpoints:
-                            nicLink.setNoCut()
-                        #print("Nic Link Latency to add is {}".format(_params["link_lat"]))
-                        nicLink.connect(ep, (rtr, "port%d"%port, _params["link_lat"]))
-                        #nicLink.connect(ep, (rtr, "port%d"%port, "1ns"))
-                    port = port+1
-                
+                if not self.use_jellyfish:
+                    # Create NIC connection (mesh mode - port is already at 4)
+                    for n in range(_params["hamming:local_ports"]):
+                        nodeID = int(_params["hamming:local_ports"]) * self.global_router_id + n
+                        ep = self._getEndPoint(nodeID).build(nodeID, {})
+                        if ep:
+                            nicLink = sst.Link("nic.%d:%d"%(self.global_router_id, n))
+                            if self.bundleEndpoints:
+                                nicLink.setNoCut()
+                            nicLink.connect(ep, (rtr, "port%d"%port, _params["link_lat"]))
+                        port = port+1
+
                 # Update IDs
                 local_router_id = local_router_id + 1
                 self.global_router_id = self.global_router_id + 1
+
+            # After all routers in this board are created, do Jellyfish wiring if enabled
+            if self.use_jellyfish and board_routers_info:
+                self._wire_jellyfish_board(board_routers_info, board_id, _params, getLink)
+                board_routers_info = []
 
             # Decrease how many boards we have left per this row or start a new row
             tmp_boards_per_row = tmp_boards_per_row - 1
