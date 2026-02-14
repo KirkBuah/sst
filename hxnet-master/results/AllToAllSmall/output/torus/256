@@ -1,0 +1,7185 @@
+EMBER: using param directory: paramFiles
+EMBER: platform: default
+Setting Value for ShortMsgSize to 2147483642
+EMBER: network: topology=torus shape=32x32
+EMBER: numNodes=1024 numNics=1024
+override nicParams module=merlin.linkcontrol with merlin.reorderlinkcontrol
+link_bw 400Gb/s
+xbar_bw 3200Gb/s
+nic_link_bw 1600Gb/s
+EMBER: network: BW=400Gb/s pktSize=8192B flitSize=256B
+EMBER: Job=10, nidList='0-1023'
+EMBER: Motif='Init'
+EMBER: Motif='AllPingPong messageSize=256'
+EMBER: Motif='Fini'
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+Radix of routers is 5
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+AllPingPong: total time 1.027 us, loop 1, bufLen 256, latency 0.514 us. bandwidth 0.498539 GB/s
+STATS 10 31 EMBER 0 241659 241659 261888
+STATS 10 15 EMBER 0 242824 242824 261888
+STATS 10 30 EMBER 0 240341 240341 261888
+STATS 10 271 EMBER 0 242709 242709 261888
+STATS 10 287 EMBER 0 241409 241409 261888
+STATS 10 270 EMBER 0 240245 240245 261888
+STATS 10 286 EMBER 0 240116 240116 261888
+STATS 10 269 EMBER 0 237041 237041 261888
+STATS 10 895 EMBER 0 241300 241300 261888
+STATS 10 879 EMBER 0 242682 242682 261888
+STATS 10 894 EMBER 0 240020 240020 261888
+STATS 10 878 EMBER 0 240328 240328 261888
+STATS 10 893 EMBER 0 238449 238449 261888
+STATS 10 511 EMBER 0 241724 241724 261888
+STATS 10 495 EMBER 0 242931 242931 261888
+STATS 10 510 EMBER 0 240438 240438 261888
+STATS 10 494 EMBER 0 240533 240533 261888
+STATS 10 509 EMBER 0 238907 238907 261888
+STATS 10 927 EMBER 0 241468 241468 261888
+STATS 10 911 EMBER 0 243001 243001 261888
+STATS 10 926 EMBER 0 240200 240200 261888
+STATS 10 910 EMBER 0 240566 240566 261888
+STATS 10 925 EMBER 0 238649 238649 261888
+STATS 10 399 EMBER 0 242710 242710 261888
+STATS 10 415 EMBER 0 241473 241473 261888
+STATS 10 398 EMBER 0 240355 240355 261888
+STATS 10 414 EMBER 0 240213 240213 261888
+STATS 10 397 EMBER 0 237138 237138 261888
+STATS 10 1023 EMBER 0 241652 241652 261888
+STATS 10 1007 EMBER 0 242835 242835 261888
+STATS 10 1022 EMBER 0 240369 240369 261888
+STATS 10 1006 EMBER 0 240493 240493 261888
+STATS 10 1021 EMBER 0 238810 238810 261888
+STATS 10 991 EMBER 0 241716 241716 261888
+STATS 10 975 EMBER 0 242912 242912 261888
+STATS 10 990 EMBER 0 240416 240416 261888
+STATS 10 974 EMBER 0 240539 240539 261888
+STATS 10 989 EMBER 0 238856 238856 261888
+STATS 10 431 EMBER 0 242822 242822 261888
+STATS 10 447 EMBER 0 241606 241606 261888
+STATS 10 430 EMBER 0 240362 240362 261888
+STATS 10 446 EMBER 0 240311 240311 261888
+STATS 10 429 EMBER 0 237202 237202 261888
+STATS 10 783 EMBER 0 242109 242109 261888
+STATS 10 799 EMBER 0 240808 240808 261888
+STATS 10 782 EMBER 0 239708 239708 261888
+STATS 10 798 EMBER 0 239502 239502 261888
+STATS 10 781 EMBER 0 236631 236631 261888
+STATS 10 527 EMBER 0 242976 242976 261888
+STATS 10 543 EMBER 0 241801 241801 261888
+STATS 10 526 EMBER 0 240605 240605 261888
+STATS 10 542 EMBER 0 240483 240483 261888
+STATS 10 525 EMBER 0 237350 237350 261888
+STATS 10 175 EMBER 0 242792 242792 261888
+STATS 10 191 EMBER 0 241528 241528 261888
+STATS 10 174 EMBER 0 240394 240394 261888
+STATS 10 190 EMBER 0 240262 240262 261888
+STATS 10 173 EMBER 0 237183 237183 261888
+STATS 10 189 EMBER 0 238734 238734 261888
+STATS 10 335 EMBER 0 242655 242655 261888
+STATS 10 351 EMBER 0 241418 241418 261888
+STATS 10 334 EMBER 0 240274 240274 261888
+STATS 10 350 EMBER 0 240109 240109 261888
+STATS 10 333 EMBER 0 237133 237133 261888
+STATS 10 143 EMBER 0 242830 242830 261888
+STATS 10 142 EMBER 0 240465 240465 261888
+STATS 10 141 EMBER 0 237259 237259 261888
+STATS 10 159 EMBER 0 241605 241605 261888
+STATS 10 847 EMBER 0 242395 242395 261888
+STATS 10 846 EMBER 0 240059 240059 261888
+STATS 10 845 EMBER 0 236835 236835 261888
+STATS 10 383 EMBER 0 241421 241421 261888
+STATS 10 367 EMBER 0 242672 242672 261888
+STATS 10 382 EMBER 0 240097 240097 261888
+STATS 10 366 EMBER 0 240311 240311 261888
+STATS 10 381 EMBER 0 238614 238614 261888
+STATS 10 687 EMBER 0 242130 242130 261888
+STATS 10 703 EMBER 0 240853 240853 261888
+STATS 10 686 EMBER 0 239764 239764 261888
+STATS 10 702 EMBER 0 239597 239597 261888
+STATS 10 751 EMBER 0 242160 242160 261888
+STATS 10 767 EMBER 0 240757 240757 261888
+STATS 10 750 EMBER 0 239660 239660 261888
+STATS 10 766 EMBER 0 239491 239491 261888
+STATS 10 749 EMBER 0 236655 236655 261888
+STATS 10 79 EMBER 0 242859 242859 261888
+STATS 10 95 EMBER 0 241703 241703 261888
+STATS 10 78 EMBER 0 240507 240507 261888
+STATS 10 94 EMBER 0 240378 240378 261888
+STATS 10 77 EMBER 0 237257 237257 261888
+STATS 10 127 EMBER 0 241715 241715 261888
+STATS 10 111 EMBER 0 242890 242890 261888
+STATS 10 126 EMBER 0 240376 240376 261888
+STATS 10 110 EMBER 0 240490 240490 261888
+STATS 10 125 EMBER 0 238874 238874 261888
+STATS 10 47 EMBER 0 242830 242830 261888
+STATS 10 63 EMBER 0 241672 241672 261888
+STATS 10 46 EMBER 0 240468 240468 261888
+STATS 10 62 EMBER 0 240358 240358 261888
+STATS 10 45 EMBER 0 237280 237280 261888
+STATS 10 61 EMBER 0 238826 238826 261888
+STATS 10 44 EMBER 0 236140 236140 261888
+STATS 10 60 EMBER 0 237454 237454 261888
+STATS 10 303 EMBER 0 242601 242601 261888
+STATS 10 319 EMBER 0 241379 241379 261888
+STATS 10 302 EMBER 0 240228 240228 261888
+STATS 10 318 EMBER 0 240073 240073 261888
+STATS 10 301 EMBER 0 237097 237097 261888
+STATS 10 607 EMBER 0 241396 241396 261888
+STATS 10 591 EMBER 0 242640 242640 261888
+STATS 10 606 EMBER 0 240134 240134 261888
+STATS 10 590 EMBER 0 240202 240202 261888
+STATS 10 605 EMBER 0 238606 238606 261888
+STATS 10 719 EMBER 0 242166 242166 261888
+STATS 10 735 EMBER 0 240788 240788 261888
+STATS 10 718 EMBER 0 239709 239709 261888
+STATS 10 734 EMBER 0 239508 239508 261888
+STATS 10 717 EMBER 0 236715 236715 261888
+STATS 10 623 EMBER 0 242426 242426 261888
+STATS 10 639 EMBER 0 241117 241117 261888
+STATS 10 622 EMBER 0 240038 240038 261888
+STATS 10 638 EMBER 0 239862 239862 261888
+STATS 10 621 EMBER 0 236886 236886 261888
+STATS 10 207 EMBER 0 242811 242811 261888
+STATS 10 223 EMBER 0 241528 241528 261888
+STATS 10 206 EMBER 0 240394 240394 261888
+STATS 10 222 EMBER 0 240236 240236 261888
+STATS 10 205 EMBER 0 237157 237157 261888
+STATS 10 831 EMBER 0 240859 240859 261888
+STATS 10 815 EMBER 0 242235 242235 261888
+STATS 10 830 EMBER 0 239563 239563 261888
+STATS 10 814 EMBER 0 239884 239884 261888
+STATS 10 959 EMBER 0 241728 241728 261888
+STATS 10 943 EMBER 0 243045 243045 261888
+STATS 10 958 EMBER 0 240430 240430 261888
+STATS 10 942 EMBER 0 240586 240586 261888
+STATS 10 957 EMBER 0 238859 238859 261888
+STATS 10 559 EMBER 0 242864 242864 261888
+STATS 10 575 EMBER 0 241640 241640 261888
+STATS 10 558 EMBER 0 240425 240425 261888
+STATS 10 574 EMBER 0 240369 240369 261888
+STATS 10 557 EMBER 0 237172 237172 261888
+STATS 10 655 EMBER 0 242279 242279 261888
+STATS 10 671 EMBER 0 240926 240926 261888
+STATS 10 654 EMBER 0 239848 239848 261888
+STATS 10 670 EMBER 0 239667 239667 261888
+STATS 10 653 EMBER 0 236804 236804 261888
+STATS 10 463 EMBER 0 242840 242840 261888
+STATS 10 479 EMBER 0 241643 241643 261888
+STATS 10 462 EMBER 0 240498 240498 261888
+STATS 10 478 EMBER 0 240337 240337 261888
+STATS 10 461 EMBER 0 237292 237292 261888
+STATS 10 239 EMBER 0 242746 242746 261888
+STATS 10 255 EMBER 0 241487 241487 261888
+STATS 10 238 EMBER 0 240334 240334 261888
+STATS 10 254 EMBER 0 240189 240189 261888
+STATS 10 237 EMBER 0 237117 237117 261888
+STATS 10 253 EMBER 0 238664 238664 261888
+STATS 10 797 EMBER 0 237988 237988 261888
+STATS 10 780 EMBER 0 235450 235450 261888
+STATS 10 796 EMBER 0 236555 236555 261888
+STATS 10 779 EMBER 0 233784 233784 261888
+STATS 10 795 EMBER 0 233621 233621 261888
+STATS 10 772 EMBER 0 238107 238107 261888
+STATS 10 788 EMBER 0 235822 235822 261888
+STATS 10 541 EMBER 0 238962 238962 261888
+STATS 10 524 EMBER 0 236188 236188 261888
+STATS 10 540 EMBER 0 237630 237630 261888
+STATS 10 523 EMBER 0 234781 234781 261888
+STATS 10 539 EMBER 0 234434 234434 261888
+STATS 10 516 EMBER 0 239074 239074 261888
+STATS 10 532 EMBER 0 236557 236557 261888
+STATS 10 515 EMBER 0 242074 242074 261888
+STATS 10 531 EMBER 0 238855 238855 261888
+STATS 10 514 EMBER 0 243644 243644 261888
+STATS 10 172 EMBER 0 236160 236160 261888
+STATS 10 188 EMBER 0 237360 237360 261888
+STATS 10 171 EMBER 0 234708 234708 261888
+STATS 10 187 EMBER 0 234246 234246 261888
+STATS 10 164 EMBER 0 238854 238854 261888
+STATS 10 180 EMBER 0 236481 236481 261888
+STATS 10 349 EMBER 0 238596 238596 261888
+STATS 10 332 EMBER 0 235984 235984 261888
+STATS 10 348 EMBER 0 237207 237207 261888
+STATS 10 331 EMBER 0 234415 234415 261888
+STATS 10 347 EMBER 0 234179 234179 261888
+STATS 10 324 EMBER 0 238698 238698 261888
+STATS 10 340 EMBER 0 236420 236420 261888
+STATS 10 323 EMBER 0 241519 241519 261888
+STATS 10 339 EMBER 0 238724 238724 261888
+STATS 10 140 EMBER 0 236193 236193 261888
+STATS 10 158 EMBER 0 240294 240294 261888
+STATS 10 139 EMBER 0 234743 234743 261888
+STATS 10 132 EMBER 0 238919 238919 261888
+STATS 10 157 EMBER 0 238814 238814 261888
+STATS 10 131 EMBER 0 241840 241840 261888
+STATS 10 844 EMBER 0 235723 235723 261888
+STATS 10 843 EMBER 0 234190 234190 261888
+STATS 10 863 EMBER 0 241005 241005 261888
+STATS 10 836 EMBER 0 238374 238374 261888
+STATS 10 365 EMBER 0 237167 237167 261888
+STATS 10 380 EMBER 0 237240 237240 261888
+STATS 10 364 EMBER 0 235952 235952 261888
+STATS 10 379 EMBER 0 234240 234240 261888
+STATS 10 363 EMBER 0 234424 234424 261888
+STATS 10 372 EMBER 0 236450 236450 261888
+STATS 10 356 EMBER 0 238700 238700 261888
+STATS 10 371 EMBER 0 238734 238734 261888
+STATS 10 355 EMBER 0 241583 241583 261888
+STATS 10 370 EMBER 0 241849 241849 261888
+STATS 10 354 EMBER 0 243151 243151 261888
+STATS 10 685 EMBER 0 236745 236745 261888
+STATS 10 701 EMBER 0 238076 238076 261888
+STATS 10 684 EMBER 0 235547 235547 261888
+STATS 10 700 EMBER 0 236716 236716 261888
+STATS 10 683 EMBER 0 233928 233928 261888
+STATS 10 699 EMBER 0 233818 233818 261888
+STATS 10 676 EMBER 0 238220 238220 261888
+STATS 10 692 EMBER 0 236213 236213 261888
+STATS 10 675 EMBER 0 241081 241081 261888
+STATS 10 691 EMBER 0 238459 238459 261888
+STATS 10 765 EMBER 0 237964 237964 261888
+STATS 10 748 EMBER 0 235489 235489 261888
+STATS 10 764 EMBER 0 236507 236507 261888
+STATS 10 747 EMBER 0 233772 233772 261888
+STATS 10 763 EMBER 0 233649 233649 261888
+STATS 10 740 EMBER 0 238131 238131 261888
+STATS 10 756 EMBER 0 235880 235880 261888
+STATS 10 93 EMBER 0 238859 238859 261888
+STATS 10 76 EMBER 0 236155 236155 261888
+STATS 10 92 EMBER 0 237484 237484 261888
+STATS 10 75 EMBER 0 234685 234685 261888
+STATS 10 91 EMBER 0 234373 234373 261888
+STATS 10 68 EMBER 0 238995 238995 261888
+STATS 10 84 EMBER 0 236475 236475 261888
+STATS 10 109 EMBER 0 237294 237294 261888
+STATS 10 124 EMBER 0 237477 237477 261888
+STATS 10 108 EMBER 0 236192 236192 261888
+STATS 10 123 EMBER 0 234306 234306 261888
+STATS 10 107 EMBER 0 234734 234734 261888
+STATS 10 116 EMBER 0 236472 236472 261888
+STATS 10 100 EMBER 0 239012 239012 261888
+STATS 10 115 EMBER 0 238859 238859 261888
+STATS 10 99 EMBER 0 241969 241969 261888
+STATS 10 114 EMBER 0 241995 241995 261888
+STATS 10 98 EMBER 0 243587 243587 261888
+STATS 10 43 EMBER 0 234630 234630 261888
+STATS 10 59 EMBER 0 234331 234331 261888
+STATS 10 36 EMBER 0 238957 238957 261888
+STATS 10 52 EMBER 0 236460 236460 261888
+STATS 10 35 EMBER 0 241883 241883 261888
+STATS 10 51 EMBER 0 238796 238796 261888
+STATS 10 34 EMBER 0 243508 243508 261888
+STATS 10 50 EMBER 0 241974 241974 261888
+STATS 10 317 EMBER 0 238592 238592 261888
+STATS 10 300 EMBER 0 236053 236053 261888
+STATS 10 316 EMBER 0 237158 237158 261888
+STATS 10 299 EMBER 0 234403 234403 261888
+STATS 10 315 EMBER 0 234172 234172 261888
+STATS 10 292 EMBER 0 238644 238644 261888
+STATS 10 308 EMBER 0 236386 236386 261888
+STATS 10 291 EMBER 0 241543 241543 261888
+STATS 10 307 EMBER 0 238711 238711 261888
+STATS 10 290 EMBER 0 243127 243127 261888
+STATS 10 306 EMBER 0 241772 241772 261888
+STATS 10 589 EMBER 0 236991 236991 261888
+STATS 10 604 EMBER 0 237257 237257 261888
+STATS 10 588 EMBER 0 235830 235830 261888
+STATS 10 603 EMBER 0 234168 234168 261888
+STATS 10 587 EMBER 0 234469 234469 261888
+STATS 10 596 EMBER 0 236546 236546 261888
+STATS 10 580 EMBER 0 238769 238769 261888
+STATS 10 595 EMBER 0 238717 238717 261888
+STATS 10 579 EMBER 0 241677 241677 261888
+STATS 10 594 EMBER 0 241779 241779 261888
+STATS 10 733 EMBER 0 238034 238034 261888
+STATS 10 716 EMBER 0 235515 235515 261888
+STATS 10 732 EMBER 0 236625 236625 261888
+STATS 10 715 EMBER 0 233829 233829 261888
+STATS 10 731 EMBER 0 233706 233706 261888
+STATS 10 637 EMBER 0 238342 238342 261888
+STATS 10 620 EMBER 0 235690 235690 261888
+STATS 10 636 EMBER 0 236975 236975 261888
+STATS 10 619 EMBER 0 234177 234177 261888
+STATS 10 635 EMBER 0 233972 233972 261888
+STATS 10 221 EMBER 0 238731 238731 261888
+STATS 10 204 EMBER 0 236108 236108 261888
+STATS 10 220 EMBER 0 237349 237349 261888
+STATS 10 203 EMBER 0 234636 234636 261888
+STATS 10 219 EMBER 0 234238 234238 261888
+STATS 10 196 EMBER 0 238791 238791 261888
+STATS 10 829 EMBER 0 237999 237999 261888
+STATS 10 813 EMBER 0 236626 236626 261888
+STATS 10 828 EMBER 0 236587 236587 261888
+STATS 10 812 EMBER 0 235517 235517 261888
+STATS 10 827 EMBER 0 233693 233693 261888
+STATS 10 811 EMBER 0 233942 233942 261888
+STATS 10 941 EMBER 0 237446 237446 261888
+STATS 10 956 EMBER 0 237522 237522 261888
+STATS 10 940 EMBER 0 236310 236310 261888
+STATS 10 955 EMBER 0 234396 234396 261888
+STATS 10 939 EMBER 0 234849 234849 261888
+STATS 10 948 EMBER 0 236654 236654 261888
+STATS 10 932 EMBER 0 239131 239131 261888
+STATS 10 947 EMBER 0 238943 238943 261888
+STATS 10 931 EMBER 0 242063 242063 261888
+STATS 10 946 EMBER 0 242086 242086 261888
+STATS 10 930 EMBER 0 243653 243653 261888
+STATS 10 928 EMBER 0 245396 245396 261888
+STATS 10 573 EMBER 0 238833 238833 261888
+STATS 10 556 EMBER 0 236046 236046 261888
+STATS 10 572 EMBER 0 237471 237471 261888
+STATS 10 555 EMBER 0 234658 234658 261888
+STATS 10 571 EMBER 0 234352 234352 261888
+STATS 10 669 EMBER 0 238151 238151 261888
+STATS 10 652 EMBER 0 235613 235613 261888
+STATS 10 668 EMBER 0 236794 236794 261888
+STATS 10 651 EMBER 0 234050 234050 261888
+STATS 10 667 EMBER 0 233884 233884 261888
+STATS 10 644 EMBER 0 238339 238339 261888
+STATS 10 660 EMBER 0 236362 236362 261888
+STATS 10 643 EMBER 0 241210 241210 261888
+STATS 10 659 EMBER 0 238548 238548 261888
+STATS 10 642 EMBER 0 242815 242815 261888
+STATS 10 658 EMBER 0 241456 241456 261888
+STATS 10 477 EMBER 0 238836 238836 261888
+STATS 10 460 EMBER 0 236097 236097 261888
+STATS 10 476 EMBER 0 237435 237435 261888
+STATS 10 459 EMBER 0 234619 234619 261888
+STATS 10 475 EMBER 0 234375 234375 261888
+STATS 10 452 EMBER 0 238917 238917 261888
+STATS 10 468 EMBER 0 236545 236545 261888
+STATS 10 451 EMBER 0 241841 241841 261888
+STATS 10 467 EMBER 0 238804 238804 261888
+STATS 10 450 EMBER 0 243423 243423 261888
+STATS 10 466 EMBER 0 241972 241972 261888
+STATS 10 448 EMBER 0 245165 245165 261888
+STATS 10 236 EMBER 0 236090 236090 261888
+STATS 10 252 EMBER 0 237302 237302 261888
+STATS 10 235 EMBER 0 234556 234556 261888
+STATS 10 251 EMBER 0 234232 234232 261888
+STATS 10 228 EMBER 0 238708 238708 261888
+STATS 10 244 EMBER 0 236480 236480 261888
+STATS 10 227 EMBER 0 241578 241578 261888
+STATS 10 243 EMBER 0 238733 238733 261888
+STATS 10 226 EMBER 0 243200 243200 261888
+STATS 10 242 EMBER 0 241888 241888 261888
+STATS 10 224 EMBER 0 244989 244989 261888
+STATS 10 240 EMBER 0 244625 244625 261888
+STATS 10 14 EMBER 0 240443 240443 261888
+STATS 10 29 EMBER 0 238827 238827 261888
+STATS 10 13 EMBER 0 237274 237274 261888
+STATS 10 28 EMBER 0 237432 237432 261888
+STATS 10 12 EMBER 0 236152 236152 261888
+STATS 10 27 EMBER 0 234322 234322 261888
+STATS 10 11 EMBER 0 234659 234659 261888
+STATS 10 20 EMBER 0 236447 236447 261888
+STATS 10 4 EMBER 0 238940 238940 261888
+STATS 10 19 EMBER 0 238800 238800 261888
+STATS 10 3 EMBER 0 241913 241913 261888
+STATS 10 285 EMBER 0 238608 238608 261888
+STATS 10 268 EMBER 0 236066 236066 261888
+STATS 10 284 EMBER 0 237213 237213 261888
+STATS 10 267 EMBER 0 234440 234440 261888
+STATS 10 283 EMBER 0 234207 234207 261888
+STATS 10 260 EMBER 0 238692 238692 261888
+STATS 10 276 EMBER 0 236428 236428 261888
+STATS 10 259 EMBER 0 241536 241536 261888
+STATS 10 275 EMBER 0 238710 238710 261888
+STATS 10 258 EMBER 0 243156 243156 261888
+STATS 10 274 EMBER 0 241813 241813 261888
+STATS 10 877 EMBER 0 237042 237042 261888
+STATS 10 892 EMBER 0 237149 237149 261888
+STATS 10 876 EMBER 0 236092 236092 261888
+STATS 10 891 EMBER 0 234043 234043 261888
+STATS 10 875 EMBER 0 234454 234454 261888
+STATS 10 884 EMBER 0 236514 236514 261888
+STATS 10 868 EMBER 0 238664 238664 261888
+STATS 10 883 EMBER 0 238869 238869 261888
+STATS 10 867 EMBER 0 241635 241635 261888
+STATS 10 882 EMBER 0 241837 241837 261888
+STATS 10 493 EMBER 0 237350 237350 261888
+STATS 10 508 EMBER 0 237548 237548 261888
+STATS 10 492 EMBER 0 236162 236162 261888
+STATS 10 507 EMBER 0 234426 234426 261888
+STATS 10 491 EMBER 0 234744 234744 261888
+STATS 10 500 EMBER 0 236581 236581 261888
+STATS 10 909 EMBER 0 237389 237389 261888
+STATS 10 924 EMBER 0 237347 237347 261888
+STATS 10 908 EMBER 0 236299 236299 261888
+STATS 10 923 EMBER 0 234186 234186 261888
+STATS 10 907 EMBER 0 234704 234704 261888
+STATS 10 916 EMBER 0 236664 236664 261888
+STATS 10 413 EMBER 0 238686 238686 261888
+STATS 10 396 EMBER 0 236016 236016 261888
+STATS 10 412 EMBER 0 237317 237317 261888
+STATS 10 395 EMBER 0 234493 234493 261888
+STATS 10 411 EMBER 0 234287 234287 261888
+STATS 10 388 EMBER 0 238768 238768 261888
+STATS 10 404 EMBER 0 236490 236490 261888
+STATS 10 387 EMBER 0 241592 241592 261888
+STATS 10 403 EMBER 0 238724 238724 261888
+STATS 10 386 EMBER 0 243200 243200 261888
+STATS 10 402 EMBER 0 241867 241867 261888
+STATS 10 1005 EMBER 0 237290 237290 261888
+STATS 10 1020 EMBER 0 237439 237439 261888
+STATS 10 1004 EMBER 0 236149 236149 261888
+STATS 10 1019 EMBER 0 234329 234329 261888
+STATS 10 1003 EMBER 0 234680 234680 261888
+STATS 10 1012 EMBER 0 236500 236500 261888
+STATS 10 996 EMBER 0 238973 238973 261888
+STATS 10 973 EMBER 0 237356 237356 261888
+STATS 10 988 EMBER 0 237504 237504 261888
+STATS 10 972 EMBER 0 236219 236219 261888
+STATS 10 987 EMBER 0 234380 234380 261888
+STATS 10 971 EMBER 0 234756 234756 261888
+STATS 10 980 EMBER 0 236558 236558 261888
+STATS 10 964 EMBER 0 239091 239091 261888
+STATS 10 979 EMBER 0 238845 238845 261888
+STATS 10 963 EMBER 0 242023 242023 261888
+STATS 10 978 EMBER 0 242029 242029 261888
+STATS 10 962 EMBER 0 243638 243638 261888
+STATS 10 976 EMBER 0 244798 244798 261888
+STATS 10 960 EMBER 0 245306 245306 261888
+STATS 10 445 EMBER 0 238796 238796 261888
+STATS 10 428 EMBER 0 236052 236052 261888
+STATS 10 444 EMBER 0 237419 237419 261888
+STATS 10 427 EMBER 0 234579 234579 261888
+STATS 10 443 EMBER 0 234344 234344 261888
+STATS 10 420 EMBER 0 238853 238853 261888
+STATS 10 436 EMBER 0 236523 236523 261888
+STATS 10 419 EMBER 0 241732 241732 261888
+STATS 10 435 EMBER 0 238738 238738 261888
+STATS 10 418 EMBER 0 243350 243350 261888
+STATS 10 434 EMBER 0 241946 241946 261888
+STATS 10 416 EMBER 0 245070 245070 261888
+STATS 10 384 EMBER 0 245005 245005 261888
+STATS 10 400 EMBER 0 244512 244512 261888
+STATS 10 1011 EMBER 0 238785 238785 261888
+STATS 10 995 EMBER 0 241950 241950 261888
+STATS 10 1010 EMBER 0 241981 241981 261888
+STATS 10 994 EMBER 0 243546 243546 261888
+STATS 10 1008 EMBER 0 244710 244710 261888
+STATS 10 992 EMBER 0 245268 245268 261888
+STATS 10 1009 EMBER 0 244470 244470 261888
+STATS 10 993 EMBER 0 244956 244956 261888
+STATS 10 1013 EMBER 0 233845 233845 261888
+STATS 10 977 EMBER 0 244553 244553 261888
+STATS 10 961 EMBER 0 245043 245043 261888
+STATS 10 981 EMBER 0 233880 233880 261888
+STATS 10 432 EMBER 0 244588 244588 261888
+STATS 10 417 EMBER 0 244748 244748 261888
+STATS 10 433 EMBER 0 244429 244429 261888
+STATS 10 421 EMBER 0 236946 236946 261888
+STATS 10 771 EMBER 0 241001 241001 261888
+STATS 10 787 EMBER 0 238313 238313 261888
+STATS 10 770 EMBER 0 242589 242589 261888
+STATS 10 786 EMBER 0 241318 241318 261888
+STATS 10 768 EMBER 0 244365 244365 261888
+STATS 10 784 EMBER 0 243919 243919 261888
+STATS 10 769 EMBER 0 244020 244020 261888
+STATS 10 512 EMBER 0 245331 245331 261888
+STATS 10 530 EMBER 0 242027 242027 261888
+STATS 10 163 EMBER 0 241728 241728 261888
+STATS 10 179 EMBER 0 238780 238780 261888
+STATS 10 162 EMBER 0 243356 243356 261888
+STATS 10 178 EMBER 0 241926 241926 261888
+STATS 10 160 EMBER 0 245155 245155 261888
+STATS 10 176 EMBER 0 244696 244696 261888
+STATS 10 161 EMBER 0 244757 244757 261888
+STATS 10 177 EMBER 0 244435 244435 261888
+STATS 10 322 EMBER 0 243132 243132 261888
+STATS 10 338 EMBER 0 241828 241828 261888
+STATS 10 320 EMBER 0 244927 244927 261888
+STATS 10 336 EMBER 0 244422 244422 261888
+STATS 10 321 EMBER 0 244560 244560 261888
+STATS 10 156 EMBER 0 237387 237387 261888
+STATS 10 130 EMBER 0 243467 243467 261888
+STATS 10 155 EMBER 0 234223 234223 261888
+STATS 10 128 EMBER 0 245363 245363 261888
+STATS 10 129 EMBER 0 244875 244875 261888
+STATS 10 148 EMBER 0 236452 236452 261888
+STATS 10 133 EMBER 0 237075 237075 261888
+STATS 10 147 EMBER 0 238845 238845 261888
+STATS 10 862 EMBER 0 239692 239692 261888
+STATS 10 835 EMBER 0 241280 241280 261888
+STATS 10 861 EMBER 0 238148 238148 261888
+STATS 10 834 EMBER 0 242906 242906 261888
+STATS 10 860 EMBER 0 236795 236795 261888
+STATS 10 832 EMBER 0 244760 244760 261888
+STATS 10 368 EMBER 0 244480 244480 261888
+STATS 10 352 EMBER 0 244930 244930 261888
+STATS 10 674 EMBER 0 242678 242678 261888
+STATS 10 690 EMBER 0 241364 241364 261888
+STATS 10 739 EMBER 0 241008 241008 261888
+STATS 10 755 EMBER 0 238317 238317 261888
+STATS 10 738 EMBER 0 242568 242568 261888
+STATS 10 754 EMBER 0 241265 241265 261888
+STATS 10 736 EMBER 0 244349 244349 261888
+STATS 10 752 EMBER 0 243926 243926 261888
+STATS 10 67 EMBER 0 241944 241944 261888
+STATS 10 83 EMBER 0 238833 238833 261888
+STATS 10 66 EMBER 0 243552 243552 261888
+STATS 10 82 EMBER 0 241983 241983 261888
+STATS 10 64 EMBER 0 245320 245320 261888
+STATS 10 80 EMBER 0 244757 244757 261888
+STATS 10 65 EMBER 0 244963 244963 261888
+STATS 10 81 EMBER 0 244498 244498 261888
+STATS 10 112 EMBER 0 244777 244777 261888
+STATS 10 96 EMBER 0 245366 245366 261888
+STATS 10 113 EMBER 0 244498 244498 261888
+STATS 10 32 EMBER 0 245284 245284 261888
+STATS 10 48 EMBER 0 244727 244727 261888
+STATS 10 33 EMBER 0 244937 244937 261888
+STATS 10 49 EMBER 0 244456 244456 261888
+STATS 10 37 EMBER 0 237090 237090 261888
+STATS 10 53 EMBER 0 233835 233835 261888
+STATS 10 38 EMBER 0 236787 236787 261888
+STATS 10 288 EMBER 0 244943 244943 261888
+STATS 10 304 EMBER 0 244424 244424 261888
+STATS 10 289 EMBER 0 244572 244572 261888
+STATS 10 578 EMBER 0 243259 243259 261888
+STATS 10 592 EMBER 0 244391 244391 261888
+STATS 10 576 EMBER 0 244907 244907 261888
+STATS 10 708 EMBER 0 238186 238186 261888
+STATS 10 724 EMBER 0 235999 235999 261888
+STATS 10 707 EMBER 0 241012 241012 261888
+STATS 10 723 EMBER 0 238334 238334 261888
+STATS 10 706 EMBER 0 242609 242609 261888
+STATS 10 722 EMBER 0 241305 241305 261888
+STATS 10 704 EMBER 0 244353 244353 261888
+STATS 10 720 EMBER 0 243889 243889 261888
+STATS 10 612 EMBER 0 238510 238510 261888
+STATS 10 628 EMBER 0 236457 236457 261888
+STATS 10 611 EMBER 0 241439 241439 261888
+STATS 10 627 EMBER 0 238639 238639 261888
+STATS 10 610 EMBER 0 243010 243010 261888
+STATS 10 626 EMBER 0 241578 241578 261888
+STATS 10 608 EMBER 0 244688 244688 261888
+STATS 10 212 EMBER 0 236480 236480 261888
+STATS 10 195 EMBER 0 241668 241668 261888
+STATS 10 211 EMBER 0 238763 238763 261888
+STATS 10 194 EMBER 0 243290 243290 261888
+STATS 10 210 EMBER 0 241956 241956 261888
+STATS 10 192 EMBER 0 245074 245074 261888
+STATS 10 208 EMBER 0 244662 244662 261888
+STATS 10 820 EMBER 0 235863 235863 261888
+STATS 10 804 EMBER 0 238216 238216 261888
+STATS 10 819 EMBER 0 238410 238410 261888
+STATS 10 803 EMBER 0 241078 241078 261888
+STATS 10 818 EMBER 0 241410 241410 261888
+STATS 10 802 EMBER 0 242710 242710 261888
+STATS 10 816 EMBER 0 244076 244076 261888
+STATS 10 800 EMBER 0 244498 244498 261888
+STATS 10 944 EMBER 0 244859 244859 261888
+STATS 10 929 EMBER 0 245052 245052 261888
+STATS 10 548 EMBER 0 238950 238950 261888
+STATS 10 564 EMBER 0 236575 236575 261888
+STATS 10 547 EMBER 0 242012 242012 261888
+STATS 10 563 EMBER 0 238808 238808 261888
+STATS 10 546 EMBER 0 243586 243586 261888
+STATS 10 562 EMBER 0 241877 241877 261888
+STATS 10 560 EMBER 0 244641 244641 261888
+STATS 10 561 EMBER 0 244434 244434 261888
+STATS 10 544 EMBER 0 245171 245171 261888
+STATS 10 640 EMBER 0 244496 244496 261888
+STATS 10 656 EMBER 0 244027 244027 261888
+STATS 10 464 EMBER 0 244675 244675 261888
+STATS 10 449 EMBER 0 244808 244808 261888
+STATS 10 465 EMBER 0 244502 244502 261888
+STATS 10 225 EMBER 0 244601 244601 261888
+STATS 10 241 EMBER 0 244362 244362 261888
+STATS 10 18 EMBER 0 241973 241973 261888
+STATS 10 2 EMBER 0 243528 243528 261888
+STATS 10 16 EMBER 0 244716 244716 261888
+STATS 10 0 EMBER 0 245269 245269 261888
+STATS 10 17 EMBER 0 244456 244456 261888
+STATS 10 1 EMBER 0 244925 244925 261888
+STATS 10 256 EMBER 0 244964 244964 261888
+STATS 10 272 EMBER 0 244533 244533 261888
+STATS 10 257 EMBER 0 244579 244579 261888
+STATS 10 866 EMBER 0 243133 243133 261888
+STATS 10 880 EMBER 0 244501 244501 261888
+STATS 10 864 EMBER 0 245017 245017 261888
+STATS 10 484 EMBER 0 239048 239048 261888
+STATS 10 499 EMBER 0 238784 238784 261888
+STATS 10 483 EMBER 0 241901 241901 261888
+STATS 10 498 EMBER 0 241992 241992 261888
+STATS 10 482 EMBER 0 243464 243464 261888
+STATS 10 496 EMBER 0 244777 244777 261888
+STATS 10 480 EMBER 0 245237 245237 261888
+STATS 10 497 EMBER 0 244550 244550 261888
+STATS 10 481 EMBER 0 244900 244900 261888
+STATS 10 900 EMBER 0 238954 238954 261888
+STATS 10 915 EMBER 0 239008 239008 261888
+STATS 10 899 EMBER 0 241842 241842 261888
+STATS 10 914 EMBER 0 242053 242053 261888
+STATS 10 898 EMBER 0 243398 243398 261888
+STATS 10 896 EMBER 0 245269 245269 261888
+STATS 10 912 EMBER 0 244765 244765 261888
+STATS 10 273 EMBER 0 244308 244308 261888
+STATS 10 261 EMBER 0 236810 236810 261888
+STATS 10 881 EMBER 0 244283 244283 261888
+STATS 10 865 EMBER 0 244560 244560 261888
+STATS 10 885 EMBER 0 233701 233701 261888
+STATS 10 869 EMBER 0 236875 236875 261888
+STATS 10 501 EMBER 0 233950 233950 261888
+STATS 10 485 EMBER 0 237171 237171 261888
+STATS 10 502 EMBER 0 233347 233347 261888
+STATS 10 897 EMBER 0 244824 244824 261888
+STATS 10 913 EMBER 0 244501 244501 261888
+STATS 10 901 EMBER 0 237085 237085 261888
+STATS 10 385 EMBER 0 244626 244626 261888
+STATS 10 401 EMBER 0 244340 244340 261888
+STATS 10 389 EMBER 0 236851 236851 261888
+STATS 10 405 EMBER 0 233859 233859 261888
+STATS 10 390 EMBER 0 236470 236470 261888
+STATS 10 406 EMBER 0 233279 233279 261888
+STATS 10 407 EMBER 0 232353 232353 261888
+STATS 10 408 EMBER 0 232313 232313 261888
+STATS 10 409 EMBER 0 232207 232207 261888
+STATS 10 997 EMBER 0 237111 237111 261888
+STATS 10 1014 EMBER 0 233395 233395 261888
+STATS 10 998 EMBER 0 236798 236798 261888
+STATS 10 965 EMBER 0 237216 237216 261888
+STATS 10 982 EMBER 0 233422 233422 261888
+STATS 10 966 EMBER 0 236933 236933 261888
+STATS 10 983 EMBER 0 232499 232499 261888
+STATS 10 437 EMBER 0 233947 233947 261888
+STATS 10 422 EMBER 0 236560 236560 261888
+STATS 10 785 EMBER 0 243707 243707 261888
+STATS 10 773 EMBER 0 236313 236313 261888
+STATS 10 789 EMBER 0 233350 233350 261888
+STATS 10 774 EMBER 0 236060 236060 261888
+STATS 10 513 EMBER 0 245044 245044 261888
+STATS 10 528 EMBER 0 244852 244852 261888
+STATS 10 517 EMBER 0 237255 237255 261888
+STATS 10 165 EMBER 0 236938 236938 261888
+STATS 10 181 EMBER 0 233878 233878 261888
+STATS 10 166 EMBER 0 236666 236666 261888
+STATS 10 182 EMBER 0 233446 233446 261888
+STATS 10 167 EMBER 0 235941 235941 261888
+STATS 10 337 EMBER 0 244229 244229 261888
+STATS 10 325 EMBER 0 236843 236843 261888
+STATS 10 134 EMBER 0 236846 236846 261888
+STATS 10 146 EMBER 0 242024 242024 261888
+STATS 10 135 EMBER 0 236157 236157 261888
+STATS 10 144 EMBER 0 244740 244740 261888
+STATS 10 859 EMBER 0 233768 233768 261888
+STATS 10 833 EMBER 0 244293 244293 261888
+STATS 10 852 EMBER 0 236064 236064 261888
+STATS 10 369 EMBER 0 244334 244334 261888
+STATS 10 353 EMBER 0 244574 244574 261888
+STATS 10 373 EMBER 0 233836 233836 261888
+STATS 10 357 EMBER 0 236845 236845 261888
+STATS 10 672 EMBER 0 244378 244378 261888
+STATS 10 688 EMBER 0 243970 243970 261888
+STATS 10 673 EMBER 0 244093 244093 261888
+STATS 10 737 EMBER 0 244005 244005 261888
+STATS 10 753 EMBER 0 243664 243664 261888
+STATS 10 741 EMBER 0 236354 236354 261888
+STATS 10 69 EMBER 0 237102 237102 261888
+STATS 10 85 EMBER 0 233843 233843 261888
+STATS 10 97 EMBER 0 245022 245022 261888
+STATS 10 117 EMBER 0 233870 233870 261888
+STATS 10 54 EMBER 0 233394 233394 261888
+STATS 10 39 EMBER 0 236051 236051 261888
+STATS 10 55 EMBER 0 232423 232423 261888
+STATS 10 40 EMBER 0 234238 234238 261888
+STATS 10 305 EMBER 0 244229 244229 261888
+STATS 10 293 EMBER 0 236828 236828 261888
+STATS 10 593 EMBER 0 244192 244192 261888
+STATS 10 577 EMBER 0 244639 244639 261888
+STATS 10 597 EMBER 0 233752 233752 261888
+STATS 10 581 EMBER 0 237007 237007 261888
+STATS 10 705 EMBER 0 244028 244028 261888
+STATS 10 721 EMBER 0 243643 243643 261888
+STATS 10 624 EMBER 0 244150 244150 261888
+STATS 10 609 EMBER 0 244419 244419 261888
+STATS 10 625 EMBER 0 243978 243978 261888
+STATS 10 193 EMBER 0 244679 244679 261888
+STATS 10 209 EMBER 0 244416 244416 261888
+STATS 10 197 EMBER 0 236869 236869 261888
+STATS 10 213 EMBER 0 233867 233867 261888
+STATS 10 817 EMBER 0 243833 243833 261888
+STATS 10 801 EMBER 0 244096 244096 261888
+STATS 10 821 EMBER 0 233463 233463 261888
+STATS 10 805 EMBER 0 236382 236382 261888
+STATS 10 945 EMBER 0 244617 244617 261888
+STATS 10 933 EMBER 0 237317 237317 261888
+STATS 10 949 EMBER 0 233968 233968 261888
+STATS 10 934 EMBER 0 237016 237016 261888
+STATS 10 565 EMBER 0 233872 233872 261888
+STATS 10 545 EMBER 0 244952 244952 261888
+STATS 10 641 EMBER 0 244202 244202 261888
+STATS 10 657 EMBER 0 243842 243842 261888
+STATS 10 645 EMBER 0 236609 236609 261888
+STATS 10 661 EMBER 0 233469 233469 261888
+STATS 10 453 EMBER 0 237058 237058 261888
+STATS 10 469 EMBER 0 233966 233966 261888
+STATS 10 229 EMBER 0 236850 236850 261888
+STATS 10 245 EMBER 0 233851 233851 261888
+STATS 10 230 EMBER 0 236511 236511 261888
+STATS 10 246 EMBER 0 233348 233348 261888
+STATS 10 21 EMBER 0 233837 233837 261888
+STATS 10 5 EMBER 0 237068 237068 261888
+STATS 10 22 EMBER 0 233401 233401 261888
+STATS 10 136 EMBER 0 234332 234332 261888
+STATS 10 145 EMBER 0 244488 244488 261888
+STATS 10 137 EMBER 0 234311 234311 261888
+STATS 10 149 EMBER 0 233896 233896 261888
+STATS 10 138 EMBER 0 234590 234590 261888
+STATS 10 837 EMBER 0 236517 236517 261888
+STATS 10 851 EMBER 0 238654 238654 261888
+STATS 10 838 EMBER 0 236295 236295 261888
+STATS 10 850 EMBER 0 241581 241581 261888
+STATS 10 374 EMBER 0 233244 233244 261888
+STATS 10 358 EMBER 0 236459 236459 261888
+STATS 10 375 EMBER 0 232326 232326 261888
+STATS 10 689 EMBER 0 243732 243732 261888
+STATS 10 677 EMBER 0 236530 236530 261888
+STATS 10 693 EMBER 0 233396 233396 261888
+STATS 10 757 EMBER 0 233332 233332 261888
+STATS 10 742 EMBER 0 236028 236028 261888
+STATS 10 758 EMBER 0 232915 232915 261888
+STATS 10 743 EMBER 0 235166 235166 261888
+STATS 10 70 EMBER 0 236841 236841 261888
+STATS 10 86 EMBER 0 233425 233425 261888
+STATS 10 71 EMBER 0 236102 236102 261888
+STATS 10 87 EMBER 0 232478 232478 261888
+STATS 10 101 EMBER 0 237154 237154 261888
+STATS 10 118 EMBER 0 233453 233453 261888
+STATS 10 102 EMBER 0 236856 236856 261888
+STATS 10 119 EMBER 0 232516 232516 261888
+STATS 10 103 EMBER 0 236166 236166 261888
+STATS 10 120 EMBER 0 232475 232475 261888
+STATS 10 104 EMBER 0 234404 234404 261888
+STATS 10 56 EMBER 0 232416 232416 261888
+STATS 10 41 EMBER 0 234231 234231 261888
+STATS 10 57 EMBER 0 232239 232239 261888
+STATS 10 42 EMBER 0 234534 234534 261888
+STATS 10 58 EMBER 0 233925 233925 261888
+STATS 10 309 EMBER 0 233805 233805 261888
+STATS 10 294 EMBER 0 236402 236402 261888
+STATS 10 310 EMBER 0 233281 233281 261888
+STATS 10 295 EMBER 0 235656 235656 261888
+STATS 10 598 EMBER 0 233205 233205 261888
+STATS 10 582 EMBER 0 236543 236543 261888
+STATS 10 599 EMBER 0 232418 232418 261888
+STATS 10 709 EMBER 0 236455 236455 261888
+STATS 10 725 EMBER 0 233345 233345 261888
+STATS 10 710 EMBER 0 236047 236047 261888
+STATS 10 613 EMBER 0 236776 236776 261888
+STATS 10 629 EMBER 0 233569 233569 261888
+STATS 10 614 EMBER 0 236347 236347 261888
+STATS 10 630 EMBER 0 233105 233105 261888
+STATS 10 198 EMBER 0 236599 236599 261888
+STATS 10 214 EMBER 0 233442 233442 261888
+STATS 10 199 EMBER 0 235826 235826 261888
+STATS 10 822 EMBER 0 233005 233005 261888
+STATS 10 806 EMBER 0 236173 236173 261888
+STATS 10 823 EMBER 0 231817 231817 261888
+STATS 10 807 EMBER 0 235227 235227 261888
+STATS 10 950 EMBER 0 233457 233457 261888
+STATS 10 935 EMBER 0 236200 236200 261888
+STATS 10 936 EMBER 0 234421 234421 261888
+STATS 10 566 EMBER 0 233350 233350 261888
+STATS 10 567 EMBER 0 232505 232505 261888
+STATS 10 549 EMBER 0 237212 237212 261888
+STATS 10 646 EMBER 0 236211 236211 261888
+STATS 10 662 EMBER 0 232983 232983 261888
+STATS 10 647 EMBER 0 235466 235466 261888
+STATS 10 454 EMBER 0 236676 236676 261888
+STATS 10 470 EMBER 0 233334 233334 261888
+STATS 10 455 EMBER 0 235844 235844 261888
+STATS 10 471 EMBER 0 232525 232525 261888
+STATS 10 231 EMBER 0 235705 235705 261888
+STATS 10 247 EMBER 0 232336 232336 261888
+STATS 10 232 EMBER 0 233992 233992 261888
+STATS 10 248 EMBER 0 232308 232308 261888
+STATS 10 6 EMBER 0 236797 236797 261888
+STATS 10 23 EMBER 0 232418 232418 261888
+STATS 10 7 EMBER 0 236035 236035 261888
+STATS 10 24 EMBER 0 232402 232402 261888
+STATS 10 8 EMBER 0 234252 234252 261888
+STATS 10 277 EMBER 0 233797 233797 261888
+STATS 10 262 EMBER 0 236424 236424 261888
+STATS 10 278 EMBER 0 233294 233294 261888
+STATS 10 263 EMBER 0 235656 235656 261888
+STATS 10 886 EMBER 0 233295 233295 261888
+STATS 10 870 EMBER 0 236627 236627 261888
+STATS 10 887 EMBER 0 232353 232353 261888
+STATS 10 871 EMBER 0 235729 235729 261888
+STATS 10 486 EMBER 0 236795 236795 261888
+STATS 10 503 EMBER 0 232541 232541 261888
+STATS 10 487 EMBER 0 235933 235933 261888
+STATS 10 917 EMBER 0 233899 233899 261888
+STATS 10 902 EMBER 0 236889 236889 261888
+STATS 10 918 EMBER 0 233445 233445 261888
+STATS 10 410 EMBER 0 233807 233807 261888
+STATS 10 391 EMBER 0 235677 235677 261888
+STATS 10 1015 EMBER 0 232430 232430 261888
+STATS 10 999 EMBER 0 236052 236052 261888
+STATS 10 1016 EMBER 0 232385 232385 261888
+STATS 10 967 EMBER 0 236129 236129 261888
+STATS 10 984 EMBER 0 232450 232450 261888
+STATS 10 968 EMBER 0 234316 234316 261888
+STATS 10 985 EMBER 0 232384 232384 261888
+STATS 10 438 EMBER 0 233320 233320 261888
+STATS 10 423 EMBER 0 235771 235771 261888
+STATS 10 439 EMBER 0 232402 232402 261888
+STATS 10 424 EMBER 0 234106 234106 261888
+STATS 10 440 EMBER 0 232322 232322 261888
+STATS 10 790 EMBER 0 232902 232902 261888
+STATS 10 775 EMBER 0 235151 235151 261888
+STATS 10 529 EMBER 0 244617 244617 261888
+STATS 10 518 EMBER 0 236866 236866 261888
+STATS 10 533 EMBER 0 233963 233963 261888
+STATS 10 183 EMBER 0 232448 232448 261888
+STATS 10 168 EMBER 0 234187 234187 261888
+STATS 10 184 EMBER 0 232456 232456 261888
+STATS 10 341 EMBER 0 233813 233813 261888
+STATS 10 326 EMBER 0 236452 236452 261888
+STATS 10 342 EMBER 0 233258 233258 261888
+STATS 10 327 EMBER 0 235661 235661 261888
+STATS 10 888 EMBER 0 232260 232260 261888
+STATS 10 872 EMBER 0 234017 234017 261888
+STATS 10 889 EMBER 0 232151 232151 261888
+STATS 10 873 EMBER 0 233958 233958 261888
+STATS 10 890 EMBER 0 233675 233675 261888
+STATS 10 504 EMBER 0 232503 232503 261888
+STATS 10 488 EMBER 0 234235 234235 261888
+STATS 10 505 EMBER 0 232421 232421 261888
+STATS 10 903 EMBER 0 236036 236036 261888
+STATS 10 919 EMBER 0 232583 232583 261888
+STATS 10 392 EMBER 0 234060 234060 261888
+STATS 10 393 EMBER 0 234034 234034 261888
+STATS 10 1000 EMBER 0 234240 234240 261888
+STATS 10 1017 EMBER 0 232266 232266 261888
+STATS 10 1001 EMBER 0 234305 234305 261888
+STATS 10 969 EMBER 0 234337 234337 261888
+STATS 10 986 EMBER 0 233972 233972 261888
+STATS 10 970 EMBER 0 234655 234655 261888
+STATS 10 425 EMBER 0 234110 234110 261888
+STATS 10 441 EMBER 0 232319 232319 261888
+STATS 10 426 EMBER 0 234321 234321 261888
+STATS 10 791 EMBER 0 231762 231762 261888
+STATS 10 776 EMBER 0 233396 233396 261888
+STATS 10 519 EMBER 0 236048 236048 261888
+STATS 10 534 EMBER 0 233356 233356 261888
+STATS 10 520 EMBER 0 234362 234362 261888
+STATS 10 169 EMBER 0 234169 234169 261888
+STATS 10 185 EMBER 0 232180 232180 261888
+STATS 10 170 EMBER 0 234465 234465 261888
+STATS 10 343 EMBER 0 232255 232255 261888
+STATS 10 328 EMBER 0 233928 233928 261888
+STATS 10 344 EMBER 0 232266 232266 261888
+STATS 10 150 EMBER 0 233478 233478 261888
+STATS 10 151 EMBER 0 232536 232536 261888
+STATS 10 152 EMBER 0 232514 232514 261888
+STATS 10 839 EMBER 0 235383 235383 261888
+STATS 10 848 EMBER 0 244253 244253 261888
+STATS 10 359 EMBER 0 235650 235650 261888
+STATS 10 376 EMBER 0 232302 232302 261888
+STATS 10 678 EMBER 0 236136 236136 261888
+STATS 10 694 EMBER 0 233002 233002 261888
+STATS 10 679 EMBER 0 235319 235319 261888
+STATS 10 695 EMBER 0 231985 231985 261888
+STATS 10 759 EMBER 0 231766 231766 261888
+STATS 10 744 EMBER 0 233418 233418 261888
+STATS 10 72 EMBER 0 234302 234302 261888
+STATS 10 88 EMBER 0 232454 232454 261888
+STATS 10 73 EMBER 0 234285 234285 261888
+STATS 10 89 EMBER 0 232263 232263 261888
+STATS 10 121 EMBER 0 232280 232280 261888
+STATS 10 105 EMBER 0 234418 234418 261888
+STATS 10 122 EMBER 0 233967 233967 261888
+Nic 63 received 307923 bytes
+Nic 47 received 307923 bytes
+STATS 10 311 EMBER 0 232271 232271 261888
+STATS 10 296 EMBER 0 233847 233847 261888
+STATS 10 312 EMBER 0 232250 232250 261888
+STATS 10 583 EMBER 0 235764 235764 261888
+STATS 10 600 EMBER 0 232347 232347 261888
+STATS 10 584 EMBER 0 233984 233984 261888
+STATS 10 601 EMBER 0 232168 232168 261888
+STATS 10 726 EMBER 0 232942 232942 261888
+STATS 10 711 EMBER 0 235252 235252 261888
+STATS 10 727 EMBER 0 231865 231865 261888
+STATS 10 615 EMBER 0 235570 235570 261888
+STATS 10 631 EMBER 0 232263 232263 261888
+STATS 10 215 EMBER 0 232442 232442 261888
+STATS 10 200 EMBER 0 234045 234045 261888
+STATS 10 216 EMBER 0 232369 232369 261888
+STATS 10 824 EMBER 0 231974 231974 261888
+STATS 10 808 EMBER 0 233422 233422 261888
+STATS 10 951 EMBER 0 232560 232560 261888
+STATS 10 937 EMBER 0 234424 234424 261888
+STATS 10 952 EMBER 0 232530 232530 261888
+STATS 10 568 EMBER 0 232460 232460 261888
+STATS 10 550 EMBER 0 236780 236780 261888
+STATS 10 663 EMBER 0 232106 232106 261888
+STATS 10 648 EMBER 0 233723 233723 261888
+STATS 10 664 EMBER 0 232256 232256 261888
+STATS 10 649 EMBER 0 233710 233710 261888
+STATS 10 456 EMBER 0 234156 234156 261888
+STATS 10 472 EMBER 0 232434 232434 261888
+STATS 10 233 EMBER 0 233944 233944 261888
+STATS 10 249 EMBER 0 231985 231985 261888
+STATS 10 234 EMBER 0 234303 234303 261888
+STATS 10 250 EMBER 0 233786 233786 261888
+STATS 10 25 EMBER 0 232256 232256 261888
+STATS 10 9 EMBER 0 234201 234201 261888
+STATS 10 26 EMBER 0 233939 233939 261888
+STATS 10 10 EMBER 0 234528 234528 261888
+STATS 10 279 EMBER 0 232274 232274 261888
+STATS 10 264 EMBER 0 233918 233918 261888
+STATS 10 280 EMBER 0 232254 232254 261888
+STATS 10 442 EMBER 0 233870 233870 261888
+STATS 10 792 EMBER 0 231955 231955 261888
+STATS 10 777 EMBER 0 233354 233354 261888
+STATS 10 793 EMBER 0 231476 231476 261888
+STATS 10 778 EMBER 0 233549 233549 261888
+STATS 10 535 EMBER 0 232568 232568 261888
+STATS 10 521 EMBER 0 234385 234385 261888
+STATS 10 186 EMBER 0 233852 233852 261888
+STATS 10 329 EMBER 0 233946 233946 261888
+STATS 10 345 EMBER 0 231990 231990 261888
+STATS 10 330 EMBER 0 234254 234254 261888
+STATS 10 153 EMBER 0 232246 232246 261888
+STATS 10 154 EMBER 0 233894 233894 261888
+STATS 10 840 EMBER 0 233644 233644 261888
+STATS 10 849 EMBER 0 244034 244034 261888
+STATS 10 841 EMBER 0 233632 233632 261888
+STATS 10 360 EMBER 0 233950 233950 261888
+STATS 10 377 EMBER 0 232013 232013 261888
+STATS 10 361 EMBER 0 233950 233950 261888
+STATS 10 378 EMBER 0 233767 233767 261888
+STATS 10 680 EMBER 0 233588 233588 261888
+STATS 10 696 EMBER 0 232134 232134 261888
+STATS 10 760 EMBER 0 231969 231969 261888
+STATS 10 745 EMBER 0 233398 233398 261888
+STATS 10 761 EMBER 0 231515 231515 261888
+STATS 10 74 EMBER 0 234612 234612 261888
+STATS 10 90 EMBER 0 233956 233956 261888
+STATS 10 106 EMBER 0 234692 234692 261888
+Nic 46 received 307923 bytes
+STATS 10 297 EMBER 0 233950 233950 261888
+STATS 10 313 EMBER 0 231968 231968 261888
+STATS 10 585 EMBER 0 234110 234110 261888
+STATS 10 602 EMBER 0 233687 233687 261888
+STATS 10 712 EMBER 0 233494 233494 261888
+STATS 10 728 EMBER 0 232037 232037 261888
+STATS 10 713 EMBER 0 233508 233508 261888
+STATS 10 729 EMBER 0 231704 231704 261888
+STATS 10 616 EMBER 0 233832 233832 261888
+STATS 10 632 EMBER 0 232291 232291 261888
+STATS 10 617 EMBER 0 233914 233914 261888
+STATS 10 201 EMBER 0 234041 234041 261888
+STATS 10 217 EMBER 0 232070 232070 261888
+STATS 10 202 EMBER 0 234364 234364 261888
+STATS 10 825 EMBER 0 231544 231544 261888
+STATS 10 809 EMBER 0 233416 233416 261888
+STATS 10 826 EMBER 0 233293 233293 261888
+STATS 10 938 EMBER 0 234769 234769 261888
+STATS 10 953 EMBER 0 232472 232472 261888
+STATS 10 569 EMBER 0 232345 232345 261888
+STATS 10 551 EMBER 0 236040 236040 261888
+STATS 10 570 EMBER 0 233885 233885 261888
+STATS 10 552 EMBER 0 234265 234265 261888
+STATS 10 665 EMBER 0 231914 231914 261888
+STATS 10 650 EMBER 0 234018 234018 261888
+STATS 10 457 EMBER 0 234208 234208 261888
+STATS 10 473 EMBER 0 232348 232348 261888
+Nic 239 received 307923 bytes
+Nic 31 received 307923 bytes
+Nic 15 received 307923 bytes
+STATS 10 265 EMBER 0 233940 233940 261888
+STATS 10 281 EMBER 0 231977 231977 261888
+STATS 10 874 EMBER 0 234325 234325 261888
+STATS 10 489 EMBER 0 234288 234288 261888
+STATS 10 506 EMBER 0 233934 233934 261888
+STATS 10 904 EMBER 0 234253 234253 261888
+STATS 10 920 EMBER 0 232433 232433 261888
+STATS 10 905 EMBER 0 234249 234249 261888
+STATS 10 921 EMBER 0 232377 232377 261888
+STATS 10 906 EMBER 0 234637 234637 261888
+STATS 10 394 EMBER 0 234300 234300 261888
+STATS 10 1018 EMBER 0 233925 233925 261888
+STATS 10 1002 EMBER 0 234574 234574 261888
+Nic 975 received 307923 bytes
+STATS 10 794 EMBER 0 233299 233299 261888
+STATS 10 536 EMBER 0 232521 232521 261888
+STATS 10 522 EMBER 0 234748 234748 261888
+Nic 191 received 307923 bytes
+STATS 10 346 EMBER 0 233752 233752 261888
+Nic 159 received 307923 bytes
+STATS 10 853 EMBER 0 233601 233601 261888
+STATS 10 842 EMBER 0 233950 233950 261888
+STATS 10 854 EMBER 0 233152 233152 261888
+STATS 10 855 EMBER 0 232050 232050 261888
+STATS 10 362 EMBER 0 234290 234290 261888
+STATS 10 681 EMBER 0 233588 233588 261888
+STATS 10 697 EMBER 0 231792 231792 261888
+STATS 10 682 EMBER 0 233891 233891 261888
+STATS 10 698 EMBER 0 233314 233314 261888
+STATS 10 746 EMBER 0 233668 233668 261888
+STATS 10 762 EMBER 0 233258 233258 261888
+Nic 95 received 307923 bytes
+Nic 79 received 307923 bytes
+Nic 127 received 307923 bytes
+Nic 45 received 307923 bytes
+STATS 10 314 EMBER 0 233774 233774 261888
+STATS 10 298 EMBER 0 234242 234242 261888
+STATS 10 586 EMBER 0 234414 234414 261888
+STATS 10 714 EMBER 0 233718 233718 261888
+STATS 10 730 EMBER 0 233302 233302 261888
+STATS 10 633 EMBER 0 232041 232041 261888
+STATS 10 618 EMBER 0 234195 234195 261888
+STATS 10 634 EMBER 0 233500 233500 261888
+STATS 10 218 EMBER 0 233827 233827 261888
+STATS 10 810 EMBER 0 233647 233647 261888
+STATS 10 954 EMBER 0 234002 234002 261888
+STATS 10 553 EMBER 0 234355 234355 261888
+STATS 10 666 EMBER 0 233386 233386 261888
+STATS 10 458 EMBER 0 234503 234503 261888
+STATS 10 474 EMBER 0 233869 233869 261888
+Nic 255 received 307923 bytes
+Nic 30 received 307923 bytes
+STATS 10 266 EMBER 0 234279 234279 261888
+STATS 10 282 EMBER 0 233842 233842 261888
+Nic 895 received 307923 bytes
+STATS 10 490 EMBER 0 234633 234633 261888
+STATS 10 922 EMBER 0 233853 233853 261888
+Nic 415 received 307923 bytes
+Nic 1007 received 307923 bytes
+Nic 991 received 307923 bytes
+Nic 431 received 307923 bytes
+Nic 607 received 307923 bytes
+Nic 735 received 307923 bytes
+Nic 623 received 307923 bytes
+Nic 223 received 307923 bytes
+Nic 831 received 307923 bytes
+Nic 943 received 307923 bytes
+STATS 10 554 EMBER 0 234617 234617 261888
+Nic 655 received 307923 bytes
+Nic 479 received 307923 bytes
+Nic 254 received 307923 bytes
+Nic 29 received 307923 bytes
+Nic 287 received 307923 bytes
+Nic 879 received 307923 bytes
+Nic 511 received 307923 bytes
+Nic 927 received 307923 bytes
+Nic 399 received 307923 bytes
+Nic 1023 received 307923 bytes
+Nic 974 received 307923 bytes
+Nic 990 received 307923 bytes
+Nic 447 received 307923 bytes
+Nic 783 received 307923 bytes
+STATS 10 537 EMBER 0 232471 232471 261888
+STATS 10 538 EMBER 0 233952 233952 261888
+Nic 175 received 307923 bytes
+Nic 335 received 307923 bytes
+Nic 143 received 307923 bytes
+STATS 10 856 EMBER 0 232141 232141 261888
+STATS 10 857 EMBER 0 231762 231762 261888
+Nic 367 received 307923 bytes
+Nic 383 received 307923 bytes
+Nic 687 received 307923 bytes
+Nic 767 received 307923 bytes
+Nic 78 received 307923 bytes
+Nic 111 received 307923 bytes
+Nic 44 received 307923 bytes
+Nic 303 received 307923 bytes
+Nic 894 received 307923 bytes
+Nic 495 received 307923 bytes
+Nic 911 received 307923 bytes
+Nic 398 received 307923 bytes
+Nic 1006 received 307923 bytes
+Nic 989 received 307923 bytes
+Nic 430 received 307923 bytes
+Nic 799 received 307923 bytes
+Nic 543 received 307923 bytes
+Nic 527 received 307923 bytes
+Nic 190 received 307923 bytes
+Nic 351 received 307923 bytes
+Nic 158 received 307923 bytes
+STATS 10 858 EMBER 0 233441 233441 261888
+Nic 366 received 307923 bytes
+Nic 703 received 307923 bytes
+Nic 751 received 307923 bytes
+Nic 77 received 307923 bytes
+Nic 126 received 307923 bytes
+Nic 37 received 307923 bytes
+Nic 319 received 307923 bytes
+Nic 591 received 307923 bytes
+Nic 719 received 307923 bytes
+Nic 639 received 307923 bytes
+Nic 207 received 307923 bytes
+Nic 815 received 307923 bytes
+Nic 959 received 307923 bytes
+Nic 575 received 307923 bytes
+Nic 671 received 307923 bytes
+Nic 463 received 307923 bytes
+Nic 253 received 307923 bytes
+Nic 28 received 307923 bytes
+Nic 271 received 307923 bytes
+Nic 252 received 307923 bytes
+Nic 14 received 307923 bytes
+Nic 286 received 307923 bytes
+Nic 893 received 307923 bytes
+Nic 494 received 307923 bytes
+Nic 910 received 307923 bytes
+Nic 397 received 307923 bytes
+Nic 1005 received 307923 bytes
+Nic 988 received 307923 bytes
+Nic 429 received 307923 bytes
+Nic 782 received 307923 bytes
+Nic 542 received 307923 bytes
+Nic 189 received 307923 bytes
+Nic 350 received 307923 bytes
+Nic 157 received 307923 bytes
+Nic 863 received 307923 bytes
+Nic 365 received 307923 bytes
+Nic 702 received 307923 bytes
+Nic 750 received 307923 bytes
+Nic 76 received 307923 bytes
+Nic 125 received 307923 bytes
+Nic 36 received 307923 bytes
+Nic 318 received 307923 bytes
+Nic 606 received 307923 bytes
+Nic 718 received 307923 bytes
+Nic 638 received 307923 bytes
+Nic 622 received 307923 bytes
+Nic 206 received 307923 bytes
+Nic 830 received 307923 bytes
+Nic 958 received 307923 bytes
+Nic 942 received 307923 bytes
+Nic 559 received 307923 bytes
+Nic 654 received 307923 bytes
+Nic 462 received 307923 bytes
+Nic 829 received 307923 bytes
+Nic 941 received 307923 bytes
+Nic 558 received 307923 bytes
+Nic 653 received 307923 bytes
+Nic 461 received 307923 bytes
+Nic 245 received 307923 bytes
+Nic 21 received 307923 bytes
+Nic 285 received 307923 bytes
+Nic 892 received 307923 bytes
+Nic 493 received 307923 bytes
+Nic 909 received 307923 bytes
+Nic 396 received 307923 bytes
+Nic 1004 received 307923 bytes
+Nic 981 received 307923 bytes
+Nic 781 received 307923 bytes
+Nic 541 received 307923 bytes
+Nic 188 received 307923 bytes
+Nic 349 received 307923 bytes
+Nic 156 received 307923 bytes
+Nic 847 received 307923 bytes
+Nic 364 received 307923 bytes
+Nic 701 received 307923 bytes
+Nic 749 received 307923 bytes
+Nic 69 received 307923 bytes
+Nic 124 received 307923 bytes
+Nic 62 received 307923 bytes
+Nic 317 received 307923 bytes
+Nic 605 received 307923 bytes
+Nic 717 received 307923 bytes
+Nic 637 received 307923 bytes
+Nic 205 received 307923 bytes
+Nic 348 received 307923 bytes
+Nic 149 received 307923 bytes
+Nic 846 received 307923 bytes
+Nic 700 received 307923 bytes
+Nic 748 received 307923 bytes
+Nic 68 received 307923 bytes
+Nic 117 received 307923 bytes
+Nic 61 received 307923 bytes
+Nic 316 received 307923 bytes
+Nic 604 received 307923 bytes
+Nic 716 received 307923 bytes
+Nic 636 received 307923 bytes
+Nic 204 received 307923 bytes
+Nic 828 received 307923 bytes
+Nic 940 received 307923 bytes
+Nic 557 received 307923 bytes
+Nic 652 received 307923 bytes
+Nic 460 received 307923 bytes
+Nic 244 received 307923 bytes
+Nic 20 received 307923 bytes
+Nic 284 received 307923 bytes
+Nic 878 received 307923 bytes
+Nic 492 received 307923 bytes
+Nic 908 received 307923 bytes
+Nic 389 received 307923 bytes
+Nic 997 received 307923 bytes
+Nic 980 received 307923 bytes
+Nic 428 received 307923 bytes
+Nic 780 received 307923 bytes
+Nic 540 received 307923 bytes
+Nic 556 received 307923 bytes
+Nic 645 received 307923 bytes
+Nic 453 received 307923 bytes
+Nic 243 received 307923 bytes
+Nic 19 received 307923 bytes
+Nic 277 received 307923 bytes
+Nic 877 received 307923 bytes
+Nic 485 received 307923 bytes
+Nic 901 received 307923 bytes
+Nic 388 received 307923 bytes
+Nic 1022 received 307923 bytes
+Nic 979 received 307923 bytes
+Nic 421 received 307923 bytes
+Nic 773 received 307923 bytes
+Nic 533 received 307923 bytes
+Nic 341 received 307923 bytes
+Nic 142 received 307923 bytes
+Nic 845 received 307923 bytes
+Nic 357 received 307923 bytes
+Nic 693 received 307923 bytes
+Nic 741 received 307923 bytes
+Nic 94 received 307923 bytes
+Nic 110 received 307923 bytes
+Nic 60 received 307923 bytes
+Nic 309 received 307923 bytes
+Nic 597 received 307923 bytes
+Nic 709 received 307923 bytes
+Nic 629 received 307923 bytes
+Nic 197 received 307923 bytes
+Nic 821 received 307923 bytes
+Nic 933 received 307923 bytes
+Nic 596 received 307923 bytes
+Nic 708 received 307923 bytes
+Nic 628 received 307923 bytes
+Nic 196 received 307923 bytes
+Nic 820 received 307923 bytes
+Nic 932 received 307923 bytes
+Nic 549 received 307923 bytes
+Nic 644 received 307923 bytes
+Nic 478 received 307923 bytes
+Nic 240 received 307923 bytes
+Nic 16 received 307923 bytes
+Nic 276 received 307923 bytes
+Nic 876 received 307923 bytes
+Nic 484 received 307923 bytes
+Nic 900 received 307923 bytes
+Nic 414 received 307923 bytes
+Nic 1021 received 307923 bytes
+Nic 976 received 307923 bytes
+Nic 420 received 307923 bytes
+Nic 772 received 307923 bytes
+Nic 532 received 307923 bytes
+Nic 181 received 307923 bytes
+Nic 334 received 307923 bytes
+Nic 141 received 307923 bytes
+Nic 844 received 307923 bytes
+Nic 382 received 307923 bytes
+Nic 692 received 307923 bytes
+Nic 740 received 307923 bytes
+Nic 93 received 307923 bytes
+Nic 116 received 307923 bytes
+Nic 53 received 307923 bytes
+Nic 302 received 307923 bytes
+Nic 308 received 307923 bytes
+Nic 115 received 307923 bytes
+Nic 52 received 307923 bytes
+Nic 307 received 307923 bytes
+Nic 595 received 307923 bytes
+Nic 734 received 307923 bytes
+Nic 627 received 307923 bytes
+Nic 222 received 307923 bytes
+Nic 819 received 307923 bytes
+Nic 931 received 307923 bytes
+Nic 548 received 307923 bytes
+Nic 452 received 307923 bytes
+Nic 241 received 307923 bytes
+Nic 17 received 307923 bytes
+Nic 270 received 307923 bytes
+Nic 869 received 307923 bytes
+Nic 483 received 307923 bytes
+Nic 899 received 307923 bytes
+Nic 413 received 307923 bytes
+Nic 1020 received 307923 bytes
+Nic 977 received 307923 bytes
+Nic 419 received 307923 bytes
+Nic 771 received 307923 bytes
+Nic 531 received 307923 bytes
+Nic 180 received 307923 bytes
+Nic 340 received 307923 bytes
+Nic 140 received 307923 bytes
+Nic 837 received 307923 bytes
+Nic 381 received 307923 bytes
+Nic 691 received 307923 bytes
+Nic 766 received 307923 bytes
+Nic 92 received 307923 bytes
+Nic 896 received 307923 bytes
+Nic 412 received 307923 bytes
+Nic 1013 received 307923 bytes
+Nic 978 received 307923 bytes
+Nic 416 received 307923 bytes
+Nic 768 received 307923 bytes
+Nic 528 received 307923 bytes
+Nic 179 received 307923 bytes
+Nic 339 received 307923 bytes
+Nic 133 received 307923 bytes
+Nic 836 received 307923 bytes
+Nic 380 received 307923 bytes
+Nic 688 received 307923 bytes
+Nic 739 received 307923 bytes
+Nic 85 received 307923 bytes
+Nic 112 received 307923 bytes
+Nic 51 received 307923 bytes
+Nic 304 received 307923 bytes
+Nic 592 received 307923 bytes
+Nic 733 received 307923 bytes
+Nic 624 received 307923 bytes
+Nic 221 received 307923 bytes
+Nic 816 received 307923 bytes
+Nic 928 received 307923 bytes
+Nic 547 received 307923 bytes
+Nic 643 received 307923 bytes
+Nic 451 received 307923 bytes
+Nic 242 received 307923 bytes
+Nic 18 received 307923 bytes
+Nic 269 received 307923 bytes
+Nic 868 received 307923 bytes
+Nic 510 received 307923 bytes
+Nic 417 received 307923 bytes
+Nic 769 received 307923 bytes
+Nic 529 received 307923 bytes
+Nic 176 received 307923 bytes
+Nic 336 received 307923 bytes
+Nic 148 received 307923 bytes
+Nic 862 received 307923 bytes
+Nic 373 received 307923 bytes
+Nic 686 received 307923 bytes
+Nic 736 received 307923 bytes
+Nic 67 received 307923 bytes
+Nic 113 received 307923 bytes
+Nic 35 received 307923 bytes
+Nic 305 received 307923 bytes
+Nic 593 received 307923 bytes
+Nic 732 received 307923 bytes
+Nic 625 received 307923 bytes
+Nic 220 received 307923 bytes
+Nic 817 received 307923 bytes
+Nic 957 received 307923 bytes
+Nic 574 received 307923 bytes
+Nic 640 received 307923 bytes
+Nic 448 received 307923 bytes
+Nic 246 received 307923 bytes
+Nic 13 received 307923 bytes
+Nic 268 received 307923 bytes
+Nic 867 received 307923 bytes
+Nic 480 received 307923 bytes
+Nic 897 received 307923 bytes
+Nic 405 received 307923 bytes
+Nic 1012 received 307923 bytes
+Nic 982 received 307923 bytes
+Nic 996 received 307923 bytes
+Nic 983 received 307923 bytes
+Nic 418 received 307923 bytes
+Nic 770 received 307923 bytes
+Nic 526 received 307923 bytes
+Nic 177 received 307923 bytes
+Nic 337 received 307923 bytes
+Nic 147 received 307923 bytes
+Nic 861 received 307923 bytes
+Nic 372 received 307923 bytes
+Nic 689 received 307923 bytes
+Nic 737 received 307923 bytes
+Nic 64 received 307923 bytes
+Nic 114 received 307923 bytes
+Nic 48 received 307923 bytes
+Nic 306 received 307923 bytes
+Nic 594 received 307923 bytes
+Nic 725 received 307923 bytes
+Nic 626 received 307923 bytes
+Nic 213 received 307923 bytes
+Nic 818 received 307923 bytes
+Nic 929 received 307923 bytes
+Nic 573 received 307923 bytes
+Nic 641 received 307923 bytes
+Nic 449 received 307923 bytes
+Nic 247 received 307923 bytes
+Nic 22 received 307923 bytes
+Nic 261 received 307923 bytes
+Nic 864 received 307923 bytes
+Nic 481 received 307923 bytes
+Nic 898 received 307923 bytes
+Nic 404 received 307923 bytes
+Nic 371 received 307923 bytes
+Nic 690 received 307923 bytes
+Nic 738 received 307923 bytes
+Nic 65 received 307923 bytes
+Nic 118 received 307923 bytes
+Nic 49 received 307923 bytes
+Nic 310 received 307923 bytes
+Nic 598 received 307923 bytes
+Nic 724 received 307923 bytes
+Nic 630 received 307923 bytes
+Nic 212 received 307923 bytes
+Nic 822 received 307923 bytes
+Nic 930 received 307923 bytes
+Nic 572 received 307923 bytes
+Nic 642 received 307923 bytes
+Nic 450 received 307923 bytes
+Nic 248 received 307923 bytes
+Nic 12 received 307923 bytes
+Nic 260 received 307923 bytes
+Nic 865 received 307923 bytes
+Nic 482 received 307923 bytes
+Nic 902 received 307923 bytes
+Nic 403 received 307923 bytes
+Nic 1011 received 307923 bytes
+Nic 984 received 307923 bytes
+Nic 422 received 307923 bytes
+Nic 774 received 307923 bytes
+Nic 530 received 307923 bytes
+Nic 178 received 307923 bytes
+Nic 338 received 307923 bytes
+Nic 144 received 307923 bytes
+Nic 860 received 307923 bytes
+Nic 311 received 307923 bytes
+Nic 590 received 307923 bytes
+Nic 723 received 307923 bytes
+Nic 631 received 307923 bytes
+Nic 211 received 307923 bytes
+Nic 823 received 307923 bytes
+Nic 934 received 307923 bytes
+Nic 565 received 307923 bytes
+Nic 646 received 307923 bytes
+Nic 454 received 307923 bytes
+Nic 249 received 307923 bytes
+Nic 5 received 307923 bytes
+Nic 259 received 307923 bytes
+Nic 866 received 307923 bytes
+Nic 486 received 307923 bytes
+Nic 903 received 307923 bytes
+Nic 400 received 307923 bytes
+Nic 1008 received 307923 bytes
+Nic 985 received 307923 bytes
+Nic 446 received 307923 bytes
+Nic 775 received 307923 bytes
+Nic 525 received 307923 bytes
+Nic 182 received 307923 bytes
+Nic 342 received 307923 bytes
+Nic 145 received 307923 bytes
+Nic 853 received 307923 bytes
+Nic 368 received 307923 bytes
+Nic 694 received 307923 bytes
+Nic 742 received 307923 bytes
+Nic 66 received 307923 bytes
+Nic 119 received 307923 bytes
+Nic 50 received 307923 bytes
+Nic 599 received 307923 bytes
+Nic 720 received 307923 bytes
+Nic 632 received 307923 bytes
+Nic 208 received 307923 bytes
+Nic 824 received 307923 bytes
+Nic 935 received 307923 bytes
+Nic 564 received 307923 bytes
+Nic 647 received 307923 bytes
+Nic 455 received 307923 bytes
+Nic 250 received 307923 bytes
+Nic 4 received 307923 bytes
+Nic 256 received 307923 bytes
+Nic 870 received 307923 bytes
+Nic 487 received 307923 bytes
+Nic 904 received 307923 bytes
+Nic 401 received 307923 bytes
+Nic 1009 received 307923 bytes
+Nic 986 received 307923 bytes
+Nic 423 received 307923 bytes
+Nic 776 received 307923 bytes
+Nic 524 received 307923 bytes
+Nic 183 received 307923 bytes
+Nic 343 received 307923 bytes
+Nic 146 received 307923 bytes
+Nic 852 received 307923 bytes
+Nic 369 received 307923 bytes
+Nic 695 received 307923 bytes
+Nic 743 received 307923 bytes
+Nic 70 received 307923 bytes
+Nic 120 received 307923 bytes
+Nic 54 received 307923 bytes
+Nic 312 received 307923 bytes
+Nic 301 received 307923 bytes
+Nic 633 received 307923 bytes
+Nic 209 received 307923 bytes
+Nic 825 received 307923 bytes
+Nic 936 received 307923 bytes
+Nic 563 received 307923 bytes
+Nic 648 received 307923 bytes
+Nic 456 received 307923 bytes
+Nic 251 received 307923 bytes
+Nic 3 received 307923 bytes
+Nic 257 received 307923 bytes
+Nic 871 received 307923 bytes
+Nic 488 received 307923 bytes
+Nic 905 received 307923 bytes
+Nic 402 received 307923 bytes
+Nic 1010 received 307923 bytes
+Nic 987 received 307923 bytes
+Nic 424 received 307923 bytes
+Nic 798 received 307923 bytes
+Nic 517 received 307923 bytes
+Nic 184 received 307923 bytes
+Nic 344 received 307923 bytes
+Nic 150 received 307923 bytes
+Nic 851 received 307923 bytes
+Nic 370 received 307923 bytes
+Nic 696 received 307923 bytes
+Nic 744 received 307923 bytes
+Nic 71 received 307923 bytes
+Nic 121 received 307923 bytes
+Nic 55 received 307923 bytes
+Nic 313 received 307923 bytes
+Nic 600 received 307923 bytes
+Nic 721 received 307923 bytes
+Nic 425 received 307923 bytes
+Nic 797 received 307923 bytes
+Nic 516 received 307923 bytes
+Nic 185 received 307923 bytes
+Nic 345 received 307923 bytes
+Nic 151 received 307923 bytes
+Nic 848 received 307923 bytes
+Nic 374 received 307923 bytes
+Nic 697 received 307923 bytes
+Nic 745 received 307923 bytes
+Nic 72 received 307923 bytes
+Nic 122 received 307923 bytes
+Nic 56 received 307923 bytes
+Nic 314 received 307923 bytes
+Nic 601 received 307923 bytes
+Nic 722 received 307923 bytes
+Nic 634 received 307923 bytes
+Nic 195 received 307923 bytes
+Nic 826 received 307923 bytes
+Nic 937 received 307923 bytes
+Nic 544 received 307923 bytes
+Nic 649 received 307923 bytes
+Nic 457 received 307923 bytes
+Nic 238 received 307923 bytes
+Nic 23 received 307923 bytes
+Nic 258 received 307923 bytes
+Nic 872 received 307923 bytes
+Nic 489 received 307923 bytes
+Nic 906 received 307923 bytes
+Nic 406 received 307923 bytes
+Nic 1014 received 307923 bytes
+Nic 973 received 307923 bytes
+Nic 315 received 307923 bytes
+Nic 602 received 307923 bytes
+Nic 726 received 307923 bytes
+Nic 635 received 307923 bytes
+Nic 192 received 307923 bytes
+Nic 827 received 307923 bytes
+Nic 938 received 307923 bytes
+Nic 545 received 307923 bytes
+Nic 650 received 307923 bytes
+Nic 458 received 307923 bytes
+Nic 237 received 307923 bytes
+Nic 24 received 307923 bytes
+Nic 262 received 307923 bytes
+Nic 873 received 307923 bytes
+Nic 490 received 307923 bytes
+Nic 907 received 307923 bytes
+Nic 407 received 307923 bytes
+Nic 1015 received 307923 bytes
+Nic 972 received 307923 bytes
+Nic 426 received 307923 bytes
+Nic 796 received 307923 bytes
+Nic 515 received 307923 bytes
+Nic 186 received 307923 bytes
+Nic 346 received 307923 bytes
+Nic 132 received 307923 bytes
+Nic 849 received 307923 bytes
+Nic 375 received 307923 bytes
+Nic 698 received 307923 bytes
+Nic 746 received 307923 bytes
+Nic 84 received 307923 bytes
+Nic 123 received 307923 bytes
+Nic 57 received 307923 bytes
+Nic 546 received 307923 bytes
+Nic 651 received 307923 bytes
+Nic 459 received 307923 bytes
+Nic 236 received 307923 bytes
+Nic 25 received 307923 bytes
+Nic 263 received 307923 bytes
+Nic 874 received 307923 bytes
+Nic 491 received 307923 bytes
+Nic 926 received 307923 bytes
+Nic 408 received 307923 bytes
+Nic 1016 received 307923 bytes
+Nic 965 received 307923 bytes
+Nic 427 received 307923 bytes
+Nic 789 received 307923 bytes
+Nic 534 received 307923 bytes
+Nic 187 received 307923 bytes
+Nic 347 received 307923 bytes
+Nic 131 received 307923 bytes
+Nic 835 received 307923 bytes
+Nic 376 received 307923 bytes
+Nic 699 received 307923 bytes
+Nic 747 received 307923 bytes
+Nic 73 received 307923 bytes
+Nic 109 received 307923 bytes
+Nic 58 received 307923 bytes
+Nic 300 received 307923 bytes
+Nic 603 received 307923 bytes
+Nic 727 received 307923 bytes
+Nic 621 received 307923 bytes
+Nic 193 received 307923 bytes
+Nic 814 received 307923 bytes
+Nic 939 received 307923 bytes
+Nic 925 received 307923 bytes
+Nic 409 received 307923 bytes
+Nic 1017 received 307923 bytes
+Nic 964 received 307923 bytes
+Nic 445 received 307923 bytes
+Nic 788 received 307923 bytes
+Nic 535 received 307923 bytes
+Nic 174 received 307923 bytes
+Nic 333 received 307923 bytes
+Nic 128 received 307923 bytes
+Nic 850 received 307923 bytes
+Nic 377 received 307923 bytes
+Nic 685 received 307923 bytes
+Nic 765 received 307923 bytes
+Nic 74 received 307923 bytes
+Nic 108 received 307923 bytes
+Nic 59 received 307923 bytes
+Nic 293 received 307923 bytes
+Nic 589 received 307923 bytes
+Nic 728 received 307923 bytes
+Nic 620 received 307923 bytes
+Nic 194 received 307923 bytes
+Nic 813 received 307923 bytes
+Nic 956 received 307923 bytes
+Nic 550 received 307923 bytes
+Nic 670 received 307923 bytes
+Nic 477 received 307923 bytes
+Nic 229 received 307923 bytes
+Nic 26 received 307923 bytes
+Nic 264 received 307923 bytes
+Nic 875 received 307923 bytes
+Nic 509 received 307923 bytes
+Nic 27 received 307923 bytes
+Nic 265 received 307923 bytes
+Nic 885 received 307923 bytes
+Nic 508 received 307923 bytes
+Nic 924 received 307923 bytes
+Nic 410 received 307923 bytes
+Nic 1018 received 307923 bytes
+Nic 963 received 307923 bytes
+Nic 444 received 307923 bytes
+Nic 787 received 307923 bytes
+Nic 536 received 307923 bytes
+Nic 173 received 307923 bytes
+Nic 332 received 307923 bytes
+Nic 129 received 307923 bytes
+Nic 854 received 307923 bytes
+Nic 378 received 307923 bytes
+Nic 684 received 307923 bytes
+Nic 764 received 307923 bytes
+Nic 75 received 307923 bytes
+Nic 101 received 307923 bytes
+Nic 32 received 307923 bytes
+Nic 292 received 307923 bytes
+Nic 588 received 307923 bytes
+Nic 707 received 307923 bytes
+Nic 613 received 307923 bytes
+Nic 198 received 307923 bytes
+Nic 812 received 307923 bytes
+Nic 949 received 307923 bytes
+Nic 551 received 307923 bytes
+Nic 669 received 307923 bytes
+Nic 476 received 307923 bytes
+Nic 228 received 307923 bytes
+Nic 1019 received 307923 bytes
+Nic 960 received 307923 bytes
+Nic 437 received 307923 bytes
+Nic 784 received 307923 bytes
+Nic 537 received 307923 bytes
+Nic 172 received 307923 bytes
+Nic 325 received 307923 bytes
+Nic 130 received 307923 bytes
+Nic 855 received 307923 bytes
+Nic 379 received 307923 bytes
+Nic 677 received 307923 bytes
+Nic 757 received 307923 bytes
+Nic 83 received 307923 bytes
+Nic 100 received 307923 bytes
+Nic 33 received 307923 bytes
+Nic 291 received 307923 bytes
+Nic 581 received 307923 bytes
+Nic 704 received 307923 bytes
+Nic 612 received 307923 bytes
+Nic 199 received 307923 bytes
+Nic 805 received 307923 bytes
+Nic 948 received 307923 bytes
+Nic 552 received 307923 bytes
+Nic 668 received 307923 bytes
+Nic 469 received 307923 bytes
+Nic 227 received 307923 bytes
+Nic 0 received 307923 bytes
+Nic 266 received 307923 bytes
+Nic 884 received 307923 bytes
+Nic 501 received 307923 bytes
+Nic 917 received 307923 bytes
+Nic 411 received 307923 bytes
+Nic 288 received 307923 bytes
+Nic 580 received 307923 bytes
+Nic 705 received 307923 bytes
+Nic 611 received 307923 bytes
+Nic 200 received 307923 bytes
+Nic 804 received 307923 bytes
+Nic 947 received 307923 bytes
+Nic 553 received 307923 bytes
+Nic 661 received 307923 bytes
+Nic 468 received 307923 bytes
+Nic 224 received 307923 bytes
+Nic 1 received 307923 bytes
+Nic 275 received 307923 bytes
+Nic 883 received 307923 bytes
+Nic 500 received 307923 bytes
+Nic 916 received 307923 bytes
+Nic 387 received 307923 bytes
+Nic 995 received 307923 bytes
+Nic 961 received 307923 bytes
+Nic 436 received 307923 bytes
+Nic 785 received 307923 bytes
+Nic 538 received 307923 bytes
+Nic 165 received 307923 bytes
+Nic 324 received 307923 bytes
+Nic 134 received 307923 bytes
+Nic 856 received 307923 bytes
+Nic 356 received 307923 bytes
+Nic 676 received 307923 bytes
+Nic 756 received 307923 bytes
+Nic 80 received 307923 bytes
+Nic 99 received 307923 bytes
+Nic 34 received 307923 bytes
+Nic 323 received 307923 bytes
+Nic 135 received 307923 bytes
+Nic 857 received 307923 bytes
+Nic 355 received 307923 bytes
+Nic 675 received 307923 bytes
+Nic 755 received 307923 bytes
+Nic 81 received 307923 bytes
+Nic 96 received 307923 bytes
+Nic 38 received 307923 bytes
+Nic 289 received 307923 bytes
+Nic 579 received 307923 bytes
+Nic 706 received 307923 bytes
+Nic 608 received 307923 bytes
+Nic 210 received 307923 bytes
+Nic 803 received 307923 bytes
+Nic 944 received 307923 bytes
+Nic 554 received 307923 bytes
+Nic 660 received 307923 bytes
+Nic 467 received 307923 bytes
+Nic 225 received 307923 bytes
+Nic 2 received 307923 bytes
+Nic 272 received 307923 bytes
+Nic 880 received 307923 bytes
+Nic 499 received 307923 bytes
+Nic 915 received 307923 bytes
+Nic 384 received 307923 bytes
+Nic 992 received 307923 bytes
+Nic 962 received 307923 bytes
+Nic 435 received 307923 bytes
+Nic 786 received 307923 bytes
+Nic 539 received 307923 bytes
+Nic 164 received 307923 bytes
+Nic 432 received 307923 bytes
+Nic 790 received 307923 bytes
+Nic 512 received 307923 bytes
+Nic 163 received 307923 bytes
+Nic 320 received 307923 bytes
+Nic 136 received 307923 bytes
+Nic 858 received 307923 bytes
+Nic 352 received 307923 bytes
+Nic 672 received 307923 bytes
+Nic 752 received 307923 bytes
+Nic 82 received 307923 bytes
+Nic 97 received 307923 bytes
+Nic 39 received 307923 bytes
+Nic 290 received 307923 bytes
+Nic 576 received 307923 bytes
+Nic 710 received 307923 bytes
+Nic 609 received 307923 bytes
+Nic 214 received 307923 bytes
+Nic 800 received 307923 bytes
+Nic 945 received 307923 bytes
+Nic 555 received 307923 bytes
+Nic 659 received 307923 bytes
+Nic 464 received 307923 bytes
+Nic 226 received 307923 bytes
+Nic 6 received 307923 bytes
+Nic 273 received 307923 bytes
+Nic 881 received 307923 bytes
+Nic 496 received 307923 bytes
+Nic 912 received 307923 bytes
+Nic 385 received 307923 bytes
+Nic 993 received 307923 bytes
+Nic 966 received 307923 bytes
+Nic 433 received 307923 bytes
+Nic 791 received 307923 bytes
+Nic 513 received 307923 bytes
+Nic 160 received 307923 bytes
+Nic 321 received 307923 bytes
+Nic 137 received 307923 bytes
+Nic 859 received 307923 bytes
+Nic 353 received 307923 bytes
+Nic 673 received 307923 bytes
+Nic 753 received 307923 bytes
+Nic 86 received 307923 bytes
+Nic 98 received 307923 bytes
+Nic 40 received 307923 bytes
+Nic 294 received 307923 bytes
+Nic 577 received 307923 bytes
+Nic 711 received 307923 bytes
+Nic 610 received 307923 bytes
+Nic 215 received 307923 bytes
+Nic 801 received 307923 bytes
+Nic 946 received 307923 bytes
+Nic 560 received 307923 bytes
+Nic 656 received 307923 bytes
+Nic 465 received 307923 bytes
+Nic 230 received 307923 bytes
+Nic 7 received 307923 bytes
+Nic 274 received 307923 bytes
+Nic 882 received 307923 bytes
+Nic 497 received 307923 bytes
+Nic 913 received 307923 bytes
+Nic 386 received 307923 bytes
+Nic 994 received 307923 bytes
+Nic 967 received 307923 bytes
+Nic 434 received 307923 bytes
+Nic 792 received 307923 bytes
+Nic 514 received 307923 bytes
+Nic 161 received 307923 bytes
+Nic 322 received 307923 bytes
+Nic 138 received 307923 bytes
+Nic 832 received 307923 bytes
+Nic 354 received 307923 bytes
+Nic 674 received 307923 bytes
+Nic 754 received 307923 bytes
+Nic 87 received 307923 bytes
+Nic 102 received 307923 bytes
+Nic 41 received 307923 bytes
+Nic 295 received 307923 bytes
+Nic 578 received 307923 bytes
+Nic 712 received 307923 bytes
+Nic 614 received 307923 bytes
+Nic 216 received 307923 bytes
+Nic 802 received 307923 bytes
+Nic 950 received 307923 bytes
+Nic 561 received 307923 bytes
+Nic 657 received 307923 bytes
+Nic 466 received 307923 bytes
+Nic 231 received 307923 bytes
+Nic 8 received 307923 bytes
+Nic 278 received 307923 bytes
+Nic 886 received 307923 bytes
+Nic 498 received 307923 bytes
+Nic 914 received 307923 bytes
+Nic 390 received 307923 bytes
+Nic 998 received 307923 bytes
+Nic 968 received 307923 bytes
+Nic 502 received 307923 bytes
+Nic 918 received 307923 bytes
+Nic 391 received 307923 bytes
+Nic 999 received 307923 bytes
+Nic 969 received 307923 bytes
+Nic 438 received 307923 bytes
+Nic 793 received 307923 bytes
+Nic 518 received 307923 bytes
+Nic 162 received 307923 bytes
+Nic 326 received 307923 bytes
+Nic 139 received 307923 bytes
+Nic 833 received 307923 bytes
+Nic 358 received 307923 bytes
+Nic 678 received 307923 bytes
+Nic 758 received 307923 bytes
+Nic 88 received 307923 bytes
+Nic 103 received 307923 bytes
+Nic 42 received 307923 bytes
+Nic 296 received 307923 bytes
+Nic 582 received 307923 bytes
+Nic 713 received 307923 bytes
+Nic 615 received 307923 bytes
+Nic 217 received 307923 bytes
+Nic 806 received 307923 bytes
+Nic 951 received 307923 bytes
+Nic 562 received 307923 bytes
+Nic 658 received 307923 bytes
+Nic 470 received 307923 bytes
+Nic 232 received 307923 bytes
+Nic 9 received 307923 bytes
+Nic 279 received 307923 bytes
+Nic 887 received 307923 bytes
+Nic 327 received 307923 bytes
+Nic 152 received 307923 bytes
+Nic 834 received 307923 bytes
+Nic 359 received 307923 bytes
+Nic 679 received 307923 bytes
+Nic 759 received 307923 bytes
+Nic 89 received 307923 bytes
+Nic 104 received 307923 bytes
+Nic 43 received 307923 bytes
+Nic 297 received 307923 bytes
+Nic 583 received 307923 bytes
+Nic 729 received 307923 bytes
+Nic 616 received 307923 bytes
+Nic 218 received 307923 bytes
+Nic 807 received 307923 bytes
+Nic 952 received 307923 bytes
+Nic 566 received 307923 bytes
+Nic 662 received 307923 bytes
+Nic 471 received 307923 bytes
+Nic 233 received 307923 bytes
+Nic 10 received 307923 bytes
+Nic 280 received 307923 bytes
+Nic 888 received 307923 bytes
+Nic 503 received 307923 bytes
+Nic 919 received 307923 bytes
+Nic 392 received 307923 bytes
+Nic 1000 received 307923 bytes
+Nic 970 received 307923 bytes
+Nic 439 received 307923 bytes
+Nic 794 received 307923 bytes
+Nic 519 received 307923 bytes
+Nic 166 received 307923 bytes
+Nic 153 received 307923 bytes
+Nic 838 received 307923 bytes
+Nic 360 received 307923 bytes
+Nic 680 received 307923 bytes
+Nic 760 received 307923 bytes
+Nic 90 received 307923 bytes
+Nic 105 received 307923 bytes
+Nic 298 received 307923 bytes
+Nic 584 received 307923 bytes
+Nic 714 received 307923 bytes
+Nic 617 received 307923 bytes
+Nic 219 received 307923 bytes
+Nic 808 received 307923 bytes
+Nic 953 received 307923 bytes
+Nic 567 received 307923 bytes
+Nic 663 received 307923 bytes
+Nic 472 received 307923 bytes
+Nic 234 received 307923 bytes
+Nic 11 received 307923 bytes
+Nic 281 received 307923 bytes
+Nic 889 received 307923 bytes
+Nic 504 received 307923 bytes
+Nic 920 received 307923 bytes
+Nic 393 received 307923 bytes
+Nic 1001 received 307923 bytes
+Nic 971 received 307923 bytes
+Nic 440 received 307923 bytes
+Nic 795 received 307923 bytes
+Nic 520 received 307923 bytes
+Nic 167 received 307923 bytes
+Nic 328 received 307923 bytes
+Nic 839 received 307923 bytes
+Nic 361 received 307923 bytes
+Nic 681 received 307923 bytes
+Nic 761 received 307923 bytes
+Nic 91 received 307923 bytes
+Nic 106 received 307923 bytes
+Nic 299 received 307923 bytes
+Nic 585 received 307923 bytes
+Nic 715 received 307923 bytes
+Nic 618 received 307923 bytes
+Nic 201 received 307923 bytes
+Nic 809 received 307923 bytes
+Nic 954 received 307923 bytes
+Nic 568 received 307923 bytes
+Nic 664 received 307923 bytes
+Nic 473 received 307923 bytes
+Nic 235 received 307923 bytes
+Simulation is complete, simulated time: 265.221 us
+Nic 282 received 307923 bytes
+Nic 890 received 307923 bytes
+Nic 505 received 307923 bytes
+Nic 921 received 307923 bytes
+Nic 394 received 307923 bytes
+Nic 1002 received 307923 bytes
+Nic 441 received 307923 bytes
+Nic 777 received 307923 bytes
+Nic 521 received 307923 bytes
+Nic 168 received 307923 bytes
+Nic 329 received 307923 bytes
+Nic 154 received 307923 bytes
+Nic 283 received 307923 bytes
+Nic 891 received 307923 bytes
+Nic 506 received 307923 bytes
+Nic 922 received 307923 bytes
+Nic 395 received 307923 bytes
+Nic 1003 received 307923 bytes
+Nic 442 received 307923 bytes
+Nic 778 received 307923 bytes
+Nic 522 received 307923 bytes
+Nic 169 received 307923 bytes
+Nic 330 received 307923 bytes
+Nic 155 received 307923 bytes
+Nic 840 received 307923 bytes
+Nic 362 received 307923 bytes
+Nic 682 received 307923 bytes
+Nic 762 received 307923 bytes
+Nic 107 received 307923 bytes
+Nic 586 received 307923 bytes
+Nic 730 received 307923 bytes
+Nic 619 received 307923 bytes
+Nic 202 received 307923 bytes
+Nic 810 received 307923 bytes
+Nic 955 received 307923 bytes
+Nic 569 received 307923 bytes
+Nic 665 received 307923 bytes
+Nic 474 received 307923 bytes
+Nic 443 received 307923 bytes
+Nic 779 received 307923 bytes
+Nic 523 received 307923 bytes
+Nic 170 received 307923 bytes
+Nic 331 received 307923 bytes
+Nic 841 received 307923 bytes
+Nic 363 received 307923 bytes
+Nic 683 received 307923 bytes
+Nic 763 received 307923 bytes
+Nic 587 received 307923 bytes
+Nic 731 received 307923 bytes
+Nic 203 received 307923 bytes
+Nic 811 received 307923 bytes
+Nic 570 received 307923 bytes
+Nic 666 received 307923 bytes
+Nic 475 received 307923 bytes
+Nic 267 received 307923 bytes
+Nic 507 received 307923 bytes
+Nic 923 received 307923 bytes
+Nic 571 received 307923 bytes
+Nic 667 received 307923 bytes
+Nic 171 received 307923 bytes
+Nic 842 received 307923 bytes
+Nic 843 received 307923 bytes

@@ -1,0 +1,4 @@
+var structSST_1_1ELI_1_1InfoStats_3_01T_00_01typename_01MethodDetect_3_01decltype_07T_1_1ELI__getStatistics_07_08_08_4_1_1type_01_4 =
+[
+    [ "get", "structSST_1_1ELI_1_1InfoStats_3_01T_00_01typename_01MethodDetect_3_01decltype_07T_1_1ELI__getStatistics_07_08_08_4_1_1type_01_4.html#ae990ca297a7d743817dad46799913fc3", null ]
+];

@@ -1,0 +1,103 @@
+import re
+import subprocess
+from pathlib import Path
+import sys
+from argparse import ArgumentParser
+import argparse
+import pathlib
+import os
+import time
+sys.path.append("../")
+from general_bench import *
+
+topologies = {
+  "hyperx": 1024,
+  "hx4": 1024,
+  "hx2": 1024,
+  "fattree": 1024,
+  "fattree50": 1024,
+  "fattree75": 1024,
+  "torus": 1024,
+  "dragonfly": 1024,
+}
+
+large_size = [2**4, 2**6, 2**8, 2**10, 2**12, 2**16, 2**20]
+small_size = [2**6, 2**16]
+
+def create_motif_load(name):
+    path_motif = pathlib.Path(motif_folder)
+    path_motif.mkdir(parents=True, exist_ok=True)
+
+    motif_content = ["[JOB_ID] 10\n",
+    "[NID_LIST] generateNidList=generateNidListRange(0,1024)\n",
+    "[MOTIF] Init\n",
+    "[MOTIF] AllPingPong messageSize=11\n",
+    "[MOTIF] Fini"]
+
+    with open(motif_folder + "/" + name, 'w') as file:
+        file.writelines(motif_content)
+
+def generate_simulations(args, to_replace, name, topologies, sizes):
+    for msg_size in sizes:
+        for topo in topologies:
+            if (args.topo != "" and args.topo != topo):
+                continue
+            print(topo)
+            check_if_exist(topo)
+            # Parse Current File, replace data and store it in an array
+            new_lines = []
+            generating_id_string = ""
+            location_motif = motif_folder + "/" + name
+
+            ## If jobs using all nodes
+            if (args.size == 0):
+                with open(location_motif, 'r') as f:
+                    for line in f:
+                        # Change topo size based on topology
+                        if (topo == "dragonfly"):
+                            generating_id_string = generate_id_string_dragonfly
+                        elif (topo != "hx4" and topo != "hx2"):
+                            generating_id_string = generate_id_string_fattree_torus
+                        elif (topo == "hx4"):
+                            generating_id_string = generate_id_string_hx4
+                        elif (topo == "hx2"):
+                            generating_id_string = generate_id_string_hx2
+
+                        tmp = msg_size
+                        line = re.sub(r"{}\d+".format(to_replace), "{}{}".format(to_replace, tmp), line)
+                        new_lines.append(line)
+
+                # Write the array back to the same file
+                with open(location_motif, 'w') as file:
+                    print(generating_id_string)
+                    new_lines[1] = generating_id_string
+                    file.writelines(new_lines)
+
+            # If size is not zero then we need to create a custom motif with also null nids
+            if (args.size != 0):
+                create_motif_load(name, motif_folder, topo, args.size)
+            run_sst(args, topo, msg_size, name)
+
+def main(args):
+    # Generate our custom Motif for this specific benchmark
+    name = "AllToAllTom"
+    create_motif_load(name)
+    if args.small_run:
+        sizes = small_size
+    else:
+        sizes = large_size
+    generate_simulations(args, "messageSize=", name, topologies, sizes)    
+
+if __name__ == "__main__":
+    parser = ArgumentParser()
+    parser.add_argument("--topo", type=str, help="Topology to run", default="", choices=["hx4", "hx1", "hyperx", "hx2", "fattree", "fattree50", "fattree75", "torus", "dragonfly"])
+    parser.add_argument("--env", type=str, help="Local or cluster environment", default="", choices=["cluster", "local", "slimfly"])
+    parser.add_argument("--num_threads", type=int, help="Number of threads to use for SST", default=8)
+    parser.add_argument("--nodes", type=int, help="Number of nodes for cluster (only)", default="8")
+    parser.add_argument("--cpus_per_task", type=str, help="Number of cores per node for cluster (only)", default="8")
+    parser.add_argument("--mem", type=str, help="Memory per node for cluster (only)", default="16G")
+    parser.add_argument("--hostfile", type=str, help="Hostfile name for Slimfly (only)", default="hostfile")
+    parser.add_argument("--size", type=str, help="Size of the job, internal paramter", default=0) 
+    parser.add_argument("--small_run", help="If this parameter is set, only some points are run", action='store_true')
+    args = parser.parse_args()
+    main(args)

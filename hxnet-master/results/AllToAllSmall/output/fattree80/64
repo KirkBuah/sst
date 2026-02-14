@@ -1,0 +1,3610 @@
+EMBER: using param directory: paramFiles
+EMBER: platform: default
+Setting Value for ShortMsgSize to 2147483642
+EMBER: network: topology=fattree shape=32,8:32
+EMBER: numNodes=1024 numNics=1024
+override nicParams module=merlin.linkcontrol with merlin.reorderlinkcontrol
+link_bw 1600Gb/s
+xbar_bw 3200Gb/s
+nic_link_bw 1600Gb/s
+EMBER: network: BW=1600Gb/s pktSize=8192B flitSize=256B
+EMBER: Job=10, nidList='0-1023'
+EMBER: Motif='Init'
+EMBER: Motif='AllPingPong messageSize=64'
+EMBER: Motif='Fini'
+['32,8', '32']
+['32', '8']
+['32']
+[32, 32]
+[8]
+Total hosts: 1024
+[32, 1]
+8
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+Radix of routers is 40
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+Routing being used is adaptive 
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+In/out latency is 20ns
+AllPingPong: total time 1.027 us, loop 1, bufLen 64, latency 0.514 us. bandwidth 0.124635 GB/s
+STATS 10 255 EMBER 0 7444 7444 65472
+STATS 10 259 EMBER 0 19678 19678 65472
+STATS 10 244 EMBER 0 11118 11118 65472
+STATS 10 423 EMBER 0 17656 17656 65472
+STATS 10 426 EMBER 0 16247 16247 65472
+STATS 10 438 EMBER 0 10069 10069 65472
+STATS 10 842 EMBER 0 16247 16247 65472
+STATS 10 836 EMBER 0 19164 19164 65472
+STATS 10 848 EMBER 0 13227 13227 65472
+STATS 10 860 EMBER 0 7437 7437 65472
+STATS 10 874 EMBER 0 16247 16247 65472
+STATS 10 793 EMBER 0 8506 8506 65472
+STATS 10 781 EMBER 0 14699 14699 65472
+STATS 10 772 EMBER 0 19164 19164 65472
+STATS 10 778 EMBER 0 16247 16247 65472
+STATS 10 813 EMBER 0 14699 14699 65472
+STATS 10 822 EMBER 0 10069 10069 65472
+STATS 10 279 EMBER 0 9537 9537 65472
+STATS 10 275 EMBER 0 11647 11647 65472
+STATS 10 287 EMBER 0 7444 7444 65472
+STATS 10 551 EMBER 0 17656 17656 65472
+STATS 10 566 EMBER 0 10069 10069 65472
+STATS 10 548 EMBER 0 19164 19164 65472
+STATS 10 534 EMBER 0 10069 10069 65472
+STATS 10 516 EMBER 0 19164 19164 65472
+STATS 10 511 EMBER 0 7444 7444 65472
+STATS 10 139 EMBER 0 15728 15728 65472
+STATS 10 151 EMBER 0 9537 9537 65472
+STATS 10 127 EMBER 0 7444 7444 65472
+STATS 10 601 EMBER 0 8506 8506 65472
+STATS 10 604 EMBER 0 7437 7437 65472
+STATS 10 615 EMBER 0 17656 17656 65472
+STATS 10 999 EMBER 0 17656 17656 65472
+STATS 10 996 EMBER 0 19164 19164 65472
+STATS 10 979 EMBER 0 11647 11647 65472
+STATS 10 921 EMBER 0 8506 8506 65472
+STATS 10 935 EMBER 0 17656 17656 65472
+STATS 10 924 EMBER 0 7437 7437 65472
+STATS 10 644 EMBER 0 19164 19164 65472
+STATS 10 650 EMBER 0 16247 16247 65472
+STATS 10 653 EMBER 0 14699 14699 65472
+STATS 10 213 EMBER 0 10597 10597 65472
+STATS 10 232 EMBER 0 17268 17268 65472
+STATS 10 197 EMBER 0 18672 18672 65472
+STATS 10 697 EMBER 0 8506 8506 65472
+STATS 10 700 EMBER 0 7437 7437 65472
+STATS 10 691 EMBER 0 11647 11647 65472
+STATS 10 679 EMBER 0 17656 17656 65472
+STATS 10 662 EMBER 0 10069 10069 65472
+STATS 10 656 EMBER 0 13227 13227 65472
+STATS 10 417 EMBER 0 20684 20684 65472
+STATS 10 415 EMBER 0 7444 7444 65472
+STATS 10 395 EMBER 0 15728 15728 65472
+STATS 10 484 EMBER 0 19164 19164 65472
+STATS 10 487 EMBER 0 17656 17656 65472
+STATS 10 493 EMBER 0 14699 14699 65472
+STATS 10 583 EMBER 0 17656 17656 65472
+STATS 10 592 EMBER 0 13227 13227 65472
+STATS 10 589 EMBER 0 14699 14699 65472
+STATS 10 81 EMBER 0 12699 12699 65472
+STATS 10 108 EMBER 0 15208 15208 65472
+STATS 10 96 EMBER 0 21194 21194 65472
+STATS 10 970 EMBER 0 16247 16247 65472
+STATS 10 969 EMBER 0 16749 16749 65472
+STATS 10 961 EMBER 0 20684 20684 65472
+STATS 10 956 EMBER 0 7437 7437 65472
+STATS 10 906 EMBER 0 16247 16247 65472
+STATS 10 897 EMBER 0 20684 20684 65472
+STATS 10 889 EMBER 0 8506 8506 65472
+STATS 10 1011 EMBER 0 11647 11647 65472
+STATS 10 1008 EMBER 0 13227 13227 65472
+STATS 10 1023 EMBER 0 7444 7444 65472
+STATS 10 337 EMBER 0 12699 12699 65472
+STATS 10 341 EMBER 0 10597 10597 65472
+STATS 10 325 EMBER 0 18672 18672 65472
+STATS 10 46 EMBER 0 14184 14184 65472
+STATS 10 62 EMBER 0 7443 7443 65472
+STATS 10 65 EMBER 0 20684 20684 65472
+STATS 10 3 EMBER 0 19678 19678 65472
+STATS 10 11 EMBER 0 15728 15728 65472
+STATS 10 23 EMBER 0 9537 9537 65472
+STATS 10 717 EMBER 0 14699 14699 65472
+STATS 10 732 EMBER 0 7437 7437 65472
+STATS 10 720 EMBER 0 13227 13227 65472
+STATS 10 352 EMBER 0 21194 21194 65472
+STATS 10 360 EMBER 0 17268 17268 65472
+STATS 10 383 EMBER 0 7444 7444 65472
+STATS 10 182 EMBER 0 10069 10069 65472
+STATS 10 190 EMBER 0 7443 7443 65472
+STATS 10 166 EMBER 0 18170 18170 65472
+STATS 10 761 EMBER 0 8506 8506 65472
+STATS 10 755 EMBER 0 11647 11647 65472
+STATS 10 746 EMBER 0 16247 16247 65472
+STATS 10 314 EMBER 0 7970 7970 65472
+STATS 10 345 EMBER 0 8506 8506 65472
+STATS 10 318 EMBER 0 7443 7443 65472
+STATS 10 42 EMBER 0 16247 16247 65472
+STATS 10 54 EMBER 0 10069 10069 65472
+STATS 10 77 EMBER 0 14699 14699 65472
+STATS 10 58 EMBER 0 7970 7970 65472
+STATS 10 15 EMBER 0 13662 13662 65472
+STATS 10 31 EMBER 0 7444 7444 65472
+STATS 10 34 EMBER 0 20190 20190 65472
+STATS 10 726 EMBER 0 10069 10069 65472
+STATS 10 723 EMBER 0 11647 11647 65472
+STATS 10 740 EMBER 0 19164 19164 65472
+STATS 10 735 EMBER 0 7444 7444 65472
+STATS 10 714 EMBER 0 16247 16247 65472
+STATS 10 376 EMBER 0 9043 9043 65472
+STATS 10 356 EMBER 0 19164 19164 65472
+STATS 10 368 EMBER 0 13227 13227 65472
+STATS 10 364 EMBER 0 15208 15208 65472
+STATS 10 186 EMBER 0 7970 7970 65472
+STATS 10 178 EMBER 0 12178 12178 65472
+STATS 10 159 EMBER 0 7444 7444 65472
+STATS 10 162 EMBER 0 20190 20190 65472
+STATS 10 743 EMBER 0 17656 17656 65472
+STATS 10 767 EMBER 0 7444 7444 65472
+STATS 10 769 EMBER 0 20684 20684 65472
+STATS 10 758 EMBER 0 10069 10069 65472
+STATS 10 749 EMBER 0 14699 14699 65472
+STATS 10 752 EMBER 0 13227 13227 65472
+STATS 10 263 EMBER 0 17656 17656 65472
+STATS 10 267 EMBER 0 15728 15728 65472
+STATS 10 240 EMBER 0 13227 13227 65472
+STATS 10 236 EMBER 0 15208 15208 65472
+STATS 10 429 EMBER 0 14699 14699 65472
+STATS 10 435 EMBER 0 11647 11647 65472
+STATS 10 449 EMBER 0 20684 20684 65472
+STATS 10 854 EMBER 0 10069 10069 65472
+STATS 10 833 EMBER 0 20684 20684 65472
+STATS 10 839 EMBER 0 17656 17656 65472
+STATS 10 851 EMBER 0 11647 11647 65472
+STATS 10 857 EMBER 0 8506 8506 65472
+STATS 10 845 EMBER 0 14699 14699 65472
+STATS 10 831 EMBER 0 7444 7444 65472
+STATS 10 880 EMBER 0 13227 13227 65472
+STATS 10 863 EMBER 0 7444 7444 65472
+STATS 10 868 EMBER 0 19164 19164 65472
+STATS 10 865 EMBER 0 20684 20684 65472
+STATS 10 883 EMBER 0 11647 11647 65472
+STATS 10 799 EMBER 0 7444 7444 65472
+STATS 10 784 EMBER 0 13227 13227 65472
+STATS 10 796 EMBER 0 7437 7437 65472
+STATS 10 787 EMBER 0 11647 11647 65472
+STATS 10 790 EMBER 0 10069 10069 65472
+STATS 10 775 EMBER 0 17656 17656 65472
+STATS 10 828 EMBER 0 7437 7437 65472
+STATS 10 807 EMBER 0 17656 17656 65472
+STATS 10 819 EMBER 0 11647 11647 65472
+STATS 10 816 EMBER 0 13227 13227 65472
+STATS 10 810 EMBER 0 16247 16247 65472
+STATS 10 801 EMBER 0 20684 20684 65472
+STATS 10 283 EMBER 0 7436 7436 65472
+STATS 10 302 EMBER 0 14184 14184 65472
+STATS 10 294 EMBER 0 18170 18170 65472
+STATS 10 291 EMBER 0 19678 19678 65472
+STATS 10 292 EMBER 0 19164 19164 65472
+STATS 10 293 EMBER 0 18672 18672 65472
+STATS 10 290 EMBER 0 20190 20190 65472
+STATS 10 276 EMBER 0 11118 11118 65472
+STATS 10 272 EMBER 0 13227 13227 65472
+STATS 10 560 EMBER 0 13227 13227 65472
+STATS 10 563 EMBER 0 11647 11647 65472
+STATS 10 554 EMBER 0 16247 16247 65472
+STATS 10 537 EMBER 0 8506 8506 65472
+STATS 10 519 EMBER 0 17656 17656 65472
+STATS 10 522 EMBER 0 16247 16247 65472
+STATS 10 525 EMBER 0 14699 14699 65472
+STATS 10 143 EMBER 0 13662 13662 65472
+STATS 10 131 EMBER 0 19678 19678 65472
+STATS 10 128 EMBER 0 21194 21194 65472
+STATS 10 129 EMBER 0 20684 20684 65472
+STATS 10 618 EMBER 0 16247 16247 65472
+STATS 10 612 EMBER 0 19164 19164 65472
+STATS 10 598 EMBER 0 10069 10069 65472
+STATS 10 609 EMBER 0 20684 20684 65472
+STATS 10 621 EMBER 0 14699 14699 65472
+STATS 10 607 EMBER 0 7444 7444 65472
+STATS 10 976 EMBER 0 13227 13227 65472
+STATS 10 985 EMBER 0 8506 8506 65472
+STATS 10 991 EMBER 0 7444 7444 65472
+STATS 10 982 EMBER 0 10069 10069 65472
+STATS 10 1002 EMBER 0 16247 16247 65472
+STATS 10 941 EMBER 0 14699 14699 65472
+STATS 10 918 EMBER 0 10069 10069 65472
+STATS 10 938 EMBER 0 16247 16247 65472
+STATS 10 929 EMBER 0 20684 20684 65472
+STATS 10 944 EMBER 0 13227 13227 65472
+STATS 10 636 EMBER 0 7437 7437 65472
+STATS 10 639 EMBER 0 7444 7444 65472
+STATS 10 647 EMBER 0 17656 17656 65472
+STATS 10 633 EMBER 0 8506 8506 65472
+STATS 10 630 EMBER 0 10069 10069 65472
+STATS 10 641 EMBER 0 20684 20684 65472
+STATS 10 205 EMBER 0 14699 14699 65472
+STATS 10 209 EMBER 0 12699 12699 65472
+STATS 10 221 EMBER 0 7440 7440 65472
+STATS 10 703 EMBER 0 7444 7444 65472
+STATS 10 688 EMBER 0 13227 13227 65472
+STATS 10 685 EMBER 0 14699 14699 65472
+STATS 10 694 EMBER 0 10069 10069 65472
+STATS 10 708 EMBER 0 19164 19164 65472
+STATS 10 707 EMBER 0 19678 19678 65472
+STATS 10 682 EMBER 0 16247 16247 65472
+STATS 10 665 EMBER 0 8506 8506 65472
+STATS 10 671 EMBER 0 7444 7444 65472
+STATS 10 676 EMBER 0 19164 19164 65472
+STATS 10 659 EMBER 0 11647 11647 65472
+STATS 10 668 EMBER 0 7437 7437 65472
+STATS 10 391 EMBER 0 17656 17656 65472
+STATS 10 406 EMBER 0 10069 10069 65472
+STATS 10 420 EMBER 0 19164 19164 65472
+STATS 10 496 EMBER 0 13227 13227 65472
+STATS 10 499 EMBER 0 11647 11647 65472
+STATS 10 508 EMBER 0 7437 7437 65472
+STATS 10 575 EMBER 0 7444 7444 65472
+STATS 10 572 EMBER 0 7437 7437 65472
+STATS 10 586 EMBER 0 16247 16247 65472
+STATS 10 580 EMBER 0 19164 19164 65472
+STATS 10 577 EMBER 0 20684 20684 65472
+STATS 10 116 EMBER 0 11118 11118 65472
+STATS 10 104 EMBER 0 17268 17268 65472
+STATS 10 112 EMBER 0 13227 13227 65472
+STATS 10 85 EMBER 0 10597 10597 65472
+STATS 10 93 EMBER 0 7440 7440 65472
+STATS 10 100 EMBER 0 19164 19164 65472
+STATS 10 967 EMBER 0 17656 17656 65472
+STATS 10 953 EMBER 0 8506 8506 65472
+STATS 10 964 EMBER 0 19164 19164 65472
+STATS 10 947 EMBER 0 11647 11647 65472
+STATS 10 950 EMBER 0 10069 10069 65472
+STATS 10 959 EMBER 0 7444 7444 65472
+STATS 10 461 EMBER 0 14699 14699 65472
+STATS 10 458 EMBER 0 16247 16247 65472
+STATS 10 464 EMBER 0 13227 13227 65472
+STATS 10 476 EMBER 0 7437 7437 65472
+STATS 10 470 EMBER 0 10069 10069 65472
+STATS 10 912 EMBER 0 13227 13227 65472
+STATS 10 903 EMBER 0 17656 17656 65472
+STATS 10 909 EMBER 0 14699 14699 65472
+STATS 10 892 EMBER 0 7437 7437 65472
+STATS 10 891 EMBER 0 7436 7436 65472
+STATS 10 1014 EMBER 0 10069 10069 65472
+STATS 10 1017 EMBER 0 8506 8506 65472
+STATS 10 1020 EMBER 0 7437 7437 65472
+STATS 10 1005 EMBER 0 14699 14699 65472
+STATS 10 1010 EMBER 0 12178 12178 65472
+STATS 10 1007 EMBER 0 13662 13662 65472
+STATS 10 1022 EMBER 0 7443 7443 65472
+STATS 10 1013 EMBER 0 10597 10597 65472
+STATS 10 1016 EMBER 0 9043 9043 65472
+STATS 10 557 EMBER 0 14699 14699 65472
+STATS 10 543 EMBER 0 7444 7444 65472
+STATS 10 545 EMBER 0 20684 20684 65472
+STATS 10 531 EMBER 0 11647 11647 65472
+STATS 10 528 EMBER 0 13227 13227 65472
+STATS 10 513 EMBER 0 20684 20684 65472
+STATS 10 533 EMBER 0 10597 10597 65472
+STATS 10 515 EMBER 0 19678 19678 65472
+STATS 10 130 EMBER 0 20190 20190 65472
+STATS 10 135 EMBER 0 17656 17656 65472
+STATS 10 124 EMBER 0 7437 7437 65472
+STATS 10 136 EMBER 0 17268 17268 65472
+STATS 10 148 EMBER 0 11118 11118 65472
+STATS 10 126 EMBER 0 7443 7443 65472
+STATS 10 624 EMBER 0 13227 13227 65472
+STATS 10 600 EMBER 0 9043 9043 65472
+STATS 10 603 EMBER 0 7436 7436 65472
+STATS 10 988 EMBER 0 7437 7437 65472
+STATS 10 993 EMBER 0 20684 20684 65472
+STATS 10 932 EMBER 0 19164 19164 65472
+STATS 10 927 EMBER 0 7444 7444 65472
+STATS 10 920 EMBER 0 9043 9043 65472
+STATS 10 627 EMBER 0 11647 11647 65472
+STATS 10 643 EMBER 0 19678 19678 65472
+STATS 10 642 EMBER 0 20190 20190 65472
+STATS 10 228 EMBER 0 19164 19164 65472
+STATS 10 224 EMBER 0 21194 21194 65472
+STATS 10 201 EMBER 0 16749 16749 65472
+STATS 10 217 EMBER 0 8506 8506 65472
+STATS 10 706 EMBER 0 20190 20190 65472
+STATS 10 696 EMBER 0 9043 9043 65472
+STATS 10 673 EMBER 0 20684 20684 65472
+STATS 10 678 EMBER 0 18170 18170 65472
+STATS 10 412 EMBER 0 7437 7437 65472
+STATS 10 409 EMBER 0 8506 8506 65472
+STATS 10 403 EMBER 0 11647 11647 65472
+STATS 10 399 EMBER 0 13662 13662 65472
+STATS 10 502 EMBER 0 10069 10069 65472
+STATS 10 481 EMBER 0 20684 20684 65472
+STATS 10 505 EMBER 0 8506 8506 65472
+STATS 10 569 EMBER 0 8506 8506 65472
+STATS 10 595 EMBER 0 11647 11647 65472
+STATS 10 89 EMBER 0 8506 8506 65472
+STATS 10 973 EMBER 0 14699 14699 65472
+STATS 10 968 EMBER 0 17268 17268 65472
+STATS 10 960 EMBER 0 21194 21194 65472
+STATS 10 955 EMBER 0 7436 7436 65472
+STATS 10 455 EMBER 0 17656 17656 65472
+STATS 10 479 EMBER 0 7444 7444 65472
+STATS 10 473 EMBER 0 8506 8506 65472
+STATS 10 467 EMBER 0 11647 11647 65472
+STATS 10 452 EMBER 0 19164 19164 65472
+STATS 10 915 EMBER 0 11647 11647 65472
+STATS 10 895 EMBER 0 7444 7444 65472
+STATS 10 905 EMBER 0 16749 16749 65472
+STATS 10 1019 EMBER 0 7436 7436 65472
+STATS 10 1004 EMBER 0 15208 15208 65472
+STATS 10 1009 EMBER 0 12699 12699 65472
+STATS 10 1006 EMBER 0 14184 14184 65472
+STATS 10 315 EMBER 0 7436 7436 65472
+STATS 10 316 EMBER 0 7437 7437 65472
+STATS 10 317 EMBER 0 7440 7440 65472
+STATS 10 349 EMBER 0 7440 7440 65472
+STATS 10 334 EMBER 0 14184 14184 65472
+STATS 10 69 EMBER 0 18672 18672 65472
+STATS 10 66 EMBER 0 20190 20190 65472
+STATS 10 67 EMBER 0 19678 19678 65472
+STATS 10 68 EMBER 0 19164 19164 65472
+STATS 10 59 EMBER 0 7436 7436 65472
+STATS 10 64 EMBER 0 21194 21194 65472
+STATS 10 19 EMBER 0 11647 11647 65472
+STATS 10 7 EMBER 0 17656 17656 65472
+STATS 10 27 EMBER 0 7436 7436 65472
+STATS 10 38 EMBER 0 18170 18170 65472
+STATS 10 737 EMBER 0 20684 20684 65472
+STATS 10 729 EMBER 0 8506 8506 65472
+STATS 10 716 EMBER 0 15208 15208 65472
+STATS 10 731 EMBER 0 7436 7436 65472
+STATS 10 372 EMBER 0 11118 11118 65472
+STATS 10 387 EMBER 0 19678 19678 65472
+STATS 10 380 EMBER 0 7437 7437 65472
+STATS 10 170 EMBER 0 16247 16247 65472
+STATS 10 174 EMBER 0 14184 14184 65472
+STATS 10 193 EMBER 0 20684 20684 65472
+STATS 10 179 EMBER 0 11647 11647 65472
+STATS 10 180 EMBER 0 11118 11118 65472
+STATS 10 764 EMBER 0 7437 7437 65472
+STATS 10 760 EMBER 0 9043 9043 65472
+STATS 10 248 EMBER 0 9043 9043 65472
+STATS 10 271 EMBER 0 13662 13662 65472
+STATS 10 252 EMBER 0 7437 7437 65472
+STATS 10 254 EMBER 0 7443 7443 65472
+STATS 10 447 EMBER 0 7444 7444 65472
+STATS 10 432 EMBER 0 13227 13227 65472
+STATS 10 441 EMBER 0 8506 8506 65472
+STATS 10 444 EMBER 0 7437 7437 65472
+STATS 10 841 EMBER 0 16749 16749 65472
+STATS 10 835 EMBER 0 19678 19678 65472
+STATS 10 847 EMBER 0 13662 13662 65472
+STATS 10 853 EMBER 0 10597 10597 65472
+STATS 10 886 EMBER 0 10069 10069 65472
+STATS 10 885 EMBER 0 10597 10597 65472
+STATS 10 792 EMBER 0 9043 9043 65472
+STATS 10 791 EMBER 0 9537 9537 65472
+STATS 10 800 EMBER 0 21194 21194 65472
+STATS 10 825 EMBER 0 8506 8506 65472
+STATS 10 284 EMBER 0 7437 7437 65472
+STATS 10 280 EMBER 0 9043 9043 65472
+STATS 10 992 EMBER 0 21194 21194 65472
+STATS 10 995 EMBER 0 19678 19678 65472
+STATS 10 978 EMBER 0 12178 12178 65472
+STATS 10 934 EMBER 0 18170 18170 65472
+STATS 10 923 EMBER 0 7436 7436 65472
+STATS 10 940 EMBER 0 15208 15208 65472
+STATS 10 917 EMBER 0 10597 10597 65472
+STATS 10 937 EMBER 0 16749 16749 65472
+STATS 10 652 EMBER 0 15208 15208 65472
+STATS 10 635 EMBER 0 7436 7436 65472
+STATS 10 638 EMBER 0 7443 7443 65472
+STATS 10 646 EMBER 0 18170 18170 65472
+STATS 10 210 EMBER 0 12178 12178 65472
+STATS 10 229 EMBER 0 18672 18672 65472
+STATS 10 699 EMBER 0 7436 7436 65472
+STATS 10 690 EMBER 0 12178 12178 65472
+STATS 10 661 EMBER 0 10597 10597 65472
+STATS 10 677 EMBER 0 18672 18672 65472
+STATS 10 681 EMBER 0 16749 16749 65472
+STATS 10 416 EMBER 0 21194 21194 65472
+STATS 10 414 EMBER 0 7443 7443 65472
+STATS 10 490 EMBER 0 16247 16247 65472
+STATS 10 483 EMBER 0 19678 19678 65472
+STATS 10 486 EMBER 0 18170 18170 65472
+STATS 10 492 EMBER 0 15208 15208 65472
+STATS 10 582 EMBER 0 18170 18170 65472
+STATS 10 581 EMBER 0 18672 18672 65472
+STATS 10 588 EMBER 0 15208 15208 65472
+STATS 10 587 EMBER 0 15728 15728 65472
+STATS 10 78 EMBER 0 14184 14184 65472
+STATS 10 79 EMBER 0 13662 13662 65472
+STATS 10 80 EMBER 0 13227 13227 65472
+STATS 10 113 EMBER 0 12699 12699 65472
+STATS 10 101 EMBER 0 18672 18672 65472
+STATS 10 966 EMBER 0 18170 18170 65472
+STATS 10 965 EMBER 0 18672 18672 65472
+STATS 10 952 EMBER 0 9043 9043 65472
+STATS 10 946 EMBER 0 12178 12178 65472
+STATS 10 949 EMBER 0 10597 10597 65472
+STATS 10 958 EMBER 0 7443 7443 65472
+STATS 10 460 EMBER 0 15208 15208 65472
+STATS 10 457 EMBER 0 16749 16749 65472
+STATS 10 463 EMBER 0 13662 13662 65472
+STATS 10 475 EMBER 0 7436 7436 65472
+STATS 10 469 EMBER 0 10597 10597 65472
+STATS 10 454 EMBER 0 18170 18170 65472
+STATS 10 453 EMBER 0 18672 18672 65472
+STATS 10 472 EMBER 0 9043 9043 65472
+STATS 10 466 EMBER 0 12178 12178 65472
+STATS 10 451 EMBER 0 19678 19678 65472
+STATS 10 459 EMBER 0 15728 15728 65472
+STATS 10 896 EMBER 0 21194 21194 65472
+STATS 10 888 EMBER 0 9043 9043 65472
+STATS 10 1021 EMBER 0 7440 7440 65472
+STATS 10 1012 EMBER 0 11118 11118 65472
+STATS 10 1015 EMBER 0 9537 9537 65472
+STATS 10 338 EMBER 0 12178 12178 65472
+STATS 10 322 EMBER 0 20190 20190 65472
+STATS 10 311 EMBER 0 9537 9537 65472
+STATS 10 39 EMBER 0 17656 17656 65472
+STATS 10 63 EMBER 0 7444 7444 65472
+STATS 10 74 EMBER 0 16247 16247 65472
+STATS 10 0 EMBER 0 21194 21194 65472
+STATS 10 8 EMBER 0 17268 17268 65472
+STATS 10 20 EMBER 0 11118 11118 65472
+STATS 10 12 EMBER 0 15208 15208 65472
+STATS 10 719 EMBER 0 13662 13662 65472
+STATS 10 725 EMBER 0 10597 10597 65472
+STATS 10 722 EMBER 0 12178 12178 65472
+STATS 10 351 EMBER 0 7444 7444 65472
+STATS 10 357 EMBER 0 18672 18672 65472
+STATS 10 382 EMBER 0 7443 7443 65472
+STATS 10 181 EMBER 0 10597 10597 65472
+STATS 10 183 EMBER 0 9537 9537 65472
+STATS 10 175 EMBER 0 13662 13662 65472
+STATS 10 156 EMBER 0 7437 7437 65472
+STATS 10 754 EMBER 0 12178 12178 65472
+STATS 10 745 EMBER 0 16749 16749 65472
+STATS 10 256 EMBER 0 21194 21194 65472
+STATS 10 241 EMBER 0 12699 12699 65472
+STATS 10 260 EMBER 0 19164 19164 65472
+STATS 10 422 EMBER 0 18170 18170 65472
+STATS 10 425 EMBER 0 16749 16749 65472
+STATS 10 437 EMBER 0 10597 10597 65472
+STATS 10 428 EMBER 0 15208 15208 65472
+STATS 10 832 EMBER 0 21194 21194 65472
+STATS 10 838 EMBER 0 18170 18170 65472
+STATS 10 850 EMBER 0 12178 12178 65472
+STATS 10 884 EMBER 0 11118 11118 65472
+STATS 10 859 EMBER 0 7436 7436 65472
+STATS 10 873 EMBER 0 16749 16749 65472
+STATS 10 771 EMBER 0 19678 19678 65472
+STATS 10 777 EMBER 0 16749 16749 65472
+STATS 10 804 EMBER 0 19164 19164 65472
+STATS 10 812 EMBER 0 15208 15208 65472
+STATS 10 299 EMBER 0 15728 15728 65472
+STATS 10 300 EMBER 0 15208 15208 65472
+STATS 10 301 EMBER 0 14699 14699 65472
+STATS 10 298 EMBER 0 16247 16247 65472
+STATS 10 540 EMBER 0 7437 7437 65472
+STATS 10 550 EMBER 0 18170 18170 65472
+STATS 10 565 EMBER 0 10597 10597 65472
+STATS 10 510 EMBER 0 7443 7443 65472
+STATS 10 536 EMBER 0 9043 9043 65472
+STATS 10 518 EMBER 0 18170 18170 65472
+STATS 10 521 EMBER 0 16749 16749 65472
+STATS 10 140 EMBER 0 15208 15208 65472
+STATS 10 141 EMBER 0 14699 14699 65472
+STATS 10 142 EMBER 0 14184 14184 65472
+STATS 10 614 EMBER 0 18170 18170 65472
+STATS 10 617 EMBER 0 16749 16749 65472
+STATS 10 611 EMBER 0 19678 19678 65472
+STATS 10 261 EMBER 0 18672 18672 65472
+STATS 10 262 EMBER 0 18170 18170 65472
+STATS 10 233 EMBER 0 16749 16749 65472
+STATS 10 245 EMBER 0 10597 10597 65472
+STATS 10 434 EMBER 0 12178 12178 65472
+STATS 10 448 EMBER 0 21194 21194 65472
+STATS 10 856 EMBER 0 9043 9043 65472
+STATS 10 844 EMBER 0 15208 15208 65472
+STATS 10 830 EMBER 0 7443 7443 65472
+STATS 10 879 EMBER 0 13662 13662 65472
+STATS 10 798 EMBER 0 7443 7443 65472
+STATS 10 783 EMBER 0 13662 13662 65472
+STATS 10 795 EMBER 0 7436 7436 65472
+STATS 10 811 EMBER 0 15728 15728 65472
+STATS 10 827 EMBER 0 7436 7436 65472
+STATS 10 289 EMBER 0 20684 20684 65472
+STATS 10 277 EMBER 0 10597 10597 65472
+STATS 10 273 EMBER 0 12699 12699 65472
+STATS 10 547 EMBER 0 19678 19678 65472
+STATS 10 559 EMBER 0 13662 13662 65472
+STATS 10 562 EMBER 0 12178 12178 65472
+STATS 10 553 EMBER 0 16749 16749 65472
+STATS 10 524 EMBER 0 15208 15208 65472
+STATS 10 530 EMBER 0 12178 12178 65472
+STATS 10 512 EMBER 0 21194 21194 65472
+STATS 10 527 EMBER 0 13662 13662 65472
+STATS 10 147 EMBER 0 11647 11647 65472
+STATS 10 132 EMBER 0 19164 19164 65472
+STATS 10 121 EMBER 0 8506 8506 65472
+STATS 10 597 EMBER 0 10597 10597 65472
+STATS 10 608 EMBER 0 21194 21194 65472
+STATS 10 620 EMBER 0 15208 15208 65472
+STATS 10 975 EMBER 0 13662 13662 65472
+STATS 10 984 EMBER 0 9043 9043 65472
+STATS 10 990 EMBER 0 7443 7443 65472
+STATS 10 928 EMBER 0 21194 21194 65472
+STATS 10 943 EMBER 0 13662 13662 65472
+STATS 10 931 EMBER 0 19678 19678 65472
+STATS 10 632 EMBER 0 9043 9043 65472
+STATS 10 629 EMBER 0 10597 10597 65472
+STATS 10 640 EMBER 0 21194 21194 65472
+STATS 10 626 EMBER 0 12178 12178 65472
+STATS 10 625 EMBER 0 12699 12699 65472
+STATS 10 651 EMBER 0 15728 15728 65472
+STATS 10 194 EMBER 0 20190 20190 65472
+STATS 10 202 EMBER 0 16247 16247 65472
+STATS 10 702 EMBER 0 7443 7443 65472
+STATS 10 687 EMBER 0 13662 13662 65472
+STATS 10 680 EMBER 0 17268 17268 65472
+STATS 10 670 EMBER 0 7443 7443 65472
+STATS 10 675 EMBER 0 19678 19678 65472
+STATS 10 392 EMBER 0 17268 17268 65472
+STATS 10 388 EMBER 0 19164 19164 65472
+STATS 10 405 EMBER 0 10597 10597 65472
+STATS 10 419 EMBER 0 19678 19678 65472
+STATS 10 495 EMBER 0 13662 13662 65472
+STATS 10 498 EMBER 0 12178 12178 65472
+STATS 10 571 EMBER 0 7436 7436 65472
+STATS 10 585 EMBER 0 16749 16749 65472
+STATS 10 579 EMBER 0 19678 19678 65472
+STATS 10 109 EMBER 0 14699 14699 65472
+STATS 10 82 EMBER 0 12178 12178 65472
+STATS 10 957 EMBER 0 7440 7440 65472
+STATS 10 954 EMBER 0 7970 7970 65472
+STATS 10 963 EMBER 0 19678 19678 65472
+STATS 10 951 EMBER 0 9537 9537 65472
+STATS 10 945 EMBER 0 12699 12699 65472
+STATS 10 456 EMBER 0 17268 17268 65472
+STATS 10 462 EMBER 0 14184 14184 65472
+STATS 10 474 EMBER 0 7970 7970 65472
+STATS 10 468 EMBER 0 11118 11118 65472
+STATS 10 478 EMBER 0 7443 7443 65472
+STATS 10 471 EMBER 0 9537 9537 65472
+STATS 10 465 EMBER 0 12699 12699 65472
+STATS 10 911 EMBER 0 13662 13662 65472
+STATS 10 902 EMBER 0 18170 18170 65472
+STATS 10 1018 EMBER 0 7970 7970 65472
+STATS 10 1003 EMBER 0 15728 15728 65472
+STATS 10 342 EMBER 0 10069 10069 65472
+STATS 10 329 EMBER 0 16749 16749 65472
+STATS 10 333 EMBER 0 14699 14699 65472
+STATS 10 55 EMBER 0 9537 9537 65472
+STATS 10 56 EMBER 0 9043 9043 65472
+STATS 10 57 EMBER 0 8506 8506 65472
+STATS 10 28 EMBER 0 7437 7437 65472
+STATS 10 33 EMBER 0 20684 20684 65472
+STATS 10 16 EMBER 0 13227 13227 65472
+STATS 10 4 EMBER 0 19164 19164 65472
+STATS 10 739 EMBER 0 19678 19678 65472
+STATS 10 734 EMBER 0 7443 7443 65472
+STATS 10 713 EMBER 0 16749 16749 65472
+STATS 10 373 EMBER 0 10597 10597 65472
+STATS 10 374 EMBER 0 10069 10069 65472
+STATS 10 375 EMBER 0 9537 9537 65472
+STATS 10 161 EMBER 0 20684 20684 65472
+STATS 10 167 EMBER 0 17656 17656 65472
+STATS 10 171 EMBER 0 15728 15728 65472
+STATS 10 742 EMBER 0 18170 18170 65472
+STATS 10 766 EMBER 0 7443 7443 65472
+STATS 10 768 EMBER 0 21194 21194 65472
+STATS 10 268 EMBER 0 15208 15208 65472
+STATS 10 249 EMBER 0 8506 8506 65472
+STATS 10 253 EMBER 0 7440 7440 65472
+STATS 10 446 EMBER 0 7443 7443 65472
+STATS 10 431 EMBER 0 13662 13662 65472
+STATS 10 440 EMBER 0 9043 9043 65472
+STATS 10 443 EMBER 0 7436 7436 65472
+STATS 10 840 EMBER 0 17268 17268 65472
+STATS 10 834 EMBER 0 20190 20190 65472
+STATS 10 846 EMBER 0 14184 14184 65472
+STATS 10 862 EMBER 0 7443 7443 65472
+STATS 10 867 EMBER 0 19678 19678 65472
+STATS 10 864 EMBER 0 21194 21194 65472
+STATS 10 786 EMBER 0 12178 12178 65472
+STATS 10 789 EMBER 0 10597 10597 65472
+STATS 10 774 EMBER 0 18170 18170 65472
+STATS 10 806 EMBER 0 18170 18170 65472
+STATS 10 818 EMBER 0 12178 12178 65472
+STATS 10 815 EMBER 0 13662 13662 65472
+STATS 10 285 EMBER 0 7440 7440 65472
+STATS 10 281 EMBER 0 8506 8506 65472
+STATS 10 556 EMBER 0 15208 15208 65472
+STATS 10 542 EMBER 0 7443 7443 65472
+STATS 10 544 EMBER 0 21194 21194 65472
+STATS 10 532 EMBER 0 11118 11118 65472
+STATS 10 514 EMBER 0 20190 20190 65472
+STATS 10 509 EMBER 0 7440 7440 65472
+STATS 10 137 EMBER 0 16749 16749 65472
+STATS 10 149 EMBER 0 10597 10597 65472
+STATS 10 606 EMBER 0 7443 7443 65472
+STATS 10 623 EMBER 0 13662 13662 65472
+STATS 10 981 EMBER 0 10597 10597 65472
+STATS 10 1001 EMBER 0 16749 16749 65472
+STATS 10 987 EMBER 0 7436 7436 65472
+STATS 10 926 EMBER 0 7443 7443 65472
+STATS 10 925 EMBER 0 7440 7440 65472
+STATS 10 933 EMBER 0 18672 18672 65472
+STATS 10 634 EMBER 0 7970 7970 65472
+STATS 10 637 EMBER 0 7440 7440 65472
+STATS 10 645 EMBER 0 18672 18672 65472
+STATS 10 206 EMBER 0 14184 14184 65472
+STATS 10 218 EMBER 0 7970 7970 65472
+STATS 10 225 EMBER 0 20684 20684 65472
+STATS 10 684 EMBER 0 15208 15208 65472
+STATS 10 693 EMBER 0 10597 10597 65472
+STATS 10 658 EMBER 0 12178 12178 65472
+STATS 10 667 EMBER 0 7436 7436 65472
+STATS 10 411 EMBER 0 7436 7436 65472
+STATS 10 408 EMBER 0 9043 9043 65472
+STATS 10 507 EMBER 0 7436 7436 65472
+STATS 10 501 EMBER 0 10597 10597 65472
+STATS 10 480 EMBER 0 21194 21194 65472
+STATS 10 504 EMBER 0 9043 9043 65472
+STATS 10 576 EMBER 0 21194 21194 65472
+STATS 10 568 EMBER 0 9043 9043 65472
+STATS 10 594 EMBER 0 12178 12178 65472
+STATS 10 593 EMBER 0 12699 12699 65472
+STATS 10 574 EMBER 0 7443 7443 65472
+STATS 10 90 EMBER 0 7970 7970 65472
+STATS 10 97 EMBER 0 20684 20684 65472
+STATS 10 86 EMBER 0 10069 10069 65472
+STATS 10 948 EMBER 0 11118 11118 65472
+STATS 10 972 EMBER 0 15208 15208 65472
+STATS 10 450 EMBER 0 20190 20190 65472
+STATS 10 477 EMBER 0 7440 7440 65472
+STATS 10 908 EMBER 0 15208 15208 65472
+STATS 10 900 EMBER 0 19164 19164 65472
+Nic 1005 received 111507 bytes
+Nic 1023 received 111507 bytes
+Nic 1008 received 111507 bytes
+STATS 10 321 EMBER 0 20684 20684 65472
+STATS 10 346 EMBER 0 7970 7970 65472
+STATS 10 43 EMBER 0 15728 15728 65472
+STATS 10 60 EMBER 0 7437 7437 65472
+STATS 10 51 EMBER 0 11647 11647 65472
+STATS 10 24 EMBER 0 9043 9043 65472
+STATS 10 25 EMBER 0 8506 8506 65472
+STATS 10 26 EMBER 0 7970 7970 65472
+STATS 10 35 EMBER 0 19678 19678 65472
+STATS 10 1 EMBER 0 20684 20684 65472
+STATS 10 712 EMBER 0 17268 17268 65472
+STATS 10 728 EMBER 0 9043 9043 65472
+STATS 10 715 EMBER 0 15728 15728 65472
+STATS 10 361 EMBER 0 16749 16749 65472
+STATS 10 369 EMBER 0 12699 12699 65472
+STATS 10 192 EMBER 0 21194 21194 65472
+STATS 10 187 EMBER 0 7436 7436 65472
+STATS 10 757 EMBER 0 10597 10597 65472
+STATS 10 748 EMBER 0 15208 15208 65472
+STATS 10 751 EMBER 0 13662 13662 65472
+STATS 10 763 EMBER 0 7436 7436 65472
+STATS 10 759 EMBER 0 9537 9537 65472
+STATS 10 105 EMBER 0 16749 16749 65472
+STATS 10 95 EMBER 0 7444 7444 65472
+STATS 10 114 EMBER 0 12178 12178 65472
+STATS 10 102 EMBER 0 18170 18170 65472
+STATS 10 962 EMBER 0 20190 20190 65472
+STATS 10 971 EMBER 0 15728 15728 65472
+STATS 10 890 EMBER 0 7970 7970 65472
+STATS 10 914 EMBER 0 12178 12178 65472
+STATS 10 894 EMBER 0 7443 7443 65472
+STATS 10 904 EMBER 0 17268 17268 65472
+Nic 1017 received 111507 bytes
+Nic 1011 received 111507 bytes
+Nic 1020 received 111507 bytes
+STATS 10 335 EMBER 0 13662 13662 65472
+STATS 10 339 EMBER 0 11647 11647 65472
+STATS 10 323 EMBER 0 19678 19678 65472
+STATS 10 312 EMBER 0 9043 9043 65472
+STATS 10 40 EMBER 0 17268 17268 65472
+STATS 10 75 EMBER 0 15728 15728 65472
+STATS 10 76 EMBER 0 15208 15208 65472
+STATS 10 9 EMBER 0 16749 16749 65472
+STATS 10 21 EMBER 0 10597 10597 65472
+STATS 10 13 EMBER 0 14699 14699 65472
+STATS 10 29 EMBER 0 7440 7440 65472
+STATS 10 32 EMBER 0 21194 21194 65472
+STATS 10 730 EMBER 0 7970 7970 65472
+STATS 10 718 EMBER 0 14184 14184 65472
+STATS 10 724 EMBER 0 11118 11118 65472
+STATS 10 384 EMBER 0 21194 21194 65472
+STATS 10 377 EMBER 0 8506 8506 65472
+STATS 10 350 EMBER 0 7443 7443 65472
+STATS 10 358 EMBER 0 18170 18170 65472
+STATS 10 163 EMBER 0 19678 19678 65472
+STATS 10 184 EMBER 0 9043 9043 65472
+STATS 10 176 EMBER 0 13227 13227 65472
+STATS 10 157 EMBER 0 7440 7440 65472
+STATS 10 753 EMBER 0 12699 12699 65472
+STATS 10 744 EMBER 0 17268 17268 65472
+STATS 10 257 EMBER 0 20684 20684 65472
+STATS 10 242 EMBER 0 12178 12178 65472
+STATS 10 264 EMBER 0 17268 17268 65472
+STATS 10 421 EMBER 0 18672 18672 65472
+STATS 10 424 EMBER 0 17268 17268 65472
+STATS 10 852 EMBER 0 11118 11118 65472
+STATS 10 837 EMBER 0 18672 18672 65472
+STATS 10 882 EMBER 0 12178 12178 65472
+STATS 10 871 EMBER 0 17656 17656 65472
+STATS 10 877 EMBER 0 14699 14699 65472
+STATS 10 780 EMBER 0 15208 15208 65472
+STATS 10 770 EMBER 0 20190 20190 65472
+STATS 10 776 EMBER 0 17268 17268 65472
+STATS 10 797 EMBER 0 7440 7440 65472
+STATS 10 809 EMBER 0 16749 16749 65472
+STATS 10 824 EMBER 0 9043 9043 65472
+STATS 10 803 EMBER 0 19678 19678 65472
+STATS 10 310 EMBER 0 10069 10069 65472
+STATS 10 306 EMBER 0 12178 12178 65472
+STATS 10 295 EMBER 0 17656 17656 65472
+STATS 10 539 EMBER 0 7436 7436 65472
+STATS 10 549 EMBER 0 18672 18672 65472
+STATS 10 535 EMBER 0 9537 9537 65472
+STATS 10 517 EMBER 0 18672 18672 65472
+STATS 10 520 EMBER 0 17268 17268 65472
+STATS 10 523 EMBER 0 15728 15728 65472
+STATS 10 529 EMBER 0 12699 12699 65472
+STATS 10 125 EMBER 0 7440 7440 65472
+STATS 10 120 EMBER 0 9043 9043 65472
+STATS 10 155 EMBER 0 7436 7436 65472
+STATS 10 622 EMBER 0 14184 14184 65472
+STATS 10 602 EMBER 0 7970 7970 65472
+STATS 10 613 EMBER 0 18672 18672 65472
+STATS 10 998 EMBER 0 18170 18170 65472
+STATS 10 994 EMBER 0 20190 20190 65472
+STATS 10 922 EMBER 0 7970 7970 65472
+STATS 10 939 EMBER 0 15728 15728 65472
+STATS 10 916 EMBER 0 11118 11118 65472
+STATS 10 936 EMBER 0 17268 17268 65472
+STATS 10 631 EMBER 0 9537 9537 65472
+STATS 10 628 EMBER 0 11118 11118 65472
+STATS 10 649 EMBER 0 16749 16749 65472
+STATS 10 648 EMBER 0 17268 17268 65472
+STATS 10 223 EMBER 0 7444 7444 65472
+STATS 10 198 EMBER 0 18170 18170 65472
+STATS 10 214 EMBER 0 10069 10069 65472
+STATS 10 711 EMBER 0 17656 17656 65472
+STATS 10 705 EMBER 0 20684 20684 65472
+STATS 10 672 EMBER 0 21194 21194 65472
+STATS 10 655 EMBER 0 13662 13662 65472
+STATS 10 660 EMBER 0 11118 11118 65472
+STATS 10 400 EMBER 0 13227 13227 65472
+STATS 10 396 EMBER 0 15208 15208 65472
+STATS 10 413 EMBER 0 7440 7440 65472
+STATS 10 393 EMBER 0 16749 16749 65472
+STATS 10 489 EMBER 0 16749 16749 65472
+STATS 10 482 EMBER 0 20190 20190 65472
+STATS 10 573 EMBER 0 7440 7440 65472
+STATS 10 584 EMBER 0 17268 17268 65472
+STATS 10 389 EMBER 0 18672 18672 65472
+STATS 10 404 EMBER 0 11118 11118 65472
+STATS 10 485 EMBER 0 18672 18672 65472
+STATS 10 491 EMBER 0 15728 15728 65472
+STATS 10 494 EMBER 0 14184 14184 65472
+STATS 10 497 EMBER 0 12699 12699 65472
+STATS 10 578 EMBER 0 20190 20190 65472
+STATS 10 567 EMBER 0 9537 9537 65472
+STATS 10 591 EMBER 0 13662 13662 65472
+STATS 10 570 EMBER 0 7970 7970 65472
+STATS 10 110 EMBER 0 14184 14184 65472
+STATS 10 83 EMBER 0 11647 11647 65472
+Nic 950 received 111507 bytes
+Nic 970 received 111507 bytes
+Nic 467 received 111507 bytes
+STATS 10 887 EMBER 0 9537 9537 65472
+STATS 10 910 EMBER 0 14184 14184 65472
+Nic 1007 received 111507 bytes
+STATS 10 343 EMBER 0 9537 9537 65472
+STATS 10 326 EMBER 0 18170 18170 65472
+STATS 10 73 EMBER 0 16749 16749 65472
+STATS 10 44 EMBER 0 15208 15208 65472
+STATS 10 61 EMBER 0 7440 7440 65472
+STATS 10 17 EMBER 0 12699 12699 65472
+STATS 10 5 EMBER 0 18672 18672 65472
+STATS 10 6 EMBER 0 18170 18170 65472
+STATS 10 2 EMBER 0 20190 20190 65472
+STATS 10 721 EMBER 0 12699 12699 65472
+STATS 10 738 EMBER 0 20190 20190 65472
+STATS 10 381 EMBER 0 7440 7440 65472
+STATS 10 353 EMBER 0 20684 20684 65472
+STATS 10 160 EMBER 0 21194 21194 65472
+STATS 10 168 EMBER 0 17268 17268 65472
+STATS 10 172 EMBER 0 15208 15208 65472
+STATS 10 191 EMBER 0 7444 7444 65472
+STATS 10 741 EMBER 0 18672 18672 65472
+STATS 10 765 EMBER 0 7440 7440 65472
+STATS 10 756 EMBER 0 11118 11118 65472
+STATS 10 237 EMBER 0 14699 14699 65472
+STATS 10 234 EMBER 0 16247 16247 65472
+STATS 10 246 EMBER 0 10069 10069 65472
+STATS 10 269 EMBER 0 14699 14699 65472
+STATS 10 436 EMBER 0 11118 11118 65472
+STATS 10 427 EMBER 0 15728 15728 65472
+STATS 10 433 EMBER 0 12699 12699 65472
+STATS 10 445 EMBER 0 7440 7440 65472
+STATS 10 849 EMBER 0 12699 12699 65472
+STATS 10 855 EMBER 0 9537 9537 65472
+STATS 10 843 EMBER 0 15728 15728 65472
+STATS 10 829 EMBER 0 7440 7440 65472
+STATS 10 858 EMBER 0 7970 7970 65472
+STATS 10 872 EMBER 0 17268 17268 65472
+STATS 10 782 EMBER 0 14184 14184 65472
+STATS 10 794 EMBER 0 7970 7970 65472
+STATS 10 785 EMBER 0 12699 12699 65472
+STATS 10 802 EMBER 0 20190 20190 65472
+STATS 10 826 EMBER 0 7970 7970 65472
+STATS 10 288 EMBER 0 21194 21194 65472
+STATS 10 278 EMBER 0 10069 10069 65472
+STATS 10 274 EMBER 0 12178 12178 65472
+STATS 10 286 EMBER 0 7443 7443 65472
+STATS 10 282 EMBER 0 7970 7970 65472
+STATS 10 564 EMBER 0 11118 11118 65472
+STATS 10 546 EMBER 0 20190 20190 65472
+STATS 10 558 EMBER 0 14184 14184 65472
+STATS 10 561 EMBER 0 12699 12699 65472
+STATS 10 552 EMBER 0 17268 17268 65472
+STATS 10 555 EMBER 0 15728 15728 65472
+STATS 10 541 EMBER 0 7440 7440 65472
+STATS 10 526 EMBER 0 14184 14184 65472
+STATS 10 144 EMBER 0 13227 13227 65472
+STATS 10 152 EMBER 0 9043 9043 65472
+STATS 10 122 EMBER 0 7970 7970 65472
+STATS 10 138 EMBER 0 16247 16247 65472
+STATS 10 616 EMBER 0 17268 17268 65472
+STATS 10 610 EMBER 0 20190 20190 65472
+STATS 10 596 EMBER 0 11118 11118 65472
+STATS 10 619 EMBER 0 15728 15728 65472
+STATS 10 977 EMBER 0 12699 12699 65472
+STATS 10 974 EMBER 0 14184 14184 65472
+STATS 10 983 EMBER 0 9537 9537 65472
+STATS 10 942 EMBER 0 14184 14184 65472
+STATS 10 930 EMBER 0 20190 20190 65472
+STATS 10 919 EMBER 0 9537 9537 65472
+Nic 639 received 111507 bytes
+Nic 644 received 111507 bytes
+STATS 10 211 EMBER 0 11647 11647 65472
+STATS 10 230 EMBER 0 18170 18170 65472
+STATS 10 195 EMBER 0 19678 19678 65472
+STATS 10 695 EMBER 0 9537 9537 65472
+STATS 10 698 EMBER 0 7970 7970 65472
+STATS 10 689 EMBER 0 12699 12699 65472
+STATS 10 701 EMBER 0 7440 7440 65472
+STATS 10 664 EMBER 0 9043 9043 65472
+STATS 10 669 EMBER 0 7440 7440 65472
+STATS 10 674 EMBER 0 20190 20190 65472
+STATS 10 657 EMBER 0 12699 12699 65472
+STATS 10 666 EMBER 0 7970 7970 65472
+Nic 924 received 111507 bytes
+Nic 929 received 111507 bytes
+Nic 653 received 111507 bytes
+Nic 647 received 111507 bytes
+Nic 627 received 111507 bytes
+Nic 630 received 111507 bytes
+Nic 633 received 111507 bytes
+STATS 10 203 EMBER 0 15728 15728 65472
+STATS 10 207 EMBER 0 13662 13662 65472
+STATS 10 219 EMBER 0 7436 7436 65472
+STATS 10 686 EMBER 0 14184 14184 65472
+STATS 10 683 EMBER 0 15728 15728 65472
+STATS 10 654 EMBER 0 14184 14184 65472
+STATS 10 663 EMBER 0 9537 9537 65472
+STATS 10 418 EMBER 0 20190 20190 65472
+STATS 10 410 EMBER 0 7970 7970 65472
+STATS 10 407 EMBER 0 9537 9537 65472
+STATS 10 401 EMBER 0 12699 12699 65472
+STATS 10 506 EMBER 0 7970 7970 65472
+STATS 10 500 EMBER 0 11118 11118 65472
+STATS 10 503 EMBER 0 9537 9537 65472
+STATS 10 590 EMBER 0 14184 14184 65472
+STATS 10 91 EMBER 0 7436 7436 65472
+STATS 10 98 EMBER 0 20190 20190 65472
+STATS 10 87 EMBER 0 9537 9537 65472
+STATS 10 88 EMBER 0 9043 9043 65472
+Nic 973 received 111507 bytes
+Nic 953 received 111507 bytes
+Nic 967 received 111507 bytes
+Nic 964 received 111507 bytes
+Nic 959 received 111507 bytes
+Nic 956 received 111507 bytes
+Nic 452 received 111507 bytes
+Nic 464 received 111507 bytes
+Nic 473 received 111507 bytes
+STATS 10 901 EMBER 0 18672 18672 65472
+STATS 10 907 EMBER 0 15728 15728 65472
+STATS 10 899 EMBER 0 19678 19678 65472
+Nic 1014 received 111507 bytes
+STATS 10 330 EMBER 0 16247 16247 65472
+STATS 10 320 EMBER 0 21194 21194 65472
+STATS 10 319 EMBER 0 7444 7444 65472
+STATS 10 52 EMBER 0 11118 11118 65472
+STATS 10 41 EMBER 0 16749 16749 65472
+STATS 10 50 EMBER 0 12178 12178 65472
+STATS 10 10 EMBER 0 16247 16247 65472
+STATS 10 22 EMBER 0 10069 10069 65472
+STATS 10 14 EMBER 0 14184 14184 65472
+STATS 10 30 EMBER 0 7443 7443 65472
+STATS 10 18 EMBER 0 12178 12178 65472
+STATS 10 733 EMBER 0 7440 7440 65472
+STATS 10 736 EMBER 0 21194 21194 65472
+STATS 10 727 EMBER 0 9537 9537 65472
+STATS 10 365 EMBER 0 14699 14699 65472
+STATS 10 362 EMBER 0 16247 16247 65472
+STATS 10 363 EMBER 0 15728 15728 65472
+STATS 10 385 EMBER 0 20684 20684 65472
+STATS 10 188 EMBER 0 7437 7437 65472
+STATS 10 747 EMBER 0 15728 15728 65472
+STATS 10 750 EMBER 0 14184 14184 65472
+STATS 10 762 EMBER 0 7970 7970 65472
+STATS 10 250 EMBER 0 7970 7970 65472
+STATS 10 258 EMBER 0 20190 20190 65472
+STATS 10 243 EMBER 0 11647 11647 65472
+STATS 10 265 EMBER 0 16749 16749 65472
+STATS 10 238 EMBER 0 14184 14184 65472
+STATS 10 235 EMBER 0 15728 15728 65472
+STATS 10 430 EMBER 0 14184 14184 65472
+STATS 10 439 EMBER 0 9537 9537 65472
+STATS 10 442 EMBER 0 7970 7970 65472
+Nic 842 received 111507 bytes
+Nic 839 received 111507 bytes
+STATS 10 878 EMBER 0 14184 14184 65472
+STATS 10 861 EMBER 0 7440 7440 65472
+STATS 10 866 EMBER 0 20190 20190 65472
+STATS 10 881 EMBER 0 12699 12699 65472
+STATS 10 788 EMBER 0 11118 11118 65472
+STATS 10 773 EMBER 0 18672 18672 65472
+STATS 10 805 EMBER 0 18672 18672 65472
+STATS 10 817 EMBER 0 12699 12699 65472
+STATS 10 814 EMBER 0 14184 14184 65472
+STATS 10 808 EMBER 0 17268 17268 65472
+STATS 10 303 EMBER 0 13662 13662 65472
+STATS 10 296 EMBER 0 17268 17268 65472
+STATS 10 538 EMBER 0 7970 7970 65472
+Nic 537 received 111507 bytes
+Nic 522 received 111507 bytes
+STATS 10 150 EMBER 0 10069 10069 65472
+STATS 10 117 EMBER 0 10597 10597 65472
+STATS 10 605 EMBER 0 7440 7440 65472
+STATS 10 599 EMBER 0 9537 9537 65472
+STATS 10 989 EMBER 0 7440 7440 65472
+STATS 10 980 EMBER 0 11118 11118 65472
+STATS 10 1000 EMBER 0 17268 17268 65472
+STATS 10 986 EMBER 0 7970 7970 65472
+STATS 10 997 EMBER 0 18672 18672 65472
+Nic 932 received 111507 bytes
+Nic 927 received 111507 bytes
+Nic 636 received 111507 bytes
+STATS 10 226 EMBER 0 20190 20190 65472
+STATS 10 692 EMBER 0 11118 11118 65472
+STATS 10 710 EMBER 0 18170 18170 65472
+STATS 10 704 EMBER 0 21194 21194 65472
+STATS 10 709 EMBER 0 18672 18672 65472
+Nic 662 received 111507 bytes
+Nic 671 received 111507 bytes
+STATS 10 397 EMBER 0 14699 14699 65472
+STATS 10 394 EMBER 0 16247 16247 65472
+STATS 10 488 EMBER 0 17268 17268 65472
+Nic 595 received 111507 bytes
+Nic 586 received 111507 bytes
+STATS 10 94 EMBER 0 7443 7443 65472
+STATS 10 115 EMBER 0 11647 11647 65472
+STATS 10 103 EMBER 0 17656 17656 65472
+Nic 961 received 111507 bytes
+Nic 947 received 111507 bytes
+Nic 461 received 111507 bytes
+Nic 470 received 111507 bytes
+Nic 479 received 111507 bytes
+Nic 455 received 111507 bytes
+Nic 476 received 111507 bytes
+STATS 10 913 EMBER 0 12699 12699 65472
+STATS 10 893 EMBER 0 7440 7440 65472
+Nic 1004 received 111507 bytes
+STATS 10 347 EMBER 0 7436 7436 65472
+STATS 10 336 EMBER 0 13227 13227 65472
+STATS 10 340 EMBER 0 11118 11118 65472
+STATS 10 70 EMBER 0 18170 18170 65472
+STATS 10 45 EMBER 0 14699 14699 65472
+STATS 10 36 EMBER 0 19164 19164 65472
+STATS 10 37 EMBER 0 18672 18672 65472
+Nic 723 received 111507 bytes
+STATS 10 378 EMBER 0 7970 7970 65472
+STATS 10 359 EMBER 0 17656 17656 65472
+STATS 10 354 EMBER 0 20190 20190 65472
+STATS 10 366 EMBER 0 14184 14184 65472
+STATS 10 370 EMBER 0 12178 12178 65472
+STATS 10 164 EMBER 0 19164 19164 65472
+STATS 10 185 EMBER 0 8506 8506 65472
+STATS 10 177 EMBER 0 12699 12699 65472
+STATS 10 158 EMBER 0 7443 7443 65472
+STATS 10 169 EMBER 0 16749 16749 65472
+Nic 743 received 111507 bytes
+STATS 10 247 EMBER 0 9537 9537 65472
+STATS 10 270 EMBER 0 14184 14184 65472
+Nic 435 received 111507 bytes
+Nic 426 received 111507 bytes
+Nic 854 received 111507 bytes
+Nic 848 received 111507 bytes
+Nic 851 received 111507 bytes
+Nic 836 received 111507 bytes
+STATS 10 870 EMBER 0 18170 18170 65472
+STATS 10 779 EMBER 0 15728 15728 65472
+STATS 10 823 EMBER 0 9537 9537 65472
+STATS 10 821 EMBER 0 10597 10597 65472
+STATS 10 820 EMBER 0 11118 11118 65472
+STATS 10 297 EMBER 0 16749 16749 65472
+STATS 10 304 EMBER 0 13227 13227 65472
+STATS 10 307 EMBER 0 11647 11647 65472
+STATS 10 305 EMBER 0 12699 12699 65472
+STATS 10 308 EMBER 0 11118 11118 65472
+Nic 566 received 111507 bytes
+Nic 548 received 111507 bytes
+Nic 525 received 111507 bytes
+Nic 513 received 111507 bytes
+Nic 531 received 111507 bytes
+STATS 10 133 EMBER 0 18672 18672 65472
+STATS 10 145 EMBER 0 12699 12699 65472
+STATS 10 153 EMBER 0 8506 8506 65472
+Nic 607 received 111507 bytes
+Nic 624 received 111507 bytes
+Nic 656 received 111507 bytes
+Nic 668 received 111507 bytes
+Nic 659 received 111507 bytes
+STATS 10 390 EMBER 0 18170 18170 65472
+STATS 10 402 EMBER 0 12178 12178 65472
+Nic 487 received 111507 bytes
+Nic 490 received 111507 bytes
+Nic 583 received 111507 bytes
+Nic 580 received 111507 bytes
+Nic 592 received 111507 bytes
+STATS 10 111 EMBER 0 13662 13662 65472
+STATS 10 84 EMBER 0 11118 11118 65472
+Nic 949 received 111507 bytes
+Nic 458 received 111507 bytes
+STATS 10 898 EMBER 0 20190 20190 65472
+Nic 1006 received 111507 bytes
+STATS 10 324 EMBER 0 19164 19164 65472
+STATS 10 313 EMBER 0 8506 8506 65472
+STATS 10 53 EMBER 0 10597 10597 65472
+STATS 10 47 EMBER 0 13662 13662 65472
+STATS 10 71 EMBER 0 17656 17656 65472
+STATS 10 48 EMBER 0 13227 13227 65472
+Nic 4 received 111507 bytes
+Nic 20 received 111507 bytes
+Nic 729 received 111507 bytes
+Nic 740 received 111507 bytes
+Nic 726 received 111507 bytes
+Nic 720 received 111507 bytes
+STATS 10 386 EMBER 0 20190 20190 65472
+STATS 10 379 EMBER 0 7436 7436 65472
+STATS 10 173 EMBER 0 14699 14699 65472
+STATS 10 189 EMBER 0 7440 7440 65472
+STATS 10 165 EMBER 0 18672 18672 65472
+Nic 752 received 111507 bytes
+Nic 746 received 111507 bytes
+Nic 755 received 111507 bytes
+STATS 10 251 EMBER 0 7436 7436 65472
+STATS 10 266 EMBER 0 16247 16247 65472
+STATS 10 239 EMBER 0 13662 13662 65472
+Nic 438 received 111507 bytes
+Nic 429 received 111507 bytes
+Nic 441 received 111507 bytes
+Nic 831 received 111507 bytes
+Nic 857 received 111507 bytes
+STATS 10 876 EMBER 0 15208 15208 65472
+STATS 10 875 EMBER 0 15728 15728 65472
+STATS 10 869 EMBER 0 18672 18672 65472
+Nic 772 received 111507 bytes
+Nic 787 received 111507 bytes
+Nic 816 received 111507 bytes
+Nic 807 received 111507 bytes
+Nic 825 received 111507 bytes
+STATS 10 309 EMBER 0 10597 10597 65472
+Nic 540 received 111507 bytes
+Nic 560 received 111507 bytes
+Nic 519 received 111507 bytes
+Nic 511 received 111507 bytes
+Nic 528 received 111507 bytes
+Nic 534 received 111507 bytes
+Nic 516 received 111507 bytes
+STATS 10 123 EMBER 0 7436 7436 65472
+STATS 10 118 EMBER 0 10069 10069 65472
+STATS 10 134 EMBER 0 18170 18170 65472
+Nic 598 received 111507 bytes
+Nic 612 received 111507 bytes
+Nic 621 received 111507 bytes
+Nic 615 received 111507 bytes
+Nic 985 received 111507 bytes
+Nic 988 received 111507 bytes
+Nic 996 received 111507 bytes
+Nic 938 received 111507 bytes
+Nic 935 received 111507 bytes
+Nic 941 received 111507 bytes
+Nic 921 received 111507 bytes
+Nic 641 received 111507 bytes
+Nic 650 received 111507 bytes
+STATS 10 222 EMBER 0 7443 7443 65472
+Nic 688 received 111507 bytes
+Nic 700 received 111507 bytes
+Nic 918 received 111507 bytes
+Nic 944 received 111507 bytes
+Nic 638 received 111507 bytes
+STATS 10 199 EMBER 0 17656 17656 65472
+STATS 10 215 EMBER 0 9537 9537 65472
+Nic 691 received 111507 bytes
+Nic 665 received 111507 bytes
+Nic 679 received 111507 bytes
+STATS 10 398 EMBER 0 14184 14184 65472
+Nic 502 received 111507 bytes
+Nic 505 received 111507 bytes
+Nic 577 received 111507 bytes
+Nic 572 received 111507 bytes
+Nic 589 received 111507 bytes
+STATS 10 92 EMBER 0 7437 7437 65472
+STATS 10 99 EMBER 0 19678 19678 65472
+STATS 10 106 EMBER 0 16247 16247 65472
+Nic 948 received 111507 bytes
+Nic 472 received 111507 bytes
+Nic 912 received 111507 bytes
+Nic 906 received 111507 bytes
+Nic 1013 received 111507 bytes
+STATS 10 344 EMBER 0 9043 9043 65472
+STATS 10 327 EMBER 0 17656 17656 65472
+STATS 10 331 EMBER 0 15728 15728 65472
+STATS 10 72 EMBER 0 17268 17268 65472
+STATS 10 49 EMBER 0 12699 12699 65472
+Nic 8 received 111507 bytes
+Nic 35 received 111507 bytes
+Nic 24 received 111507 bytes
+Nic 737 received 111507 bytes
+STATS 10 355 EMBER 0 19678 19678 65472
+STATS 10 367 EMBER 0 13662 13662 65472
+STATS 10 371 EMBER 0 11647 11647 65472
+Nic 179 received 111507 bytes
+Nic 187 received 111507 bytes
+Nic 767 received 111507 bytes
+Nic 761 received 111507 bytes
+Nic 749 received 111507 bytes
+Nic 249 received 111507 bytes
+Nic 268 received 111507 bytes
+Nic 444 received 111507 bytes
+Nic 447 received 111507 bytes
+Nic 845 received 111507 bytes
+Nic 833 received 111507 bytes
+Nic 868 received 111507 bytes
+Nic 778 received 111507 bytes
+Nic 790 received 111507 bytes
+Nic 784 received 111507 bytes
+Nic 793 received 111507 bytes
+Nic 799 received 111507 bytes
+Nic 801 received 111507 bytes
+Nic 804 received 111507 bytes
+Nic 828 received 111507 bytes
+Nic 822 received 111507 bytes
+Nic 276 received 111507 bytes
+Nic 280 received 111507 bytes
+Nic 554 received 111507 bytes
+Nic 545 received 111507 bytes
+Nic 563 received 111507 bytes
+Nic 557 received 111507 bytes
+Nic 551 received 111507 bytes
+Nic 512 received 111507 bytes
+STATS 10 146 EMBER 0 12178 12178 65472
+STATS 10 154 EMBER 0 7970 7970 65472
+STATS 10 119 EMBER 0 9537 9537 65472
+Nic 609 received 111507 bytes
+Nic 982 received 111507 bytes
+Nic 979 received 111507 bytes
+Nic 976 received 111507 bytes
+Nic 991 received 111507 bytes
+Nic 156 received 111507 bytes
+Nic 175 received 111507 bytes
+Nic 171 received 111507 bytes
+Nic 764 received 111507 bytes
+Nic 237 received 111507 bytes
+Nic 245 received 111507 bytes
+Nic 264 received 111507 bytes
+Nic 449 received 111507 bytes
+Nic 432 received 111507 bytes
+Nic 423 received 111507 bytes
+Nic 853 received 111507 bytes
+Nic 863 received 111507 bytes
+Nic 886 received 111507 bytes
+Nic 860 received 111507 bytes
+Nic 775 received 111507 bytes
+Nic 796 received 111507 bytes
+Nic 781 received 111507 bytes
+Nic 819 received 111507 bytes
+Nic 810 received 111507 bytes
+Nic 813 received 111507 bytes
+Nic 291 received 111507 bytes
+Nic 290 received 111507 bytes
+Nic 284 received 111507 bytes
+Nic 543 received 111507 bytes
+Nic 536 received 111507 bytes
+Nic 144 received 111507 bytes
+Nic 604 received 111507 bytes
+Nic 601 received 111507 bytes
+Nic 618 received 111507 bytes
+Nic 1002 received 111507 bytes
+Nic 931 received 111507 bytes
+Nic 637 received 111507 bytes
+STATS 10 212 EMBER 0 11118 11118 65472
+STATS 10 231 EMBER 0 17656 17656 65472
+STATS 10 196 EMBER 0 19164 19164 65472
+STATS 10 204 EMBER 0 15208 15208 65472
+Nic 697 received 111507 bytes
+Nic 705 received 111507 bytes
+Nic 708 received 111507 bytes
+Nic 682 received 111507 bytes
+Nic 676 received 111507 bytes
+Nic 673 received 111507 bytes
+Nic 420 received 111507 bytes
+Nic 508 received 111507 bytes
+Nic 481 received 111507 bytes
+Nic 493 received 111507 bytes
+Nic 569 received 111507 bytes
+Nic 575 received 111507 bytes
+STATS 10 107 EMBER 0 15728 15728 65472
+Nic 963 received 111507 bytes
+Nic 471 received 111507 bytes
+Nic 909 received 111507 bytes
+Nic 897 received 111507 bytes
+Nic 903 received 111507 bytes
+Nic 1022 received 111507 bytes
+STATS 10 348 EMBER 0 7437 7437 65472
+STATS 10 328 EMBER 0 17268 17268 65472
+STATS 10 332 EMBER 0 15208 15208 65472
+Nic 70 received 111507 bytes
+Nic 12 received 111507 bytes
+Nic 34 received 111507 bytes
+Nic 16 received 111507 bytes
+Nic 28 received 111507 bytes
+Nic 0 received 111507 bytes
+Nic 735 received 111507 bytes
+Nic 732 received 111507 bytes
+Nic 717 received 111507 bytes
+Nic 714 received 111507 bytes
+Nic 361 received 111507 bytes
+Nic 373 received 111507 bytes
+Nic 722 received 111507 bytes
+Nic 353 received 111507 bytes
+Nic 352 received 111507 bytes
+Nic 357 received 111507 bytes
+Nic 183 received 111507 bytes
+Nic 167 received 111507 bytes
+Nic 193 received 111507 bytes
+Nic 758 received 111507 bytes
+Nic 769 received 111507 bytes
+Nic 241 received 111507 bytes
+Nic 425 received 111507 bytes
+Nic 852 received 111507 bytes
+Nic 877 received 111507 bytes
+Nic 874 received 111507 bytes
+Nic 783 received 111507 bytes
+Nic 803 received 111507 bytes
+Nic 307 received 111507 bytes
+Nic 539 received 111507 bytes
+Nic 535 received 111507 bytes
+Nic 152 received 111507 bytes
+Nic 136 received 111507 bytes
+Nic 623 received 111507 bytes
+Nic 993 received 111507 bytes
+Nic 999 received 111507 bytes
+Nic 930 received 111507 bytes
+Nic 643 received 111507 bytes
+STATS 10 208 EMBER 0 13227 13227 65472
+STATS 10 220 EMBER 0 7437 7437 65472
+Nic 711 received 111507 bytes
+Nic 685 received 111507 bytes
+Nic 694 received 111507 bytes
+Nic 703 received 111507 bytes
+Nic 658 received 111507 bytes
+Nic 396 received 111507 bytes
+Nic 496 received 111507 bytes
+Nic 582 received 111507 bytes
+Nic 96 received 111507 bytes
+Nic 109 received 111507 bytes
+Nic 78 received 111507 bytes
+Nic 962 received 111507 bytes
+Nic 451 received 111507 bytes
+Nic 892 received 111507 bytes
+Nic 915 received 111507 bytes
+Nic 1010 received 111507 bytes
+Nic 315 received 111507 bytes
+Nic 322 received 111507 bytes
+Nic 47 received 111507 bytes
+Nic 9 received 111507 bytes
+Nic 642 received 111507 bytes
+STATS 10 227 EMBER 0 19678 19678 65472
+STATS 10 200 EMBER 0 17268 17268 65472
+Nic 704 received 111507 bytes
+Nic 657 received 111507 bytes
+Nic 397 received 111507 bytes
+Nic 484 received 111507 bytes
+Nic 499 received 111507 bytes
+Nic 579 received 111507 bytes
+Nic 86 received 111507 bytes
+Nic 82 received 111507 bytes
+Nic 952 received 111507 bytes
+Nic 450 received 111507 bytes
+Nic 895 received 111507 bytes
+Nic 1012 received 111507 bytes
+Nic 321 received 111507 bytes
+Nic 311 received 111507 bytes
+Nic 59 received 111507 bytes
+Nic 51 received 111507 bytes
+Nic 43 received 111507 bytes
+Nic 10 received 111507 bytes
+Nic 721 received 111507 bytes
+Nic 374 received 111507 bytes
+Nic 162 received 111507 bytes
+Nic 163 received 111507 bytes
+Nic 742 received 111507 bytes
+Nic 238 received 111507 bytes
+Nic 424 received 111507 bytes
+Nic 838 received 111507 bytes
+Nic 865 received 111507 bytes
+Nic 782 received 111507 bytes
+Nic 802 received 111507 bytes
+Nic 277 received 111507 bytes
+Nic 292 received 111507 bytes
+Nic 538 received 111507 bytes
+Nic 524 received 111507 bytes
+Nic 117 received 111507 bytes
+Nic 128 received 111507 bytes
+Nic 148 received 111507 bytes
+Nic 140 received 111507 bytes
+Nic 622 received 111507 bytes
+Nic 984 received 111507 bytes
+Nic 926 received 111507 bytes
+Nic 478 received 111507 bytes
+Nic 889 received 111507 bytes
+Nic 900 received 111507 bytes
+Nic 1019 received 111507 bytes
+Nic 326 received 111507 bytes
+Nic 342 received 111507 bytes
+Nic 346 received 111507 bytes
+Nic 330 received 111507 bytes
+Nic 52 received 111507 bytes
+Nic 48 received 111507 bytes
+Nic 11 received 111507 bytes
+Nic 719 received 111507 bytes
+Nic 375 received 111507 bytes
+Nic 157 received 111507 bytes
+Nic 741 received 111507 bytes
+Nic 239 received 111507 bytes
+Nic 437 received 111507 bytes
+Nic 837 received 111507 bytes
+Nic 883 received 111507 bytes
+Nic 871 received 111507 bytes
+Nic 771 received 111507 bytes
+Nic 800 received 111507 bytes
+Nic 289 received 111507 bytes
+Nic 553 received 111507 bytes
+Nic 523 received 111507 bytes
+Nic 132 received 111507 bytes
+Nic 121 received 111507 bytes
+Nic 620 received 111507 bytes
+Nic 983 received 111507 bytes
+Nic 925 received 111507 bytes
+Nic 652 received 111507 bytes
+STATS 10 216 EMBER 0 9043 9043 65472
+Nic 690 received 111507 bytes
+Nic 655 received 111507 bytes
+Nic 398 received 111507 bytes
+Nic 483 received 111507 bytes
+Nic 578 received 111507 bytes
+Nic 105 received 111507 bytes
+Nic 90 received 111507 bytes
+Nic 619 received 111507 bytes
+Nic 995 received 111507 bytes
+Nic 923 received 111507 bytes
+Nic 629 received 111507 bytes
+Nic 632 received 111507 bytes
+Nic 225 received 111507 bytes
+Nic 689 received 111507 bytes
+Nic 654 received 111507 bytes
+Nic 399 received 111507 bytes
+Nic 482 received 111507 bytes
+Nic 594 received 111507 bytes
+Nic 79 received 111507 bytes
+Nic 960 received 111507 bytes
+Nic 477 received 111507 bytes
+Nic 908 received 111507 bytes
+Nic 1016 received 111507 bytes
+Nic 338 received 111507 bytes
+Nic 334 received 111507 bytes
+Nic 49 received 111507 bytes
+Nic 25 received 111507 bytes
+Nic 718 received 111507 bytes
+Nic 376 received 111507 bytes
+Nic 158 received 111507 bytes
+Nic 757 received 111507 bytes
+Nic 240 received 111507 bytes
+Nic 436 received 111507 bytes
+Nic 841 received 111507 bytes
+Nic 880 received 111507 bytes
+Nic 789 received 111507 bytes
+Nic 815 received 111507 bytes
+Nic 288 received 111507 bytes
+Nic 552 received 111507 bytes
+Nic 521 received 111507 bytes
+Nic 137 received 111507 bytes
+Nic 260 received 111507 bytes
+Nic 440 received 111507 bytes
+Nic 443 received 111507 bytes
+Nic 840 received 111507 bytes
+Nic 859 received 111507 bytes
+Nic 777 received 111507 bytes
+Nic 786 received 111507 bytes
+Nic 824 received 111507 bytes
+Nic 806 received 111507 bytes
+Nic 272 received 111507 bytes
+Nic 303 received 111507 bytes
+Nic 295 received 111507 bytes
+Nic 559 received 111507 bytes
+Nic 530 received 111507 bytes
+Nic 138 received 111507 bytes
+Nic 606 received 111507 bytes
+Nic 994 received 111507 bytes
+Nic 928 received 111507 bytes
+Nic 626 received 111507 bytes
+Nic 646 received 111507 bytes
+Nic 218 received 111507 bytes
+Nic 210 received 111507 bytes
+Nic 699 received 111507 bytes
+Nic 661 received 111507 bytes
+Nic 388 received 111507 bytes
+Nic 489 received 111507 bytes
+Nic 581 received 111507 bytes
+Nic 80 received 111507 bytes
+Nic 972 received 111507 bytes
+Nic 466 received 111507 bytes
+Nic 907 received 111507 bytes
+Nic 1003 received 111507 bytes
+Nic 343 received 111507 bytes
+Nic 50 received 111507 bytes
+Nic 26 received 111507 bytes
+Nic 728 received 111507 bytes
+Nic 377 received 111507 bytes
+Nic 384 received 111507 bytes
+Nic 365 received 111507 bytes
+Nic 159 received 111507 bytes
+Nic 756 received 111507 bytes
+Nic 507 received 111507 bytes
+Nic 571 received 111507 bytes
+Nic 81 received 111507 bytes
+Nic 969 received 111507 bytes
+Nic 465 received 111507 bytes
+Nic 894 received 111507 bytes
+Nic 1021 received 111507 bytes
+Nic 344 received 111507 bytes
+Nic 39 received 111507 bytes
+Nic 74 received 111507 bytes
+Nic 27 received 111507 bytes
+Nic 727 received 111507 bytes
+Nic 369 received 111507 bytes
+Nic 188 received 111507 bytes
+Nic 745 received 111507 bytes
+Nic 261 received 111507 bytes
+Nic 448 received 111507 bytes
+Nic 830 received 111507 bytes
+Nic 835 received 111507 bytes
+Nic 858 received 111507 bytes
+Nic 774 received 111507 bytes
+Nic 818 received 111507 bytes
+Nic 299 received 111507 bytes
+Nic 558 received 111507 bytes
+Nic 527 received 111507 bytes
+Nic 139 received 111507 bytes
+Nic 600 received 111507 bytes
+Nic 975 received 111507 bytes
+Nic 937 received 111507 bytes
+Nic 635 received 111507 bytes
+Nic 229 received 111507 bytes
+Nic 224 received 111507 bytes
+Nic 202 received 111507 bytes
+Nic 684 received 111507 bytes
+Nic 660 received 111507 bytes
+Nic 412 received 111507 bytes
+Nic 417 received 111507 bytes
+Nic 269 received 111507 bytes
+Nic 442 received 111507 bytes
+Nic 850 received 111507 bytes
+Nic 873 received 111507 bytes
+Nic 773 received 111507 bytes
+Nic 817 received 111507 bytes
+Nic 281 received 111507 bytes
+Nic 273 received 111507 bytes
+Nic 565 received 111507 bytes
+Nic 526 received 111507 bytes
+Nic 153 received 111507 bytes
+Nic 599 received 111507 bytes
+Nic 974 received 111507 bytes
+Nic 936 received 111507 bytes
+Nic 640 received 111507 bytes
+Nic 206 received 111507 bytes
+Nic 683 received 111507 bytes
+Nic 667 received 111507 bytes
+Nic 670 received 111507 bytes
+Nic 406 received 111507 bytes
+Nic 501 received 111507 bytes
+Nic 570 received 111507 bytes
+Nic 97 received 111507 bytes
+Nic 113 received 111507 bytes
+Nic 101 received 111507 bytes
+Nic 968 received 111507 bytes
+Nic 463 received 111507 bytes
+Nic 893 received 111507 bytes
+Nic 1018 received 111507 bytes
+Nic 345 received 111507 bytes
+Nic 55 received 111507 bytes
+Nic 66 received 111507 bytes
+Nic 5 received 111507 bytes
+Nic 725 received 111507 bytes
+Nic 362 received 111507 bytes
+Nic 172 received 111507 bytes
+Nic 763 received 111507 bytes
+Nic 1009 received 111507 bytes
+Nic 320 received 111507 bytes
+Nic 65 received 111507 bytes
+Nic 6 received 111507 bytes
+Nic 724 received 111507 bytes
+Nic 363 received 111507 bytes
+Nic 173 received 111507 bytes
+Nic 762 received 111507 bytes
+Nic 246 received 111507 bytes
+Nic 428 received 111507 bytes
+Nic 847 received 111507 bytes
+Nic 862 received 111507 bytes
+Nic 795 received 111507 bytes
+Nic 809 received 111507 bytes
+Nic 285 received 111507 bytes
+Nic 300 received 111507 bytes
+Nic 564 received 111507 bytes
+Nic 515 received 111507 bytes
+Nic 510 received 111507 bytes
+Nic 154 received 111507 bytes
+Nic 611 received 111507 bytes
+Nic 614 received 111507 bytes
+Nic 978 received 111507 bytes
+Nic 940 received 111507 bytes
+Nic 649 received 111507 bytes
+Nic 214 received 111507 bytes
+Nic 198 received 111507 bytes
+Nic 696 received 111507 bytes
+Nic 664 received 111507 bytes
+Nic 419 received 111507 bytes
+Nic 492 received 111507 bytes
+Nic 593 received 111507 bytes
+Nic 98 received 111507 bytes
+Nic 958 received 111507 bytes
+Nic 946 received 111507 bytes
+Nic 966 received 111507 bytes
+Nic 475 received 111507 bytes
+Nic 896 received 111507 bytes
+Nic 304 received 111507 bytes
+Nic 547 received 111507 bytes
+Nic 518 received 111507 bytes
+Nic 155 received 111507 bytes
+Nic 617 received 111507 bytes
+Nic 977 received 111507 bytes
+Nic 917 received 111507 bytes
+Nic 628 received 111507 bytes
+Nic 223 received 111507 bytes
+Nic 707 received 111507 bytes
+Nic 663 received 111507 bytes
+Nic 389 received 111507 bytes
+Nic 491 received 111507 bytes
+Nic 576 received 111507 bytes
+Nic 83 received 111507 bytes
+Nic 955 received 111507 bytes
+Nic 469 received 111507 bytes
+Nic 911 received 111507 bytes
+Nic 1015 received 111507 bytes
+Nic 316 received 111507 bytes
+Nic 323 received 111507 bytes
+Nic 64 received 111507 bytes
+Nic 7 received 111507 bytes
+Nic 739 received 111507 bytes
+Nic 364 received 111507 bytes
+Nic 174 received 111507 bytes
+Nic 766 received 111507 bytes
+Nic 751 received 111507 bytes
+Nic 247 received 111507 bytes
+Nic 427 received 111507 bytes
+Nic 832 received 111507 bytes
+Nic 867 received 111507 bytes
+Nic 792 received 111507 bytes
+Nic 821 received 111507 bytes
+Nic 812 received 111507 bytes
+Nic 248 received 111507 bytes
+Nic 434 received 111507 bytes
+Nic 446 received 111507 bytes
+Nic 856 received 111507 bytes
+Nic 879 received 111507 bytes
+Nic 780 received 111507 bytes
+Nic 827 received 111507 bytes
+Nic 308 received 111507 bytes
+Nic 546 received 111507 bytes
+Nic 533 received 111507 bytes
+Nic 145 received 111507 bytes
+Nic 616 received 111507 bytes
+Nic 987 received 111507 bytes
+Nic 916 received 111507 bytes
+Nic 651 received 111507 bytes
+Nic 222 received 111507 bytes
+Nic 706 received 111507 bytes
+Nic 681 received 111507 bytes
+Nic 390 received 111507 bytes
+Nic 500 received 111507 bytes
+Nic 585 received 111507 bytes
+Nic 84 received 111507 bytes
+Nic 951 received 111507 bytes
+Nic 474 received 111507 bytes
+Nic 468 received 111507 bytes
+Nic 888 received 111507 bytes
+Nic 312 received 111507 bytes
+Nic 44 received 111507 bytes
+Nic 13 received 111507 bytes
+Nic 736 received 111507 bytes
+Nic 383 received 111507 bytes
+Nic 192 received 111507 bytes
+Nic 754 received 111507 bytes
+Nic 760 received 111507 bytes
+Nic 256 received 111507 bytes
+Nic 233 received 111507 bytes
+Nic 431 received 111507 bytes
+Nic 855 received 111507 bytes
+Nic 878 received 111507 bytes
+Nic 791 received 111507 bytes
+Nic 814 received 111507 bytes
+Nic 309 received 111507 bytes
+Nic 544 received 111507 bytes
+Nic 520 received 111507 bytes
+Nic 146 received 111507 bytes
+Nic 603 received 111507 bytes
+Nic 986 received 111507 bytes
+Nic 934 received 111507 bytes
+Nic 631 received 111507 bytes
+Nic 194 received 111507 bytes
+Nic 687 received 111507 bytes
+Nic 678 received 111507 bytes
+Nic 672 received 111507 bytes
+Nic 391 received 111507 bytes
+Nic 504 received 111507 bytes
+Nic 584 received 111507 bytes
+Nic 85 received 111507 bytes
+Nic 945 received 111507 bytes
+Nic 454 received 111507 bytes
+Nic 905 received 111507 bytes
+Nic 347 received 111507 bytes
+Nic 53 received 111507 bytes
+Nic 36 received 111507 bytes
+Nic 716 received 111507 bytes
+Nic 382 received 111507 bytes
+Nic 191 received 111507 bytes
+Nic 748 received 111507 bytes
+Nic 45 received 111507 bytes
+Nic 21 received 111507 bytes
+Nic 734 received 111507 bytes
+Nic 381 received 111507 bytes
+Nic 168 received 111507 bytes
+Nic 750 received 111507 bytes
+Nic 255 received 111507 bytes
+Nic 445 received 111507 bytes
+Nic 844 received 111507 bytes
+Nic 885 received 111507 bytes
+Nic 798 received 111507 bytes
+Nic 808 received 111507 bytes
+Nic 310 received 111507 bytes
+Nic 550 received 111507 bytes
+Nic 514 received 111507 bytes
+Nic 147 received 111507 bytes
+Nic 608 received 111507 bytes
+Nic 981 received 111507 bytes
+Nic 943 received 111507 bytes
+Nic 648 received 111507 bytes
+Nic 195 received 111507 bytes
+Nic 693 received 111507 bytes
+Nic 702 received 111507 bytes
+Nic 675 received 111507 bytes
+Nic 409 received 111507 bytes
+Nic 486 received 111507 bytes
+Nic 591 received 111507 bytes
+Nic 114 received 111507 bytes
+Nic 957 received 111507 bytes
+Nic 453 received 111507 bytes
+Nic 902 received 111507 bytes
+Nic 339 received 111507 bytes
+Nic 992 received 111507 bytes
+Nic 990 received 111507 bytes
+Nic 933 received 111507 bytes
+Nic 625 received 111507 bytes
+Nic 196 received 111507 bytes
+Nic 710 received 111507 bytes
+Nic 669 received 111507 bytes
+Nic 415 received 111507 bytes
+Nic 495 received 111507 bytes
+Nic 574 received 111507 bytes
+Nic 91 received 111507 bytes
+Nic 965 received 111507 bytes
+Nic 457 received 111507 bytes
+Nic 460 received 111507 bytes
+Nic 887 received 111507 bytes
+Nic 335 received 111507 bytes
+Nic 54 received 111507 bytes
+Nic 22 received 111507 bytes
+Nic 731 received 111507 bytes
+Nic 385 received 111507 bytes
+Nic 354 received 111507 bytes
+Nic 169 received 111507 bytes
+Nic 768 received 111507 bytes
+Nic 254 received 111507 bytes
+Nic 422 received 111507 bytes
+Nic 843 received 111507 bytes
+Nic 876 received 111507 bytes
+Nic 797 received 111507 bytes
+Nic 823 received 111507 bytes
+Nic 296 received 111507 bytes
+Nic 562 received 111507 bytes
+Nic 529 received 111507 bytes
+Nic 129 received 111507 bytes
+Nic 597 received 111507 bytes
+Nic 573 received 111507 bytes
+Nic 92 received 111507 bytes
+Nic 954 received 111507 bytes
+Nic 971 received 111507 bytes
+Nic 462 received 111507 bytes
+Nic 891 received 111507 bytes
+Nic 336 received 111507 bytes
+Nic 40 received 111507 bytes
+Nic 71 received 111507 bytes
+Nic 37 received 111507 bytes
+Nic 730 received 111507 bytes
+Nic 378 received 111507 bytes
+Nic 170 received 111507 bytes
+Nic 744 received 111507 bytes
+Nic 270 received 111507 bytes
+Nic 433 received 111507 bytes
+Nic 829 received 111507 bytes
+Nic 870 received 111507 bytes
+Nic 770 received 111507 bytes
+Nic 805 received 111507 bytes
+Nic 286 received 111507 bytes
+Nic 542 received 111507 bytes
+Nic 532 received 111507 bytes
+Nic 517 received 111507 bytes
+Nic 130 received 111507 bytes
+Nic 605 received 111507 bytes
+Nic 1001 received 111507 bytes
+Nic 942 received 111507 bytes
+Nic 645 received 111507 bytes
+Nic 226 received 111507 bytes
+Nic 709 received 111507 bytes
+Nic 666 received 111507 bytes
+Nic 414 received 111507 bytes
+Nic 480 received 111507 bytes
+Nic 680 received 111507 bytes
+Nic 416 received 111507 bytes
+Nic 498 received 111507 bytes
+Nic 588 received 111507 bytes
+Nic 93 received 111507 bytes
+Nic 456 received 111507 bytes
+Nic 914 received 111507 bytes
+Nic 337 received 111507 bytes
+Nic 72 received 111507 bytes
+Nic 38 received 111507 bytes
+Nic 713 received 111507 bytes
+Nic 358 received 111507 bytes
+Nic 180 received 111507 bytes
+Nic 765 received 111507 bytes
+Nic 253 received 111507 bytes
+Nic 439 received 111507 bytes
+Nic 834 received 111507 bytes
+Nic 869 received 111507 bytes
+Nic 776 received 111507 bytes
+Nic 811 received 111507 bytes
+Nic 287 received 111507 bytes
+Nic 541 received 111507 bytes
+Nic 509 received 111507 bytes
+Nic 131 received 111507 bytes
+Nic 610 received 111507 bytes
+Nic 998 received 111507 bytes
+Nic 920 received 111507 bytes
+Nic 634 received 111507 bytes
+Nic 211 received 111507 bytes
+Nic 695 received 111507 bytes
+Nic 989 received 111507 bytes
+Nic 939 received 111507 bytes
+Nic 215 received 111507 bytes
+Nic 686 received 111507 bytes
+Nic 674 received 111507 bytes
+Nic 411 received 111507 bytes
+Nic 506 received 111507 bytes
+Nic 587 received 111507 bytes
+Nic 102 received 111507 bytes
+Nic 459 received 111507 bytes
+Nic 913 received 111507 bytes
+Nic 327 received 111507 bytes
+Nic 41 received 111507 bytes
+Nic 33 received 111507 bytes
+Nic 712 received 111507 bytes
+Nic 359 received 111507 bytes
+Nic 164 received 111507 bytes
+Nic 753 received 111507 bytes
+Nic 271 received 111507 bytes
+Nic 421 received 111507 bytes
+Nic 846 received 111507 bytes
+Nic 882 received 111507 bytes
+Nic 788 received 111507 bytes
+Nic 820 received 111507 bytes
+Nic 278 received 111507 bytes
+Nic 556 received 111507 bytes
+Nic 127 received 111507 bytes
+Nic 602 received 111507 bytes
+Nic 279 received 111507 bytes
+Nic 561 received 111507 bytes
+Nic 133 received 111507 bytes
+Nic 613 received 111507 bytes
+Nic 980 received 111507 bytes
+Nic 922 received 111507 bytes
+Nic 216 received 111507 bytes
+Nic 698 received 111507 bytes
+Nic 677 received 111507 bytes
+Nic 405 received 111507 bytes
+Nic 497 received 111507 bytes
+Nic 568 received 111507 bytes
+Nic 87 received 111507 bytes
+Nic 901 received 111507 bytes
+Nic 319 received 111507 bytes
+Nic 46 received 111507 bytes
+Nic 1 received 111507 bytes
+Nic 738 received 111507 bytes
+Nic 360 received 111507 bytes
+Nic 181 received 111507 bytes
+Nic 747 received 111507 bytes
+Nic 257 received 111507 bytes
+Nic 430 received 111507 bytes
+Nic 849 received 111507 bytes
+Nic 864 received 111507 bytes
+Nic 779 received 111507 bytes
+Nic 826 received 111507 bytes
+Nic 596 received 111507 bytes
+Nic 1000 received 111507 bytes
+Nic 919 received 111507 bytes
+Nic 217 received 111507 bytes
+Nic 692 received 111507 bytes
+Nic 418 received 111507 bytes
+Nic 503 received 111507 bytes
+Nic 590 received 111507 bytes
+Nic 110 received 111507 bytes
+Nic 904 received 111507 bytes
+Nic 331 received 111507 bytes
+Nic 60 received 111507 bytes
+Nic 2 received 111507 bytes
+Nic 733 received 111507 bytes
+Nic 366 received 111507 bytes
+Nic 165 received 111507 bytes
+Nic 759 received 111507 bytes
+Nic 265 received 111507 bytes
+Nic 884 received 111507 bytes
+Nic 794 received 111507 bytes
+Nic 297 received 111507 bytes
+Nic 293 received 111507 bytes
+Nic 549 received 111507 bytes
+Nic 149 received 111507 bytes
+Nic 899 received 111507 bytes
+Nic 317 received 111507 bytes
+Nic 75 received 111507 bytes
+Nic 3 received 111507 bytes
+Nic 715 received 111507 bytes
+Nic 370 received 111507 bytes
+Nic 182 received 111507 bytes
+Nic 266 received 111507 bytes
+Nic 872 received 111507 bytes
+Nic 785 received 111507 bytes
+Nic 282 received 111507 bytes
+Nic 301 received 111507 bytes
+Nic 555 received 111507 bytes
+Nic 141 received 111507 bytes
+Nic 997 received 111507 bytes
+Nic 219 received 111507 bytes
+Nic 701 received 111507 bytes
+Nic 404 received 111507 bytes
+Nic 485 received 111507 bytes
+Nic 567 received 111507 bytes
+Nic 115 received 111507 bytes
+Nic 267 received 111507 bytes
+Nic 861 received 111507 bytes
+Nic 305 received 111507 bytes
+Nic 122 received 111507 bytes
+Nic 197 received 111507 bytes
+Nic 400 received 111507 bytes
+Nic 392 received 111507 bytes
+Nic 488 received 111507 bytes
+Nic 116 received 111507 bytes
+Nic 910 received 111507 bytes
+Nic 313 received 111507 bytes
+Nic 76 received 111507 bytes
+Nic 17 received 111507 bytes
+Nic 367 received 111507 bytes
+Nic 184 received 111507 bytes
+Nic 161 received 111507 bytes
+Nic 234 received 111507 bytes
+Nic 881 received 111507 bytes
+Nic 274 received 111507 bytes
+Nic 118 received 111507 bytes
+Nic 207 received 111507 bytes
+Nic 401 received 111507 bytes
+Nic 494 received 111507 bytes
+Nic 95 received 111507 bytes
+Nic 890 received 111507 bytes
+Nic 314 received 111507 bytes
+Nic 42 received 111507 bytes
+Nic 18 received 111507 bytes
+Nic 368 received 111507 bytes
+Nic 176 received 111507 bytes
+Nic 250 received 111507 bytes
+Nic 242 received 111507 bytes
+Nic 866 received 111507 bytes
+Nic 294 received 111507 bytes
+Nic 142 received 111507 bytes
+Nic 199 received 111507 bytes
+Nic 402 received 111507 bytes
+Nic 94 received 111507 bytes
+Nic 898 received 111507 bytes
+Nic 324 received 111507 bytes
+Nic 73 received 111507 bytes
+Nic 19 received 111507 bytes
+Nic 351 received 111507 bytes
+Nic 355 received 111507 bytes
+Nic 185 received 111507 bytes
+Nic 408 received 111507 bytes
+Nic 106 received 111507 bytes
+Nic 340 received 111507 bytes
+Nic 56 received 111507 bytes
+Nic 67 received 111507 bytes
+Nic 29 received 111507 bytes
+Nic 350 received 111507 bytes
+Nic 186 received 111507 bytes
+Nic 262 received 111507 bytes
+Nic 875 received 111507 bytes
+Nic 298 received 111507 bytes
+Nic 302 received 111507 bytes
+Nic 143 received 111507 bytes
+Nic 230 received 111507 bytes
+Nic 203 received 111507 bytes
+Nic 407 received 111507 bytes
+Nic 107 received 111507 bytes
+Nic 341 received 111507 bytes
+Nic 63 received 111507 bytes
+Nic 14 received 111507 bytes
+Nic 356 received 111507 bytes
+Nic 166 received 111507 bytes
+Nic 235 received 111507 bytes
+Nic 283 received 111507 bytes
+Nic 126 received 111507 bytes
+Nic 306 received 111507 bytes
+Nic 275 received 111507 bytes
+Nic 150 received 111507 bytes
+Nic 208 received 111507 bytes
+Nic 413 received 111507 bytes
+Nic 108 received 111507 bytes
+Nic 348 received 111507 bytes
+Nic 77 received 111507 bytes
+Nic 15 received 111507 bytes
+Nic 379 received 111507 bytes
+Nic 160 received 111507 bytes
+Nic 236 received 111507 bytes
+Nic 258 received 111507 bytes
+Nic 123 received 111507 bytes
+Nic 209 received 111507 bytes
+Nic 410 received 111507 bytes
+Nic 99 received 111507 bytes
+Nic 103 received 111507 bytes
+Nic 328 received 111507 bytes
+Nic 57 received 111507 bytes
+Nic 32 received 111507 bytes
+Nic 380 received 111507 bytes
+Nic 189 received 111507 bytes
+Nic 23 received 111507 bytes
+Nic 386 received 111507 bytes
+Nic 371 received 111507 bytes
+Nic 177 received 111507 bytes
+Nic 259 received 111507 bytes
+Nic 119 received 111507 bytes
+Nic 212 received 111507 bytes
+Nic 403 received 111507 bytes
+Nic 88 received 111507 bytes
+Nic 332 received 111507 bytes
+Nic 58 received 111507 bytes
+Nic 393 received 111507 bytes
+Nic 111 received 111507 bytes
+Nic 318 received 111507 bytes
+Nic 61 received 111507 bytes
+Nic 68 received 111507 bytes
+Nic 30 received 111507 bytes
+Nic 387 received 111507 bytes
+Nic 190 received 111507 bytes
+Nic 243 received 111507 bytes
+Nic 120 received 111507 bytes
+Nic 213 received 111507 bytes
+Nic 244 received 111507 bytes
+Nic 134 received 111507 bytes
+Nic 220 received 111507 bytes
+Nic 394 received 111507 bytes
+Nic 112 received 111507 bytes
+Nic 325 received 111507 bytes
+Nic 62 received 111507 bytes
+Nic 31 received 111507 bytes
+Nic 372 received 111507 bytes
+Nic 178 received 111507 bytes
+Nic 135 received 111507 bytes
+Nic 200 received 111507 bytes
+Nic 395 received 111507 bytes
+Nic 89 received 111507 bytes
+Nic 349 received 111507 bytes
+Nic 69 received 111507 bytes
+Simulation is complete, simulated time: 25.2835 us
+Nic 251 received 111507 bytes
+Nic 263 received 111507 bytes
+Nic 125 received 111507 bytes
+Nic 221 received 111507 bytes
+Nic 231 received 111507 bytes
+Nic 104 received 111507 bytes
+Nic 100 received 111507 bytes
+Nic 329 received 111507 bytes
+Nic 252 received 111507 bytes
+Nic 151 received 111507 bytes
+Nic 124 received 111507 bytes
+Nic 204 received 111507 bytes
+Nic 333 received 111507 bytes
+Nic 201 received 111507 bytes
+Nic 232 received 111507 bytes
+Nic 227 received 111507 bytes
+Nic 228 received 111507 bytes
+Nic 205 received 111507 bytes
