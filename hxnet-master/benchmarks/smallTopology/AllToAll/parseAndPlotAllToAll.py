@@ -93,13 +93,18 @@ def main():
 
                 min_bw = 100000000000
 
+                num_nodes = 1024  # default for original ~1000-node runs
                 with open(os.path.join(root, subdirectory, file)) as fp:
                     Lines = fp.readlines()
                     for line in Lines:
 
+                        match_nodes = re.search(r"EMBER: numNodes=(\d+)", line)
+                        if match_nodes:
+                            num_nodes = int(match_nodes.group(1))
+
                         match = re.search("EMBER: Motif='AllPingPong messageSize=(\d+)'", line)
                         if match:
-                            size_all_to_all = ((int(match.group(1)))) * 1023
+                            size_all_to_all = ((int(match.group(1)))) * (num_nodes - 1)
 
                         match = re.search("STATS (\d+) (\d+) EMBER (\d+) (\d+) (\d+) (\d+)", line)
                         if match:

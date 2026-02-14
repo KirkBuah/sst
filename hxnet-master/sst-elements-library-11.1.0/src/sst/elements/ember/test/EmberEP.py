@@ -1,5 +1,22 @@
 
-import sst
+import sst, sys, types, importlib
+
+# Workaround: Python 3.12 broke SST 11.1.0's C-level PyImport_ExecCodeModule for
+# sst.merlin. We manually create the module by exec-ing pymerlin.py.
+if "sst.merlin" not in sys.modules:
+    import os as _os
+    _pymerlin_path = _os.path.join(
+        _os.path.dirname(_os.path.abspath(__file__)),
+        "..", "..", "merlin", "pymerlin.py"
+    )
+    _mod = types.ModuleType("sst.merlin")
+    _mod.__file__ = _pymerlin_path
+    _mod.__package__ = "sst"
+    sys.modules["sst.merlin"] = _mod
+    sst.merlin = _mod
+    with open(_pymerlin_path) as _f:
+        exec(compile(_f.read(), _pymerlin_path, "exec"), _mod.__dict__)
+
 from sst.merlin import *
 
 from loadUtils import *
