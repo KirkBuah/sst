@@ -388,8 +388,118 @@ python3 launchAllToAll.py --topo hx4 --num_threads $(nproc) --small_run
 | hyperx   | -         | 32x32       | 1024        |
 
 ---
+## 9. Jellyfish Local Topology Variant
 
-## 9. Key Design Decisions in the Implementation
+The Jellyfish variant replaces the structured 2D mesh within each board with a **random
+regular graph** (Jellyfish topology), while keeping the global fat tree interconnect
+unchanged.
+
+### 9.1 Motivation
+
+Random graphs (Jellyfish) can provide shorter average path lengths and higher bisection
+bandwidth than structured meshes for the same node degree. By replacing only the local
+board topology, we can evaluate whether random connectivity improves performance while
+maintaining the HxMesh global hierarchy.
+
+### 9.2 Node Count
+
+The total number of nodes is **identical** to the standard HxMesh:
+
+```
+total_nodes = board_rows x board_cols x global_rows x global_cols x local_ports
+```
+
+For example, with `boardShape=2x2, globalShape=2x2, hostsPerRtr=1`:
+- Each board has 2 x 2 = 4 switches
+- There are 2 x 2 = 4 boards
+- Total = 4 x 4 x 1 = **16 nodes**
+
+The Jellyfish variant only changes how the 4 (or 16, for 4x4) switches within each
+board are connected to each other. The number of switches, boards, and endpoints remains
+unchanged.
+
+### 9.3 Port Budget
+
+Each board switch still has exactly **5 ports** (same as the mesh variant):
+
+| Node type | Jellyfish links | Fat tree ports | NIC | Total |
+|-----------|----------------|----------------|-----|-------|
+| Interior  | 4              | 0              | 1   | 5     |
+| Row-edge (first/last col) | 3 | 1 (port W=3 or E=1) | 1 | 5 |
+| Col-edge (first/last row) | 3 | 1 (port N=0 or S=2) | 1 | 5 |
+| Corner    | 2              | 2              | 1   | 5     |
+
+Edge nodes reserve the **same ports** for fat tree connections as in the mesh:
+- Port 0 (N) -> column fat tree (if row == 0)
+- Port 1 (E) -> row fat tree (if col == last)
+- Port 2 (S) -> column fat tree (if row == last)
+- Port 3 (W) -> row fat tree (if col == 0)
+
+Remaining (non-reserved) ports are wired as random intra-board Jellyfish links.
+
+### 9.4 Graph Generation
+
+The random graph is constructed per-board using a **greedy stub-pairing algorithm**:
+
+1. For each node, determine which ports are free (not reserved for fat trees).
+2. Build a list of (node, port) "stubs".
+3. Shuffle the stubs randomly.
+4. Greedily pair stubs: each stub is matched with another stub from a different node,
+   avoiding self-loops and duplicate links between the same pair of nodes.
+5. If unpaired stubs remain (the greedy algorithm can fail due to the no-duplicate
+   constraint), retry with a new shuffle (up to 100 attempts).
+
+This is implemented in `pymerlin.py` method `_generate_jellyfish_graph()`.
+
+### 9.5 Table-Based Routing
+
+Unlike the mesh (which uses directional routing based on coordinates), the Jellyfish
+variant uses **pre-computed shortest-path routing tables**:
+
+1. **BFS routing tables** are computed in Python (`_compute_routing_tables()`) for each
+   source-destination pair within a board.
+2. Tables are passed to the C++ router as a comma-separated string parameter
+   `routing_table`, where `routing_table[dest_local_id] = next_hop_port`.
+3. Each node also stores:
+   - `nearest_row_edge`: local ID of the closest row-edge node (for reaching the row fat tree)
+   - `nearest_col_edge`: local ID of the closest col-edge node (for reaching the col fat tree)
+
+The C++ routing function `route_packet_jellyfish()` (hamming.cc) handles three cases:
+
+- **Same board, same switch**: deliver to NIC port
+- **Same board, different switch**: use `routing_table[dest_local_id]` to forward
+- **Different board**: route toward the nearest edge node (row or col, depending on
+  which fat tree is needed), then exit to the fat tree
+
+### 9.6 Usage
+
+**Command-line flag:**
+```bash
+# Via benchmark script:
+python3 launchAllToAll_16nodes.py --jellyfish --small_run
+
+# Via SST directly (add --jellyfish to model options):
+sst --model-options="--topo=hx --boardShape=2x2 --globalShape=2x2 \
+    --fatTreeShape=1:1,64 --hostsPerRtr=1 --jellyfish \
+    --loadFile=loads/motif_file" emberLoad.py
+```
+
+**Output directory:** Results go to `output/hx2_16_jellyfish/` (appends `_jellyfish`
+to the topology name).
+
+### 9.7 Files Modified for Jellyfish Support
+
+| File | Changes |
+|------|---------|
+| `merlin/topology/hamming.h` | Added `is_jellyfish`, `jf_routing_table`, `jf_row_ft_port`, `jf_col_ft_port`, `jf_nearest_row_edge`, `jf_nearest_col_edge` members; ELI params; `route_packet_jellyfish()` declaration |
+| `merlin/topology/hamming.cc` | Constructor parses Jellyfish params; `route_packet_mesh()` branches to `route_packet_jellyfish()` when `is_jellyfish` is true |
+| `merlin/pymerlin.py` | `_generate_jellyfish_graph()`, `_compute_routing_tables()`, `_find_nearest_edges()`, `_wire_jellyfish_board()` methods; conditional mesh/jellyfish wiring in `build()` |
+| `ember/test/networkConfig.py` | `HammingInfo` accepts `use_jellyfish` parameter |
+| `ember/test/emberLoad.py` | `--jellyfish` CLI flag, passes to `HammingInfo` |
+
+---
+
+## 10. Key Design Decisions in the Implementation
 
 1. **Each accelerator has its own 4x4 switch**: Board switches act as both mesh routers
    and endpoint-attached switches (`hostsPerRtr=1`). This models accelerator packages
