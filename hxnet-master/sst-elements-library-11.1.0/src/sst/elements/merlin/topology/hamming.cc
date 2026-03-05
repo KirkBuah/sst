@@ -71,6 +71,7 @@ topo_hamming::topo_hamming(ComponentId_t cid, Params& params, int num_ports, int
     // Retrieve parameters and print them for debug
     is_board_switch = params.find<bool>("is_board_switch");
     single_switch_fat_tree = params.find<bool>("single_switch_fat_tree");
+    jf_ft_nodes = params.find<int>("jf_ft_nodes", 0);
     global_switch_id = params.find<int>("global_switch_id");
     local_switch_id = params.find<int>("local_switch_id");
     params.find_array<int>("global_pos", global_pos);
@@ -623,28 +624,38 @@ topo_hamming::route_packet_tree(int port, int vc, internal_router_event* ev)
 
     std::vector<int> dests_in_tree;
     if(is_in_row_tree()){
-        uint dest_in_tree_w = col_dest*2;     // Entering the mesh from West
-        uint dest_in_tree_e = col_dest*2 + 1; // Entering the mesh from East
-        uint distance_w = board_col_dest; // Distance of the destination from the West border
-        uint distance_e = get_ncols_board() - board_col_dest - 1; // Distance of the destination from the East border
-        uint min_distance = std::min(distance_w, distance_e);
-        if(distance_w == min_distance){
-            dests_in_tree.push_back(dest_in_tree_w);
-        }
-        if(distance_e == min_distance){
-            dests_in_tree.push_back(dest_in_tree_e);
+        if(jf_ft_nodes > 0){
+            // Jellyfish: one gateway per board per direction; port index = board col of destination
+            dests_in_tree.push_back(col_dest);
+        } else {
+            uint dest_in_tree_w = col_dest*2;     // Entering the mesh from West
+            uint dest_in_tree_e = col_dest*2 + 1; // Entering the mesh from East
+            uint distance_w = board_col_dest; // Distance of the destination from the West border
+            uint distance_e = get_ncols_board() - board_col_dest - 1; // Distance of the destination from the East border
+            uint min_distance = std::min(distance_w, distance_e);
+            if(distance_w == min_distance){
+                dests_in_tree.push_back(dest_in_tree_w);
+            }
+            if(distance_e == min_distance){
+                dests_in_tree.push_back(dest_in_tree_e);
+            }
         }
     }else if(is_in_col_tree()){
-        uint dest_in_tree_n = row_dest*2;     // Entering the mesh from North
-        uint dest_in_tree_s = row_dest*2 + 1; // Entering the mesh from South
-        uint distance_n = board_row_dest; // Distance of the destination from the North border
-        uint distance_s = get_nrows_board() - board_row_dest - 1; // Distance of the destination from the South border
-        uint min_distance = std::min(distance_n, distance_s);
-        if(distance_n == min_distance){
-            dests_in_tree.push_back(dest_in_tree_n);
-        }
-        if(distance_s == min_distance){
-            dests_in_tree.push_back(dest_in_tree_s);
+        if(jf_ft_nodes > 0){
+            // Jellyfish: one gateway per board per direction; port index = board row of destination
+            dests_in_tree.push_back(row_dest);
+        } else {
+            uint dest_in_tree_n = row_dest*2;     // Entering the mesh from North
+            uint dest_in_tree_s = row_dest*2 + 1; // Entering the mesh from South
+            uint distance_n = board_row_dest; // Distance of the destination from the North border
+            uint distance_s = get_nrows_board() - board_row_dest - 1; // Distance of the destination from the South border
+            uint min_distance = std::min(distance_n, distance_s);
+            if(distance_n == min_distance){
+                dests_in_tree.push_back(dest_in_tree_n);
+            }
+            if(distance_s == min_distance){
+                dests_in_tree.push_back(dest_in_tree_s);
+            }
         }
     }
     

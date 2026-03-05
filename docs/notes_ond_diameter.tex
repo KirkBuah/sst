@@ -1,0 +1,184 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+
+\begin{document}
+
+\section{Diameter}
+
+The diameter of the network is an important metric in topology design, representing the maximum shortest path between any two nodes in the network. It affects communication latency and, consequently, the overall performance of the network.
+
+The diameter of a network topology is defined as the maximum number of hops required to traverse from any source node to any destination node using the shortest path:
+
+\(D = max(d(u,v)\) for all pairs \(u, v \in V\)
+
+where \(d(u,v)\) is the shortest path length between nodes \(u\) and \(v\), and \(V\) is the set of all nodes in the network.
+
+\subsection{Diameter Derivation for HammingMesh}
+
+In the following sections, \(a\) and \(b\) represent the dimensions of the local board. While \(x\) and \(y\) represent the dimensions of the global topology.
+
+\subsubsection{Flat topology}
+When boards can be connected with a single 64-port switch, the diameter can be derived as follows:
+\begin{enumerate}
+    \item Local board traversal: Travel from an endpoint in the inner part of the board, to the edge of the board. The hops required are \(\lfloor \frac{a-1}{2} \rfloor\) (horizontal) or \(\lfloor \frac{b-1}{2} \rfloor\) (vertical).
+    \item First global hop: Exit source board to switch.
+    \item Second global hop: Exit switch to destination board.
+    \item Destination board traversal: Travel from the edge of the board to the inner part of the board. The hops required are \(\lfloor \frac{a-1}{2} \rfloor\) (horizontal) or \(\lfloor \frac{b-1}{2} \rfloor\) (vertical).
+\end{enumerate}
+
+
+For an Hx\(a\)Mesh (square board), the diameter is \[D_{flat} = 2(\lfloor \frac{a-1}{2} \rfloor + 1)\].
+
+\subsubsection{Fat Tree topology}
+For larger networks where a single switch cannot connect all the boards in a row or column, multi-level fat trees are used. This increases the diameter.
+
+For an Hx\(a\)Mesh, the diameter is:
+
+\[D =
+3\left\lfloor \frac{a-1}{2} \right\rfloor
++ 2\left\lceil \log_{k/2}\!\left(\frac{2x}{k}\right) \right\rceil
++ 2\left\lceil \log_{k/2}\!\left(\frac{2y}{k}\right) \right\rceil
+\]
+
+Here \(k\) depends on the number of boards the fat tree needs to connect, either row-wise or column-wise.
+In a fat tree, the maximum number of edge nodes is given by \(k^3/4\). Then, in our case:
+\[
+k^3/4 = 2x
+\]
+Since we have 2 connections for every board
+
+The diameter then becomes:
+
+\[D =
+3\left\lfloor \frac{a-1}{2} \right\rfloor
++ 2\left\lceil \log_{\lceil x^{1/3}\rceil}\!\left(\frac{2x}{2\lceil x^{1/3}\rceil}\right) \right\rceil
++ 2\left\lceil \log_{\lceil y^{1/3}\rceil}\!\left(\frac{2y}{\lceil y^{1/3}\rceil}\right) \right\rceil
+\]
+\[=
+3\left\lfloor \frac{a-1}{2} \right\rfloor
++ 4\left\lceil \frac{1}{3}\log_{\lceil x^{1/3}\rceil}\!\left(x\right) \right\rceil
++ 4\left\lceil \frac{1}{3}\log_{\lceil y^{1/3}\rceil}\!\left(y\right) \right\rceil
+\]
+
+\subsection{Diameter Derivation for HammingMesh with a local expander}
+Instead of a 2D mesh topology, we analyze a HammingMesh variant that replaces the mesh with a random expander graph, specifically the Jellyfish topology.
+
+Jellyfish is a random topology that typically achieves a diameter of 3 hops. \cite{Singla2012}
+This represent a significant improvement over 2D meshes, which have a diameter proportional to \(\sqrt{N}\).
+
+\subsubsection{Flat topology}
+The diameter can be derived as follows:
+\begin{enumerate}
+    \item Jellyfish traversal: Navigate from an
+    arbitrary interior node to the board's edge where global connections
+    are attached. In the worst case, this requires 3 hops.
+    \item First global hop: Exit source board to switch.
+    \item Second global hop: Exit switch to destination board.
+    \item Destination Jellyfish traversal: Navigate from
+    the board edge to the destination accelerator, 3 hops.
+\end{enumerate}
+
+For an Hx\(a\)Mesh (square board), the diameter is \[D_{flat} = 3 + 1 + 1 + 3 = 8\].
+
+\subsubsection{Fat Tree topology}
+
+The diameter derivation for Jellyfish-based HammingMesh with hierarchical fat trees follows the same approach as the mesh-based variant, with the board traversal component replaced by the Jellyfish diameter ($d = 3$).
+The resulting diameter is:
+
+\[D =
+9
++ 4\left\lceil \frac{1}{3}\log_{\lceil x^{1/3}\rceil}\!\left(x\right) \right\rceil
++ 4\left\lceil \frac{1}{3}\log_{\lceil y^{1/3}\rceil}\!\left(y\right) \right\rceil
+\]
+
+\section{Bisection Bandwidth}
+
+Bisection bandwidth represents the minimum bandwidth that must be cut to divide the network into two equal halves.
+\[B_{bisection} = \text{diameter} \times \text{link bandwidth}\]
+
+\subsection{Bisection Bandwidth for Mesh-based HammingMesh}
+
+\subsubsection{Analysis for Hx\(a\)Mesh}
+Considering a Hx\(a\)Mesh with $x \times y$ boards, where $x \leq y$. To bisect this network into two equal halves, we cut along the dimension with fewer boards.
+
+We partition the network by dividing along the $y$ dimension, separating the lower $y/2$ boards from the upper $y/2$ boards. Each of the $x$ board columns has $2a$ links crossing the partition.
+
+The total bisection cut is:
+\[C_{bisection} = x \cdot 2a = 2ax\]
+
+If each link has bandwidth $BW$, the bisection bandwidth is:
+\[B_{bisection} = 2ax \cdot BW\]
+
+\subsection{Bisection Bandwidth for Jellyfish-based HammingMesh}
+For HammingMesh variants using Jellyfish as local topology, the bisection analysis remains identical, as the bisection cut occurs between the local topologies, not within them.
+
+The bisection bandwidth is:
+\[B_{bisection} = 2ax \cdot BW\]
+
+\section{Expansion and Scalability}
+\subsection{HammingMesh}
+HammingMesh can be expanded using two different approaches: global topology expansion and local topology expansion.
+
+\subsubsection{Global Topology Expansion}
+Global expansion involves adding a set of boards to the existing network. For an $x \times y$ configuration with $a \times b$ boards, we can expand it by incrementing either dimension:
+
+\begin{itemize}
+    \item Row expansion: ($x \to x+1$), Adds $y$ new boards, increasing total capacity by $aby$ nodes.
+    \item Column expansion: ($y \to y+1$), Adds $x$ new boards, increasing total capacity by $abx$ nodes.
+\end{itemize}
+
+The minimum expansion increment is $\min(abx, aby)$ nodes. For a square configuration $a = b$ and $x = y$, both expansions add $a^2x$ nodes.
+
+\paragraph{Constraints:}
+
+When the existing fat tree switches reach maximum capacity, adding another column or row requires fat tree reconstruction.
+
+To mitigate this issue, it is advisable to overprovision the network. For example by employing switches with a larger capacity than initially needed.
+
+\subsubsection{Local Topology Expansion}
+Local expansion increases the number of nodes by growing the local mesh from $a \times b$ to $(a+1) \times b$ or $a \times (b+1)$
+
+As mentioned earlier, this could require the fat tree reconstruction.
+
+\subsection{Jellyfish-based HammingMesh}
+\subsubsection{Global Topology Expansion}
+Global expansion has the same characteristics and constraints of the mesh-based network.
+
+\subsubsection{Local Topology Expansion}
+jellyfish's random graph construction allows a more flexible approach.
+Jellyfish supports incremental local expansion \cite{Singla2012}
+
+
+\begin{enumerate}
+    \item \textbf{Add new node}: Insert node $u$
+
+    \item \textbf{Iterative rewiring}: For each of the $r$ ports on node $u$:
+    \begin{enumerate}
+        \item Select a random existing link $(v, w)$ such that $u$ is not already connected to either $v$ or $w$
+        \item Remove link $(v, w)$
+        \item Add links $(u, v)$ and $(u, w)$
+    \end{enumerate}
+
+    \item \textbf{Termination}: Continue until all ports on $u$ are utilized (or one odd port remains if $r$ is odd)
+\end{enumerate}
+
+This process can be repeated for multiple new nodes.
+
+\paragraph{Advantages:}
+Jellyfish-based local topologies offer several expansion benefits:
+\begin{enumerate}
+    \item Incremental growth
+    \item Minimal disruption, only $r$ existing links require rewiring
+    \item The fat tree does not need to be rebuilt when adding new nodes
+\end{enumerate}
+
+\paragraph{Constraints:}
+Adding nodes to local topologies increases demand on the global fat tree switches. If the fat tree is already at capacity, expansion requires upgrading switches to higher-radix models.
+
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

@@ -49,6 +49,7 @@ globShape = ""
 programName = "Def"
 netHostsPerRtr = 1
 useJellyfish = False
+ftNodes = 0
 netInspect = ""
 rtrArb = ""
 nicsPerNode = 1
@@ -129,6 +130,7 @@ try:
             "algorithm=",
             "programName=",
             "jellyfish",
+            "ftNodes=",
         ],
     )
 
@@ -149,6 +151,8 @@ for o, a in opts:
         fatTreeShape = a
     elif o in ("--jellyfish"):
         useJellyfish = True
+    elif o in ("--ftNodes"):
+        ftNodes = int(a)
     elif o in ("--programName"):
         programName = a
     elif o in ("--hostsPerRtr"):
@@ -367,7 +371,7 @@ elif "hx" == netTopo:
         if routing_algo == "":
             routing_algo = "min-adaptive"
         topoInfo = HammingInfo(
-            boardShape, netHostsPerRtr, globShape, fatTreeShape, routing_algo, useJellyfish
+            boardShape, netHostsPerRtr, globShape, fatTreeShape, routing_algo, useJellyfish, ftNodes
         )
 
     topo = topoHamming()

@@ -470,6 +470,18 @@ class topoHamming(Topo):
         if isinstance(self.use_jellyfish, str):
             self.use_jellyfish = self.use_jellyfish.lower() in ("true", "1", "yes")
 
+        # Jellyfish: configurable number of fat tree gateway nodes per direction
+        self.jf_ft_nodes = int(_params.get("hamming:jellyfish_ft_nodes", 0))
+        self._jf_gateway_map = {}   # board_id -> {'row_ft': set, 'col_ft': set}
+        self._current_board_id = 0  # set before _get_reserved_ports() is called
+        if self.use_jellyfish and self.jf_ft_nodes > 0:
+            num_nodes_per_board = self.dims[0] * self.dims[1]
+            if self.jf_ft_nodes * 2 > num_nodes_per_board:
+                raise ValueError(
+                    "jellyfish_ft_nodes=%d requires 2*N=%d <= nodes_per_board=%d" % (
+                        self.jf_ft_nodes, self.jf_ft_nodes * 2, num_nodes_per_board)
+                )
+
     def _formatShape(self, arr):
         return 'x'.join([str(x) for x in arr])
 
@@ -632,23 +644,28 @@ class topoHamming(Topo):
 
             while ((col_idx != self.global_shape[1] * self.dims[1]) and current_down_port != 0):
                 #print("While, {} {}".format(col_idx, current_down_port))
-                if (self.isFirstOrLast(col_idx, self.dims[1])):
+                if self.use_jellyfish and self.jf_ft_nodes > 0:
+                    board_id_ft = (row // self.dims[0]) * self.global_shape[1] + \
+                                  (col_idx // self.dims[1])
+                    local_id_ft = (row % self.dims[0]) * self.dims[1] + \
+                                  (col_idx % self.dims[1])
+                    should_connect = local_id_ft in \
+                        self._jf_gateway_map.get(board_id_ft, {}).get('row_ft', set())
+                    my_port = 3
+                else:
+                    should_connect = self.isFirstOrLast(col_idx, self.dims[1])
                     isFirst = self.isFirst(col_idx, self.dims[1])
+                    my_port = 3 if isFirst else 1
+                if should_connect:
                     # Connect from Fat Tree router to board router
                     unique_pos = self.global_to_local[self.GlobalToString([row, col_idx])]
                     partner_str = self.getRouterNameString((unique_pos))
                     #print("Fat Connecting {} to {} with port {}".format(name_rtr, partner_str, port))
                     rtr.addLink(getLink(name_rtr, partner_str, 0), "port%d"%port, _params["link_lat"])
-                    #rtr.addLink(getLink(name_rtr, partner_str, 0), "port%d"%port, "1ns")
                     # Connect from board router to fat tree router
-                    if (isFirst):
-                        my_port = 3
-                    else:
-                        my_port = 1
                     #print("Fat Connecting {} to {} with port {}".format(partner_str, name_rtr, my_port))
                     other_rtr = self.list_routers[partner_str]
                     other_rtr.addLink(getLink(name_rtr, partner_str, 0), "port%d"%my_port, _params["link_lat"])
-                    #other_rtr.addLink(getLink(name_rtr, partner_str, 0), "port%d"%my_port, "1ns")
                     port = port + 1
                     current_down_port = current_down_port - 1
 
@@ -769,18 +786,25 @@ class topoHamming(Topo):
             list_routers_first_level[name_rtr] = rtr
 
             while ((row_idx != self.global_shape[0] * self.dims[0]) and current_down_port != 0):
-                if (self.isFirstOrLast(row_idx, self.dims[0])):
+                if self.use_jellyfish and self.jf_ft_nodes > 0:
+                    board_id_ft = (row_idx // self.dims[0]) * self.global_shape[1] + \
+                                  (col // self.dims[1])
+                    local_id_ft = (row_idx % self.dims[0]) * self.dims[1] + \
+                                  (col % self.dims[1])
+                    should_connect = local_id_ft in \
+                        self._jf_gateway_map.get(board_id_ft, {}).get('col_ft', set())
+                    my_port = 0
+                else:
+                    should_connect = self.isFirstOrLast(row_idx, self.dims[0])
                     isFirst = self.isFirst(row_idx, self.dims[0])
+                    my_port = 0 if isFirst else 2
+                if should_connect:
                     # Connect from Fat Tree router to board router
                     unique_pos = self.global_to_local[self.GlobalToString([row_idx, col])]
                     partner_str = self.getRouterNameString((unique_pos))
                     #print("Fat Connecting {} to {} with port {}".format(name_rtr, partner_str, port))
                     rtr.addLink(getLink(name_rtr, partner_str, 0), "port%d"%port, _params["link_lat"])
                     # Connect from board router to fat tree router
-                    if (isFirst):
-                        my_port = 0
-                    else:
-                        my_port = 2
                     #print("Fat Connecting {} to {} with port {}".format(partner_str, name_rtr, my_port))
                     other_rtr = self.list_routers[partner_str]
                     other_rtr.addLink(getLink(name_rtr, partner_str, 0), "port%d"%my_port, _params["link_lat"])
@@ -854,20 +878,69 @@ class topoHamming(Topo):
     def _get_reserved_ports(self, local_id):
         """For Jellyfish boards: determine which ports are reserved for fat tree connections.
         Returns dict: port_number -> 'row_ft' or 'col_ft'
-        Uses same convention as mesh: port 0(N)=col_ft if first row, port 1(E)=row_ft if last col,
-        port 2(S)=col_ft if last row, port 3(W)=row_ft if first col."""
-        row = local_id // self.dims[1]
-        col = local_id % self.dims[1]
+
+        When jf_ft_nodes > 0: uses randomly-selected gateway nodes stored in _jf_gateway_map.
+          - row FT gateways use port 3 (W)
+          - col FT gateways use port 0 (N)
+        Otherwise: original border-position logic (mirrors mesh convention)."""
         reserved = {}
-        if row == 0:
-            reserved[0] = 'col_ft'                 # N port -> col fat tree
-        if col == self.dims[1] - 1:
-            reserved[1] = 'row_ft'                  # E port -> row fat tree
-        if row == self.dims[0] - 1:
-            reserved[2] = 'col_ft'                  # S port -> col fat tree
-        if col == 0:
-            reserved[3] = 'row_ft'                  # W port -> row fat tree
+        if self.jf_ft_nodes > 0:
+            gw = self._jf_gateway_map.get(self._current_board_id, {})
+            if local_id in gw.get('row_ft', set()):
+                reserved[3] = 'row_ft'   # W port -> row fat tree
+            if local_id in gw.get('col_ft', set()):
+                reserved[0] = 'col_ft'   # N port -> col fat tree
+        else:
+            row = local_id // self.dims[1]
+            col = local_id % self.dims[1]
+            if row == 0:
+                reserved[0] = 'col_ft'             # N port -> col fat tree
+            if col == self.dims[1] - 1:
+                reserved[1] = 'row_ft'             # E port -> row fat tree
+            if row == self.dims[0] - 1:
+                reserved[2] = 'col_ft'             # S port -> col fat tree
+            if col == 0:
+                reserved[3] = 'row_ft'             # W port -> row fat tree
         return reserved
+
+    def _compute_jf_gateways(self, board_id):
+        """Select gateway nodes for a board using FIXED positions.
+        Fixed positions are required so that all boards in the same global row/col
+        contribute gateways to the same fat tree switch. With random positions,
+        boards in the same board_row could end up in different global rows and
+        connect to different fat tree switches, breaking connectivity.
+
+        Nodes 0..N-1      -> row FT gateways (use port 3)
+        Nodes N..2*N-1    -> col FT gateways (use port 0)
+
+        For ft_nodes=1: node 0 is the row_ft gateway, node 1 is the col_ft gateway.
+        Node 0 has local_row=0 for all board shapes, ensuring a consistent global row
+        (board_row * dims[0] + 0) across all boards in the same board_row."""
+        N = self.jf_ft_nodes
+        self._jf_gateway_map[board_id] = {
+            'row_ft': set(range(N)),
+            'col_ft': set(range(N, 2 * N)),
+        }
+
+    def _count_jf_ft_connections(self, ft_type, fixed_axis, fixed_global_idx, total_varying):
+        """Count how many gateway connections exist for a given fat tree row or col.
+        ft_type:          'row_ft' or 'col_ft'
+        fixed_axis:       'row' (row fat tree, fixed global row) or 'col' (col fat tree)
+        fixed_global_idx: the global row or col index being built
+        total_varying:    total number of positions in the varying axis"""
+        count = 0
+        for v in range(total_varying):
+            if fixed_axis == 'row':
+                global_row, global_col = fixed_global_idx, v
+            else:
+                global_row, global_col = v, fixed_global_idx
+            board_id = (global_row // self.dims[0]) * self.global_shape[1] + \
+                       (global_col // self.dims[1])
+            local_id = (global_row % self.dims[0]) * self.dims[1] + \
+                       (global_col % self.dims[1])
+            if local_id in self._jf_gateway_map.get(board_id, {}).get(ft_type, set()):
+                count += 1
+        return count
 
     def _generate_jellyfish_graph(self, num_nodes, reserved_ports_per_node):
         """Generate a random graph for a board. Each node has 4 inter-router ports (0-3).
@@ -881,27 +954,23 @@ class topoHamming(Topo):
             reserved = reserved_ports_per_node.get(n, {})
             available[n] = [p for p in range(4) if p not in reserved]
 
+        # First attempt: greedy without multi-edges (preferred for clean Jellyfish graph)
         max_attempts = 100
         for attempt in range(max_attempts):
-            # Build list of (node, port) stubs to pair up
             stubs = []
             for n in range(num_nodes):
                 for p in available[n]:
                     stubs.append((n, p))
-
             random.shuffle(stubs)
 
             adjacency = {n: [] for n in range(num_nodes)}
-            port_map = {n: {} for n in range(num_nodes)}  # node -> {port: neighbor}
-            used_pairs = set()  # track (min(a,b), max(a,b)) to avoid duplicates
-
-            # Pair up stubs greedily
+            port_map = {n: {} for n in range(num_nodes)}
+            used_pairs = set()
             paired = [False] * len(stubs)
             for i in range(len(stubs)):
                 if paired[i]:
                     continue
                 n1, p1 = stubs[i]
-                # Find a partner: different node, not already connected to n1
                 for j in range(i + 1, len(stubs)):
                     if paired[j]:
                         continue
@@ -911,7 +980,6 @@ class topoHamming(Topo):
                     pair_key = (min(n1, n2), max(n1, n2))
                     if pair_key in used_pairs:
                         continue
-                    # Match found
                     paired[i] = True
                     paired[j] = True
                     adjacency[n1].append((n2, p1, p2))
@@ -921,43 +989,144 @@ class topoHamming(Topo):
                     used_pairs.add(pair_key)
                     break
 
-            unpaired_count = sum(1 for p in paired if not p)
-            if unpaired_count == 0:
+            if sum(1 for p in paired if not p) == 0:
                 return adjacency, port_map
 
-        # If we still have unpaired stubs after max_attempts, allow multi-links as fallback
-        print("WARNING: Jellyfish graph could not pair all stubs without multi-links. Allowing multi-links.")
-        stubs = []
+        # Fallback: degree-ordered matching that allows multi-edges and is guaranteed to
+        # find a perfect matching whenever one exists (Hall's theorem holds for this topology).
+        # This handles small boards (e.g. 2x2 with ft_nodes=1) where the number of free
+        # port stubs exceeds the number of distinct node pairs.
+        print("WARNING: Jellyfish graph using degree-ordered matching (multi-edges allowed).")
+        # Build per-node stub queues, shuffled for randomness
+        stubs_per_node = {}
         for n in range(num_nodes):
-            for p in available[n]:
-                stubs.append((n, p))
-        random.shuffle(stubs)
+            ports = list(available[n])
+            random.shuffle(ports)
+            stubs_per_node[n] = ports
 
         adjacency = {n: [] for n in range(num_nodes)}
         port_map = {n: {} for n in range(num_nodes)}
-        paired = [False] * len(stubs)
-        for i in range(len(stubs)):
-            if paired[i]:
-                continue
-            n1, p1 = stubs[i]
-            for j in range(i + 1, len(stubs)):
-                if paired[j]:
+
+        total_stubs = sum(len(s) for s in stubs_per_node.values())
+        for _ in range(total_stubs // 2):
+            # Pick the node with the most remaining stubs as n1
+            remaining = [(len(s), n) for n, s in stubs_per_node.items() if s]
+            if not remaining:
+                break
+            remaining.sort(reverse=True)
+            n1 = remaining[0][1]
+            p1 = stubs_per_node[n1].pop()
+
+            # Pick the node with the next most remaining stubs (different from n1) as n2
+            found = False
+            for _, n2 in remaining:
+                if n2 == n1 or not stubs_per_node[n2]:
                     continue
-                n2, p2 = stubs[j]
-                if n1 == n2:
-                    continue
-                # Allow multi-links in fallback
-                paired[i] = True
-                paired[j] = True
+                p2 = stubs_per_node[n2].pop()
                 adjacency[n1].append((n2, p1, p2))
                 adjacency[n2].append((n1, p2, p1))
                 port_map[n1][p1] = n2
                 port_map[n2][p2] = n1
+                found = True
                 break
 
-        unpaired_count = sum(1 for p in paired if not p)
-        if unpaired_count > 0:
-            print("ERROR: %d stubs still unpaired even with multi-links!" % unpaired_count)
+            if not found:
+                print("ERROR: stub (%d, %d) has no eligible partner — port will be unwired!" % (n1, p1))
+
+        # Ensure the graph is connected: perform edge swaps between disconnected components.
+        # This is necessary for small boards (e.g. 2x2 with ft_nodes=1) where the
+        # degree-ordered matching can produce isolated cliques.
+        adjacency, port_map = self._ensure_connected(adjacency, port_map, num_nodes)
+
+        return adjacency, port_map
+
+    def _ensure_connected(self, adjacency, port_map, num_nodes):
+        """Post-process a generated graph: perform edge swaps to connect any isolated components.
+        Each edge swap removes one intra-component edge from each of two disconnected components
+        and replaces them with two cross-component edges, merging the components."""
+
+        def get_component(start):
+            comp = set()
+            stack = [start]
+            while stack:
+                n = stack.pop()
+                if n in comp:
+                    continue
+                comp.add(n)
+                for neighbor, _, _ in adjacency[n]:
+                    if neighbor not in comp:
+                        stack.append(neighbor)
+            return comp
+
+        for _ in range(num_nodes * num_nodes):
+            comp1 = get_component(0)
+            if len(comp1) == num_nodes:
+                break  # fully connected
+
+            comp2_node = next(n for n in range(num_nodes) if n not in comp1)
+            comp2 = get_component(comp2_node)
+
+            # Find an intra-comp1 edge
+            edge1 = None
+            for a in comp1:
+                for b, pa, pb in adjacency[a]:
+                    if b in comp1:
+                        edge1 = (a, b, pa, pb)
+                        break
+                if edge1:
+                    break
+
+            # Find an intra-comp2 edge
+            edge2 = None
+            for c in comp2:
+                for d, pc, pd in adjacency[c]:
+                    if d in comp2:
+                        edge2 = (c, d, pc, pd)
+                        break
+                if edge2:
+                    break
+
+            if edge1 is None or edge2 is None:
+                print("WARNING: _ensure_connected could not find intra-component edges to swap")
+                break
+
+            a, b, pa, pb = edge1
+            c, d, pc, pd = edge2
+
+            # Remove edge (a, b) — use first match with matching port (handles multi-edges)
+            for i, (n, mp, tp) in enumerate(adjacency[a]):
+                if n == b and mp == pa:
+                    adjacency[a].pop(i)
+                    break
+            for i, (n, mp, tp) in enumerate(adjacency[b]):
+                if n == a and mp == pb:
+                    adjacency[b].pop(i)
+                    break
+            port_map[a].pop(pa, None)
+            port_map[b].pop(pb, None)
+
+            # Remove edge (c, d)
+            for i, (n, mp, tp) in enumerate(adjacency[c]):
+                if n == d and mp == pc:
+                    adjacency[c].pop(i)
+                    break
+            for i, (n, mp, tp) in enumerate(adjacency[d]):
+                if n == c and mp == pd:
+                    adjacency[d].pop(i)
+                    break
+            port_map[c].pop(pc, None)
+            port_map[d].pop(pd, None)
+
+            # Add cross-component edges (a, c) and (b, d)
+            adjacency[a].append((c, pa, pc))
+            adjacency[c].append((a, pc, pa))
+            port_map[a][pa] = c
+            port_map[c][pc] = a
+
+            adjacency[b].append((d, pb, pd))
+            adjacency[d].append((b, pd, pb))
+            port_map[b][pb] = d
+            port_map[d][pd] = b
 
         return adjacency, port_map
 
@@ -1117,7 +1286,9 @@ class topoHamming(Topo):
         nearest_edges = self._find_nearest_edges(num_nodes, routing_tables, reserved_ports)
 
         # Wire up the Jellyfish links and set parameters
-        created_links = set()  # Track (min_id, max_id) to avoid duplicate links
+        # Deduplication is per-port (not per-node-pair) to correctly handle multi-edges:
+        # multi-edges can arise on small boards where free ports exceed distinct node pairs.
+        created_ports = set()  # Track (node_id, port) pairs that already have a link
         for info in board_routers_info:
             local_id = info['local_id']
             rtr = info['rtr']
@@ -1127,15 +1298,18 @@ class topoHamming(Topo):
 
             # Create Jellyfish inter-router links
             for neighbor_id, my_port, their_port in adjacency[local_id]:
-                link_key = (min(local_id, neighbor_id), max(local_id, neighbor_id))
-                if link_key not in created_links:
-                    created_links.add(link_key)
-                    partner_info = board_routers_info[neighbor_id]
-                    partner_str = partner_info['my_str']
-                    link_name = "jflink.%s:%s"%(my_str, partner_str)
-                    link = sst.Link(link_name)
-                    rtr.addLink(link, "port%d"%my_port, _params["link_lat"])
-                    partner_info['rtr'].addLink(link, "port%d"%their_port, _params["link_lat"])
+                port_key = (local_id, my_port)
+                if port_key in created_ports:
+                    continue
+                created_ports.add(port_key)
+                created_ports.add((neighbor_id, their_port))
+                partner_info = board_routers_info[neighbor_id]
+                partner_str = partner_info['my_str']
+                # Include port numbers in link name so multi-edges get distinct link objects
+                link_name = "jflink.%s.p%d:%s.p%d" % (my_str, my_port, partner_str, their_port)
+                link = sst.Link(link_name)
+                rtr.addLink(link, "port%d"%my_port, _params["link_lat"])
+                partner_info['rtr'].addLink(link, "port%d"%their_port, _params["link_lat"])
 
             # Create NIC connection (port 4 = last port before local ports)
             nic_port = 4  # Same as mesh: ports 0-3 are inter-router, port 4 is NIC
@@ -1263,6 +1437,9 @@ class topoHamming(Topo):
 
             # After all routers in this board are created, do Jellyfish wiring if enabled
             if self.use_jellyfish and board_routers_info:
+                self._current_board_id = board_id
+                if self.jf_ft_nodes > 0:
+                    self._compute_jf_gateways(board_id)
                 self._wire_jellyfish_board(board_routers_info, board_id, _params, getLink)
                 board_routers_info = []
 
@@ -1281,19 +1458,28 @@ class topoHamming(Topo):
         total_cols = self.global_shape[1] * self.dims[1]
         # Create fat tree,  first row wise
         for row in range(total_rows):
+            # Determine node count (may vary per row when using custom Jellyfish gateways)
+            if self.use_jellyfish and self.jf_ft_nodes > 0:
+                nodes_count = self._count_jf_ft_connections('row_ft', 'row', row, total_cols)
+                if nodes_count == 0:
+                    continue  # no gateways in this global row; skip fat tree
+            else:
+                nodes_count = self.global_shape[1] * 2
+
             # Iterate all routers of this row and connect them to the router
-            if (self.global_shape[1] * 2 > self.radix_fat_tree_switches):
-                self.createRowFatTree(self.global_shape[1] * 2, total_cols, row, -1)
+            if (nodes_count > self.radix_fat_tree_switches):
+                self.createRowFatTree(nodes_count, total_cols, row, -1)
             else:
                 # Here, for now, we just create a single router to connect everything
                 # Create single Router instance
                 port = 0
                 rtr = self._instanceRouter(self.global_router_id,"merlin.hr_router")
-                _params["num_ports"] = _params["router_radix"] = self.global_shape[1] * 2
+                _params["num_ports"] = _params["router_radix"] = nodes_count
                 _params["hamming:local_ports"] = 0
                 self.setParameters(_params, False, self.global_router_id, -1, [-1,-1], [-1,-1],  [[-1, -1], [-1, -1]], [0,row], [0, 0])
                 _params["hamming:single_switch_fat_tree"] = True
-                swap_keys = [("hamming:algorithm","algorithm"), ("hamming:single_switch_fat_tree","single_switch_fat_tree"),("hamming:shape","shape"),("hamming:width","width"), ("hamming:board_shape","board_shape"),("hamming:local_ports","local_ports"),("hamming:global_shape","global_shape"),("hamming:is_board_switch","is_board_switch"),("hamming:global_switch_id","global_switch_id"),("hamming:local_switch_id","local_switch_id"),("hamming:global_pos","global_pos"),("hamming:local_pos","local_pos"),("hamming:unique_pos","unique_pos"),("hamming:fat_tree_id","fat_tree_id"),("hamming:fat_tree_pos","fat_tree_pos")]
+                _params["hamming:jf_ft_nodes"] = self.jf_ft_nodes if self.use_jellyfish else 0
+                swap_keys = [("hamming:algorithm","algorithm"), ("hamming:single_switch_fat_tree","single_switch_fat_tree"),("hamming:jf_ft_nodes","jf_ft_nodes"),("hamming:shape","shape"),("hamming:width","width"), ("hamming:board_shape","board_shape"),("hamming:local_ports","local_ports"),("hamming:global_shape","global_shape"),("hamming:is_board_switch","is_board_switch"),("hamming:global_switch_id","global_switch_id"),("hamming:local_switch_id","local_switch_id"),("hamming:global_pos","global_pos"),("hamming:local_pos","local_pos"),("hamming:unique_pos","unique_pos"),("hamming:fat_tree_id","fat_tree_id"),("hamming:fat_tree_pos","fat_tree_pos")]
                 _topo_params = _params.subsetWithRename(swap_keys)
                 rtr.addParams(_params.subset(self.topoKeys, self.topoOptKeys))
                 rtr.addParam("id", self.global_router_id)
@@ -1304,9 +1490,19 @@ class topoHamming(Topo):
 
                 # Iterate all routers of this row and connect them to the router
                 for col in range(total_cols):
-                    if (self.isFirstOrLast(col, self.dims[1])):
-                        # Get if we are connecting to the first or last router
+                    if self.use_jellyfish and self.jf_ft_nodes > 0:
+                        board_id_ft = (row // self.dims[0]) * self.global_shape[1] + \
+                                      (col // self.dims[1])
+                        local_id_ft = (row % self.dims[0]) * self.dims[1] + \
+                                      (col % self.dims[1])
+                        should_connect = local_id_ft in \
+                            self._jf_gateway_map.get(board_id_ft, {}).get('row_ft', set())
+                        my_port = 3
+                    else:
+                        should_connect = self.isFirstOrLast(col, self.dims[1])
                         isFirst = self.isFirst(col, self.dims[1])
+                        my_port = 3 if isFirst else 1
+                    if should_connect:
                         # Connect from Fat Tree router to board router
                         unique_pos = self.global_to_local[self.GlobalToString([row, col])]
                         partner_str = self.getRouterNameString((unique_pos))
@@ -1315,34 +1511,38 @@ class topoHamming(Topo):
                         rtr.addLink(getLink(name_rtr, partner_str), "port%d"%port, _params["link_lat"])
 
                         # Connect from board router to fat tree router
-                        if (isFirst):
-                            my_port = 3
-                        else:
-                            my_port = 1
-
                         #print("Connecting {} to {} with port {}".format(partner_str, name_rtr, my_port))
                         other_rtr = self.list_routers[partner_str]
                         other_rtr.addLink(getLink(name_rtr, partner_str), "port%d"%my_port, _params["link_lat"])
 
                         port = port + 1
-                    
+
 
         # Fat Tree Col wise
         for col in range(total_cols):
+            # Determine node count (may vary per col when using custom Jellyfish gateways)
+            if self.use_jellyfish and self.jf_ft_nodes > 0:
+                nodes_count = self._count_jf_ft_connections('col_ft', 'col', col, total_rows)
+                if nodes_count == 0:
+                    continue  # no gateways in this global col; skip fat tree
+            else:
+                nodes_count = self.global_shape[0] * 2
+
             # Here, for now, we just create a single router to connect everything
             # Create single Router instance
-            if (self.global_shape[0] * 2 > self.radix_fat_tree_switches):
-                self.createColFatTree(self.global_shape[0] * 2, total_rows, -1, col)
+            if (nodes_count > self.radix_fat_tree_switches):
+                self.createColFatTree(nodes_count, total_rows, -1, col)
             else:
                 # Here, for now, we just create a single router to connect everything
                 # Create single Router instance
                 port = 0
                 rtr = self._instanceRouter(self.global_router_id,"merlin.hr_router")
-                _params["num_ports"] = _params["router_radix"] = self.global_shape[0] * 2
+                _params["num_ports"] = _params["router_radix"] = nodes_count
                 _params["hamming:local_ports"] = 0
                 self.setParameters(_params, False, self.global_router_id, -1, [-1,-1], [-1,-1], [[-1, -1], [-1, -1]], [1,col], [0, 0])
                 _params["hamming:single_switch_fat_tree"] = True
-                swap_keys = [("hamming:algorithm","algorithm"), ("hamming:single_switch_fat_tree","single_switch_fat_tree"),("hamming:shape","shape"),("hamming:width","width"), ("hamming:board_shape","board_shape"),("hamming:local_ports","local_ports"),("hamming:global_shape","global_shape"),("hamming:is_board_switch","is_board_switch"),("hamming:global_switch_id","global_switch_id"),("hamming:local_switch_id","local_switch_id"),("hamming:global_pos","global_pos"),("hamming:local_pos","local_pos"),("hamming:unique_pos","unique_pos"),("hamming:fat_tree_id","fat_tree_id"),("hamming:fat_tree_pos","fat_tree_pos")]
+                _params["hamming:jf_ft_nodes"] = self.jf_ft_nodes if self.use_jellyfish else 0
+                swap_keys = [("hamming:algorithm","algorithm"), ("hamming:single_switch_fat_tree","single_switch_fat_tree"),("hamming:jf_ft_nodes","jf_ft_nodes"),("hamming:shape","shape"),("hamming:width","width"), ("hamming:board_shape","board_shape"),("hamming:local_ports","local_ports"),("hamming:global_shape","global_shape"),("hamming:is_board_switch","is_board_switch"),("hamming:global_switch_id","global_switch_id"),("hamming:local_switch_id","local_switch_id"),("hamming:global_pos","global_pos"),("hamming:local_pos","local_pos"),("hamming:unique_pos","unique_pos"),("hamming:fat_tree_id","fat_tree_id"),("hamming:fat_tree_pos","fat_tree_pos")]
                 _topo_params = _params.subsetWithRename(swap_keys)
                 rtr.addParams(_params.subset(self.topoKeys, self.topoOptKeys))
                 rtr.addParam("id", self.global_router_id)
@@ -1351,11 +1551,21 @@ class topoHamming(Topo):
                 self.global_router_id = self.global_router_id + 1
                 name_rtr = "colx{}".format(col)
 
-                # Iterate all routers of this row and connect them to the router
+                # Iterate all routers of this col and connect them to the router
                 for row in range(total_rows):
-                    if (self.isFirstOrLast(row, self.dims[0])):
-                        # Get if we are connecting to the first or last router
+                    if self.use_jellyfish and self.jf_ft_nodes > 0:
+                        board_id_ft = (row // self.dims[0]) * self.global_shape[1] + \
+                                      (col // self.dims[1])
+                        local_id_ft = (row % self.dims[0]) * self.dims[1] + \
+                                      (col % self.dims[1])
+                        should_connect = local_id_ft in \
+                            self._jf_gateway_map.get(board_id_ft, {}).get('col_ft', set())
+                        my_port = 0
+                    else:
+                        should_connect = self.isFirstOrLast(row, self.dims[0])
                         isFirst = self.isFirst(row, self.dims[0])
+                        my_port = 0 if isFirst else 2
+                    if should_connect:
                         # Connect from Fat Tree router to board router
                         unique_pos = self.global_to_local[self.GlobalToString([row, col])]
                         partner_str = self.getRouterNameString((unique_pos))
@@ -1364,11 +1574,6 @@ class topoHamming(Topo):
                         rtr.addLink(getLink(name_rtr, partner_str), "port%d"%port, _params["link_lat"])
 
                         # Connect from board router to fat tree router
-                        if (isFirst):
-                            my_port = 0
-                        else:
-                            my_port = 2
-
                         #print("Connecting {} to {} with port {}".format(partner_str, name_rtr, my_port))
                         other_rtr = self.list_routers[partner_str]
                         other_rtr.addLink(getLink(name_rtr, partner_str), "port%d"%my_port, _params["link_lat"])
