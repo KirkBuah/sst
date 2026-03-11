@@ -71,6 +71,7 @@ topo_hamming::topo_hamming(ComponentId_t cid, Params& params, int num_ports, int
     // Retrieve parameters and print them for debug
     is_board_switch = params.find<bool>("is_board_switch");
     single_switch_fat_tree = params.find<bool>("single_switch_fat_tree");
+    flat_fat_tree = params.find<bool>("flat_fat_tree", false);
     jf_ft_nodes = params.find<int>("jf_ft_nodes", 0);
     global_switch_id = params.find<int>("global_switch_id");
     local_switch_id = params.find<int>("local_switch_id");
@@ -114,6 +115,7 @@ topo_hamming::topo_hamming(ComponentId_t cid, Params& params, int num_ports, int
     DEBUG_PRINT(("--- Unique pos is %s ---\n", get_string_from_array(unique_pos, ',').c_str()));
     DEBUG_PRINT(("--- Fat Tree ID is %s ---\n", get_string_from_array(fat_tree_id, ',').c_str()));
     DEBUG_PRINT(("--- Fat Tree is single router %d ---\n", single_switch_fat_tree));
+    DEBUG_PRINT(("--- Fat Tree is flat %d ---\n", flat_fat_tree));
     DEBUG_PRINT(("--- Fat Tree pos is %s ---\n", get_string_from_array(fat_tree_pos, ',').c_str()));
     DEBUG_PRINT(("--- Fat Tree num links edge<->cores %d ---\n", num_links_pair));
     DEBUG_PRINT(("--- Fat Tree switches level first %d ---\n\n", switches_first_level));
@@ -135,6 +137,9 @@ topo_hamming::topo_hamming(ComponentId_t cid, Params& params, int num_ports, int
     if (!is_board_switch) {
         if(single_switch_fat_tree){
             this->down_ports_edge = num_ports;
+        }else if(flat_fat_tree){
+            // Flat fat tree: down_ports = radix - (num_switches - 1)
+            this->down_ports_edge = num_ports - (switches_first_level - 1);
         }else{
             this->down_ports_edge = ceil(num_ports / 2); // for 1:1 topologies
         }
@@ -199,18 +204,38 @@ std::vector<int> topo_hamming::getOutputPortFor(int fat_tree_destination) {
     }
 
     int switch_id_first_level = fat_tree_destination / down_ports_edge;
-    if(is_tree_edge_switch()){        
+    if(flat_fat_tree){
+        // Flat fat tree: all switches at same level, interconnected all-to-all.
+        // down-ports [0, down_ports_edge) connect to gateways.
+        // inter-switch ports [down_ports_edge, ...) connect to peer switches.
+        if(fat_tree_pos[1] == switch_id_first_level){
+            // Destination gateway is on this switch -> route down
+            output_ports.push_back(fat_tree_destination % down_ports_edge);
+        }else{
+            // Route to the specific peer switch that owns the destination
+            // Port mapping: for switch M, peer S uses port:
+            //   down_ports_edge + S     (if S < M)
+            //   down_ports_edge + S - 1 (if S > M)
+            int peer_port;
+            if(switch_id_first_level < fat_tree_pos[1]){
+                peer_port = down_ports_edge + switch_id_first_level;
+            }else{
+                peer_port = down_ports_edge + switch_id_first_level - 1;
+            }
+            output_ports.push_back(peer_port);
+        }
+    }else if(is_tree_edge_switch()){
         if(fat_tree_pos[1] == switch_id_first_level){ // I am the edge destination switch
             output_ports.push_back(fat_tree_destination % down_ports_edge);
         }else{ // I am the edge source switch
             // Push all up ports to core
-            int first_port = down_ports_edge;        
+            int first_port = down_ports_edge;
             for (int link_idx = first_port; link_idx < num_ports; link_idx++) {
                 output_ports.push_back(link_idx);
             }
         }
-    }else{        
-        int first_port = (switch_id_first_level) * num_links_pair;        
+    }else{
+        int first_port = (switch_id_first_level) * num_links_pair;
         for (int link_idx = 0; link_idx < num_links_pair; link_idx++) {
             output_ports.push_back(first_port + link_idx);
         }

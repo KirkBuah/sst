@@ -391,7 +391,7 @@ class topoMesh(Topo):
 class topoHamming(Topo):
     def __init__(self):
         Topo.__init__(self)
-        self.topoKeys = ["topology", "debug", "num_ports", "flit_size", "link_bw",  "nic_link_bw", "xbar_bw", "hamming:fat_tree_shape", "hamming:shape", "hamming:single_switch_fat_tree", "hamming:link_width","hamming:switches_first_level", "hamming:board_shape", "hamming:global_shape", "hamming:is_board_switch", "hamming:algorithm", "hamming:global_switch_id", "hamming:local_switch_id", "hamming:global_pos", "hamming:local_pos", "hamming:unique_pos", "hamming:fat_tree_id", "hamming:fat_tree_pos", "hamming:width", "hamming:local_ports","hamming:is_jellyfish","hamming:routing_table","hamming:row_ft_port","hamming:col_ft_port","hamming:nearest_row_edge","hamming:nearest_col_edge","input_latency","output_latency","input_buf_size","output_buf_size"]
+        self.topoKeys = ["topology", "debug", "num_ports", "flit_size", "link_bw",  "nic_link_bw", "xbar_bw", "hamming:fat_tree_shape", "hamming:shape", "hamming:single_switch_fat_tree", "hamming:flat_fat_tree", "hamming:link_width","hamming:switches_first_level", "hamming:board_shape", "hamming:global_shape", "hamming:is_board_switch", "hamming:algorithm", "hamming:global_switch_id", "hamming:local_switch_id", "hamming:global_pos", "hamming:local_pos", "hamming:unique_pos", "hamming:fat_tree_id", "hamming:fat_tree_pos", "hamming:width", "hamming:local_ports","hamming:is_jellyfish","hamming:routing_table","hamming:row_ft_port","hamming:col_ft_port","hamming:nearest_row_edge","hamming:nearest_col_edge","input_latency","output_latency","input_buf_size","output_buf_size"]
         self.topoOptKeys = ["xbar_arb","num_vns","vn_remap","vn_remap_shm","portcontrol:output_arb","portcontrol:arbitration:qos_settings","portcontrol:arbitration:arb_vns","portcontrol:arbitration:arb_vcs"]
     def getName(self):
         return "Hamming"
@@ -585,6 +585,7 @@ class topoHamming(Topo):
         _params["hamming:link_width"] = self.link_width
         _params["hamming:switches_first_level"] = self.switches_first_level
         _params["hamming:single_switch_fat_tree"] = False
+        _params["hamming:flat_fat_tree"] = False
         # Jellyfish defaults
         _params["hamming:is_jellyfish"] = False
         _params["hamming:routing_table"] = ""
@@ -594,8 +595,16 @@ class topoHamming(Topo):
         _params["hamming:nearest_col_edge"] = -1
 
     def createRowFatTree(self, nodes, total, row, col):
+        """Create a flat (single-level) fat tree for a row.
 
-        # Helper function
+        Instead of edge + core levels, creates flat switches that connect
+        directly to gateway nodes. Switches are interconnected all-to-all
+        for routing between subsets of gateways.
+
+        Port layout per switch:
+          [0, down_ports)                            -> gateway connections
+          [down_ports, down_ports + num_switches - 1) -> inter-switch connections
+        """
         links = dict()
         def getLink(leftName, rightName, num):
             name = "link.%s:%s:%d"%(leftName, rightName, num)
@@ -603,47 +612,58 @@ class topoHamming(Topo):
                 links[name] = sst.Link(name)
             return links[name]
 
-        # Determine if we are creating row or col wise fat Tree
-        type_tree = ""
-        if (row == -1):
-            type_tree = "col"
-        else:
-            type_tree = "row"
-        
-        # Case 1:1, initialize overall values
-        num_ports_per_switch = self.radix_fat_tree_switches
-        num_switches_first_level =  int(math.ceil(nodes / (num_ports_per_switch / 2)))
-        tot_ports_up = num_switches_first_level * (num_ports_per_switch / 2)
-        num_swithes_second_level = int(math.ceil(tot_ports_up / num_ports_per_switch))
-        down_ports = (num_ports_per_switch / 2)
-        list_routers_first_level = {}
-        list_routers_second_level = {}
-        #print("Switches Level 1 {}, Tot Up ports {} - Switches Level 2 {}".format(num_switches_first_level, tot_ports_up, num_swithes_second_level))
-        
-        # Iterate routers first level and link them to board switches
+        radix = self.radix_fat_tree_switches
+
+        # Calculate number of flat switches needed.
+        # Each switch has (radix - (num_switches - 1)) down-ports for gateways
+        # and (num_switches - 1) ports for inter-switch links.
+        num_switches = 1
+        while True:
+            down_ports = radix - (num_switches - 1)
+            if down_ports <= 0:
+                raise ValueError("Cannot create flat fat tree: radix %d too small for %d gateways" % (radix, nodes))
+            if num_switches * down_ports >= nodes:
+                break
+            num_switches += 1
+
+        down_ports = radix - (num_switches - 1)
+        list_switches = {}
+
+        # Create switches and wire gateways to them
         col_idx = 0
-        for router_level_1 in range(int(num_switches_first_level)):
-            # Create router
-            current_down_port = down_ports
+        for sw_idx in range(num_switches):
             port = 0
-            rtr = self._instanceRouter(self.global_router_id,"merlin.hr_router")
-            _params["num_ports"] = _params["router_radix"] = self.radix_fat_tree_switches
+            current_down_port = down_ports
+            rtr = self._instanceRouter(self.global_router_id, "merlin.hr_router")
+            _params["num_ports"] = _params["router_radix"] = radix
             _params["hamming:local_ports"] = 0
-            self.setParameters(_params, False, self.global_router_id, -1, [-1,-1], [-1,-1], [[-1, -1], [-1, -1]], [0,row], [0, router_level_1])
-            _params["hamming:link_width"] = int(down_ports / num_swithes_second_level)
-            _params["hamming:switches_first_level"] = num_switches_first_level
-            swap_keys = [("hamming:shape","shape"),("hamming:fat_tree_shape","fat_tree_shape"), ("hamming:width","width"), ("hamming:board_shape","board_shape"),("hamming:local_ports","local_ports"),("hamming:global_shape","global_shape"),("hamming:is_board_switch","is_board_switch"),("hamming:global_switch_id","global_switch_id"),("hamming:local_switch_id","local_switch_id"),("hamming:global_pos","global_pos"),("hamming:local_pos","local_pos"),("hamming:unique_pos","unique_pos"),("hamming:fat_tree_id","fat_tree_id"),("hamming:fat_tree_pos","fat_tree_pos"),("hamming:link_width","link_width"),("hamming:switches_first_level","switches_first_level")]
+            self.setParameters(_params, False, self.global_router_id, -1, [-1,-1], [-1,-1],
+                              [[-1, -1], [-1, -1]], [0, row], [0, sw_idx])
+            _params["hamming:flat_fat_tree"] = True
+            _params["hamming:link_width"] = 1
+            _params["hamming:switches_first_level"] = num_switches
+            _params["hamming:jf_ft_nodes"] = self.jf_ft_nodes if self.use_jellyfish else 0
+            swap_keys = [("hamming:algorithm","algorithm"), ("hamming:flat_fat_tree","flat_fat_tree"),
+                         ("hamming:jf_ft_nodes","jf_ft_nodes"),
+                         ("hamming:shape","shape"), ("hamming:fat_tree_shape","fat_tree_shape"),
+                         ("hamming:width","width"), ("hamming:board_shape","board_shape"),
+                         ("hamming:local_ports","local_ports"), ("hamming:global_shape","global_shape"),
+                         ("hamming:is_board_switch","is_board_switch"), ("hamming:global_switch_id","global_switch_id"),
+                         ("hamming:local_switch_id","local_switch_id"), ("hamming:global_pos","global_pos"),
+                         ("hamming:local_pos","local_pos"), ("hamming:unique_pos","unique_pos"),
+                         ("hamming:fat_tree_id","fat_tree_id"), ("hamming:fat_tree_pos","fat_tree_pos"),
+                         ("hamming:link_width","link_width"), ("hamming:switches_first_level","switches_first_level")]
             _topo_params = _params.subsetWithRename(swap_keys)
             rtr.addParams(_params.subset(self.topoKeys, self.topoOptKeys))
             rtr.addParam("id", self.global_router_id)
-            topology = rtr.setSubComponent("topology","merlin.hamming")
+            topology = rtr.setSubComponent("topology", "merlin.hamming")
             topology.addParams(_topo_params)
-            self.global_router_id = self.global_router_id + 1
-            name_rtr = "rowx{}:{}x{}".format(row,0,router_level_1)
-            list_routers_first_level[name_rtr] = rtr
+            self.global_router_id += 1
+            name_rtr = "rowx{}:{}x{}".format(row, 0, sw_idx)
+            list_switches[sw_idx] = (name_rtr, rtr)
 
-            while ((col_idx != self.global_shape[1] * self.dims[1]) and current_down_port != 0):
-                #print("While, {} {}".format(col_idx, current_down_port))
+            # Wire gateways to this switch (same logic as old edge switch wiring)
+            while col_idx != self.global_shape[1] * self.dims[1] and current_down_port != 0:
                 if self.use_jellyfish and self.jf_ft_nodes > 0:
                     board_id_ft = (row // self.dims[0]) * self.global_shape[1] + \
                                   (col_idx // self.dims[1])
@@ -657,88 +677,35 @@ class topoHamming(Topo):
                     isFirst = self.isFirst(col_idx, self.dims[1])
                     my_port = 3 if isFirst else 1
                 if should_connect:
-                    # Connect from Fat Tree router to board router
                     unique_pos = self.global_to_local[self.GlobalToString([row, col_idx])]
                     partner_str = self.getRouterNameString((unique_pos))
-                    #print("Fat Connecting {} to {} with port {}".format(name_rtr, partner_str, port))
                     rtr.addLink(getLink(name_rtr, partner_str, 0), "port%d"%port, _params["link_lat"])
-                    # Connect from board router to fat tree router
-                    #print("Fat Connecting {} to {} with port {}".format(partner_str, name_rtr, my_port))
                     other_rtr = self.list_routers[partner_str]
                     other_rtr.addLink(getLink(name_rtr, partner_str, 0), "port%d"%my_port, _params["link_lat"])
-                    port = port + 1
-                    current_down_port = current_down_port - 1
+                    port += 1
+                    current_down_port -= 1
+                col_idx += 1
 
-                col_idx = col_idx + 1
+        # Wire inter-switch links (all-to-all among flat switches)
+        for i in range(num_switches):
+            for j in range(i + 1, num_switches):
+                name_i, rtr_i = list_switches[i]
+                name_j, rtr_j = list_switches[j]
+                # For switch M, peer S uses port: down_ports + (S if S < M else S - 1)
+                port_i = int(down_ports) + j - 1   # j > i
+                port_j = int(down_ports) + i        # i < j
+                link = getLink(name_i, name_j, 0)
+                rtr_i.addLink(link, "port%d"%port_i, _params["link_lat"])
+                rtr_j.addLink(link, "port%d"%port_j, _params["link_lat"])
 
-        # Iterate routers second level and link them to first level switches
-        col_idx = 0
-        for router_level_2 in range(int(num_swithes_second_level)):
-            # Create router
-            current_down_port = num_ports_per_switch
-            port = 0
-            rtr = self._instanceRouter(self.global_router_id,"merlin.hr_router")
-            _params["num_ports"] = _params["router_radix"] = num_ports_per_switch
-            _params["hamming:local_ports"] = 0
-            self.setParameters(_params, False, self.global_router_id, -1, [-1,-1], [-1,-1], [[-1, -1], [-1, -1]], [0,row], [1, router_level_2])
-            _params["hamming:link_width"] = int(down_ports / num_swithes_second_level)
-            _params["hamming:switches_first_level"] = num_switches_first_level
-            swap_keys = [("hamming:shape","shape"),("hamming:fat_tree_shape","fat_tree_shape"), ("hamming:width","width"), ("hamming:board_shape","board_shape"),("hamming:local_ports","local_ports"),("hamming:global_shape","global_shape"),("hamming:is_board_switch","is_board_switch"),("hamming:global_switch_id","global_switch_id"),("hamming:local_switch_id","local_switch_id"),("hamming:global_pos","global_pos"),("hamming:local_pos","local_pos"),("hamming:unique_pos","unique_pos"),("hamming:fat_tree_id","fat_tree_id"),("hamming:fat_tree_pos","fat_tree_pos"),("hamming:link_width","link_width"),("hamming:switches_first_level","switches_first_level")]
-            _topo_params = _params.subsetWithRename(swap_keys)
-            rtr.addParams(_params.subset(self.topoKeys, self.topoOptKeys))
-            rtr.addParam("id", self.global_router_id)
-            topology = rtr.setSubComponent("topology","merlin.hamming")
-            topology.addParams(_topo_params)
-            self.global_router_id = self.global_router_id + 1
-            name_rtr = "rowx{}:{}x{}".format(row,1,router_level_2)
-            list_routers_second_level[name_rtr] = rtr
-            
-        starting_port_2_down = 0
-
-        starting_port_down = [None] * num_swithes_second_level
-        links_num = int(down_ports / num_swithes_second_level)
-
-        for idx_2 in range(0, num_swithes_second_level):
-            starting_port_down[idx_2] = list()
-            for idx in range(0, num_switches_first_level):
-                starting_port_down[idx_2].append(idx*links_num)
-
-        starting_port_1_up = int(down_ports)
-
-        #print("Links num {} - Starting Port Down {}".format(links_num, starting_port_down))
-
-        for link_num in range(links_num):
-            #starting_port_1_up = int(down_ports)
-            for router_level_2 in range(num_swithes_second_level):
-                for router_level_1 in range(num_switches_first_level):
-
-                    # Connect from Fat Tree router to board router
-                    name_rtr_1 = "rowx{}:{}x{}".format(row,0,router_level_1)
-                    rtr_1 = list_routers_first_level[name_rtr_1]
-
-                    name_rtr_2 = "rowx{}:{}x{}".format(row,1,router_level_2)
-                    rtr_2 = list_routers_second_level[name_rtr_2]
-
-                    #print("Fat2 Connecting1 {} to {} with port {}".format(name_rtr_1, name_rtr_2, starting_port_1_up))
-                    rtr_1.addLink(getLink(name_rtr_1, name_rtr_2, link_num), "port%d"%starting_port_1_up, _params["link_lat"])
-                    # Connect from board router to fat tree router
-                    #print("Fat2 Connecting2 {} to {} with port {}".format(name_rtr_2, name_rtr_1, starting_port_down[router_level_2][router_level_1]))
-                    rtr_2.addLink(getLink(name_rtr_1, name_rtr_2, link_num), "port%d"%starting_port_down[router_level_2][router_level_1], _params["link_lat"])
-
-                    starting_port_down[router_level_2][router_level_1] = starting_port_down[router_level_2][router_level_1] + 1
-                    #starting_port_2_down = starting_port_2_down + int(down_ports / num_swithes_second_level)
-                    #print("starting_port_2_down {}".format(starting_port_2_down))
-
-                starting_port_1_up = starting_port_1_up + 1   
-                #print("starting_port_1_up {}".format(starting_port_1_up))
-
-            starting_port_2_down = starting_port_2_down + 1
-            #print("starting_port_2_down {}".format(starting_port_2_down))
         return 1
 
     def createColFatTree(self, nodes, total, row, col):
+        """Create a flat (single-level) fat tree for a column.
 
-        # Helper function
+        Same approach as createRowFatTree but for column-wise fat trees.
+        Gateways use port 0 (N) or 2 (S) instead of port 3 (W) or 1 (E).
+        """
         links = dict()
         def getLink(leftName, rightName, num):
             name = "link.%s:%s:%d"%(leftName, rightName, num)
@@ -746,46 +713,56 @@ class topoHamming(Topo):
                 links[name] = sst.Link(name)
             return links[name]
 
-        # Determine if we are creating row or col wise fat Tree
-        type_tree = ""
-        if (row == -1):
-            type_tree = "col"
-        else:
-            type_tree = "row"
-        
-        # Case 1:1, initialize overall values
-        num_ports_per_switch = self.radix_fat_tree_switches
-        num_switches_first_level =  int(math.ceil(nodes / (num_ports_per_switch / 2)))
-        tot_ports_up = num_switches_first_level * (num_ports_per_switch / 2)
-        num_swithes_second_level = int(math.ceil(tot_ports_up / num_ports_per_switch))
-        down_ports = (num_ports_per_switch / 2)
-        list_routers_first_level = {}
-        list_routers_second_level = {}
-        #print("Switches Level 1 {}, Up ports {} - Switches Level 2 {}".format(num_switches_first_level, tot_ports_up, num_swithes_second_level))
-        
-        # Iterate routers first level and link them to board switches
+        radix = self.radix_fat_tree_switches
+
+        # Calculate number of flat switches needed
+        num_switches = 1
+        while True:
+            down_ports = radix - (num_switches - 1)
+            if down_ports <= 0:
+                raise ValueError("Cannot create flat fat tree: radix %d too small for %d gateways" % (radix, nodes))
+            if num_switches * down_ports >= nodes:
+                break
+            num_switches += 1
+
+        down_ports = radix - (num_switches - 1)
+        list_switches = {}
+
+        # Create switches and wire gateways to them
         row_idx = 0
-        for router_level_1 in range(int(num_switches_first_level)):
-            # Create router
-            current_down_port = down_ports
+        for sw_idx in range(num_switches):
             port = 0
-            rtr = self._instanceRouter(self.global_router_id,"merlin.hr_router")
-            _params["num_ports"] = _params["router_radix"] = num_ports_per_switch
+            current_down_port = down_ports
+            rtr = self._instanceRouter(self.global_router_id, "merlin.hr_router")
+            _params["num_ports"] = _params["router_radix"] = radix
             _params["hamming:local_ports"] = 0
-            self.setParameters(_params, False, self.global_router_id, -1, [-1,-1], [-1,-1], [[-1, -1], [-1, -1]], [1,col], [0, router_level_1])
-            _params["hamming:link_width"] = int(down_ports / num_swithes_second_level)
-            _params["hamming:switches_first_level"] = num_switches_first_level
-            swap_keys = [("hamming:shape","shape"),("hamming:fat_tree_shape","fat_tree_shape"), ("hamming:width","width"), ("hamming:board_shape","board_shape"),("hamming:local_ports","local_ports"),("hamming:global_shape","global_shape"),("hamming:is_board_switch","is_board_switch"),("hamming:global_switch_id","global_switch_id"),("hamming:local_switch_id","local_switch_id"),("hamming:global_pos","global_pos"),("hamming:local_pos","local_pos"),("hamming:unique_pos","unique_pos"),("hamming:fat_tree_id","fat_tree_id"),("hamming:fat_tree_pos","fat_tree_pos"),("hamming:link_width","link_width"),("hamming:switches_first_level","switches_first_level")]
+            self.setParameters(_params, False, self.global_router_id, -1, [-1,-1], [-1,-1],
+                              [[-1, -1], [-1, -1]], [1, col], [0, sw_idx])
+            _params["hamming:flat_fat_tree"] = True
+            _params["hamming:link_width"] = 1
+            _params["hamming:switches_first_level"] = num_switches
+            _params["hamming:jf_ft_nodes"] = self.jf_ft_nodes if self.use_jellyfish else 0
+            swap_keys = [("hamming:algorithm","algorithm"), ("hamming:flat_fat_tree","flat_fat_tree"),
+                         ("hamming:jf_ft_nodes","jf_ft_nodes"),
+                         ("hamming:shape","shape"), ("hamming:fat_tree_shape","fat_tree_shape"),
+                         ("hamming:width","width"), ("hamming:board_shape","board_shape"),
+                         ("hamming:local_ports","local_ports"), ("hamming:global_shape","global_shape"),
+                         ("hamming:is_board_switch","is_board_switch"), ("hamming:global_switch_id","global_switch_id"),
+                         ("hamming:local_switch_id","local_switch_id"), ("hamming:global_pos","global_pos"),
+                         ("hamming:local_pos","local_pos"), ("hamming:unique_pos","unique_pos"),
+                         ("hamming:fat_tree_id","fat_tree_id"), ("hamming:fat_tree_pos","fat_tree_pos"),
+                         ("hamming:link_width","link_width"), ("hamming:switches_first_level","switches_first_level")]
             _topo_params = _params.subsetWithRename(swap_keys)
             rtr.addParams(_params.subset(self.topoKeys, self.topoOptKeys))
             rtr.addParam("id", self.global_router_id)
-            topology = rtr.setSubComponent("topology","merlin.hamming")
+            topology = rtr.setSubComponent("topology", "merlin.hamming")
             topology.addParams(_topo_params)
-            self.global_router_id = self.global_router_id + 1
-            name_rtr = "colx{}:{}x{}".format(col,0,router_level_1)
-            list_routers_first_level[name_rtr] = rtr
+            self.global_router_id += 1
+            name_rtr = "colx{}:{}x{}".format(col, 0, sw_idx)
+            list_switches[sw_idx] = (name_rtr, rtr)
 
-            while ((row_idx != self.global_shape[0] * self.dims[0]) and current_down_port != 0):
+            # Wire gateways to this switch
+            while row_idx != self.global_shape[0] * self.dims[0] and current_down_port != 0:
                 if self.use_jellyfish and self.jf_ft_nodes > 0:
                     board_id_ft = (row_idx // self.dims[0]) * self.global_shape[1] + \
                                   (col // self.dims[1])
@@ -799,79 +776,26 @@ class topoHamming(Topo):
                     isFirst = self.isFirst(row_idx, self.dims[0])
                     my_port = 0 if isFirst else 2
                 if should_connect:
-                    # Connect from Fat Tree router to board router
                     unique_pos = self.global_to_local[self.GlobalToString([row_idx, col])]
                     partner_str = self.getRouterNameString((unique_pos))
-                    #print("Fat Connecting {} to {} with port {}".format(name_rtr, partner_str, port))
                     rtr.addLink(getLink(name_rtr, partner_str, 0), "port%d"%port, _params["link_lat"])
-                    # Connect from board router to fat tree router
-                    #print("Fat Connecting {} to {} with port {}".format(partner_str, name_rtr, my_port))
                     other_rtr = self.list_routers[partner_str]
                     other_rtr.addLink(getLink(name_rtr, partner_str, 0), "port%d"%my_port, _params["link_lat"])
-                    port = port + 1
-                    current_down_port = current_down_port - 1
+                    port += 1
+                    current_down_port -= 1
+                row_idx += 1
 
-                row_idx = row_idx + 1
+        # Wire inter-switch links (all-to-all among flat switches)
+        for i in range(num_switches):
+            for j in range(i + 1, num_switches):
+                name_i, rtr_i = list_switches[i]
+                name_j, rtr_j = list_switches[j]
+                port_i = int(down_ports) + j - 1   # j > i
+                port_j = int(down_ports) + i        # i < j
+                link = getLink(name_i, name_j, 0)
+                rtr_i.addLink(link, "port%d"%port_i, _params["link_lat"])
+                rtr_j.addLink(link, "port%d"%port_j, _params["link_lat"])
 
-        # Iterate routers second level and link them to first level switches
-        row_idx = 0
-        for router_level_2 in range(int(num_swithes_second_level)):
-            # Create router
-            current_down_port = num_ports_per_switch
-            port = 0
-            rtr = self._instanceRouter(self.global_router_id,"merlin.hr_router")
-            _params["num_ports"] = _params["router_radix"] = num_ports_per_switch
-            _params["hamming:local_ports"] = 0
-            self.setParameters(_params, False, self.global_router_id, -1, [-1,-1], [-1,-1], [[-1, -1], [-1, -1]], [1,col], [1, router_level_2])
-            _params["hamming:link_width"] = int(down_ports / num_swithes_second_level)
-            _params["hamming:switches_first_level"] = num_switches_first_level
-            swap_keys = [("hamming:shape","shape"),("hamming:fat_tree_shape","fat_tree_shape"), ("hamming:width","width"), ("hamming:board_shape","board_shape"),("hamming:local_ports","local_ports"),("hamming:global_shape","global_shape"),("hamming:is_board_switch","is_board_switch"),("hamming:global_switch_id","global_switch_id"),("hamming:local_switch_id","local_switch_id"),("hamming:global_pos","global_pos"),("hamming:local_pos","local_pos"),("hamming:unique_pos","unique_pos"),("hamming:fat_tree_id","fat_tree_id"),("hamming:fat_tree_pos","fat_tree_pos"),("hamming:link_width","link_width"),("hamming:switches_first_level","switches_first_level")]
-            _topo_params = _params.subsetWithRename(swap_keys)
-            rtr.addParams(_params.subset(self.topoKeys, self.topoOptKeys))
-            rtr.addParam("id", self.global_router_id)
-            topology = rtr.setSubComponent("topology","merlin.hamming")
-            topology.addParams(_topo_params)
-            self.global_router_id = self.global_router_id + 1
-            name_rtr = "colx{}:{}x{}".format(col,1,router_level_2)
-            list_routers_second_level[name_rtr] = rtr
-            
-        starting_port_2_down = 0
-
-        starting_port_down = [None] * num_swithes_second_level
-        links_num = int(down_ports / num_swithes_second_level)
-
-        for idx_2 in range(0, num_swithes_second_level):
-            starting_port_down[idx_2] = list()
-            for idx in range(0, num_switches_first_level):
-                starting_port_down[idx_2].append(idx*links_num)
-
-        starting_port_1_up = int(down_ports)
-
-        for link_num in range(links_num):
-            #starting_port_1_up = int(down_ports)
-            for router_level_2 in range(num_swithes_second_level):
-                for router_level_1 in range(num_switches_first_level):
-
-                    # Connect from Fat Tree router to board router
-                    name_rtr_1 = "colx{}:{}x{}".format(col,0,router_level_1)
-                    rtr_1 = list_routers_first_level[name_rtr_1]
-
-                    name_rtr_2 = "colx{}:{}x{}".format(col,1,router_level_2)
-                    rtr_2 = list_routers_second_level[name_rtr_2]
-
-                    #print("Fat2 Connecting1 {} to {} with port {}".format(name_rtr_1, name_rtr_2, starting_port_1_up))
-                    rtr_1.addLink(getLink(name_rtr_1, name_rtr_2, link_num), "port%d"%starting_port_1_up, _params["link_lat"])
-                    # Connect from board router to fat tree router
-                    #print("Fat2 Connecting2 {} to {} with port {}".format(name_rtr_2, name_rtr_1, starting_port_down[router_level_2][router_level_1]))
-                    rtr_2.addLink(getLink(name_rtr_1, name_rtr_2, link_num), "port%d"%starting_port_down[router_level_2][router_level_1], _params["link_lat"])
-
-                    starting_port_down[router_level_2][router_level_1] = starting_port_down[router_level_2][router_level_1] + 1
-
-                starting_port_1_up = starting_port_1_up + 1   
-                #print("starting_port_1_up {}".format(starting_port_1_up))
-
-            starting_port_2_down = starting_port_2_down + 1
-            #print("starting_port_2_down {}".format(starting_port_2_down))
         return 1
 
 
