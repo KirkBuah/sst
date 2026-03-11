@@ -81,6 +81,12 @@ def exp1_scaling(num_threads, small_run):
              "--jellyfish", "--ft_nodes", "1"],
             num_threads, small_run,
             "JF-ft1  board=%s global=%s" % (board, glob))
+        # Jellyfish ft_nodes=2
+        run(ALLTOALL_PY,
+            ["--board_shape", board, "--global_shape", glob,
+             "--jellyfish", "--ft_nodes", "2"],
+            num_threads, small_run,
+            "JF-ft2  board=%s global=%s" % (board, glob))
 
 
 def exp2_ft_density(num_threads, small_run):

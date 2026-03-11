@@ -190,6 +190,7 @@ def plot_scaling(ax, alltoall_data):
     """
     For each topology name in alltoall_data, take the throughput at the
     largest message size and plot it vs node count.
+    Also determines the largest per-pair message size for the title.
     """
     # Group by topology variant across different node counts
     # Key: variant string ('mesh', 'jellyfish', 'jellyfish_ft1', ...)
@@ -224,9 +225,28 @@ def plot_scaling(ax, alltoall_data):
         kw = style.get(var, dict(color='grey', marker='x', ls='-', label=var))
         ax.plot(xs, ys, ms=7, linewidth=2, **kw)
 
+    # Determine the largest per-pair message size across all runs
+    max_msg = 0
+    for points in alltoall_data.values():
+        for fname in Path(ALLTOALL_OUT).iterdir():
+            if fname.is_dir():
+                for f in fname.iterdir():
+                    try:
+                        max_msg = max(max_msg, int(f.name))
+                    except ValueError:
+                        pass
+                break  # all dirs use the same sizes
+
+    if max_msg >= 1048576:
+        msg_label = "%d MB" % (max_msg // 1048576)
+    elif max_msg >= 1024:
+        msg_label = "%d KB" % (max_msg // 1024)
+    else:
+        msg_label = "%d B" % max_msg
+
     ax.set_xlabel("Node count")
     ax.set_ylabel("Throughput (Gb/s)")
-    ax.set_title("AllToAll — scaling (largest msg)")
+    ax.set_title("AllToAll Throughput Scaling\n(per-pair message size = %s)" % msg_label)
     ax.legend(fontsize=8)
     ax.grid(True, alpha=0.3)
 
@@ -281,38 +301,43 @@ def plot_ft_sweep(ax, alltoall_data, randperm_data):
     ax.set_xlabel("ft_nodes (gateways per FT direction)")
     ax.set_ylabel("Throughput (Gb/s)")
     ax.set_title("Jellyfish FT Gateway Tradeoff\n(board=2×2, global=2×2, 16 nodes)")
-    ax.xaxis.set_major_locator(mticker.MaxNLocator(integer=True))
+    ax.set_xticks(ft_vals)
+    ax.set_xticklabels(
+        ["0\n(all border\nnodes)" if f == 0 else str(f) for f in ft_vals],
+        fontsize=8)
     ax.legend(fontsize=8)
     ax.grid(True, alpha=0.3)
 
 
 # ── Plot 3: theoretical link counts ─────────────────────────────────────────
 
-def plot_theory(axes, rows):
+def plot_theory_intra(ax, rows):
     nodes = [r['N'] for r in rows]
     ms = 7
-
-    ax = axes[0]
     ax.plot(nodes, [r['mesh_intra_pn']   for r in rows], 'o-',  color=C_MESH,   ms=ms, label='Mesh')
     ax.plot(nodes, [r['jf_def_intra_pn'] for r in rows], 's--', color=C_JF_DEF, ms=ms, label='Jellyfish (border)')
     ax.plot(nodes, [r['jf_ft1_intra_pn'] for r in rows], '^:',  color=C_JF_FT1, ms=ms, label='Jellyfish ft_nodes=1')
     ax.set_xlabel("Board size (nodes)")
     ax.set_ylabel("Intra-board links / node")
-    ax.set_title("Intra-board Connectivity")
+    ax.set_title("Port Budget: Intra-board Link Share\n(each node has 4 inter-router ports)")
     ax.legend(fontsize=8)
     ax.grid(True, alpha=0.3)
 
-    ax = axes[1]
+
+def plot_theory_ft(ax, rows):
+    nodes = [r['N'] for r in rows]
+    ms = 7
     ax.plot(nodes, [r['mesh_ft_pn']   for r in rows], 'o-',  color=C_MESH,   ms=ms, label='Mesh')
     ax.plot(nodes, [r['jf_def_ft_pn'] for r in rows], 's--', color=C_JF_DEF, ms=ms, label='Jellyfish (border)')
     ax.plot(nodes, [r['jf_ft1_ft_pn'] for r in rows], '^:',  color=C_JF_FT1, ms=ms, label='Jellyfish ft_nodes=1')
     ax.set_xlabel("Board size (nodes)")
     ax.set_ylabel("FT gateway links / node")
-    ax.set_title("Fat-tree Uplink Density")
+    ax.set_title("Port Budget: Fat-tree Gateway Share\n(ports used for inter-board connections)")
     ax.legend(fontsize=8)
     ax.grid(True, alpha=0.3)
 
-    ax = axes[2]
+
+def plot_theory_expansion(ax, rows):
     x  = np.arange(len(BOARD_SIZES))
     w  = 0.25
     ax.bar(x - w, [r['mesh_exp']    for r in rows], w, color=C_MESH,   label='Mesh')
@@ -329,6 +354,15 @@ def plot_theory(axes, rows):
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
+def save_single(fig, name):
+    """Save a single-plot figure and close it."""
+    out = SCRIPT_DIR / name
+    fig.tight_layout()
+    fig.savefig(out, dpi=150, bbox_inches='tight')
+    plt.close(fig)
+    print("Saved %s" % out)
+
+
 def main():
     alltoall_data = read_output_dir(ALLTOALL_OUT, parse_alltoall_file)
     randperm_data = read_output_dir(RANDPERM_OUT, parse_randperm_file)
@@ -341,25 +375,30 @@ def main():
 
     rows = theory_data()
 
-    fig = plt.figure(figsize=(16, 14))
-    fig.suptitle("Jellyfish Expansion Study: Mesh vs Jellyfish", fontsize=14, fontweight='bold')
-
-    # Row 1: simulation scaling (left) + ft_nodes sweep (right)
-    ax1 = fig.add_subplot(3, 2, 1)
-    ax2 = fig.add_subplot(3, 2, 2)
-    # Row 2+3: theoretical (3 panels spanning bottom two rows)
-    ax3 = fig.add_subplot(3, 3, 4)
-    ax4 = fig.add_subplot(3, 3, 5)
-    ax5 = fig.add_subplot(3, 3, 6)
-
+    # Plot 1: AllToAll throughput scaling
+    fig1, ax1 = plt.subplots(figsize=(8, 5))
     plot_scaling(ax1, alltoall_data)
-    plot_ft_sweep(ax2, alltoall_data, randperm_data)
-    plot_theory([ax3, ax4, ax5], rows)
+    save_single(fig1, "plot1_throughput_scaling.png")
 
-    plt.tight_layout()
-    out = SCRIPT_DIR / "expansion_plots.png"
-    plt.savefig(out, dpi=150, bbox_inches='tight')
-    print("Saved to %s" % out)
+    # Plot 2: FT gateway tradeoff
+    fig2, ax2 = plt.subplots(figsize=(8, 5))
+    plot_ft_sweep(ax2, alltoall_data, randperm_data)
+    save_single(fig2, "plot2_ft_gateway_tradeoff.png")
+
+    # Plot 3a: Intra-board link share
+    fig3a, ax3a = plt.subplots(figsize=(8, 5))
+    plot_theory_intra(ax3a, rows)
+    save_single(fig3a, "plot3a_intra_board_links.png")
+
+    # Plot 3b: Fat-tree gateway share
+    fig3b, ax3b = plt.subplots(figsize=(8, 5))
+    plot_theory_ft(ax3b, rows)
+    save_single(fig3b, "plot3b_ft_gateway_share.png")
+
+    # Plot 3c: Expansion cost
+    fig3c, ax3c = plt.subplots(figsize=(8, 5))
+    plot_theory_expansion(ax3c, rows)
+    save_single(fig3c, "plot3c_expansion_cost.png")
 
 
 if __name__ == "__main__":
