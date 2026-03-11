@@ -625,8 +625,9 @@ topo_hamming::route_packet_tree(int port, int vc, internal_router_event* ev)
     std::vector<int> dests_in_tree;
     if(is_in_row_tree()){
         if(jf_ft_nodes > 0){
-            // Jellyfish: one gateway per board per direction; port index = board col of destination
-            dests_in_tree.push_back(col_dest);
+            // Jellyfish: jf_ft_nodes gateways per board column; ports are laid out
+            // board_col=0 -> ports [0, jf_ft_nodes), board_col=1 -> [jf_ft_nodes, 2*jf_ft_nodes), etc.
+            dests_in_tree.push_back(col_dest * jf_ft_nodes);
         } else {
             uint dest_in_tree_w = col_dest*2;     // Entering the mesh from West
             uint dest_in_tree_e = col_dest*2 + 1; // Entering the mesh from East
