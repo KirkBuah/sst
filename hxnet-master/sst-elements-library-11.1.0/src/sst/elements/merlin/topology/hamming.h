@@ -180,10 +180,6 @@ long traffic_per_port[128];
     // true if only one switch as fat tree
     bool single_switch_fat_tree;
 
-    // true if flat (single-level) fat tree: no edge/core distinction,
-    // switches are interconnected all-to-all with gateways on down-ports
-    bool flat_fat_tree;
-
     // Jellyfish ft_nodes: number of FT gateways per board per direction (0 = mesh mode)
     int jf_ft_nodes;
 
