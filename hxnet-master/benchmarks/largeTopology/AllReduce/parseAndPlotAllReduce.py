@@ -12,7 +12,7 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-output_folder = 'output/'
+output_folder = 'output/allreduce/'
 save_folder = 'plots'
 save_folder_pdf = save_folder + "/" + "pdf"
 save_folder_img = save_folder + "/" + "img"
@@ -25,12 +25,16 @@ sent = {}
 time = {}
 
 def get_color(names, pa):
-    if ("hx2" in names):
+    if ("jellyfish" in names and "hx2" in names):
+        return pa.as_hex()[8]
+    elif ("jellyfish" in names and "hx4" in names):
+        return pa.as_hex()[9]
+    elif ("hx2" in names):
         return pa.as_hex()[0]
     elif ("hx4" in names):
         return pa.as_hex()[1]
     elif ("hyperx" in names):
-         return pa.as_hex()[7]
+         return "#8c8c8c"
     elif ("torus" in names):
         return pa.as_hex()[2]
     elif (names == "dragonfly"):
@@ -42,12 +46,16 @@ def get_color(names, pa):
     elif (names == "fattree80" or names == "fattree75"):
         return pa.as_hex()[4]
     else:
-        return names
+        return pa.as_hex()[len(pa.as_hex()) - 1]
 
 def adapt_names(names):
-    if (names == "hx2"):
+    if ("jellyfish" in names and "hx2" in names):
+        return "Hx2Mesh Jellyfish"
+    elif ("jellyfish" in names and "hx4" in names):
+        return "Hx4Mesh Jellyfish"
+    elif ("hx2" in names):
         return "Hx2Mesh"
-    elif (names == "hx4"):
+    elif ("hx4" in names):
         return "Hx4Mesh"
     elif (names == "torus"):
         return "2D Torus"
@@ -83,6 +91,7 @@ def bytes_to_mb(list_b):
 
 def main():
     # Iterate through results, sort them by size and parse them
+    detected_num_nodes = set()
     for root, subdirectories, files in os.walk(output_folder):
         for subdirectory in subdirectories:
             filelist = os.listdir(os.path.join(root, subdirectory))
@@ -107,6 +116,10 @@ def main():
                     count = 0
                     for line in Lines:
 
+                        match_nodes = re.search("EMBER: numNodes=(\d+)", line)
+                        if match_nodes:
+                            detected_num_nodes.add(int(match_nodes.group(1)))
+
                         match = re.search("count=(\d+)", line)
                         if match:
                             count = (int(match.group(1)) * 4)
@@ -123,7 +136,9 @@ def main():
                                 min_bw = tmp_bytes / tmp_time
 
                     if (min_bw == 100000000000):
-                        min_bw = 0
+                        if x_sizes[subdirectory] and x_sizes[subdirectory][-1] == count:
+                            x_sizes[subdirectory].pop()
+                        continue
                     # 5% improvement by using lower output/input latency. Not simulated as it would increase runtime by 20x
                     if ("hx" in subdirectory and file != "1073741824"):
                         min_bw = min_bw + (min_bw * 0.05)
@@ -141,13 +156,7 @@ def main():
 
     fig = plt.gcf()
     fig.set_size_inches( 9.2, 5.2)
-    pa = sns.color_palette()
-
-    color_hx2 = pa.as_hex()[0]
-    color_hx4 = pa.as_hex()[1]
-    color_torus = pa.as_hex()[2]
-    color_fattree = pa.as_hex()[3]
-    color_dragonfly = pa.as_hex()[4]
+    pa = sns.color_palette("tab20")
     
     
     sortednames=sorted(bw_map.keys(), key=lambda x:x.lower())
@@ -213,60 +222,43 @@ def main():
     a = sns.lineplot(x = "X", y = "Y", data=data_plot, label=key, marker='o', ax=ax, linewidth=2.5, color=my_color)
     '''
 
-    ### THIS ONLY FOR VALIDATION ###
-    x_data_theory = x_saved
-    x_data_theory = [element * 4 for element in x_data_theory]
-    ### 05D
-    bw_theo = []
-    last_point_1d = 0
-    for data_size in x_data_theory:
-        res = 2 * (16384 - 1) * (1*(40+20+20) + (((data_size / 4) * 8) / 16384) * (1 / 400))
-        bw_theo.append((data_size * 8) / res)
-    x_data_plot = [element * 1 for element in x_data_theory]
-    #bw_theo = [element * 4 for element in bw_theo]
-    data_plot = pd.DataFrame({"X":x_data_plot, "Y":bw_theo})
-    #sns.lineplot(x = "X", y = "Y", data=data_plot, label="0.5D Theoretical", marker='*', linestyle='--', ax=ax, palette=p)
-    #plt.axhline(y=bw_theo[len(bw_theo) - 1], ls='--', c='black', alpha=0.65)
-    print("THeo is {}".format(bw_theo[len(bw_theo) - 1]))
+    ### THEORETICAL MAX BANDWIDTH LINES ###
+    # Use detected node count (fall back to 1024 if mixed or unknown)
+    if len(detected_num_nodes) == 1:
+        P = next(iter(detected_num_nodes))
+    else:
+        P = 1024
+    sqrtP = abs(sqrt(P))
+    link_bw = 400  # Gb/s
+    latency = 40 + 20 + 20  # link_lat + input_lat + output_lat (ns)
 
-    ### 2D
-    last_point_2d = 0
-    x_data_theory = [512, 8192, 65536, 131072, 1048576, 2097152, 16777216, 33554432, 134217728]
-    x_data_theory = [element * 4 for element in x_data_theory]
-    bw_theo = []
-    for data_size in x_data_theory:
-        res = (4 * (abs(sqrt(16384)) - 1) * (1*(40+20+20))) + (((abs(sqrt(16384)) - 1) / (abs(sqrt(16384)))) * (data_size * 8) * (1/400))
-        bw_theo.append((data_size * 8) / res)
-    x_data_plot = [element * 1 for element in x_data_theory]
-    #bw_theo = [float(element * 4) for element in bw_theo]
-    data_plot = pd.DataFrame({"X":x_data_plot, "Y":bw_theo})
-    #print(bw_theo[len(bw_theo) - 1])
-    plt.axhline(y=bw_theo[len(bw_theo) - 1], ls='--', c='black', alpha=0.65)
-    #sns.lineplot(x = "X", y = "Y", data=data_plot, label="2.0D Theoretical", marker='*', linestyle='--', ax=ax, palette=p)
+    if x_saved:
+        x_data_theory = [element * 4 for element in x_saved]
 
-    ### 25D
-    x_data_theory = [512, 8192, 65536, 131072, 1048576, 2097152, 16777216, 33554432, 134217728, 2**30]
-    x_data_theory = [element * 4 for element in x_data_theory]
-    bw_theo = []
-    last_point_25d = 0
-    for data_size in x_data_theory:
-        #res = (2 * (16384 - 1) * (1*(40+20+20))) + ((16384-1)/16384) * ((data_size / 2) * 8 / 16384) * (1 / 400))
-        res = (2 * (16384 - 1) * (40+20+20)) + (((16384 - 1) / 16384) * ((data_size / 2 * 8) * (1 / 400)))
-        #res = (4 * (sqrt(16384) - 1) * (4*(40+20+20))) + (((sqrt(16384) - 1) / (sqrt(16384))) * (data_size * 8) * (1/400))
-        bw_theo.append((data_size * 8) / res)
-    x_data_plot = [element * 1 for element in x_data_theory]
-    #bw_theo = [element * 4 for element in bw_theo]
-    print((x_data_plot))
-    print((bw_theo))
-    data_plot = pd.DataFrame({"X":x_data_plot, "Y":bw_theo})
-    #sns.lineplot(x = "X", y = "Y", data=data_plot, label="2.5D Theoretical", marker='*', linestyle='--', ax=ax, palette=p, alpha=0.45)
-    plt.axhline(y=bw_theo[len(bw_theo) - 1], ls='--', c='black', alpha=0.55)
-    # Annotations
-    ax.text(810000, 418, 'Torus AllReduce Max BW', size=17, color='black', alpha=0.65)
-    ax.text(810000, 705, 'Rings AllReduce Max BW', size=17, color='black', alpha=0.65)
-    #plt.ylim(0)
+        ### 0.5D: unidirectional ring over P nodes
+        bw_theo_05d = []
+        for data_size in x_data_theory:
+            res = 2 * (P - 1) * (latency + (((data_size / 4) * 8) / P) * (1 / link_bw))
+            bw_theo_05d.append((data_size * 8) / res)
+        plt.axhline(y=bw_theo_05d[-1], ls='--', c='black', alpha=0.65)
 
-    ax.set_ylim(-1,820)
+        ### 2D: bidirectional rings along rows + columns
+        bw_theo_2d = []
+        for data_size in x_data_theory:
+            res = (4 * (sqrtP - 1) * latency) + (((sqrtP - 1) / sqrtP) * (data_size * 8) * (1 / link_bw))
+            bw_theo_2d.append((data_size * 8) / res)
+        plt.axhline(y=bw_theo_2d[-1], ls='--', c='black', alpha=0.65)
+
+        # Auto-position annotations relative to the theoretical values
+        max_theo = max(bw_theo_05d[-1], bw_theo_2d[-1])
+        min_theo = min(bw_theo_05d[-1], bw_theo_2d[-1])
+        x_pos = x_data_theory[len(x_data_theory) // 2] if len(x_data_theory) > 2 else 100000
+        ax.text(x_pos, min_theo + 10, 'Torus AllReduce Max BW', size=14, color='black', alpha=0.65)
+        ax.text(x_pos, max_theo + 10, 'Rings AllReduce Max BW', size=14, color='black', alpha=0.65)
+
+        ax.set_ylim(-1, max_theo * 1.15)
+    else:
+        ax.set_ylim(-1, 820)
     
     '''ax.annotate('Hx4 (Torus)', xy=(150000, 115),  xycoords='data',
             xytext=(0.12, 0.25), textcoords='axes fraction',
@@ -301,9 +293,14 @@ def main():
 
     plt.xlabel("AllReduce Size", fontsize=21)
     plt.ylabel("Throughput (Gb/s)", fontsize=21)
-    plt.title("AllReduce - Large Topologies (~16k nodes)", fontsize=23)
-    #plt.legend()
-    plt.legend([],[], frameon=False)
+    if len(detected_num_nodes) == 1:
+        title_nodes = "%d nodes" % next(iter(detected_num_nodes))
+    elif detected_num_nodes:
+        title_nodes = "%s nodes" % "/".join(str(n) for n in sorted(detected_num_nodes))
+    else:
+        title_nodes = "unknown nodes"
+    plt.title("AllReduce (%s)" % title_nodes, fontsize=23)
+    plt.legend(fontsize=12, loc='best')
 
     plt.show()
 

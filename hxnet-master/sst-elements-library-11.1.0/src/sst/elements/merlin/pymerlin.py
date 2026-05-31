@@ -470,17 +470,12 @@ class topoHamming(Topo):
         if isinstance(self.use_jellyfish, str):
             self.use_jellyfish = self.use_jellyfish.lower() in ("true", "1", "yes")
 
-        # Jellyfish: configurable number of fat tree gateway nodes per direction
+        # Jellyfish-as-fat-tree-leaf mode. jf_ft_nodes > 0 simply enables it; its
+        # magnitude is ignored (see _compute_jf_gateways) because the gateway set
+        # is sized to match the 2D mesh exactly, giving identical global bandwidth.
         self.jf_ft_nodes = int(_params.get("hamming:jellyfish_ft_nodes", 0))
         self._jf_gateway_map = {}   # board_id -> {'row_ft': set, 'col_ft': set}
         self._current_board_id = 0  # set before _get_reserved_ports() is called
-        if self.use_jellyfish and self.jf_ft_nodes > 0:
-            num_nodes_per_board = self.dims[0] * self.dims[1]
-            if self.jf_ft_nodes * 2 > num_nodes_per_board:
-                raise ValueError(
-                    "jellyfish_ft_nodes=%d requires 2*N=%d <= nodes_per_board=%d" % (
-                        self.jf_ft_nodes, self.jf_ft_nodes * 2, num_nodes_per_board)
-                )
 
     def _formatShape(self, arr):
         return 'x'.join([str(x) for x in arr])
@@ -910,22 +905,40 @@ class topoHamming(Topo):
         return reserved
 
     def _compute_jf_gateways(self, board_id):
-        """Select gateway nodes for a board using FIXED positions.
-        Fixed positions are required so that all boards in the same global row/col
-        contribute gateways to the same fat tree switch. With random positions,
-        boards in the same board_row could end up in different global rows and
-        connect to different fat tree switches, breaking connectivity.
+        """Select fat-tree gateway nodes so that a Jellyfish board has EXACTLY the
+        same number of board<->fat-tree uplinks as the 2D-mesh variant.
 
-        Nodes 0..N-1      -> row FT gateways (use port 3)
-        Nodes N..2*N-1    -> col FT gateways (use port 0)
+        The mesh connects every perimeter node to a fat tree (see the
+        ``isFirstOrLast`` logic in createRowFatTree/createColFatTree):
+          - row fat tree: nodes in the first and last board column -> 2*dims[0] links/board
+          - col fat tree: nodes in the first and last board row    -> 2*dims[1] links/board
 
-        For ft_nodes=1: node 0 is the row_ft gateway, node 1 is the col_ft gateway.
-        Node 0 has local_row=0 for all board shapes, ensuring a consistent global row
-        (board_row * dims[0] + 0) across all boards in the same board_row."""
-        N = self.jf_ft_nodes
+        We mirror that exact node selection. Because the selected set is
+        identical in size and per-global-row/col distribution to the mesh,
+        ``_count_jf_ft_connections`` returns the same node counts the mesh uses
+        (global_shape*2), so the fat-tree radix/sizing and total global
+        bandwidth are identical to the mesh. The ONLY difference from the mesh
+        is the local board fabric (a Jellyfish random graph instead of a 2D
+        mesh) and that each gateway uses a single fixed port (row -> 3 'W',
+        col -> 0 'N'); a corner node is a gateway for both directions and uses
+        both ports, exactly like a mesh corner.
+
+        NOTE: with this scheme jf_ft_nodes only acts as an on/off switch for
+        "Jellyfish-as-fat-tree-leaf" mode; its magnitude (e.g. 1 vs 2) no longer
+        changes the topology, so the ft1 and ft2 variants are now identical."""
+        rows, cols = self.dims[0], self.dims[1]
+        row_ft = set()
+        col_ft = set()
+        for local_id in range(rows * cols):
+            r = local_id // cols
+            c = local_id % cols
+            if c == 0 or c == cols - 1:
+                row_ft.add(local_id)   # first/last column -> row fat tree (port 3)
+            if r == 0 or r == rows - 1:
+                col_ft.add(local_id)   # first/last row -> col fat tree (port 0)
         self._jf_gateway_map[board_id] = {
-            'row_ft': set(range(N)),
-            'col_ft': set(range(N, 2 * N)),
+            'row_ft': row_ft,
+            'col_ft': col_ft,
         }
 
     def _count_jf_ft_connections(self, ft_type, fixed_axis, fixed_global_idx, total_varying):

@@ -30,6 +30,7 @@ import numpy as np
 # Helper functions (replicated from pymerlin.py, no SST dependency)
 # ---------------------------------------------------------------------------
 
+
 def get_offset_per_direction(direction):
     """Return [row_offset, col_offset] for direction 0=N, 1=E, 2=S, 3=W."""
     return [[-1, 0], [0, 1], [1, 0], [0, -1]][direction]
@@ -53,8 +54,8 @@ def compute_jf_gateways(board_id, jf_ft_nodes):
     Nodes 0..N-1 -> row FT gateways, Nodes N..2*N-1 -> col FT gateways."""
     N = jf_ft_nodes
     return {
-        'row_ft': set(range(N)),
-        'col_ft': set(range(N, 2 * N)),
+        "row_ft": set(range(N)),
+        "col_ft": set(range(N, 2 * N)),
     }
 
 
@@ -62,30 +63,37 @@ def get_reserved_ports(local_id, dims, jf_ft_nodes, gateway_map):
     """Determine which ports are reserved for fat tree connections."""
     reserved = {}
     if jf_ft_nodes > 0:
-        if local_id in gateway_map.get('row_ft', set()):
-            reserved[3] = 'row_ft'
-        if local_id in gateway_map.get('col_ft', set()):
-            reserved[0] = 'col_ft'
+        if local_id in gateway_map.get("row_ft", set()):
+            reserved[3] = "row_ft"
+        if local_id in gateway_map.get("col_ft", set()):
+            reserved[0] = "col_ft"
     else:
         row = local_id // dims[1]
         col = local_id % dims[1]
         if row == 0:
-            reserved[0] = 'col_ft'
+            reserved[0] = "col_ft"
         if col == dims[1] - 1:
-            reserved[1] = 'row_ft'
+            reserved[1] = "row_ft"
         if row == dims[0] - 1:
-            reserved[2] = 'col_ft'
+            reserved[2] = "col_ft"
         if col == 0:
-            reserved[3] = 'row_ft'
+            reserved[3] = "row_ft"
     return reserved
 
 
-def count_jf_ft_connections(ft_type, fixed_axis, fixed_global_idx,
-                            total_varying, dims, global_shape, gateway_maps):
+def count_jf_ft_connections(
+    ft_type,
+    fixed_axis,
+    fixed_global_idx,
+    total_varying,
+    dims,
+    global_shape,
+    gateway_maps,
+):
     """Count how many gateway connections exist for a given fat tree row or col."""
     count = 0
     for v in range(total_varying):
-        if fixed_axis == 'row':
+        if fixed_axis == "row":
             gr, gc = fixed_global_idx, v
         else:
             gr, gc = v, fixed_global_idx
@@ -99,6 +107,7 @@ def count_jf_ft_connections(ft_type, fixed_axis, fixed_global_idx,
 # ---------------------------------------------------------------------------
 # Jellyfish graph generation (replicated from pymerlin.py lines 951-1137)
 # ---------------------------------------------------------------------------
+
 
 def generate_jellyfish_graph(num_nodes, reserved_ports_per_node, rng):
     """Generate a random graph for a board. Returns adjacency and port_map."""
@@ -269,8 +278,10 @@ def ensure_connected(adjacency, port_map, num_nodes):
 # Topology graph construction
 # ---------------------------------------------------------------------------
 
-def build_topology_graph(dims, global_shape, use_jellyfish, jf_ft_nodes,
-                         fat_tree_radix, rng):
+
+def build_topology_graph(
+    dims, global_shape, use_jellyfish, jf_ft_nodes, fat_tree_radix, rng
+):
     """Build a NetworkX graph representing the full Hamming mesh topology.
 
     Returns (G, board_node_ids) where board_node_ids is the set of node IDs
@@ -310,8 +321,13 @@ def build_topology_graph(dims, global_shape, use_jellyfish, jf_ft_nodes,
             glob_row = glob_row_offset + local_row
             glob_col = glob_col_offset + local_col
             node_id = next_id
-            G.add_node(node_id, type='board', board_id=board_id,
-                       local_id=local_id, global_pos=(glob_row, glob_col))
+            G.add_node(
+                node_id,
+                type="board",
+                board_id=board_id,
+                local_id=local_id,
+                global_pos=(glob_row, glob_col),
+            )
             board_node_ids.add(node_id)
             global_pos_to_id[(glob_row, glob_col)] = node_id
             local_to_global[local_id] = node_id
@@ -325,7 +341,8 @@ def build_topology_graph(dims, global_shape, use_jellyfish, jf_ft_nodes,
                 reserved[lid] = get_reserved_ports(lid, dims, jf_ft_nodes, gw_map)
 
             adjacency, port_map = generate_jellyfish_graph(
-                switch_per_board, reserved, rng)
+                switch_per_board, reserved, rng
+            )
 
             # Add edges from jellyfish adjacency (avoid duplicates)
             added = set()
@@ -334,9 +351,11 @@ def build_topology_graph(dims, global_shape, use_jellyfish, jf_ft_nodes,
                     edge_key = (min(n, neighbor), max(n, neighbor))
                     if edge_key not in added:
                         added.add(edge_key)
-                        G.add_edge(local_to_global[n],
-                                   local_to_global[neighbor],
-                                   link_type='intra_board')
+                        G.add_edge(
+                            local_to_global[n],
+                            local_to_global[neighbor],
+                            link_type="intra_board",
+                        )
         else:
             # Mesh wiring: connect in N and E directions to avoid duplicates
             for local_id in range(switch_per_board):
@@ -348,16 +367,18 @@ def build_topology_graph(dims, global_shape, use_jellyfish, jf_ft_nodes,
                     partner_col = local_col + offset[1]
                     if is_inside_board([partner_row, partner_col], dims):
                         partner_local = partner_row * dims[1] + partner_col
-                        G.add_edge(local_to_global[local_id],
-                                   local_to_global[partner_local],
-                                   link_type='intra_board')
+                        G.add_edge(
+                            local_to_global[local_id],
+                            local_to_global[partner_local],
+                            link_type="intra_board",
+                        )
 
     # --- Phase 2: Row fat trees ---
     for row in range(total_rows):
         if use_jellyfish and jf_ft_nodes > 0:
             nodes_count = count_jf_ft_connections(
-                'row_ft', 'row', row, total_cols, dims, global_shape,
-                gateway_maps)
+                "row_ft", "row", row, total_cols, dims, global_shape, gateway_maps
+            )
             if nodes_count == 0:
                 continue
         else:
@@ -369,22 +390,22 @@ def build_topology_graph(dims, global_shape, use_jellyfish, jf_ft_nodes,
             if use_jellyfish and jf_ft_nodes > 0:
                 bid = (row // dims[0]) * global_shape[1] + (col // dims[1])
                 lid = (row % dims[0]) * dims[1] + (col % dims[1])
-                should_connect = lid in gateway_maps.get(bid, {}).get(
-                    'row_ft', set())
+                should_connect = lid in gateway_maps.get(bid, {}).get("row_ft", set())
             else:
                 should_connect = is_first_or_last(col, dims[1])
             if should_connect:
                 gateways.append(global_pos_to_id[(row, col)])
 
-        next_id = _wire_fat_tree(G, gateways, nodes_count, fat_tree_radix,
-                                 next_id, 'row', row)
+        next_id = _wire_fat_tree(
+            G, gateways, nodes_count, fat_tree_radix, next_id, "row", row
+        )
 
     # --- Phase 3: Column fat trees ---
     for col in range(total_cols):
         if use_jellyfish and jf_ft_nodes > 0:
             nodes_count = count_jf_ft_connections(
-                'col_ft', 'col', col, total_rows, dims, global_shape,
-                gateway_maps)
+                "col_ft", "col", col, total_rows, dims, global_shape, gateway_maps
+            )
             if nodes_count == 0:
                 continue
         else:
@@ -395,15 +416,15 @@ def build_topology_graph(dims, global_shape, use_jellyfish, jf_ft_nodes,
             if use_jellyfish and jf_ft_nodes > 0:
                 bid = (row // dims[0]) * global_shape[1] + (col // dims[1])
                 lid = (row % dims[0]) * dims[1] + (col % dims[1])
-                should_connect = lid in gateway_maps.get(bid, {}).get(
-                    'col_ft', set())
+                should_connect = lid in gateway_maps.get(bid, {}).get("col_ft", set())
             else:
                 should_connect = is_first_or_last(row, dims[0])
             if should_connect:
                 gateways.append(global_pos_to_id[(row, col)])
 
-        next_id = _wire_fat_tree(G, gateways, nodes_count, fat_tree_radix,
-                                 next_id, 'col', col)
+        next_id = _wire_fat_tree(
+            G, gateways, nodes_count, fat_tree_radix, next_id, "col", col
+        )
 
     return G, board_node_ids
 
@@ -426,10 +447,10 @@ def _wire_fat_tree(G, gateways, nodes_count, radix, next_id, tree_type, idx):
     if nodes_count <= radix:
         # Single switch: connect all gateways to one switch
         ft_node = next_id
-        G.add_node(ft_node, type='ft_single', tree_type=tree_type, idx=idx)
+        G.add_node(ft_node, type="ft_single", tree_type=tree_type, idx=idx)
         next_id += 1
         for gw in gateways:
-            G.add_edge(ft_node, gw, link_type='ft_gateway')
+            G.add_edge(ft_node, gw, link_type="ft_gateway")
     else:
         # 2-level fat tree
         down_ports = radix // 2
@@ -442,15 +463,16 @@ def _wire_fat_tree(G, gateways, nodes_count, radix, next_id, tree_type, idx):
         gw_idx = 0
         for e in range(num_edge):
             ft_node = next_id
-            G.add_node(ft_node, type='ft_edge', tree_type=tree_type,
-                       idx=idx, level=0, pos=e)
+            G.add_node(
+                ft_node, type="ft_edge", tree_type=tree_type, idx=idx, level=0, pos=e
+            )
             edge_ids.append(ft_node)
             next_id += 1
 
             # Connect up to down_ports gateways to this edge switch
             count = 0
             while gw_idx < len(gateways) and count < down_ports:
-                G.add_edge(ft_node, gateways[gw_idx], link_type='ft_gateway')
+                G.add_edge(ft_node, gateways[gw_idx], link_type="ft_gateway")
                 gw_idx += 1
                 count += 1
 
@@ -458,8 +480,9 @@ def _wire_fat_tree(G, gateways, nodes_count, radix, next_id, tree_type, idx):
         core_ids = []
         for c in range(num_core):
             ft_node = next_id
-            G.add_node(ft_node, type='ft_core', tree_type=tree_type,
-                       idx=idx, level=1, pos=c)
+            G.add_node(
+                ft_node, type="ft_core", tree_type=tree_type, idx=idx, level=1, pos=c
+            )
             core_ids.append(ft_node)
             next_id += 1
 
@@ -468,7 +491,7 @@ def _wire_fat_tree(G, gateways, nodes_count, radix, next_id, tree_type, idx):
         # (since we model connectivity, not port-level detail).
         for e_id in edge_ids:
             for c_id in core_ids:
-                G.add_edge(e_id, c_id, link_type='ft_interswitch')
+                G.add_edge(e_id, c_id, link_type="ft_interswitch")
 
     return next_id
 
@@ -476,6 +499,7 @@ def _wire_fat_tree(G, gateways, nodes_count, radix, next_id, tree_type, idx):
 # ---------------------------------------------------------------------------
 # Edge betweenness computation (Brandes' algorithm)
 # ---------------------------------------------------------------------------
+
 
 def compute_edge_betweenness(G, endpoint_nodes):
     """Compute edge betweenness centrality restricted to endpoint_nodes as
@@ -503,7 +527,7 @@ def compute_edge_betweenness(G, endpoint_nodes):
         dist = {s: 0}
         sigma = defaultdict(float)  # number of shortest paths from s
         sigma[s] = 1.0
-        pred = defaultdict(list)    # predecessors on shortest paths
+        pred = defaultdict(list)  # predecessors on shortest paths
         queue = deque([s])
         order = []
 
@@ -547,6 +571,7 @@ def compute_edge_betweenness(G, endpoint_nodes):
 # Plotting and statistics
 # ---------------------------------------------------------------------------
 
+
 def print_statistics(edge_betweenness, num_pairs, G, board_node_ids):
     """Print summary statistics. Values are already normalized (fraction of
     total shortest paths passing through each edge)."""
@@ -585,24 +610,33 @@ def plot_histogram(edge_betweenness, G, output_file, title_extra=""):
     fig, ax = plt.subplots(figsize=(10, 6))
 
     num_bins = min(50, max(10, len(set(np.round(values, 2)))))
-    ax.hist(values, bins=num_bins, edgecolor='black', alpha=0.7,
-            color='steelblue')
+    ax.hist(values, bins=num_bins, edgecolor="black", alpha=0.7, color="steelblue")
 
-    ax.set_xlabel("SP Fraction per Edge (SPs through edge / total SPs)",
-                  fontsize=12)
+    ax.set_xlabel("SP Fraction per Edge (SPs through edge / total SPs)", fontsize=12)
     ax.set_ylabel("Number of Edges", fontsize=12)
+    ax.set_ylim(0, 1200)
     title = "Edge Betweenness Distribution"
     if title_extra:
         title += " — " + title_extra
     ax.set_title(title, fontsize=14)
-    ax.grid(axis='y', alpha=0.3)
+    ax.grid(axis="y", alpha=0.3)
 
     mean_val = values.mean()
     median_val = np.median(values)
-    ax.axvline(mean_val, color='red', linestyle='--', linewidth=1.5,
-               label="Mean: %.6f" % mean_val)
-    ax.axvline(median_val, color='orange', linestyle='-.', linewidth=1.5,
-               label="Median: %.6f" % median_val)
+    ax.axvline(
+        mean_val,
+        color="red",
+        linestyle="--",
+        linewidth=1.5,
+        label="Mean: %.6f" % mean_val,
+    )
+    ax.axvline(
+        median_val,
+        color="orange",
+        linestyle="-.",
+        linewidth=1.5,
+        label="Median: %.6f" % median_val,
+    )
     ax.legend(fontsize=11)
 
     plt.tight_layout()
@@ -614,37 +648,61 @@ def plot_histogram(edge_betweenness, G, output_file, title_extra=""):
 # Main
 # ---------------------------------------------------------------------------
 
+
 def main():
     parser = ArgumentParser(
-        description="Edge betweenness analysis for Hamming mesh topology")
-    parser.add_argument("--board_shape", default="2x2",
-                        help="Board dimensions, e.g. 3x3 (default: 2x2)")
-    parser.add_argument("--global_shape", default="2x2",
-                        help="Grid of boards, e.g. 4x4 (default: 2x2)")
-    parser.add_argument("--jellyfish", action="store_true",
-                        help="Use Jellyfish random graph as intra-board topology")
-    parser.add_argument("--ft_nodes", type=int, default=0,
-                        help="Jellyfish: FT gateway nodes per direction "
-                             "(0 = border nodes, default)")
-    parser.add_argument("--fat_tree_radix", type=int, default=64,
-                        help="Radix of fat tree switches (default: 64)")
-    parser.add_argument("--seed", type=int, default=42,
-                        help="Random seed for Jellyfish graph (default: 42)")
-    parser.add_argument("--output", default=None,
-                        help="Output plot filename. If not specified, "
-                             "auto-generates in output/ directory.")
-    parser.add_argument("--output_dir", default="output",
-                        help="Output directory (default: output/)")
+        description="Edge betweenness analysis for Hamming mesh topology"
+    )
+    parser.add_argument(
+        "--board_shape", default="2x2", help="Board dimensions, e.g. 3x3 (default: 2x2)"
+    )
+    parser.add_argument(
+        "--global_shape", default="2x2", help="Grid of boards, e.g. 4x4 (default: 2x2)"
+    )
+    parser.add_argument(
+        "--jellyfish",
+        action="store_true",
+        help="Use Jellyfish random graph as intra-board topology",
+    )
+    parser.add_argument(
+        "--ft_nodes",
+        type=int,
+        default=0,
+        help="Jellyfish: FT gateway nodes per direction (0 = border nodes, default)",
+    )
+    parser.add_argument(
+        "--fat_tree_radix",
+        type=int,
+        default=64,
+        help="Radix of fat tree switches (default: 64)",
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=42,
+        help="Random seed for Jellyfish graph (default: 42)",
+    )
+    parser.add_argument(
+        "--output",
+        default=None,
+        help="Output plot filename. If not specified, "
+        "auto-generates in output/ directory.",
+    )
+    parser.add_argument(
+        "--output_dir", default="output", help="Output directory (default: output/)"
+    )
     args = parser.parse_args()
 
-    dims = [int(x) for x in args.board_shape.split('x')]
-    global_shape = [int(x) for x in args.global_shape.split('x')]
+    dims = [int(x) for x in args.board_shape.split("x")]
+    global_shape = [int(x) for x in args.global_shape.split("x")]
     rng = random.Random(args.seed)
 
     total_nodes = dims[0] * dims[1] * global_shape[0] * global_shape[1]
     topo_type = "jellyfish" if args.jellyfish else "mesh"
-    print("Topology: %s, Board: %s, Global: %s => %d board switches" % (
-        topo_type, args.board_shape, args.global_shape, total_nodes))
+    print(
+        "Topology: %s, Board: %s, Global: %s => %d board switches"
+        % (topo_type, args.board_shape, args.global_shape, total_nodes)
+    )
     if args.jellyfish and args.ft_nodes > 0:
         print("FT gateway nodes per direction: %d" % args.ft_nodes)
 
@@ -671,10 +729,9 @@ def main():
     # Build graph
     print("Building topology graph...")
     G, board_node_ids = build_topology_graph(
-        dims, global_shape, args.jellyfish, args.ft_nodes,
-        args.fat_tree_radix, rng)
-    print("Graph: %d nodes, %d edges" % (G.number_of_nodes(),
-                                          G.number_of_edges()))
+        dims, global_shape, args.jellyfish, args.ft_nodes, args.fat_tree_radix, rng
+    )
+    print("Graph: %d nodes, %d edges" % (G.number_of_nodes(), G.number_of_edges()))
 
     # Verify connectivity
     if not nx.is_connected(G):
@@ -682,8 +739,10 @@ def main():
         print("WARNING: Graph is not connected! %d components" % len(components))
         for i, comp in enumerate(components):
             board_in_comp = len(comp & board_node_ids)
-            print("  Component %d: %d nodes (%d board switches)" % (
-                i, len(comp), board_in_comp))
+            print(
+                "  Component %d: %d nodes (%d board switches)"
+                % (i, len(comp), board_in_comp)
+            )
 
     # Compute edge betweenness
     print("Computing edge betweenness (Brandes' algorithm)...")
@@ -695,8 +754,7 @@ def main():
             edge_betweenness[e] /= num_pairs
 
     # Output
-    title_extra = "%s %s, global %s" % (topo_type, args.board_shape,
-                                         args.global_shape)
+    title_extra = "%s %s, global %s" % (topo_type, args.board_shape, args.global_shape)
     if args.jellyfish and args.ft_nodes > 0:
         title_extra += ", ft_nodes=%d" % args.ft_nodes
 
