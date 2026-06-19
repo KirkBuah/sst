@@ -1,80 +1,90 @@
 # HammingMesh with Jellyfish Local Topology
 
-Branch: `hxjelly`
+This repo extends [HammingMesh](hxnet-master/README.md) by allowing each board's
+internal 2D mesh to be replaced with a Jellyfish random regular graph, while
+keeping the global fat-tree interconnect. The main code lives in
+`hxnet-master/sst-elements-library-11.1.0/src/sst/elements/merlin/`.
 
-## What this branch adds
+## Installation
 
-This branch extends HammingMesh by replacing the structured 2D mesh **within each board** with a Jellyfish random regular graph. The global fat tree interconnect is preserved.
+The simulator is SST 11.1.0. Follow **"Installation from Source Code"** in the
+HammingMesh paper/artifact:
 
-### Core changes (`sst-elements-library-11.1.0/src/sst/elements/merlin/`)
+- Paper & artifact appendix: [docs/3571885.3571899.pdf](docs/3571885.3571899.pdf),
+  section *"Installation from Source Code"* (C++11, python3, python-dev, OpenMPI 4.0.5).
 
-**`pymerlin.py`** — Topology builder (Python)
-- Jellyfish graph generation for boards: `_generate_jellyfish_graph()`, `_wire_jellyfish_board()`
-- Gateway selection with `--ftNodes=N`: `_compute_jf_gateways()`, `_get_reserved_ports()`
-- Shortest-path routing table computation: `_compute_routing_tables()`, `_find_nearest_edges()`
-- Fat tree: `createRowFatTree()` / `createColFatTree()`.
-
-**`topology/hamming.cc`** — Routing (C++)
-- `route_packet_jellyfish()`: table-based intra-board routing and gateway selection for inter-board traffic
-- `getOutputPortFor()`: updated for flat fat tree port mapping
-
-**`topology/hamming.h`** — Added Jellyfish and flat fat tree member variables
-
-### Benchmark scripts (`hxnet-master/benchmarks/smallTopology/`)
-
-- `Expansion/launchExpansionStudy.py` — Sweeps board/global shapes and ft_nodes configurations
-- `Expansion/plotExpansion.py` — Generates throughput scaling and FT gateway tradeoff plots
-- `Expansion/analyzeLinks.py` — Theoretical link budget analysis (no SST needed)
-- `Expansion/plot_servers_vs_switches.py` — Servers vs links comparison
-
-### Presentation
-
-`docs/presentation.tex` — Slides covering HammingMesh overview, Jellyfish variant, benchmarks, and expansion study results.
-
-## How to run
-
-All commands from `hxnet-master/benchmarks/smallTopology/`.
-
-```bash
-# AllToAll (16 nodes, jellyfish)
-cd AllToAll
-python3 launchAllToAll_16nodes.py --board_shape 2x2 --global_shape 2x2 --jellyfish --small_run
-
-# AllToAll with reduced fat tree gateways
-python3 launchAllToAll_16nodes.py --board_shape 2x2 --global_shape 2x2 --jellyfish --ft_nodes 1 --small_run
-
-# AllReduce (256 nodes, jellyfish)
-cd AllReduce
-python3 launchAllReduce.py --board_shape 4x4 --global_shape 4x4 --jellyfish --small_run
-
-# Random Permutation
-cd RandomPermutation
-python3 launchRandomPerm.py --board_shape 2x2 --global_shape 2x2 --jellyfish --small_run
-
-# Expansion study (all configs)
-cd Expansion
-python3 launchExpansionStudy.py --small_run
-
-# Theoretical link analysis (no SST needed)
-cd Expansion
-python3 analyzeLinks.py
-python3 plot_servers_vs_switches.py
-
-# Generate plots from existing results
-cd Expansion
-python3 plotExpansion.py
-```
-
-Key flags:
-- `--jellyfish`: use Jellyfish instead of 2D mesh for intra-board topology
-- `--ft_nodes N`: use N dedicated fat tree gateways per direction (default: all border nodes)
-- `--small_run`: run with fewer message sizes for quick testing
-- `--num_threads N`: SST thread count (default: 8)
-
-## Building
-
-After modifying C++ files, rebuild from `hxnet-master/sst-elements-library-11.1.0/`:
+After modifying any C++ files, rebuild from
+`hxnet-master/sst-elements-library-11.1.0/`:
 
 ```bash
 make -C src/sst/elements/merlin && make install
 ```
+
+## Running an AllToAll simulation (large topology)
+
+The main entry point is
+[launchAllToAll_large.py](hxnet-master/benchmarks/largeTopology/AllToAll/launchAllToAll_large.py).
+It builds the topology, generates the AllToAll traffic motif, and runs SST for a
+sweep of message sizes. Run all commands from the script's directory:
+
+```bash
+cd hxnet-master/benchmarks/largeTopology/AllToAll
+```
+
+### Quick start
+
+```bash
+# Default HammingMesh: 4x4 boards in an 8x8 global grid = 1024 nodes
+uv run python launchAllToAll_large.py
+
+# Same topology, but each board uses a Jellyfish graph instead of a 2D mesh
+uv run python launchAllToAll_large.py --jellyfish
+
+# Quick test: only 2 message sizes instead of 6
+uv run python launchAllToAll_large.py --jellyfish --small_run
+```
+
+### Common options
+
+| Flag | Meaning | Default |
+|------|---------|---------|
+| `--board_shape AxB` | Shape of a single board | `4x4` |
+| `--global_shape AxB` | Grid of boards | `8x8` |
+| `--jellyfish` | Use a Jellyfish graph inside each board instead of a 2D mesh | off (2D mesh) |
+| `--ft_nodes N` | Use N dedicated fat-tree gateways per direction per board (Jellyfish only; `0` = all border nodes) | `0` |
+| `--small_run` | Run 2 message sizes instead of 6 (quick smoke test) | off |
+| `--num_threads N` | SST thread count | `8` |
+
+Total nodes = `board_rows * board_cols * global_rows * global_cols`, so the
+defaults (`4x4` x `8x8`) give 1024 nodes.
+
+### Examples
+
+```bash
+# Smaller topology, full sweep
+uv run python launchAllToAll_large.py --board_shape 2x2 --global_shape 4x4
+
+# Jellyfish boards with a reduced number of fat-tree gateways
+uv run python launchAllToAll_large.py --jellyfish --ft_nodes 2
+
+# Use all available cores
+uv run python launchAllToAll_large.py --num_threads $(nproc)
+```
+
+## Results and plots
+
+Raw simulation output is written to `output/<topo_name>/<message_size>`, where
+`<topo_name>` is e.g. `hx4_1024` (or `hx4_1024_jellyfish`, `..._ft2`, etc.).
+
+To regenerate the throughput-vs-message-size plot, run the four reference
+configs and then build the plot:
+
+```bash
+# Runs hx4_1024, _jellyfish, _jellyfish_ft1, _jellyfish_ft2 sequentially
+bash regen_alltoall_plot.sh
+
+# Build PDF/PNG plots from whatever output exists
+uv run python parseAndPlotAllToAll.py
+```
+
+These are long runs: launch them inside `tmux`/`screen` or with `nohup`.
