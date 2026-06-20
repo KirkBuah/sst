@@ -114,7 +114,13 @@ def plot(nodes, mesh, jelly):
         xs = sorted(data)
         sns.lineplot(x=xs, y=[data[x] for x in xs], label=label, marker="o", ax=ax)
     ax.set_xscale("log", base=2)
-    ax.set_xlabel("Message size (bytes)")
+    # Put a tick on every actual message size so data points land ON the labels
+    # (not midway between matplotlib's auto power-of-2 ticks).
+    sizes = sorted(set(mesh) | set(jelly))
+    ax.set_xticks(sizes)
+    ax.set_xticklabels([bytes_to_label(s) for s in sizes])
+    ax.xaxis.set_minor_locator(plt.NullLocator())  # no intermediate log ticks
+    ax.set_xlabel("Message size")
     ax.set_ylabel("Throughput (Gb/s)")
     ax.set_title("AllToAll local board: mesh vs jellyfish (%d nodes)" % nodes)
     ax.legend()
