@@ -256,7 +256,7 @@ class topoTorus(Topo):
 class topoMesh(Topo):
     def __init__(self):
         Topo.__init__(self)
-        self.topoKeys = ["topology", "debug", "num_ports", "flit_size", "link_bw", "xbar_bw", "mesh:shape", "mesh:width", "mesh:local_ports","input_latency","output_latency","input_buf_size","output_buf_size"]
+        self.topoKeys = ["topology", "debug", "num_ports", "flit_size", "link_bw", "nic_link_bw", "xbar_bw", "mesh:shape", "mesh:width", "mesh:local_ports","input_latency","output_latency","input_buf_size","output_buf_size"]
         self.topoOptKeys = ["xbar_arb","num_vns","vn_remap","vn_remap_shm","portcontrol:output_arb","portcontrol:arbitration:qos_settings","portcontrol:arbitration:arb_vns","portcontrol:arbitration:arb_vcs"]
     def getName(self):
         return "Mesh"
@@ -1747,6 +1747,94 @@ class topoHamming(Topo):
                         nicLink.setNoCut()
                     nicLink.connect(ep, (rtr, "port%d"%port, _params["link_lat"]))
                 port = port+1'''
+
+
+class topoJellyfish(topoHamming):
+    """Standalone, single-board Jellyfish topology (no fat tree, no global structure).
+
+    This is its own topology (selected with --topo=jellyfish) used to benchmark the
+    Jellyfish LOCAL board fabric in complete isolation. It subclasses topoHamming
+    solely to reuse its proven helpers (prepParams, setParameters, getLocalDims,
+    getUniquePos, _generate_jellyfish_graph, _ensure_connected,
+    _compute_routing_tables, _find_nearest_edges, _wire_jellyfish_board); it does
+    NOT inherit topoHamming.build(), so no fat tree or inter-board structure is
+    created.
+
+    Two overrides vs. topoHamming:
+      * _get_reserved_ports() returns {} -> every node keeps all 4 inter-router
+        ports for random links => a canonical 4-regular Jellyfish.
+      * build() constructs exactly one board and stops; the compiled merlin.hamming
+        router routes all (same-board) destinations via the per-node routing table
+        (hamming.cc route_packet_jellyfish, Case 2) and never touches fat-tree
+        ports, so single-board operation needs only the routing table.
+
+    Expects hamming params with global_shape="1x1" and use_jellyfish=True (see
+    networkConfig.HammingInfo / emberLoad.py jellyfish branch).
+    """
+
+    def getName(self):
+        return "Jellyfish"
+
+    def _get_reserved_ports(self, local_id):
+        # No fat-tree port reservations: all 4 inter-router ports are free for
+        # random Jellyfish links (canonical 4-regular random graph).
+        return {}
+
+    def build(self):
+        if self.num_boards != 1 or self.global_shape != [1, 1]:
+            print("topoJellyfish: expected a single board (global_shape=1x1), got "
+                  "global_shape=%s, num_boards=%d" % (self.global_shape, self.num_boards))
+            sys.exit(1)
+        if not self.use_jellyfish:
+            print("topoJellyfish: requires hamming:use_jellyfish=True")
+            sys.exit(1)
+
+        links = dict()
+        def getLink(leftName, rightName):
+            name = "link.%s:%s"%(leftName, rightName)
+            if name not in links:
+                links[name] = sst.Link(name)
+            return links[name]
+
+        # Build the single board's switches. With one board there is no global
+        # offset, so the global position equals the local position.
+        board_id = 0
+        board_routers_info = []
+        for router_in_board in range(0, self.switch_per_board):
+            local_router_id = router_in_board
+            my_loc_id = self.getLocalDims(local_router_id)
+            my_glob_id = list(my_loc_id)
+            unique_pos = self.getUniquePos(my_loc_id, board_id)
+            self.global_to_local[self.GlobalToString(my_glob_id)] = unique_pos
+
+            # Create Router instance
+            rtr = self._instanceRouter(self.global_router_id,"merlin.hr_router")
+            my_str = self.getRouterNameString(unique_pos)
+            self.list_routers[my_str] = rtr
+
+            # Add parameters to topology object (jellyfish-specific params are set
+            # per-router later by _wire_jellyfish_board).
+            self.setParameters(_params, True, self.global_router_id, local_router_id, my_glob_id, my_loc_id, unique_pos, -1, [-1, -1])
+            swap_keys = [("hamming:shape","shape"), ("hamming:fat_tree_shape","fat_tree_shape"), ("hamming:board_shape","board_shape"), ("hamming:width","width"),("hamming:local_ports","local_ports"),("hamming:global_shape","global_shape"),("hamming:is_board_switch","is_board_switch"),("hamming:global_switch_id","global_switch_id"),("hamming:local_switch_id","local_switch_id"),("hamming:global_pos","global_pos"),("hamming:local_pos","local_pos"),("hamming:unique_pos","unique_pos"),("hamming:fat_tree_id","fat_tree_id"),("hamming:fat_tree_pos","fat_tree_pos"), ("hamming:algorithm","algorithm"),("hamming:is_jellyfish","is_jellyfish"),("hamming:routing_table","routing_table"),("hamming:row_ft_port","row_ft_port"),("hamming:col_ft_port","col_ft_port"),("hamming:nearest_row_edge","nearest_row_edge"),("hamming:nearest_col_edge","nearest_col_edge")]
+            _topo_params = _params.subsetWithRename(swap_keys)
+            rtr.addParams(_params.subset(self.topoKeys, self.topoOptKeys))
+            rtr.addParam("id", self.global_router_id)
+            topology = rtr.setSubComponent("topology","merlin.hamming")
+            topology.addParams(_topo_params)
+
+            board_routers_info.append({
+                'rtr': rtr,
+                'local_id': router_in_board,
+                'my_str': my_str,
+                'my_loc_id': list(my_loc_id),
+                'topology': topology,
+            })
+            self.global_router_id = self.global_router_id + 1
+
+        # Wire the board as a pure Jellyfish random graph and attach NICs.
+        # No fat tree is created.
+        self._current_board_id = board_id
+        self._wire_jellyfish_board(board_routers_info, board_id, _params, getLink)
 
 
 class topoHyperX(Topo):

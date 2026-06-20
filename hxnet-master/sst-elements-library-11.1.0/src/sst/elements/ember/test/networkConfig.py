@@ -49,6 +49,49 @@ class TorusInfo(TopoInfo):
     def getNicsPerNode(self):
         return self.nicsPerNode
 
+class MeshInfo(TopoInfo):
+    # 2D (n-D) mesh, no wrap-around links (uses merlin.mesh / topoMesh).
+    # Identical structure to TorusInfo but emits mesh:* params.
+    def __init__( self, shape, local_ports, nicsPerNode ):
+
+        width = 1
+
+        self.params = {}
+        self.params["num_dims"] = self.calcNumDim(shape)
+        self.params["mesh:shape"] = shape
+        self.params["mesh:width"] = self.calcWidth(shape,width)
+        self.params["mesh:local_ports"] = local_ports
+        self.numNodes = self.calcNumNodes( shape ) * local_ports
+        self.nicsPerNode = nicsPerNode
+
+    def getNetworkParams(self):
+        return self.params
+
+    def getNumNodes(self):
+        return self.numNodes
+
+    def calcNumDim(self,shape):
+        return len( shape.split( 'x' ) )
+
+    def calcNumNodes(self,shape):
+        tmp = shape.split( 'x' )
+        num = 1
+        for d in tmp:
+            num = num * int(d)
+        return num
+
+    def calcWidth(self,shape,width):
+        tmp = len( shape.split( 'x' ) ) - 1
+        retval = str(width)
+        count = 0
+        while ( count < tmp ):
+            retval += "x" + str(width)
+            count  += 1
+        return retval
+
+    def getNicsPerNode(self):
+        return self.nicsPerNode
+
 class HyperXInfo(TopoInfo):
 
     def __init__( self, param1, param2=None ):
