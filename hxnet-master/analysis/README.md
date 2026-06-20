@@ -1,5 +1,70 @@
 # Topology Analysis Tools
 
+## check_connectivity.py
+
+Checks whether a generated HammingMesh (mesh or Jellyfish local boards) is
+**physically connected** and whether its **routing can actually deliver** between
+every node pair. Both checks operate on what **SST actually builds** — there is no
+Python reconstruction of the topology or the routing (unlike `edgeBetweenness.py`,
+see the caveat below).
+
+### What it does
+
+- **Part A — physical connectivity (BFS, no simulation):** dumps the elaborated
+  component+link graph with `sst --run-mode=init --output-json`, builds it with
+  NetworkX, and reports the number of connected components and any isolated
+  switches/endpoints.
+- **Part B — routing reachability (real run):** runs a tiny AllToAll
+  (`AllPingPong`, all-to-all) and verifies SST's router delivered between every
+  pair — the run must complete and every NIC must receive the same full byte
+  total. It classifies failures as `SEGFAULT` / `SST FATAL` / `TIMEOUT (deadlock)`
+  / short-or-missing NICs.
+
+Because `pymerlin.py`'s Jellyfish RNG is unseeded, each build is a different
+random instance; `--builds R` repeats to check it is *always* connected/routable.
+
+### Usage
+
+```bash
+# One config
+uv run python check_connectivity.py --board_shape 4x4 --global_shape 2x2 --jellyfish --ft_nodes 0
+
+# Full suite: mesh control + jellyfish ft0/ft1/ft2, 3 random builds each
+uv run python check_connectivity.py --board_shape 4x4 --global_shape 2x2 --suite --builds 3
+```
+
+| Argument | Default | Description |
+|----------|---------|-------------|
+| `--board_shape` / `--global_shape` | `4x4` / `4x4` | board and global shapes |
+| `--jellyfish` / `--ft_nodes` | off / `0` | Jellyfish local boards; FT gateways per direction (0 = border) |
+| `--suite` | off | run mesh + jellyfish ft0/ft1/ft2 |
+| `--builds` | `3` | random builds per config |
+| `--msg_size` | `8` | AllToAll message size (bytes) for the routing check |
+| `--timeout` | `900` | per-run timeout (deadlock guard), seconds |
+
+Artifacts (graph dump, AllToAll stdout/stderr) are kept under
+`analysis/output/connectivity/<config>/build<N>/`.
+
+### Finding (as of this writing)
+
+Across 2x2 and 4x4 boards, multiple builds: **mesh** and **jellyfish `ft_nodes=0`
+(border gateways)** are connected *and* routable. **Jellyfish `ft_nodes=1` and
+`ft_nodes=2`** are physically **connected** but **NOT routable** — SST
+**segfaults during routing** (the jellyfish-as-fat-tree-leaf path in `hamming.cc`).
+So the `ft1`/`ft2` variants in `benchmarks/.../run_all_jellyfish.sh` do not
+actually deliver traffic; only the border-gateway (`ft0`) jellyfish works.
+
+### Caveat: edgeBetweenness.py is stale for `ft_nodes>0`
+
+`edgeBetweenness.py` reconstructs the topology in pure Python. Its
+`compute_jf_gateways` still uses the old scheme (`row_ft=range(N)`,
+`col_ft=range(N,2N)`), whereas the current
+`pymerlin.py._compute_jf_gateways` selects **perimeter** gateway nodes and ignores
+the magnitude of `ft_nodes`. So `edgeBetweenness.py`'s graph is **wrong for
+`ft_nodes>0`** (the `ft_nodes=0` / mesh cases still match). `check_connectivity.py`
+avoids this by using SST's own graph dump. (Fixing `edgeBetweenness.py` is a
+separate task.)
+
 ## edgeBetweenness.py
 
 Computes edge betweenness centrality for the Hamming mesh topology,
