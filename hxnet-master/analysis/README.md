@@ -1,5 +1,40 @@
 # Topology Analysis Tools
 
+## jellyfish_fattree_distance.py
+
+Computes the **worst-case in-board distance from a node to the fat tree** for
+Jellyfish local boards: for every board switch, its shortest hop count to the
+nearest **gateway** (a board switch that holds a fat-tree uplink; gateway = 0),
+then the maximum over all nodes of every board —
+`max_boards max_nodes min_gateways hops(node, gateway)`. A large value means some
+compute node sits deep inside its board, far from any uplink.
+
+Like `check_connectivity.py`, it uses SST's own elaborated graph
+(`sst --run-mode=init --output-json`, no simulation), so it is faithful to the
+current `pymerlin.py` wiring and works for ft0/ft1/ft2 (the graph builds even
+though ft1/ft2 crash at run time). Distance is hops to the nearest gateway node;
+the fat-tree switch itself is `+1`.
+
+```bash
+# default: board 8x8, global 4x4 (1024 nodes), ft0, 5 random builds
+uv run python jellyfish_fattree_distance.py
+uv run python jellyfish_fattree_distance.py --ft_nodes 1 --builds 5
+uv run python jellyfish_fattree_distance.py --graph path/to/graph.json   # analyze an existing dump
+```
+
+| Argument | Default | Description |
+|----------|---------|-------------|
+| `--board_shape` / `--global_shape` | `8x8` / `4x4` | board and global shapes |
+| `--ft_nodes` | `0` | FT gateways per direction (0 = border) |
+| `--builds` | `5` | random builds (jellyfish RNG is unseeded) |
+| `--graph` | – | analyze an existing `graph.json` instead of dumping |
+
+**Finding (board 8x8, global 4x4):** 28 perimeter gateways per board; worst-case
+node→gateway distance is **2–3 hops** (mean ~2.3) and identical across ft0/ft1/ft2
+(the `ft_nodes` magnitude does not change the gateway set — gateways are the board
+perimeter). All nodes are reachable from a gateway. So no node is pathologically
+far from the fabric — the worst-case fat-tree access depth is small.
+
 ## check_connectivity.py
 
 Checks whether a generated HammingMesh (mesh or Jellyfish local boards) is
