@@ -329,6 +329,13 @@ if "torus" == netTopo:
     topoInfo = TorusInfo(netShape, netHostsPerRtr, nicsPerNode)
     topo = topoTorus()
 
+elif "mesh" == netTopo:
+
+    # 2D mesh (no wrap-around), single board. Used to benchmark the mesh local
+    # board fabric in isolation. --shape sets the NxM board.
+    topoInfo = MeshInfo(netShape, netHostsPerRtr, nicsPerNode)
+    topo = topoMesh()
+
 elif "fattree" == netTopo:
 
     topoInfo = FattreeInfo(netShape)
@@ -375,6 +382,21 @@ elif "hx" == netTopo:
         )
 
     topo = topoHamming()
+
+elif "jellyfish" == netTopo:
+
+    # Standalone single-board Jellyfish (no fat tree, no global structure).
+    # --shape gives the NxM board (= node count); we reuse HammingInfo with a
+    # 1x1 global shape and use_jellyfish=True, built by topoJellyfish.
+    if netShape == "":
+        print("Error, --shape (board shape NxM) must be specified for jellyfish")
+        sys.exit(0)
+    algo = routing_algo if routing_algo != "" else "min-adaptive"
+    # fat_tree_shape is parsed (radix after the comma) even though no fat tree is
+    # built, so it must contain a comma.
+    ftShape = fatTreeShape if fatTreeShape != "" else "1:1,64"
+    topoInfo = HammingInfo(netShape, netHostsPerRtr, "1x1", ftShape, algo, True, 0)
+    topo = topoJellyfish()
 
 elif "json" == netTopo:
 
@@ -568,7 +590,7 @@ for a in params["merlin"]:
     sst.merlin._params[key] = value
 
 # Remove this part is not interested in these exact values
-if netTopo == "hx" or netTopo == "torus" or netTopo == "hyperx":
+if netTopo == "hx" or netTopo == "torus" or netTopo == "hyperx" or netTopo == "mesh" or netTopo == "jellyfish":
     networkParams["nic_link_bw"] = "1600Gb/s"
     networkParams["xbar_bw"] = "3200Gb/s"
 else:
