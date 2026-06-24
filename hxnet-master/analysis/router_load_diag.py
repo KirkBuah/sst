@@ -332,9 +332,10 @@ def make_plot(rm, rj, path, title):
                       reverse=True)
         ax.plot(range(len(vals)), vals, color=c, lw=1.6, label=lab)
     ax.set_yscale("log")
-    ax.set_xlabel("inter-switch output port (sorted by load)")
-    ax.set_ylabel("bits sent (log)")
-    ax.set_title("Per-link load distribution\n(taller/longer head = worse hot-spots)")
+    ax.set_xlabel("links, sorted by load (busiest first)")
+    ax.set_ylabel("bits sent on the link (log scale)")
+    ax.set_title("How evenly is load spread across links?\n"
+                 "(a tall, long head = a few links carry far more = hot-spots)")
     ax.legend()
     ax.grid(True, which="both", alpha=0.3)
 
@@ -343,9 +344,10 @@ def make_plot(rm, rj, path, title):
     for r, c, lab in ((rm, "#1f77b4", "mesh"), (rj, "#d62728", "jellyfish")):
         vals = sorted(r["_uplinks"], reverse=True)
         ax.plot(range(len(vals)), vals, color=c, lw=1.8, label=lab)
-    ax.set_xlabel("board->tree uplink (sorted)")
-    ax.set_ylabel("bits sent")
-    ax.set_title("Gateway/uplink load (H1)\nflat = balanced, spiky = funneled")
+    ax.set_xlabel("board→fat-tree uplinks, sorted by load")
+    ax.set_ylabel("bits sent on the uplink")
+    ax.set_title("Board→fat-tree uplink load\n"
+                 "(flat = gateways share the load · spiky = funneled through one gateway)")
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -358,9 +360,9 @@ def make_plot(rm, rj, path, title):
     ax.bar([0 + w / 2, 1 + w / 2], [rj["row_uplink_pkts"], rj["col_uplink_pkts"]],
            w, color="#d62728", label="jellyfish")
     ax.set_xticks(x)
-    ax.set_xticklabels(["row tree", "col tree"])
-    ax.set_ylabel("bits on board->tree uplinks")
-    ax.set_title("Row vs Col tree usage (H3)\nbalanced vs row-skewed")
+    ax.set_xticklabels(["row fat tree", "column fat tree"])
+    ax.set_ylabel("total bits on board→tree uplinks")
+    ax.set_title("Traffic split: row vs column fat tree\n(roughly equal is healthy)")
     ax.legend()
     ax.grid(True, axis="y", alpha=0.3)
 
@@ -368,6 +370,29 @@ def make_plot(rm, rj, path, title):
     fig.tight_layout(rect=[0, 0, 1, 0.96])
     fig.savefig(path, dpi=130)
     plt.close(fig)
+
+
+def save_results_json(path, results, sim_times, board, glob, n):
+    """Dump a serializable subset of each topology's results (scalars + sorted load
+    vectors) so two separately-timed runs can be overlaid by plot_before_after.py."""
+    out = {"board": board, "global": glob, "nodes": n, "topos": {}}
+    for topo, r in results.items():
+        inter = sorted((p for p, _, cl, _, _ in r["_inter_ports"] if cl != NIC and p > 0),
+                       reverse=True)
+        out["topos"][topo] = {
+            "completion_us": sim_times.get(topo),
+            "busiest_bits": r["busiest"][0],
+            "uplink": r["uplink"],          # {n, max, mean, cv}
+            "intra": r["intra"],            # {n, max, mean, cv}
+            "avg_switch_hops": r["avg_switch_hops"],
+            "delivered_bits": r["delivered"],
+            "row_uplink_bits": r["row_uplink_pkts"],
+            "col_uplink_bits": r["col_uplink_pkts"],
+            "uplinks_sorted": sorted(r["_uplinks"], reverse=True),
+            "inter_links_sorted": inter,
+        }
+    with open(path, "w") as f:
+        json.dump(out, f)
 
 
 # ---------------------------------------------------------------------------
@@ -387,6 +412,12 @@ def main():
     ap.add_argument("--algorithm", default="min-adaptive",
                     help="merlin routing algorithm (e.g. min-adaptive, min-adaptive-nogl). "
                          "nogl disables the mesh's same-board fat-tree shortcut.")
+    ap.add_argument("--tag", default="",
+                    help="suffix for the output PNG: router_load_<board>_<global>_<tag>.png "
+                         "(e.g. baseline / fixed) so before/after runs don't overwrite each other")
+    ap.add_argument("--save_json", default="",
+                    help="also dump per-topology results (scalars + sorted uplink/per-link "
+                         "vectors) to this JSON path, for the before/after overlay plot")
     ap.add_argument("--no_plot", action="store_true")
     args = ap.parse_args()
 
@@ -417,16 +448,26 @@ def main():
         print("  completed: simulated time = %.3f us" % (sim_us or 0))
         report(topo, results[topo])
 
+    if args.save_json:
+        save_results_json(args.save_json, results, sim_times, args.board_shape, args.global_shape, n)
+        print("\n-> saved results %s" % args.save_json)
+
     if "mesh" in results and "jellyfish" in results:
+        mesh_us, jf_us = sim_times["mesh"], sim_times["jellyfish"]
+        ratio = (jf_us / mesh_us) if mesh_us else 0
         print("\nsimulated completion time:  mesh = %.3f us   jellyfish = %.3f us   (jf/mesh = %.2fx)" % (
-            sim_times["mesh"], sim_times["jellyfish"],
-            sim_times["jellyfish"] / sim_times["mesh"] if sim_times["mesh"] else 0))
+            mesh_us, jf_us, ratio))
         compare(results["mesh"], results["jellyfish"])
         if not args.no_plot:
-            png = os.path.join(OUT_DIR, "router_load_%s_%s.png" % (args.board_shape, args.global_shape))
-            make_plot(results["mesh"], results["jellyfish"], png,
-                      "HammingMesh routing load: mesh vs Jellyfish boards (board %s, global %s, %d nodes)"
-                      % (args.board_shape, args.global_shape, n))
+            tag_sfx = ("_" + args.tag) if args.tag else ""
+            tag_lbl = ("  ·  [%s]" % args.tag) if args.tag else ""
+            png = os.path.join(OUT_DIR, "router_load_%s_%s%s.png"
+                               % (args.board_shape, args.global_shape, tag_sfx))
+            title = ("HammingMesh AllToAll load — 2D-mesh vs Jellyfish boards\n"
+                     "board %s / global %s (%d nodes)  ·  completion: mesh %.0fµs vs "
+                     "Jellyfish %.0fµs (%.2f× slower)%s"
+                     % (args.board_shape, args.global_shape, n, mesh_us, jf_us, ratio, tag_lbl))
+            make_plot(results["mesh"], results["jellyfish"], png, title)
             print("\n-> plot %s" % png)
 
 
