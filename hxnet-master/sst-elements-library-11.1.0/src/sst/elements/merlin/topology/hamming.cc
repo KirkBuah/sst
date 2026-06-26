@@ -213,10 +213,19 @@ topo_hamming::topo_hamming(ComponentId_t cid, Params &params, int num_ports, int
                      jf_routing_table.size(), jf_row_ft_port, jf_col_ft_port,
                      jf_row_gateways.size(), jf_col_gateways.size(), jf_dist_table.size()));
     }
+
+    // Per-packet gateway-exit logging (diagnostic). Enabled by setting the env var
+    // HX_GW_LOG to a path prefix; each switch writes <prefix>_<router_id>.csv.
+    const char *gw_env = getenv("HX_GW_LOG");
+    gw_log_enabled = (gw_env != nullptr && gw_env[0] != '\0');
+    gw_log_prefix = gw_log_enabled ? std::string(gw_env) : std::string();
+    gw_log_open = false;
 }
 
 topo_hamming::~topo_hamming()
 {
+    if (gw_log_open)
+        gw_log.close();
     delete[] id_loc;
     delete[] dim_size;
     delete[] dim_width;
@@ -611,6 +620,11 @@ void topo_hamming::route_packet_mesh(int port, int vc, internal_router_event *ev
                      port_id_to_mnemonic(selected_port), selected_vc));
         ev->setNextPort(selected_port);
         ev->setVC(selected_vc);
+        // A board switch enters the fat tree exactly when the VC was escalated.
+        if (selected_vc != vc)
+            log_gateway_exit(get_coord_board(router_id), get_coord_within_board(router_id),
+                             port_id_to_mnemonic(selected_port), selected_port,
+                             get_coord_board(ev->getDest()), ev, "mesh");
     }
 }
 
@@ -648,11 +662,13 @@ void topo_hamming::route_packet_jellyfish(int port, int vc, internal_router_even
             {
                 next_port = jf_col_ft_port; // exit via the vertical wrap link
                 out_vc = vc + 1;
+                log_gateway_exit(my_board, my_local, 'C', next_port, dest_board, ev, "jf-wrap");
             }
             else if (get_ncols() == 1 && jf_row_ft_port >= 0)
             {
                 next_port = jf_row_ft_port; // exit via the horizontal wrap link
                 out_vc = vc + 1;
+                log_gateway_exit(my_board, my_local, 'R', next_port, dest_board, ev, "jf-wrap");
             }
         }
         DEBUG_PRINT(("[JF switch %d] Same board, routing to local %d via port %d\n",
@@ -735,6 +751,8 @@ void topo_hamming::route_packet_jellyfish(int port, int vc, internal_router_even
                      router_id, ft_port));
         ev->setNextPort(ft_port);
         ev->setVC(vc + 1); // VC escalation at board-to-tree boundary
+        log_gateway_exit(my_board, my_local, (ft_port == jf_row_ft_port ? 'R' : 'C'),
+                         ft_port, dest_board, ev, "jf");
     }
     else if (target_edge >= 0 && target_edge < (int)jf_routing_table.size())
     {
@@ -762,6 +780,27 @@ int topo_hamming::jf_pick_gateway(const std::vector<int> &gws, uint dest_board)
     // every switch on the board selects the same gateway for a given destination.
     // This both load-balances egress across all gateways and keeps routing loop-free
     return gws[dest_board % gws.size()];
+}
+
+void topo_hamming::log_gateway_exit(uint board, uint local, char dim, int ft_port,
+                                    int dest_board, internal_router_event *ev, const char *variant)
+{
+    if (!gw_log_enabled)
+        return;
+    if (!gw_log_open)
+    {
+        gw_log.open(gw_log_prefix + "_" + std::to_string(router_id) + ".csv", std::ios::out);
+        if (gw_log.is_open())
+            gw_log << "timestamp_ns,gateway_gid,board,local,dim,ft_port,src,dest,dest_board,vn,variant\n";
+        gw_log_open = true;
+    }
+    if (gw_log.is_open())
+    {
+        gw_log << (unsigned long long)getCurrentSimTimeNano() << ',' << router_id << ','
+               << board << ',' << local << ',' << dim << ',' << ft_port << ','
+               << ev->getSrc() << ',' << ev->getDest() << ',' << dest_board << ','
+               << ev->getVN() << ',' << variant << '\n';
+    }
 }
 
 void topo_hamming::route_packet_tree(int port, int vc, internal_router_event *ev)

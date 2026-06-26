@@ -25,6 +25,7 @@
 
 #include <string.h>
 #include <vector>
+#include <fstream>
 
 #include "sst/elements/merlin/router.h"
 
@@ -214,6 +215,12 @@ namespace SST
             std::vector<int> jf_col_gateways;  // Local IDs of ALL col-FT gateway nodes on this board
             std::vector<int> jf_dist_table;    // dist_table[dest_local] = hop distance from this switch
 
+            // Per-packet gateway-exit logging (diagnostic, toggled by env var HX_GW_LOG).
+            bool gw_log_enabled;      // True if HX_GW_LOG is set to a non-empty path prefix
+            std::string gw_log_prefix; // Output file prefix; file is <prefix>_<router_id>.csv
+            std::ofstream gw_log;     // Per-switch output stream (lazily opened)
+            bool gw_log_open;         // Whether gw_log has been opened + header written
+
         public:
             topo_hamming(ComponentId_t cid, Params &params, int num_ports, int rtr_id, int num_vns);
             ~topo_hamming();
@@ -224,6 +231,10 @@ namespace SST
             // Deterministically pick one gateway (local id) for a packet destined to dest_board,
             // spreading load across all same-dimension gateways while staying loop-free.
             int jf_pick_gateway(const std::vector<int> &gws, uint dest_board);
+            // Diagnostic: append one row (timestamp + gateway info) for a packet leaving
+            // the local board to the fat tree. No-op unless HX_GW_LOG is set.
+            void log_gateway_exit(uint board, uint local, char dim, int ft_port,
+                                  int dest_board, internal_router_event *ev, const char *variant);
             virtual void route_packet_tree(int port, int vc, internal_router_event *ev);
             virtual internal_router_event *process_input(RtrEvent *ev);
 

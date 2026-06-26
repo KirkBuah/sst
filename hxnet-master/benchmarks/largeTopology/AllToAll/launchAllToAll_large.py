@@ -125,7 +125,9 @@ def main(args):
     motif_name = "AllToAllTom_%d" % num_nodes
     create_motif_load(motif_name, args.board_shape, args.global_shape)
 
-    if args.small_run:
+    if args.size:
+        sizes = [args.size]
+    elif args.small_run:
         sizes = small_size
     else:
         sizes = large_size
@@ -158,6 +160,8 @@ if __name__ == "__main__":
                         help="Number of threads for SST (default: 8)")
     parser.add_argument("--small_run", action="store_true",
                         help="Run only 2 message sizes instead of 6")
+    parser.add_argument("--size", type=int, default=0,
+                        help="Run a single message size in bytes (overrides the sweep / --small_run). 0 = disabled.")
     parser.add_argument("--jellyfish", action="store_true",
                         help="Use Jellyfish random graph as local board topology instead of 2D mesh")
     parser.add_argument("--ft_nodes", type=int, default=0,

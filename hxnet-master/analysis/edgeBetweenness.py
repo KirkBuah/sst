@@ -25,7 +25,6 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
 
-
 # ---------------------------------------------------------------------------
 # Helper functions (replicated from pymerlin.py, no SST dependency)
 # ---------------------------------------------------------------------------
@@ -612,12 +611,14 @@ def plot_histogram(edge_betweenness, G, output_file, title_extra=""):
     num_bins = min(50, max(10, len(set(np.round(values, 2)))))
     ax.hist(values, bins=num_bins, edgecolor="black", alpha=0.7, color="steelblue")
 
-    ax.set_xlabel("SP Fraction per Edge (SPs through edge / total SPs)", fontsize=12)
+    ax.set_xlabel(
+        "Shortest Path Fraction per Edge (SPs through edge / total SPs)", fontsize=12
+    )
     ax.set_ylabel("Number of Edges", fontsize=12)
     ax.set_ylim(0, 1200)
     title = "Edge Betweenness Distribution"
     if title_extra:
-        title += " — " + title_extra
+        title += " - " + title_extra
     ax.set_title(title, fontsize=14)
     ax.grid(axis="y", alpha=0.3)
 
