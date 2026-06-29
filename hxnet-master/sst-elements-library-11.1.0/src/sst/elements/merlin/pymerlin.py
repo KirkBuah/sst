@@ -16,6 +16,7 @@
 # distribution.
 
 import math
+import random
 import sys
 
 import sst
@@ -649,6 +650,16 @@ class topoHamming(Topo):
         self.jf_ft_nodes = int(_params.get("hamming:jellyfish_ft_nodes", 0))
         self._jf_gateway_map = {}  # board_id -> {'row_ft': set, 'col_ft': set}
         self._current_board_id = 0  # set before _get_reserved_ports() is called
+
+        # Reproducible randomness for the Jellyfish board. Two independent seeds let the
+        # variation due to graph wiring (jellyfish_seed) and the variation due to gateway
+        # selection (gateway_seed) be studied separately (multi-seed evaluation). Dedicated
+        # random.Random() streams are used instead of the global random state so the two
+        # sources are independent and a run is fully reproducible from its seeds.
+        self.jellyfish_seed = int(_params.get("hamming:jellyfish_seed", 0))
+        self.gateway_seed = int(_params.get("hamming:gateway_seed", 0))
+        self._graph_rng = random.Random(self.jellyfish_seed)
+        self._gateway_rng = random.Random(self.gateway_seed)
 
     def _formatShape(self, arr):
         return "x".join([str(x) for x in arr])
@@ -1300,8 +1311,13 @@ class topoHamming(Topo):
     def _generate_jellyfish_graph(self, num_nodes, reserved_ports_per_node):
         """Generate a random graph for a board. Each node has 4 inter-router ports (0-3).
         Some ports are reserved for fat trees. Remaining ports are used for random intra-board links.
-        Returns: adjacency dict {node_id: [(neighbor_id, my_port, their_port), ...]}, port_map dict {node_id: {port: neighbor_id}}"""
-        import random
+        Returns: adjacency dict {node_id: [(neighbor_id, my_port, their_port), ...]}, port_map dict {node_id: {port: neighbor_id}}
+
+        Graph wiring is drawn from self._graph_rng (seeded by hamming:jellyfish_seed) so
+        the random graph is reproducible and a controlled seed sweep is possible. A single
+        RNG stream is shared across boards, so each board gets a distinct (but reproducible)
+        graph."""
+        rng = self._graph_rng
 
         # Determine available (non-reserved) ports per node
         available = {}  # node -> list of free port numbers
@@ -1316,7 +1332,7 @@ class topoHamming(Topo):
             for n in range(num_nodes):
                 for p in available[n]:
                     stubs.append((n, p))
-            random.shuffle(stubs)
+            rng.shuffle(stubs)
 
             adjacency = {n: [] for n in range(num_nodes)}
             port_map = {n: {} for n in range(num_nodes)}
@@ -1358,7 +1374,7 @@ class topoHamming(Topo):
         stubs_per_node = {}
         for n in range(num_nodes):
             ports = list(available[n])
-            random.shuffle(ports)
+            rng.shuffle(ports)
             stubs_per_node[n] = ports
 
         adjacency = {n: [] for n in range(num_nodes)}

@@ -35,6 +35,16 @@
 
 using namespace SST::Merlin;
 
+// SplitMix64 finalizer: maps an integer to a well-distributed 64-bit value.
+// Used to spread Jellyfish gateway selection evenly across the gateway list.
+static inline uint64_t jf_mix64(uint64_t z)
+{
+    z += 0x9e3779b97f4a7c15ULL;
+    z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ULL;
+    z = (z ^ (z >> 27)) * 0x94d049bb133111ebULL;
+    return z ^ (z >> 31);
+}
+
 static std::string get_string_from_array(std::vector<int> arr, char symbol)
 {
     std::string str;
@@ -220,6 +230,10 @@ topo_hamming::topo_hamming(ComponentId_t cid, Params &params, int num_ports, int
     gw_log_enabled = (gw_env != nullptr && gw_env[0] != '\0');
     gw_log_prefix = gw_log_enabled ? std::string(gw_env) : std::string();
     gw_log_open = false;
+
+    // Opt-in finer-grained Jellyfish gateway balancing (env var HX_GW_FINE).
+    // When set, jf_pick_gateway keys on (src,dest) instead of dest_board.
+    jf_gateway_fine = (getenv("HX_GW_FINE") != nullptr);
 }
 
 topo_hamming::~topo_hamming()
@@ -679,10 +693,10 @@ void topo_hamming::route_packet_jellyfish(int port, int vc, internal_router_even
     }
 
     // Case 3: Destination is on a different board -> route toward a fat-tree gateway.
-    // The gateway is chosen as a deterministic function of the destination board so
-    // that every switch the packet visits agrees on the same target (keeping the
-    // path loop-free), while different destinations fan out across ALL same-dimension
-    // gateways (load balanced)
+    // jf_pick_gateway chooses the gateway as a deterministic function of fields that are
+    // constant in transit (destination board by default, or the full (src,dest) flow when
+    // HX_GW_FINE is set), so every switch the packet visits agrees on the same target
+    // (keeping the path loop-free) while egress fans out across same-dimension gateways.
     uint row_dest = get_coord_row(dest);
     uint col_dest = get_coord_col(dest);
     uint row_here = get_coord_row(router_id);
@@ -697,13 +711,13 @@ void topo_hamming::route_packet_jellyfish(int port, int vc, internal_router_even
     if (same_row && !same_col)
     {
         // Same global row, different column -> row fat tree
-        target_edge = jf_pick_gateway(jf_row_gateways, dest_board);
+        target_edge = jf_pick_gateway(jf_row_gateways, src, dest);
         ft_port = jf_row_ft_port;
     }
     else if (!same_row && same_col)
     {
         // Different global row, same column -> col fat tree
-        target_edge = jf_pick_gateway(jf_col_gateways, dest_board);
+        target_edge = jf_pick_gateway(jf_col_gateways, src, dest);
         ft_port = jf_col_ft_port;
     }
     else
@@ -714,17 +728,17 @@ void topo_hamming::route_packet_jellyfish(int port, int vc, internal_router_even
         bool use_row = (((row_dest + col_dest) & 1u) == 0);
         if (use_row && !jf_row_gateways.empty())
         {
-            target_edge = jf_pick_gateway(jf_row_gateways, dest_board);
+            target_edge = jf_pick_gateway(jf_row_gateways, src, dest);
             ft_port = jf_row_ft_port;
         }
         else if (!jf_col_gateways.empty())
         {
-            target_edge = jf_pick_gateway(jf_col_gateways, dest_board);
+            target_edge = jf_pick_gateway(jf_col_gateways, src, dest);
             ft_port = jf_col_ft_port;
         }
         else
         {
-            target_edge = jf_pick_gateway(jf_row_gateways, dest_board);
+            target_edge = jf_pick_gateway(jf_row_gateways, src, dest);
             ft_port = jf_row_ft_port;
         }
     }
@@ -772,14 +786,27 @@ void topo_hamming::route_packet_jellyfish(int port, int vc, internal_router_even
     }
 }
 
-int topo_hamming::jf_pick_gateway(const std::vector<int> &gws, uint dest_board)
+int topo_hamming::jf_pick_gateway(const std::vector<int> &gws, int src, int dest)
 {
     if (gws.empty())
         return -1;
-    // Pure function of the destination board and the (board-wide) gateway list, so
-    // every switch on the board selects the same gateway for a given destination.
-    // This both load-balances egress across all gateways and keeps routing loop-free
-    return gws[dest_board % gws.size()];
+
+    if (!jf_gateway_fine)
+    {
+        // Default: one gateway per destination board (original behaviour, unchanged).
+        // Pure function of the destination board, so every switch on the board selects
+        // the same gateway for a given destination -> loop-free.
+        uint dest_board = get_coord_board(dest);
+        return gws[dest_board % gws.size()];
+    }
+
+    // Fine-grained: key on the full (source, destination) pair so a single destination
+    // board's traffic is spread across many gateways. The key is a pure function of
+    // fields carried in the packet and constant in transit, so every switch handling
+    // this packet picks the SAME gateway (loop-free) and one flow stays on one gateway
+    // (no reordering).
+    uint64_t key = jf_mix64(((uint64_t)(uint32_t)src << 32) | (uint32_t)dest);
+    return gws[key % gws.size()];
 }
 
 void topo_hamming::log_gateway_exit(uint board, uint local, char dim, int ft_port,

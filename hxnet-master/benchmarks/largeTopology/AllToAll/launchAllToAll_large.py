@@ -51,6 +51,11 @@ def make_topo_name(board_shape, global_shape, jellyfish=False, ft_nodes=0):
     return name
 
 
+def make_seed_subdir(graph_seed, gateway_seed):
+    """Per-seed output sub-folder so multi-seed runs do not overwrite each other."""
+    return "g%d_w%d" % (graph_seed, gateway_seed)
+
+
 def create_motif_load(name, board_shape, global_shape):
     pathlib.Path(motif_folder).mkdir(parents=True, exist_ok=True)
     nid_string = "[NID_LIST] generateNidList=generateNidListHx({}x{})\n".format(
@@ -73,14 +78,19 @@ def run_simulation(args, msg_size, motif_name):
 
     topo_name = make_topo_name(args.board_shape, args.global_shape, args.jellyfish, args.ft_nodes)
 
-    # Ensure output dir exists
+    # Ensure output dir exists. For Jellyfish runs the seeds get their own sub-folder so
+    # a multi-seed sweep keeps every run side by side (mesh is deterministic -> no subdir).
     out_dir = os.path.join(output_folder, topo_name)
+    if args.jellyfish:
+        out_dir = os.path.join(out_dir, make_seed_subdir(args.graph_seed, args.gateway_seed))
     pathlib.Path(out_dir).mkdir(parents=True, exist_ok=True)
     output_result = os.path.join(out_dir, str(msg_size))
 
     jellyfish_flag = "--jellyfish " if args.jellyfish else ""
     ft_nodes_flag = "--ftNodes={} ".format(args.ft_nodes) \
         if (args.jellyfish and args.ft_nodes > 0) else ""
+    seed_flags = "--jellyfishSeed={} --gatewaySeed={} ".format(
+        args.graph_seed, args.gateway_seed) if args.jellyfish else ""
 
     launch_string = (
         '--num_threads={} '
@@ -93,6 +103,7 @@ def run_simulation(args, msg_size, motif_name):
         '--hostsPerRtr=1 '
         '{}'
         '{}'
+        '{}'
         '--loadFile={}" '
         '{} > {}'
     ).format(
@@ -102,6 +113,7 @@ def run_simulation(args, msg_size, motif_name):
         FAT_TREE_SHAPE,
         jellyfish_flag,
         ft_nodes_flag,
+        seed_flags,
         location_motif,
         ember_load,
         output_result,
@@ -167,6 +179,12 @@ if __name__ == "__main__":
     parser.add_argument("--ft_nodes", type=int, default=0,
                         help="Number of random fat tree gateways per direction per board "
                              "(Jellyfish only; 0 = border nodes, default)")
+    parser.add_argument("--graph_seed", type=int, default=0,
+                        help="Seed for the Jellyfish random graph wiring (reproducible). "
+                             "Vary this to measure graph-generation variation.")
+    parser.add_argument("--gateway_seed", type=int, default=0,
+                        help="Seed for random gateway selection (Jellyfish ft_nodes>0). "
+                             "Vary this to measure gateway-selection variation.")
     parser.add_argument("--env", type=str, help="Local or Cluster", default="",
                         choices=["cluster", "daint", "ault", "local", "slimfly", ""])
     parser.add_argument("--nodes", type=int, help="Number of nodes for cluster", default=8)

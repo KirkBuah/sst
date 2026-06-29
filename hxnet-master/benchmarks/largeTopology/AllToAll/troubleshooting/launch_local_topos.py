@@ -66,21 +66,27 @@ def write_motif(path, n_nodes, msg_size):
         f.writelines(lines)
 
 
-def run_one(topo, shape, msg_size, n_nodes, num_threads, logf):
+def run_one(topo, shape, msg_size, n_nodes, num_threads, logf, graph_seed=0):
     out_dir = os.path.join(OUTPUT_FOLDER, "{}_{}".format(topo, n_nodes))
+    # Only the Jellyfish fabric is random; give each graph seed its own sub-folder so a
+    # multi-seed sweep keeps every run side by side. Mesh is deterministic -> no subdir.
+    if topo == "jellyfish":
+        out_dir = os.path.join(out_dir, "g%d" % graph_seed)
     pathlib.Path(out_dir).mkdir(parents=True, exist_ok=True)
     out_file = os.path.join(out_dir, str(msg_size))
 
     motif_path = os.path.join(MOTIF_FOLDER, "AllToAll_{}_{}".format(topo, n_nodes))
     write_motif(motif_path, n_nodes, msg_size)
 
+    seed_opt = "--jellyfishSeed={} ".format(graph_seed) if topo == "jellyfish" else ""
     model_options = (
         '--param="nic:module=merlin.reorderlinkcontrol" '
         '--topo={topo} '
         '--shape={shape} '
         '--hostsPerRtr=1 '
+        '{seed}'
         '--loadFile={motif}'
-    ).format(topo=topo, shape=shape, motif=motif_path)
+    ).format(topo=topo, shape=shape, seed=seed_opt, motif=motif_path)
 
     cmd = (
         'PYTHONPATH="{pp}" SST_NO_MEM=1 sst '
@@ -127,6 +133,8 @@ def main():
                         help="Use 2 message sizes instead of the full sweep")
     parser.add_argument("--num_threads", type=int, default=os.cpu_count(),
                         help="SST threads (default: all cores)")
+    parser.add_argument("--graph_seed", type=int, default=0,
+                        help="Seed for the Jellyfish random graph (reproducible wiring)")
     args = parser.parse_args()
 
     topos = [t.strip() for t in args.topos.split(",") if t.strip()]
@@ -151,7 +159,7 @@ def main():
         for topo in topos:
             for msg_size in sizes:
                 ok = run_one(topo, args.shape, msg_size, n_nodes,
-                             args.num_threads, logf)
+                             args.num_threads, logf, args.graph_seed)
                 all_ok = all_ok and ok
 
     print("\nDone. {}".format(

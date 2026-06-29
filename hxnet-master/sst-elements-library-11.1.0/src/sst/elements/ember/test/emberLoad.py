@@ -50,6 +50,8 @@ programName = "Def"
 netHostsPerRtr = 1
 useJellyfish = False
 ftNodes = 0
+jellyfishSeed = 0
+gatewaySeed = 0
 netInspect = ""
 rtrArb = ""
 nicsPerNode = 1
@@ -131,6 +133,8 @@ try:
             "programName=",
             "jellyfish",
             "ftNodes=",
+            "jellyfishSeed=",
+            "gatewaySeed=",
         ],
     )
 
@@ -153,6 +157,10 @@ for o, a in opts:
         useJellyfish = True
     elif o in ("--ftNodes"):
         ftNodes = int(a)
+    elif o in ("--jellyfishSeed"):
+        jellyfishSeed = int(a)
+    elif o in ("--gatewaySeed"):
+        gatewaySeed = int(a)
     elif o in ("--programName"):
         programName = a
     elif o in ("--hostsPerRtr"):
@@ -378,7 +386,8 @@ elif "hx" == netTopo:
         if routing_algo == "":
             routing_algo = "min-adaptive"
         topoInfo = HammingInfo(
-            boardShape, netHostsPerRtr, globShape, fatTreeShape, routing_algo, useJellyfish, ftNodes
+            boardShape, netHostsPerRtr, globShape, fatTreeShape, routing_algo, useJellyfish, ftNodes,
+            jellyfishSeed, gatewaySeed
         )
 
     topo = topoHamming()
@@ -395,7 +404,8 @@ elif "jellyfish" == netTopo:
     # fat_tree_shape is parsed (radix after the comma) even though no fat tree is
     # built, so it must contain a comma.
     ftShape = fatTreeShape if fatTreeShape != "" else "1:1,64"
-    topoInfo = HammingInfo(netShape, netHostsPerRtr, "1x1", ftShape, algo, True, 0)
+    topoInfo = HammingInfo(netShape, netHostsPerRtr, "1x1", ftShape, algo, True, 0,
+                           jellyfishSeed, gatewaySeed)
     topo = topoJellyfish()
 
 elif "json" == netTopo:
