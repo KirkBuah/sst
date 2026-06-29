@@ -206,7 +206,6 @@ namespace SST
 
             // Jellyfish local topology support
             bool is_jellyfish;                 // Use Jellyfish instead of 2D mesh for boards
-            bool jf_gateway_fine;              // true -> hash (src,dest) for gateway choice; false -> per-board (default)
             std::vector<int> jf_routing_table; // routing_table[dest_local_id] = next_hop_port
             int jf_row_ft_port;                // Port connected to row fat tree (-1 if none)
             int jf_col_ft_port;                // Port connected to col fat tree (-1 if none)
@@ -229,11 +228,9 @@ namespace SST
             virtual void route_packet(int port, int vc, internal_router_event *ev);
             virtual void route_packet_mesh(int port, int vc, internal_router_event *ev);
             virtual void route_packet_jellyfish(int port, int vc, internal_router_event *ev);
-            // Pick one gateway (local id) for a packet's (src,dest). Default keys on the
-            // destination board (original behaviour); with HX_GW_FINE set it hashes the full
-            // (src,dest) flow to spread a board's egress across all same-dimension gateways.
-            // The key is constant in transit, so every switch agrees on it -> loop-free.
-            int jf_pick_gateway(const std::vector<int> &gws, int src, int dest);
+            // Deterministically pick one gateway (local id) for a packet destined to dest_board,
+            // spreading load across all same-dimension gateways while staying loop-free.
+            int jf_pick_gateway(const std::vector<int> &gws, uint dest_board);
             // Diagnostic: append one row (timestamp + gateway info) for a packet leaving
             // the local board to the fat tree. No-op unless HX_GW_LOG is set.
             void log_gateway_exit(uint board, uint local, char dim, int ft_port,
